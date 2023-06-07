@@ -968,7 +968,7 @@ export const courses_data = [
       userImg: "talha",
       name: "Talha Bin Saleem",
       userExp:
-        " 6+ years of experience in Social Media Manager, Content Marketing Manager and Digital Content Strategist.",
+        " 6+ years of experience in Social Media Management, Content Marketing Management and Digital Content Strategy.",
       working: "Digital Marketing Executive IPPBX",
       slug: "talha-bin-saleem",
       description: "",
