@@ -968,8 +968,8 @@ export const courses_data = [
       userImg: "talha",
       name: "Talha Bin Saleem",
       userExp:
-        " 2+ years of experience in Social Media Manager, Content Marketing Manager and Digital Content Strategist.",
-      working: "Digital Marketing Executive IPPBX US BASED COMPANY ",
+        " 6+ years of experience in Social Media Manager, Content Marketing Manager and Digital Content Strategist.",
+      working: "Digital Marketing Executive IPPBX",
       slug: "talha-bin-saleem",
       description: "",
       email: " author@hadielearning.com",
