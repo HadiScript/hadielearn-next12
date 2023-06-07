@@ -1,0 +1,41 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "author": "syed hadi raza",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.2.3",
+    "dayjs": "^1.11.7",
+    "next": "^12.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-toast": "^2.2.0",
+    "bootstrap": "5.1.3",
+    "react-avatar": "^5.0.3",
+    "react-bootstrap": "^2.1.2",
+    "react-collapsible": "^2.8.4",
+    "react-countup": "^6.1.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-image-lightbox": "^5.1.4",
+    "react-modal-video": "^1.2.8",
+    "react-reveal": "^1.2.2",
+    "react-router-dom": "^6.10.0",
+    "react-scripts": "5.0.0",
+    "react-slick": "^0.28.1",
+    "react-step-progress-bar": "^1.0.3",
+    "react-time-ago": "^7.2.1",
+    "react-vertical-timeline-component": "^3.6.0",
+    "react-visibility-sensor": "^5.1.1",
+    "sass": "^1.49.7",
+    "slick-carousel": "^1.8.1"
+  }
+}
