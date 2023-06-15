@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import Step2 from "../../form/Step2";
 import Step1 from "../../form/Step1";
-import Step0 from "../../form/step0";
+import Step0 from "../../form/Step0";
 import MultiStepProgressBar from "../../form/MultiStepProgressBar";
 import Step3 from "../../form/Step3";
 import Step4 from "../../form/Step4";
