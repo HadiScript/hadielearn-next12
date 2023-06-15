@@ -7,13 +7,13 @@ import FaqsCourseDetail from "../../components/programs/FaqsCourseDetail";
 import Link from "next/link";
 import { TbPointFilled } from "react-icons/tb";
 import Footer from "../../components/partials/Footer";
+import axios from "axios";
 
-
-const ProgramDetails = () => {
+const ProgramDetails = ({ course }) => {
   const router = useRouter();
   const { slug } = router.query;
-
-  const findedCourse = courses_data.find((x) => x.slug === slug);
+  // const findedCourse = courses_data.find((x) => x.slug === slug);
+  const [findedCourse, setFindedCourse] = useState(course);
 
   // tabs
   const [activeTabs, setactiveTabs] = useState("first");
@@ -41,21 +41,22 @@ const ProgramDetails = () => {
               <div className="blog__details-wrapper mr-50">
                 <div className="blog__details-thumb w-img mb-45">
                   <img
-                    src={findedCourse?.image}
+                    src={findedCourse?.image?.url}
                     alt=""
                     style={{ borderRadius: "20px" }}
                   />
                 </div>
                 <div className="blog__text mb-40">
                   <h1>{findedCourse?.title}</h1>
-                  <p>{findedCourse?.Overview}</p>
-                  {findedCourse?.Overview2 && (
-                    <>
-                      <p>{findedCourse?.Overview2}</p>
-                    </>
-                  )}
-
-                  {/* test */}
+                  {/* {findedCourse?.overview} */}
+                  <p>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: findedCourse?.overview,
+                      }}
+                    />
+                  </p>
+                  {/* {findedCourse?.overview} */}
 
                   <ul className="nav nav-tabs">
                     <li className="nav-item">
@@ -67,7 +68,7 @@ const ProgramDetails = () => {
                         onClick={(e) => setactiveTabs("first")}
                         aria-current="page"
                       >
-                        Curriculum
+                        Outline
                       </span>
                     </li>
 
@@ -80,7 +81,7 @@ const ProgramDetails = () => {
                         onClick={(e) => setactiveTabs("third")}
                         aria-current="page"
                       >
-                        Objectives
+                        Why us
                       </span>
                     </li>
 
@@ -121,74 +122,60 @@ const ProgramDetails = () => {
                         Market Value
                       </span>
                     </li>
+
+                    <li className="nav-item">
+                      <span
+                        id="navLinks"
+                        className={`nav-link  ${
+                          activeTabs === "sixth" ? "active" : ""
+                        }`}
+                        onClick={(e) => setactiveTabs("sixth")}
+                        aria-current="page"
+                      >
+                        FAQs
+                      </span>
+                    </li>
                   </ul>
 
                   {/* outlines */}
                   {activeTabs === "first" && (
                     <p className="pt-30 ">
-                      <FaqsCourseDetail details={findedCourse?.outlines} />
+                      <FaqsCourseDetail
+                        details={findedCourse?.lectures}
+                        page={"outline"}
+                      />
                     </p>
                   )}
 
                   {activeTabs === "second" && (
-                    <p className="pt-30">
-                      <ul>
-                        {findedCourse?.Prerequisites.map((x, index) => (
-                          <li key={index}>
-                            <div className="py-1">
-                              <TbPointFilled size={15} /> {x}
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
+                    <p className="pt-30 px-4">
+                      <div
+                        id="horizontalTab_lists"
+                        dangerouslySetInnerHTML={{
+                          __html: findedCourse?.prerequisites,
+                        }}
+                      />
                     </p>
                   )}
 
                   {activeTabs === "third" && (
-                    <p className="pt-30">
-                      <ul>
-                        {findedCourse?.objectives.map((x, index) => (
-                          <li key={index} className="mb-3">
-                            {x.points.map((i, index) => (
-                              <div className="d-flex gap-1 py-1" key={index}>
-                                <div className="">
-                                  <TbPointFilled size={15} />
-                                </div>
-                                <div className="">{i}</div>
-                              </div>
-                            ))}
-                          </li>
-                        ))}
-                      </ul>
-                    </p>
+                    <p className="pt-30">{findedCourse?.whyUs}</p>
                   )}
 
                   {activeTabs === "fourth" && (
-                    <p className="pt-30">
-                      <ul>
-                        {findedCourse?.benefits.map((x, index) => (
-                          <li key={index} className="mb-3">
-                            {x.points.map((i, index) => (
-                              <div className="d-flex gap-1 py-1" key={index}>
-                                <div className="">
-                                  <TbPointFilled size={15} />
-                                </div>
-                                <div className="">{i}</div>
-                              </div>
-                            ))}
-                          </li>
-                        ))}
-                      </ul>
-                    </p>
+                    <p className="pt-30">{findedCourse?.benefits}</p>
                   )}
 
                   {activeTabs === "fifth" && (
-                    <p className="pt-30">
-                      <ul>
-                        <li className="mb-3">
-                          <h4> Coming Soon :)</h4>
-                        </li>
-                      </ul>
+                    <p className="pt-30">{findedCourse?.marketValue}</p>
+                  )}
+
+                  {activeTabs === "sixth" && (
+                    <p className="pt-30 ">
+                      <FaqsCourseDetail
+                        details={findedCourse?.faqs}
+                        page={"FAQs"}
+                      />
                     </p>
                   )}
 
@@ -201,7 +188,7 @@ const ProgramDetails = () => {
               </div>
             </div>
 
-          {  findedCourse && <CourseSideBar course={findedCourse} />}
+            {findedCourse && <CourseSideBar course={findedCourse} />}
           </div>
         </div>
       </section>
@@ -211,5 +198,14 @@ const ProgramDetails = () => {
     </>
   );
 };
+
+export async function getServerSideProps({ params }) {
+  const { data } = await axios.get(`/course/${params.slug}`);
+  return {
+    props: {
+      course: data.course,
+    },
+  };
+}
 
 export default ProgramDetails;

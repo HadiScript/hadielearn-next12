@@ -13,15 +13,12 @@ const Home = () => {
   return (
     <>
       <SEOHead
-        title={
-          "Hadi E-learning - An excellent online learning platform"
-        }
+        title={"Hadi E-learning - An excellent online learning platform"}
         desc={
           "Unlock the door to a bright and prosperous future in the digital world with Hadi-learning, an online learning platform that can help you excel in your career path."
         }
         conLink={"https://hadielearning.com/"}
       />
-
       <ResponsiveHeros />
       <HomeAbout />
       <Courses />

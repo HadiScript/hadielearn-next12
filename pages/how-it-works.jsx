@@ -4,6 +4,9 @@ import CTA from "../components/partials/CTA";
 import { Fade } from "react-reveal";
 import Price from "../components/partials/Price";
 import Footer from "../components/partials/Footer";
+import FAQs from "./faqs";
+import { faqs_data } from "../data/faqs";
+import Link from "next/link";
 
 const howItWorks = () => {
   return (
@@ -19,7 +22,6 @@ const howItWorks = () => {
         breadTitle={"How it works?"}
         breadSubTtile={"How to join us?"}
         image={"/assets/images/bread-work.jpg"}
-       
       />
 
       {/* start */}
@@ -124,6 +126,9 @@ const howItWorks = () => {
 
         <CTA />
         <Price />
+
+        {/* faqs */}
+        <FAQs list={3} component={false} />
       </div>
       {/* ends */}
 

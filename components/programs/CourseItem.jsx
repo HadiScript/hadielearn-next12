@@ -8,28 +8,26 @@ const CourseItem = ({ title, overview, slug, image, author }) => {
       <div className="blog__item-3 mb-50 fix">
         <div className={`blog__thumb-3 w-img fix `}>
           {/* <Link href={`/program/${slug} `}> */}
-            <img src={`${image}`} alt="" />
+          <img src={`${image?.url}`} alt="" />
           {/* </Link> */}
         </div>
         <div className="blog__content-2">
           <div className="blog__meta-2 mb-15 d-sm-flex align-items-center">
             <div className="d-flex align-items-center  pr-20 mr-20">
-              {/* <Link to={`/program/${slug}`} className="pr-10"> */}
-                <img
-                  src={`/assets/images/profile_workshop/${author.userImg}.jpg`}
-                  alt=""
-                  height={80}
-                  className="pr-10"
-                />
-              {/* </Link> */}
+              <img
+                src={`${author?.image?.url}`}
+                alt=""
+                height={80}
+                className="pr-10"
+              />
               <div>
                 <span style={{ fontWeight: "bold", fontSize: "18px" }}>
                   {author.name}
                 </span>
                 <br />
-                <small style={{ fontSize: "14px" }}>{author.working}</small>
+                <small style={{ fontSize: "14px" }}>{author.status}</small>
                 <br />
-                <small style={{ fontSize: "14px" }}>{author.userExp}</small>
+                <small style={{ fontSize: "14px" }}>{author?.exp}</small>
               </div>
             </div>
           </div>
@@ -38,7 +36,11 @@ const CourseItem = ({ title, overview, slug, image, author }) => {
           <h3>
             <Link href={`/program/${slug} `}>{title}</Link>
           </h3>
-          <p>{overview.substring(0, 80)}...</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: overview.substring(0, 150) + "...",
+            }}
+          />
           <div className="blog__btn d-sm-flex justify-content-between">
             <div className="blog__btn">
               <Link href={`/program/${slug} `}>

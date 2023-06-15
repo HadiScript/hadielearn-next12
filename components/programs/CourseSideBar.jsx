@@ -13,26 +13,22 @@ const CourseSideBar = ({ course }) => {
             <h3>Instructor</h3>
             <br />
             <div className="d-flex align-items-start gap-3">
-              {course &&   !course.author.userImg ? (
+              {course && !course.instructor?.image ? (
                 <FaUser size={50} color="gray" />
               ) : (
-                <img
-                  src={`/assets/images/profile_workshop/${course?.author.userImg}.jpg`}
-                  alt=""
-                  height={100}
-                />
+                <img src={course?.instructor?.image.url} alt="" height={100} />
               )}
               <div>
-                <span style={{ fontWeight: "bold", fontSize: "20px" }}>
-                  {course.author.name}
+                <span style={{ fontWeight: "bold", fontSize: "18px" }}>
+                  {course?.instructor?.name}
                 </span>
                 <br />
                 <small style={{ fontSize: "14px" }}>
-                  {course.author.working}
+                  {course?.instructor?.status}
                 </small>
                 <br />
-                <small style={{ fontSize: "16px" }}>
-                  {course.author.userExp}
+                <small style={{ fontSize: "14px" }}>
+                  {course?.instructor?.exp}
                 </small>
               </div>
             </div>
@@ -45,7 +41,7 @@ const CourseSideBar = ({ course }) => {
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>{course.thisCourseIsFor}</li>
+                  <li>{course?.courseFor}</li>
                 </ul>
               </div>
             </div>
@@ -76,7 +72,7 @@ const CourseSideBar = ({ course }) => {
               <h4>Schedule</h4>
 
               <ul class="list-group list-group-flush">
-                {course.days.map((x, index) => (
+                {course?.days?.map((x, index) => (
                   <li
                     class="list-group-item d-flex align-items-center gap-1"
                     key={index}
@@ -121,7 +117,7 @@ const CourseSideBar = ({ course }) => {
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>5000 PKR</li>
+                  <li>{course.regFee}</li>
                 </ul>
               </div>
             </div>
@@ -134,7 +130,7 @@ const CourseSideBar = ({ course }) => {
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>0 PKR</li>
+                  <li>{course.courseFee}</li>
                 </ul>
               </div>
             </div>

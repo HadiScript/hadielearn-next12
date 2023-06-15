@@ -1,9 +1,8 @@
 import React from "react";
-import { courses_data } from "../../data/courses";
 import Link from "next/link";
 import CourseItem from "./CourseItem";
 
-const CourseList = () => {
+const CourseList = ({ courses_data }) => {
   return (
     <>
       <section className="blog__area pt-120 pb-120">
@@ -24,15 +23,13 @@ const CourseList = () => {
                 <br />
                 {courses_data.map((x, index) => (
                   <React.Fragment key={index}>
-                    {x.available && (
-                      <CourseItem
-                        title={x.title}
-                        overview={x.Overview}
-                        slug={x.slug}
-                        image={x.image}
-                        author={x.author}
-                      />
-                    )}
+                    <CourseItem
+                      title={x.title}
+                      overview={x.overview}
+                      slug={x.slug}
+                      image={x.image}
+                      author={x.instructor}
+                    />
                   </React.Fragment>
                 ))}
               </div>

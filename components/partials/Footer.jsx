@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 // import "./footer.css";
 import {
   FaEnvelope,
@@ -72,6 +73,12 @@ const Footer = () => {
                         </li>
                         <li>
                           <Link href="/contact-us">Contact</Link>
+                        </li>
+                        <li>
+                          <Link href="/blogs">Blogs</Link>
+                        </li>
+                        <li>
+                          <Link href="/faqs">FAQs</Link>
                         </li>
                       </ul>
                     </div>
@@ -226,7 +233,9 @@ const Footer = () => {
                 <div className="col-xl-12">
                   <div className="footer__copyright-text text-center">
                     <p>
-                      Copyright © Hadi eLearning | Developed by{" "}
+                      Copyright ©{" "}
+                      <Link href={"/auth/login"}>Hadi eLearning</Link> |
+                      Developed by{" "}
                       <a href="https://cycarts.com" target="#">
                         Cycarts
                       </a>

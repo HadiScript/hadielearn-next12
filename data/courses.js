@@ -4,7 +4,8 @@ export const courses_data = [
   {
     title: "3D Visualization Mastery Course",
     key: "autocad",
-
+    regFee: 5000,
+    courseFee: 0,
     bread: "3D Visualization ",
     available: true,
     slug: "3d-visualization-mastery-course",
@@ -116,7 +117,8 @@ export const courses_data = [
   {
     title: "The Freelancing Masterclass",
     key: "freelancing",
-
+    regFee: 5000,
+    courseFee: 0,
     bread: "Freelancing",
     available: true,
     slug: "the-freelancing-masterclass",
@@ -365,7 +367,8 @@ export const courses_data = [
   {
     title: "WordPress And Shopify Mastery Course",
     key: "wordPress-and-shopify",
-
+    regFee: 5000,
+    courseFee: 0,
     bread: "WordPress And Shopify ",
     available: true,
     slug: "wordpress-and-shopify-mastery-course",
@@ -828,7 +831,8 @@ export const courses_data = [
   {
     title: "Digital Media Marketing Mastery Course",
     key: "digital-marketing",
-
+    regFee: 5000,
+    courseFee: 0,
     bread: "Digital Media Marketing ",
     available: true,
     slug: "digital-media-marketing-mastery-course",
@@ -982,6 +986,8 @@ export const courses_data = [
 
   {
     title: "MEAN Stack Mastery Course",
+    regFee: 10000,
+    courseFee: 0,
     key: "mean-stack",
     bread: "MEAN Stack Development",
     available: true,

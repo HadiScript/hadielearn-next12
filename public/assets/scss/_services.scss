@@ -212,7 +212,7 @@
         position: relative;
         // padding-left: 30px;
         margin-bottom: 15px;
-        
+
         // &::after {
         //   position: absolute;
         //   content: "\f058";
@@ -274,6 +274,37 @@
       }
     }
   }
+
+  &__link_layouts {
+    & ul {
+      & li {
+        margin-bottom: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        & a {
+          padding-left: 20px;
+          position: relative;
+          &::after {
+            position: absolute;
+            content: "\f105";
+            left: 0;
+            top: 0;
+            font-family: "Font Awesome 5 Pro";
+            font-size: 16px;
+            color: $theme-color;
+          }
+          &:hover {
+            color: gray;
+            &::after {
+              left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &__form {
     & input {
       width: 100%;

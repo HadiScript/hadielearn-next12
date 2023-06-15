@@ -16,7 +16,7 @@ const termsAndConditions = () => {
       {/* start */}
       <div className="container pt-90">
         <div className="about__content">
-          <h1>Terms and Conditions - Hadi E-learning</h1>
+          <h1>Terms and Conditions For Hadi E-learning</h1>
 
           <p>
             These terms and conditions outline the rules and regulations for the

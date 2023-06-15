@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import SEOHead from "../components/functions/SEOHead";
 import PagesNavbar from "../components/partials/PageNavbar";
 import Breadcrumbs from "../components/partials/Breadcrumbs";
 import Footer from "../components/partials/Footer";
 import CourseList from "../components/programs/CourseList";
+import axios from "axios";
 
-const Programs = () => {
+const Programs = ({ courses }) => {
+  const [course_data, setCourse_data] = useState(courses);
+
   return (
     <>
       <SEOHead
@@ -24,10 +27,19 @@ const Programs = () => {
         subtitle="Courses"
         image={"/assets/images/bread-program.jpg"}
       />
-      <CourseList />
+      <CourseList courses_data={course_data} />
       <Footer />
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const { data } = await axios.get(`/courses`);
+  return {
+    props: {
+      courses: data.courses,
+    },
+  };
+}
 
 export default Programs;
