@@ -6,6 +6,7 @@ import LeftSideBar from "../components/workshops/LeftSideBar";
 import axios from "axios";
 import Link from "next/link";
 import { CgArrowLongRight } from "react-icons/cg";
+import { API } from "../config/API";
 
 const Workshops = ({ workshops }) => {
   const [workshop_data, setWorkshop_data] = useState(workshops);
@@ -121,7 +122,7 @@ const Workshops = ({ workshops }) => {
 };
 
 export async function getServerSideProps() {
-  const { data } = await axios.get(`/all-workshops`);
+  const { data } = await axios.get(`${API}/all-workshops`);
   return {
     props: {
       workshops: data.allworkshops,

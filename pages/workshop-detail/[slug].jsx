@@ -7,6 +7,7 @@ import WriteComments from "../../components/workshops/WriteComments";
 import { BiCheck } from "react-icons/bi";
 import axios from "axios";
 import Footer from "../../components/partials/Footer";
+import { API } from "../../config/API";
 
 const WorkshopDetails = ({ workshop }) => {
   const router = useRouter();
@@ -238,7 +239,7 @@ const WorkshopDetails = ({ workshop }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const { data } = await axios.get(`/workshop/${params.slug}`);
+  const { data } = await axios.get(`${API}/workshop/${params.slug}`);
   return {
     props: {
       workshop: data.workshop,

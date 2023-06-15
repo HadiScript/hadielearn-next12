@@ -7,6 +7,7 @@ import { InboxOutlined, CloseCircleFilled } from "@ant-design/icons";
 import PanelHeader from "../../../panel/common/PanelHeader";
 import AdminLayout from "../../../panel/admin/AdminLayout";
 import axios from "axios";
+import { API } from "../../../config/API";
 //
 const { Dragger } = Upload;
 
@@ -22,7 +23,7 @@ const MediaLibrary = ({ page = "admin" }) => {
 
   const fetchMedia = async () => {
     try {
-      const { data } = await axios.get(`/media`, {
+      const { data } = await axios.get(`${API}/media`, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
@@ -71,7 +72,7 @@ const MediaLibrary = ({ page = "admin" }) => {
     try {
       setRemoveLoading(true);
 
-      const { data } = await axios.post(`/media/${imageId}`, {
+      const { data } = await axios.post(`${API}/media/${imageId}`, {
         public_id: x,
       });
       if (data.ok) {

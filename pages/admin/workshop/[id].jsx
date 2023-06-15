@@ -51,7 +51,7 @@ const EditWorkshop = () => {
 
   useEffect(() => {
     const fetchCats = async () => {
-      const { data } = await axios.get(`/categories`);
+      const { data } = await axios.get(`${API}/categories`);
       setLoadCategories(data);
     };
     fetchCats();

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { TbPointFilled } from "react-icons/tb";
 import Footer from "../../components/partials/Footer";
 import axios from "axios";
+import { API } from "../../config/API";
 
 const ProgramDetails = ({ course }) => {
   const router = useRouter();
@@ -200,7 +201,7 @@ const ProgramDetails = ({ course }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const { data } = await axios.get(`/course/${params.slug}`);
+  const { data } = await axios.get(`${API}/course/${params.slug}`);
   return {
     props: {
       course: data.course,

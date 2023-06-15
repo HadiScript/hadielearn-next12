@@ -60,7 +60,7 @@ const NewCourse = () => {
 
   useEffect(() => {
     const fetchCats = async () => {
-      const { data } = await axios.get(`/categories`);
+      const { data } = await axios.get(`${API}/categories`);
       setLoadCategories(data);
     };
     fetchCats();
@@ -211,14 +211,11 @@ const NewCourse = () => {
     const fetchingTeachers = async () => {
       try {
         setTeachersLoading(true);
-        const { data } = await axios.get(
-          "http://localhost:5000/api/get-all-instructors",
-          {
-            headers: {
-              Authorization: `Bearer ${auth.token}`,
-            },
-          }
-        );
+        const { data } = await axios.get(`${API}/get-all-instructors`, {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        });
         setTeachers(data);
 
         setTeachersLoading(false);

@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { TbTrash } from "react-icons/tb";
 import { BiEdit, BiPlus } from "react-icons/bi";
+import { AP, API, APII } from "../../../config/API";
 
 const AllUsers = () => {
   const router = useRouter();
@@ -19,14 +20,11 @@ const AllUsers = () => {
   const fetchingAllUsers = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        `http://localhost:5000/api/admin/all-user`,
-        {
-          headers: {
-            Authorization: `Bearer ${auth?.token}`,
-          },
-        }
-      );
+      const { data } = await axios.get(`${API}/admin/all-user`, {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      });
       setAllEmployee(data.users);
       setLoading(false);
     } catch (error) {
@@ -43,14 +41,11 @@ const AllUsers = () => {
     try {
       let ok = confirm("Are you sure?");
       if (ok) {
-        const { data } = await axios.delete(
-          `http://localhost:5000/api/admin/delete/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${auth?.token}`,
-            },
-          }
-        );
+        const { data } = await axios.delete(`${API}/admin/delete/${id}`, {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        });
         setAllEmployee(allEmployee.filter((x) => x._id !== id));
       }
     } catch (error) {

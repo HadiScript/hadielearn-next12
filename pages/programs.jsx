@@ -5,6 +5,7 @@ import Breadcrumbs from "../components/partials/Breadcrumbs";
 import Footer from "../components/partials/Footer";
 import CourseList from "../components/programs/CourseList";
 import axios from "axios";
+import { API } from "../config/API";
 
 const Programs = ({ courses }) => {
   const [course_data, setCourse_data] = useState(courses);
@@ -34,7 +35,7 @@ const Programs = ({ courses }) => {
 };
 
 export async function getServerSideProps() {
-  const { data } = await axios.get(`/courses`);
+  const { data } = await axios.get(`${API}/courses`);
   return {
     props: {
       courses: data.courses,
