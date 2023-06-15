@@ -376,7 +376,7 @@ export const courses_data = [
       "In our WordPress section, you'll dive into the world of WordPress, a popular content management system for building websites. Learn the fundamentals, including WordPress installation and customization. Explore themes, customize them, and create visually appealing websites. Develop your own themes or modify existing ones. Discover essential plugins to enhance website functionality and performance. Whether you're a beginner or have some experience, this section equips you with the skills to create professional, feature-rich websites.",
     Overview2:
       "The Shopify section of our course focuses on building successful e-commerce stores. You'll learn to set up online stores, configure payment gateways, manage product listings, and inventory. With a focus on design and user experience, you'll create visually appealing stores through theme customization and intuitive navigation. You'll also explore Shopify-specific search engine optimization techniques to attract potential customers and drive sales. By the end, you'll have the skills to create and manage thriving e-commerce stores on Shopify.",
-    Prerequisites: ["Minimum Intermediate", "Basic Computer Skills"],
+    // Prerequisites: ["Minimum Intermediate", "Basic Computer Skills"],
     outlines: [
       {
         heading: "Lecture 1: Introduction and WordPress Installation",
