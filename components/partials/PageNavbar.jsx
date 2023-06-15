@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar from "./SideBar";
+import Sidebar from "./Sidebar";
 import Link from "next/link";
 import useGlobalContext from "../../hooks/useGlobalContext";
 
