@@ -36,11 +36,13 @@ const CourseItem = ({ title, overview, slug, image, author }) => {
           <h3>
             <Link href={`/program/${slug} `}>{title}</Link>
           </h3>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: overview.substring(0, 150) + "...",
-            }}
-          />
+          <p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: overview.substring(0, 150) + "...",
+              }}
+            />
+          </p>
           <div className="blog__btn d-sm-flex justify-content-between">
             <div className="blog__btn">
               <Link href={`/program/${slug} `}>
