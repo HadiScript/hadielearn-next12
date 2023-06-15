@@ -1,0 +1,22 @@
+name: Prod Frontend Deployment
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    name: Prod Frontend Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: 161.97.132.169
+          username: hadielearning
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd /home/hadielearning/hadielearn-next12
+            git pull
+            npm install -f
+            npm run build
+            pm2 reload 6 --update-env
