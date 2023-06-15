@@ -44,6 +44,31 @@ const EditCourse = () => {
   const [loadCategories, setLoadCategories] = useState([]);
   const [loading, setloading] = useState(false);
   const [singleLoading, setSingleLoading] = useState(false);
+  const [instructor, setInstructor] = useState("");
+  const [teachers, setTeachers] = useState([]);
+  const [teachersLoading, setTeachersLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchingTeachers = async () => {
+      try {
+        setTeachersLoading(true);
+        const { data } = await axios.get(`${API}/get-all-instructors`, {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        });
+        setTeachers(data);
+
+        setTeachersLoading(false);
+      } catch (error) {
+        setTeachersLoading(false);
+        console.log(error);
+        toast.error("Try Again");
+      }
+    };
+
+    if (auth && auth.token) fetchingTeachers();
+  }, [auth && auth.token]);
 
   useEffect(() => {
     const fetchCats = async () => {
@@ -77,6 +102,7 @@ const EditCourse = () => {
       setRegFee(data?.regFee);
       setcourseFee(data?.courseFee);
       setImage(data?.image);
+      setInstructor(data?.instructor);
 
       setDays({
         ...days,
@@ -203,6 +229,7 @@ const EditCourse = () => {
     courseFee,
     image,
     categories,
+    instructor,
   };
 
   const submitHandler = async (e) => {
@@ -224,7 +251,8 @@ const EditCourse = () => {
       !startingFrom ||
       !regFee ||
       !courseFee ||
-      !image
+      !image ||
+      !instructor
     ) {
       toast.error("All Fields are required**", { position: "bottom-center" });
       return;
@@ -275,6 +303,9 @@ const EditCourse = () => {
           regFee={regFee}
           courseFee={courseFee}
           days={days}
+          instructor={instructor}
+          teachers={teachers}
+          setInstructor={setInstructor}
           image={image}
           setTitle={setTitle}
           setOverview={setOverview}

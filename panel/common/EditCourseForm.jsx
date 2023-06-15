@@ -52,6 +52,9 @@ const EditCourseForm = ({
   loadCategories,
   categories,
   setCategories,
+  instructor,
+  setInstructor,
+  teachers,
 }) => {
   const Editor = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
@@ -394,6 +397,22 @@ const EditCourseForm = ({
             <Select.Option key={item?.name}>{item?.name}</Select.Option>
           ))}
         </Select>
+      </div>
+
+      <div className="form-group py-2">
+        <select
+          value={instructor}
+          onChange={(e) => setInstructor(e.target.value)}
+          className="form-control"
+          name="status"
+        >
+          <option>* Select Instructor</option>
+          {teachers?.map((x, index) => (
+            <option key={index} value={x._id}>
+              {x.name}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* lectures */}
