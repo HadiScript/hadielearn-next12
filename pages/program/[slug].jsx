@@ -95,7 +95,7 @@ const ProgramDetails = ({ course }) => {
                         onClick={(e) => setactiveTabs("second")}
                         aria-current="page"
                       >
-                        Prerequisites
+                        Eligibility
                       </span>
                     </li>
 
@@ -120,7 +120,7 @@ const ProgramDetails = ({ course }) => {
                         onClick={(e) => setactiveTabs("fifth")}
                         aria-current="page"
                       >
-                        Market Value
+                        Scope
                       </span>
                     </li>
 
