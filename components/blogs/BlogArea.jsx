@@ -68,12 +68,14 @@ const BlogArea = ({
             </div>
             <BlogLeftSideBar
               handleSearch={handleSearch}
+              loading={loading}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
+
               RecentBlogs={RecentBlogs}
               Categories={Categories}
               mostViewed={mostViewed}
-              loading={loading}
+              page={'allBlogs'}
             />
           </div>
         </div>

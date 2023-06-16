@@ -13,38 +13,41 @@ const BlogLeftSideBar = ({
   setSearchQuery,
   mostViewed,
   loading,
+  page,
 }) => {
   return (
     <>
       <div className="col-xl-4 col-lg-4">
         <div className="blog__sidebar">
-          <div className="sidebar__widget mb-50 ">
-            <div className="sidebar__widget-content">
-              <div className="search">
-                <form onSubmit={handleSearch}>
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                  <button type="button">
-                    {loading ? (
-                      <ReactLoading
-                        type={"spokes"}
-                        color={"#0f3f5d"}
-                        width={"35%"}
-                      />
-                    ) : (
-                      <i>
-                        <FaSearch />
-                      </i>
-                    )}
-                  </button>
-                </form>
+          {page === "allBlogs" && (
+            <div className="sidebar__widget mb-50 ">
+              <div className="sidebar__widget-content">
+                <div className="search">
+                  <form onSubmit={handleSearch}>
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    <button type="button">
+                      {loading ? (
+                        <ReactLoading
+                          type={"spokes"}
+                          color={"#0f3f5d"}
+                          width={"35%"}
+                        />
+                      ) : (
+                        <i>
+                          <FaSearch />
+                        </i>
+                      )}
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <div className="sidebar__widget mb-75 ">
             <div className="sidebar__widget-title mb-50">
               <h4>Recent Blogs</h4>

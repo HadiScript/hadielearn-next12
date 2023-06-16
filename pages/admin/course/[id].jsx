@@ -14,8 +14,8 @@ const initDays = {
   wednesday: false,
   thursday: false,
   friday: false,
+  saturday: false,
 };
-
 const EditCourse = () => {
   const router = useRouter();
   const { id } = router.query;
@@ -111,6 +111,7 @@ const EditCourse = () => {
         wednesday: data?.wednesday,
         thursday: data?.thursday,
         friday: data?.friday,
+        saturday: data?.saturday,
       });
       let arr = [];
 
