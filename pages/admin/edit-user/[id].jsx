@@ -176,7 +176,7 @@ const EditUser = () => {
                 placeholder="Company"
                 name="email"
                 value={email}
-                readOnly
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -210,25 +210,6 @@ const EditUser = () => {
         </div>
 
         <div className="form-group py-2">
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="form-control"
-            name="status"
-          >
-            <option>* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div className="form-group py-2">
           <label>
             Choose Role<span className="text-danger">*</span>
           </label>
@@ -248,7 +229,24 @@ const EditUser = () => {
         </div>
 
         <div className="form-group py-2">
-          <label> Experience</label>
+          <label>
+            {" "}
+            Working<span className="text-danger">*</span>{" "}
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group py-2">
+          <label>
+            {" "}
+            Experience <span className="text-danger">*</span>
+          </label>
           <input
             type="text"
             className="form-control"
