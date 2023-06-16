@@ -3,13 +3,12 @@ import React, { useEffect } from "react";
 import Tops from "../../components/functions/Tops";
 import Footer from "../../components/partials/Footer";
 import BlogItemDetail from "../../components/blogs/BlogItemDetail";
+import { API } from "../../config/API";
 
 const BlogDetail = ({ blog, categories, recentBlogs, mostView }) => {
   const viewCount = async (x) => {
     try {
-      const dataFrom = await axios.get(
-        `http://localhost:5000/api/view-count/${x}`
-      );
+      const dataFrom = await axios.get(`${API}/view-count/${x}`);
       console.log(dataFrom);
     } catch (error) {
       console.log(error);
@@ -23,8 +22,10 @@ const BlogDetail = ({ blog, categories, recentBlogs, mostView }) => {
   return (
     <>
       <Tops
-        headTitle={"all blogs"}
-        headDesc={"descriptions"}
+        headTitle={"Read this blog to explore more about Hadi E-learning"}
+        headDesc={
+          "Here is a blog to have insightful knowledge of Hadi E-learning and the various courses it is offering to you."
+        }
         conLink={`https://hadielearning.com/blogs`}
         breadTitle={blog?.title}
         breadSubTtile={blog?.title}
@@ -43,7 +44,7 @@ const BlogDetail = ({ blog, categories, recentBlogs, mostView }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const { data } = await axios.get(`/blog/${params.slug}`);
+  const { data } = await axios.get(`${API}/blog/${params.slug}`);
 
   return {
     props: {

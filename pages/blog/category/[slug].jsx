@@ -3,6 +3,7 @@ import Tops from "../../../components/functions/Tops";
 import Footer from "../../../components/partials/Footer";
 import axios from "axios";
 import BlogArea from "../../../components/blogs/BlogArea";
+import { API } from "../../../config/API";
 
 const BlogByCategory = ({
   blogs,
@@ -19,7 +20,7 @@ const BlogByCategory = ({
       setLoading(true);
       console.log("running searching2");
       const { data } = await axios.get(
-        `/blog-by-category/${category?.slug}?search=${searchQuery}`
+        `${API}/blog-by-category/${category?.slug}?search=${searchQuery}`
       );
       setAllBlogs([...data.blogs, ...allBlogs]);
       setLoading(false);
@@ -37,8 +38,8 @@ const BlogByCategory = ({
   return (
     <>
       <Tops
-        headTitle={"all blogs"}
-        headDesc={"descriptions"}
+        headTitle={"Explore amazing courses by Hadi E-Learning."}
+        headDesc={"Explore some of the best courses offered by hadi E-learning and pick the best one of your choice. "}
         conLink={`https://hadielearning.com/blogs`}
         breadTitle={category?.name}
         breadSubTtile={`${category?.name} `}
@@ -67,7 +68,7 @@ const BlogByCategory = ({
 };
 
 export async function getServerSideProps({ params }) {
-  const { data } = await axios.get(`/blog-by-category/${params.slug}`);
+  const { data } = await axios.get(`${API}/blog-by-category/${params.slug}`);
   return {
     props: {
       blogs: data.blogs,

@@ -4,6 +4,7 @@ import axios, { all } from "axios";
 import Footer from "../components/partials/Footer";
 import BlogArea from "../components/blogs/BlogArea";
 import Router, { useRouter } from "next/router";
+import { API } from "../config/API";
 
 const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
   const router = useRouter();
@@ -32,7 +33,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
       setLoading(true);
       console.log("running searching2");
       const { data } = await axios.get(
-        `http://localhost:5000/api/blogs/${page}?search=${searchQuery}`
+        `${API}/blogs/${page}?search=${searchQuery}`
       );
       if (searchQuery) {
         setAllBlogs([...data.blogs, ...allBlogs]);
@@ -58,7 +59,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
 
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/blog-count");
+      const { data } = await axios.get(`${API}/blog-count`);
       setTotal(data);
     } catch (err) {
       console.log(err);
@@ -68,18 +69,18 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
   return (
     <>
       <Tops
-        headTitle={"All blogs"}
-        headDesc={"descriptions"}
+        headTitle={"Some interesting blogs to know more about Hadi E-learning."}
+        headDesc={"Meta description: Interesting blogs to explore more about Hadi E-learning and all the courses Hadi is offering to you. "}
         conLink={`https://hadielearning.com/blogs`}
-        breadTitle={"bread"}
+        breadTitle={"Blogs"}
         breadSubTtile={
-          "desc"
+          "All blogs"
           //   findedCourse?.bread ? findedCourse?.bread : findedCourse?.title
         }
         image={"/assets/images/bread.jpg"}
       />
-    
-      {/* <BlogArea
+
+      <BlogArea
         allBlogs={allBlogs}
         RecentBlogs={RecentBlogs}
         Categories={categories}
@@ -93,7 +94,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
         setSearchQuery={setSearchQuery}
         mostViewed={mostView}
         whichPage={"blogs"}
-      /> */}
+      />
 
       <Footer />
     </>
@@ -101,7 +102,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
 };
 
 export async function getServerSideProps() {
-  const { data } = await axios.get(`http://localhost:5000/api/blogs/1`);
+  const { data } = await axios.get(`${API}/blogs/1`);
 
   return {
     props: {
