@@ -90,6 +90,18 @@ const NewCourse = () => {
     setFaqs(updatedFaqs);
   };
 
+  const handleRemoveLecture = (index) => {
+    const updatedLectures = [...lectures];
+    updatedLectures.splice(index, 1);
+    setLectures(updatedLectures);
+  };
+
+  const handleRemoveFAQs = (index) => {
+    const updatedFAQs = [...faqs];
+    updatedFAQs.splice(index, 1);
+    setFaqs(updatedFAQs);
+  };
+
   // upload image
   const handleImage = async (e) => {
     const file = e.target.files[0];
@@ -235,7 +247,7 @@ const NewCourse = () => {
       <AdminLayout>
         <div>
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Course Title</h5>
+            <h5 for="exampleFormControlInput1">Course Title</h5>
             <input
               type="text"
               className="form-control"
@@ -574,33 +586,41 @@ const NewCourse = () => {
 
             {lectures.map((lecture, index) => (
               <React.Fragment key={index}>
-                <div className="col-12">
-                  <div className="form-group py-2">
-                    <label for="exampleFormControlInput1"> Heading</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="exampleFormControlInput1"
-                      name="title"
-                      placeholder="Lecture Title"
-                      value={lecture.title}
-                      onChange={(e) => handleLectureChange(index, e)}
-                    />
+                <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
+                  <div className="col-12">
+                    <div className="form-group py-2">
+                      <label for="exampleFormControlInput1"> Heading</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        name="title"
+                        placeholder="Lecture Title"
+                        value={lecture.title}
+                        onChange={(e) => handleLectureChange(index, e)}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="col-12">
-                  <div className="form-group py-2">
-                    <label for="exampleFormControlSelect1">Description</label>
-                    <textarea
-                      type="text"
-                      className="form-control"
-                      id="exampleFormControlInput1"
-                      name="details"
-                      placeholder="Lecture Details"
-                      value={lecture.details}
-                      onChange={(e) => handleLectureChange(index, e)}
-                    />
+                  <div className="col-12">
+                    <div className="form-group py-2">
+                      <label for="exampleFormControlSelect1">Description</label>
+                      <textarea
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        name="details"
+                        placeholder="Lecture Details"
+                        value={lecture.details}
+                        onChange={(e) => handleLectureChange(index, e)}
+                      />
+                    </div>
                   </div>
+                  <span
+                    className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
+                    onClick={() => handleRemoveLecture(index)}
+                  >
+                    Remove
+                  </span>
                 </div>
                 <hr />
               </React.Fragment>
@@ -623,33 +643,41 @@ const NewCourse = () => {
 
             {faqs.map((lecture, index) => (
               <React.Fragment key={index}>
-                <div className="col-12">
-                  <div className="form-group py-2">
-                    <label for="exampleFormControlInput1"> Question</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="exampleFormControlInput1"
-                      name="question"
-                      placeholder="Question"
-                      value={faqs.question}
-                      onChange={(e) => handleFaqsChange(index, e)}
-                    />
+                <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
+                  <div className="col-12">
+                    <div className="form-group py-2">
+                      <label for="exampleFormControlInput1"> Question</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        name="question"
+                        placeholder="Question"
+                        value={faqs.question}
+                        onChange={(e) => handleFaqsChange(index, e)}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="col-12">
-                  <div className="form-group py-2">
-                    <label for="exampleFormControlSelect1">Answer</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="exampleFormControlInput1"
-                      name="answer"
-                      placeholder="Answer"
-                      value={lecture.answer}
-                      onChange={(e) => handleFaqsChange(index, e)}
-                    />
+                  <div className="col-12">
+                    <div className="form-group py-2">
+                      <label for="exampleFormControlSelect1">Answer</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        name="answer"
+                        placeholder="Answer"
+                        value={lecture.answer}
+                        onChange={(e) => handleFaqsChange(index, e)}
+                      />
+                    </div>
                   </div>
+                  <span
+                    className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
+                    onClick={() => handleRemoveFAQs(index)}
+                  >
+                    Remove
+                  </span>
                 </div>
                 <hr />
               </React.Fragment>
