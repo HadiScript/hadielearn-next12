@@ -76,8 +76,8 @@ const EditCourseForm = ({
           name="title"
           placeholder="Course Title - ... Mastery Course "
           value={title}
-          readOnly
-          //   onChange={(e) => setTitle(e.target.value)}
+          // readOnly
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
