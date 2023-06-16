@@ -18,7 +18,7 @@ const AllBlogs = () => {
   const fetchingAllBlogs = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/blogs-for-admin`, {
+      const { data } = await axios.get(`${API}/blogs-for-admin`, {
         headers: {
           Authorization: `Bearer ${auth?.token}`,
         },
@@ -40,7 +40,7 @@ const AllBlogs = () => {
       const confirmed = confirm("Are you sure you want to delete this blog?");
 
       if (confirmed) {
-        const { data } = await axios.delete(`/blog/${id}`, {
+        const { data } = await axios.delete(`${API}/blog/${id}`, {
           headers: {
             Authorization: `Bearer ${auth?.token}`,
           },

@@ -69,7 +69,7 @@ const NewBlogAdd = () => {
 
   useEffect(() => {
     const fetchCats = async () => {
-      const { data } = await axios.get(`/categories`);
+      const { data } = await axios.get(`${API}/categories`);
       setLoadCategories(data);
     };
     fetchCats();
@@ -142,7 +142,7 @@ const NewBlogAdd = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        "/create-blog",
+        `${API}/create-blog`,
         {
           title: formData.title,
           content,

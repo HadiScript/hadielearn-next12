@@ -43,7 +43,7 @@ const EditBlog = () => {
 
   useEffect(() => {
     const fetchCats = async () => {
-      const { data } = await axios.get(`/categories`);
+      const { data } = await axios.get(`${API}/categories`);
       setLoadCategories(data);
     };
     fetchCats();
@@ -55,7 +55,7 @@ const EditBlog = () => {
 
       console.log("single blog");
 
-      const { data } = await axios.get(`/admin/blog/${id}`, {
+      const { data } = await axios.get(`${API}/admin/blog/${id}`, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
@@ -141,7 +141,7 @@ const EditBlog = () => {
     try {
       setLoading(true);
       const { data } = await axios.put(
-        `/blog/${id}`,
+        `${API}/blog/${id}`,
         {
           title: formData.title,
           content,
