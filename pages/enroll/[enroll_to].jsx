@@ -115,7 +115,7 @@ const EnrollmentsForm = () => {
       const payload = { ...data };
 
       const response = await axios.post(
-        "https://hadielearning.com/api/enroll-stu",
+        "https://api.hadielearning.com/api/enroll-stu",
         // "http://localhost:5000/api/enroll-stu",
         payload
       );
@@ -180,7 +180,7 @@ const EnrollmentsForm = () => {
     try {
       setSingleDataLoading(true);
       const { data } = await axios.get(
-        `https://hadielearning.com/api/user/${email}`
+        `https://api.hadielearning.com/api/user/${email}`
       );
       console.log("single data", data.user, data.finded);
       setSingleData(data.user);
