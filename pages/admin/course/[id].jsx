@@ -36,7 +36,7 @@ const EditCourse = () => {
   const [timming, setTimming] = useState("");
   const [startingFrom, setStartingFrom] = useState("");
   const [regFee, setRegFee] = useState(0);
-  const [courseFee, setcourseFee] = useState("");
+  const [courseFee, setcourseFee] = useState(0);
   const [days, setDays] = useState(initDays);
   const [image, setImage] = useState({});
   const [loadingImage, setLoadingImage] = useState(false);
@@ -134,6 +134,18 @@ const EditCourse = () => {
   const handleAddLecture = (e) => {
     e.preventDefault();
     setLectures([...lectures, { title: "", details: "" }]);
+  };
+
+  const handleRemoveLecture = (index) => {
+    const updatedLectures = [...lectures];
+    updatedLectures.splice(index, 1);
+    setLectures(updatedLectures);
+  };
+
+  const handleRemoveFAQs = (index) => {
+    const updatedFAQs = [...faqs];
+    updatedFAQs.splice(index, 1);
+    setFaqs(updatedFAQs);
   };
 
   const handleLectureChange = (index, e) => {
@@ -336,6 +348,8 @@ const EditCourse = () => {
           loadCategories={loadCategories}
           categories={categories}
           setCategories={setCategories}
+          handleRemoveLecture={handleRemoveLecture}
+          handleRemoveFAQs={handleRemoveFAQs}
         />
       </AdminLayout>
     </>

@@ -55,6 +55,8 @@ const EditCourseForm = ({
   instructor,
   setInstructor,
   teachers,
+  handleRemoveLecture,
+  handleRemoveFAQs,
 }) => {
   const Editor = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
@@ -414,33 +416,41 @@ const EditCourseForm = ({
         {lectures.map((lecture, index) => (
           <React.Fragment key={index}>
             {/* {JSON.stringify(lecture)} */}
-            <div className="col-12">
-              <div className="form-group py-2">
-                <label for="exampleFormControlInput1"> Heading</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="title"
-                  placeholder="Lecture Title"
-                  value={lecture.title}
-                  onChange={(e) => handleLectureChange(index, e)}
-                />
+            <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
+              <div className="col-12">
+                <div className="form-group py-2">
+                  <label for="exampleFormControlInput1"> Heading</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="title"
+                    placeholder="Lecture Title"
+                    value={lecture.title}
+                    onChange={(e) => handleLectureChange(index, e)}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-12">
-              <div className="form-group py-2">
-                <label for="exampleFormControlSelect1">Description</label>
-                <textarea
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="details"
-                  placeholder="Lecture Details"
-                  value={lecture.details}
-                  onChange={(e) => handleLectureChange(index, e)}
-                />
+              <div className="col-12">
+                <div className="form-group py-2">
+                  <label for="exampleFormControlSelect1">Description</label>
+                  <textarea
+                    type="text"
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="details"
+                    placeholder="Lecture Details"
+                    value={lecture.details}
+                    onChange={(e) => handleLectureChange(index, e)}
+                  />
+                </div>
               </div>
+              <span
+                className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
+                onClick={() => handleRemoveLecture(index)}
+              >
+                Remove
+              </span>
             </div>
             <hr />
           </React.Fragment>
@@ -463,33 +473,42 @@ const EditCourseForm = ({
         <h5>Outlines</h5>
         {faqs.map((x, index) => (
           <React.Fragment key={index}>
-            <div className="col-12">
-              <div className="form-group py-2">
-                <label for="exampleFormControlInput1">Heading</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="question"
-                  placeholder="Question"
-                  value={x.question}
-                  onChange={(e) => handleFaqsChange(index, e)}
-                />
+            {/* className="card " style={{ backgroundColor: "#f0f0f0" }} */}
+            <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
+              <div className="col-12">
+                <div className="form-group py-2">
+                  <label for="exampleFormControlInput1">Heading</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="question"
+                    placeholder="Question"
+                    value={x.question}
+                    onChange={(e) => handleFaqsChange(index, e)}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-12">
-              <div className="form-group py-2">
-                <label for="exampleFormControlSelect1">Description</label>
-                <textarea
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="answer"
-                  placeholder="Answer"
-                  value={x.answer}
-                  onChange={(e) => handleFaqsChange(index, e)}
-                />
+              <div className="col-12">
+                <div className="form-group py-2">
+                  <label for="exampleFormControlSelect1">Description</label>
+                  <textarea
+                    type="text"
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="answer"
+                    placeholder="Answer"
+                    value={x.answer}
+                    onChange={(e) => handleFaqsChange(index, e)}
+                  />
+                </div>
               </div>
+              <span
+                className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
+                onClick={() => handleRemoveFAQs(index)}
+              >
+                Remove
+              </span>
             </div>
             <hr />
           </React.Fragment>
