@@ -17,7 +17,6 @@ const createAccount = () => {
   const [role, setRole] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
-  
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -37,7 +36,7 @@ const createAccount = () => {
     password,
     role,
     name,
-    status,
+    status, // as currently working
   };
   const RegisterationSubmits = async (e) => {
     e.preventDefault();
@@ -138,25 +137,18 @@ const createAccount = () => {
         </div>
 
         <div className="form-group py-2">
-          <select
+          <h5 for="exampleFormControlInput1">
+            Working<span className="text-danger">*</span>
+          </h5>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Working"
+            name="status"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="form-control"
-            name="status"
-          >
-            <option>* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
-          </select>
-          <small className="form-text">
-            Give us an idea of where you are at in your career
-          </small>
+          />
         </div>
 
         <br />

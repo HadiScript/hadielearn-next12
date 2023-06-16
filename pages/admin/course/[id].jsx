@@ -309,7 +309,7 @@ const EditCourse = () => {
           image={image}
           setTitle={setTitle}
           setOverview={setOverview}
-          setwhyUs={whyUs}
+          setwhyUs={setwhyUs}
           setPrerequisites={setPrerequisites}
           setBenefits={setBenefits}
           setMarketValue={setMarketValue}

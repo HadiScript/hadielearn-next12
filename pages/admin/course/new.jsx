@@ -276,7 +276,6 @@ const NewCourse = () => {
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Overview</h5>
             <Editor
-              // className="form-control"
               placeholder="Overview of the coruse"
               value={overview}
               onChange={(e) => setOverview(e)}
@@ -285,14 +284,10 @@ const NewCourse = () => {
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Why us</h5>
-            <textarea
-              className="form-control"
-              type="text"
-              id="exampleFormControlInput1"
-              name="whyUs"
-              // placeholder="whyUs of the course"
+            <Editor
+              placeholder=""
               value={whyUs}
-              onChange={(e) => setwhyUs(e.target.value)}
+              onChange={(e) => setwhyUs(e)}
             />
           </div>
 
@@ -300,7 +295,6 @@ const NewCourse = () => {
             <h5 for="exampleFormControlInput1">Eligibility</h5>
             <Editor
               type="text"
-              // className="form-control"
               id="exampleFormControlInput1"
               name="prerequisites"
               placeholder="Prerequisites of the course"
@@ -311,27 +305,26 @@ const NewCourse = () => {
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Benefits</h5>
-            <textarea
+            <Editor
               type="text"
-              className="form-control"
               id="exampleFormControlInput1"
               name="benefits"
               placeholder="Benefits of the course"
               value={benefits}
-              onChange={(e) => setBenefits(e.target.value)}
+              onChange={(e) => setBenefits(e)}
             />
           </div>
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Scope</h5>
-            <textarea
+
+            <Editor
               type="text"
-              className="form-control"
+              // className="form-control"
               id="exampleFormControlInput1"
               name="marketValue"
-              placeholder="Market Value of the course"
               value={marketValue}
-              onChange={(e) => setMarketValue(e.target.value)}
+              onChange={(e) => setMarketValue(e)}
             />
           </div>
 

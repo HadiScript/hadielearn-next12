@@ -160,15 +160,36 @@ const ProgramDetails = ({ course }) => {
                   )}
 
                   {activeTabs === "third" && (
-                    <p className="pt-30">{findedCourse?.whyUs}</p>
+                    <p className="pt-30 px-4">
+                      <div
+                        id="horizontalTab_lists"
+                        dangerouslySetInnerHTML={{
+                          __html: findedCourse?.whyUs,
+                        }}
+                      />
+                    </p>
                   )}
 
                   {activeTabs === "fourth" && (
-                    <p className="pt-30">{findedCourse?.benefits}</p>
+                    <p className="pt-30 px-4">
+                      <div
+                        id="horizontalTab_lists"
+                        dangerouslySetInnerHTML={{
+                          __html: findedCourse?.benefits,
+                        }}
+                      />
+                    </p>
                   )}
 
                   {activeTabs === "fifth" && (
-                    <p className="pt-30">{findedCourse?.marketValue}</p>
+                    <p className="pt-30 px-4 ">
+                      <div
+                        id="horizontalTab_lists"
+                        dangerouslySetInnerHTML={{
+                          __html: findedCourse?.marketValue,
+                        }}
+                      />
+                    </p>
                   )}
 
                   {activeTabs === "sixth" && (

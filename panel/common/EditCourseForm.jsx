@@ -122,15 +122,11 @@ const EditCourseForm = ({
 
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Why us</h5>
-        <textarea
-          type="text"
-          theme={"snow"}
-          className="form-control"
-          // id="exampleFormControlInput1"
+        <Editor
           name="whyUs"
           placeholder="Why us"
           value={whyUs}
-          onChange={(e) => setwhyUs(e.target.value)}
+          onChange={(e) => setwhyUs(e)}
         />
       </div>
 
@@ -149,27 +145,23 @@ const EditCourseForm = ({
 
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Benefits</h5>
-        <textarea
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
+
+        <Editor
           name="benefits"
           placeholder="Benefits of the course"
           value={benefits}
-          onChange={(e) => setBenefits(e.target.value)}
+          onChange={(e) => setBenefits(e)}
         />
       </div>
 
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Market Value</h5>
-        <textarea
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
+
+        <Editor
           name="marketValue"
           placeholder="Market Value of the course"
           value={marketValue}
-          onChange={(e) => setMarketValue(e.target.value)}
+          onChange={(e) => setMarketValue(e)}
         />
       </div>
 
