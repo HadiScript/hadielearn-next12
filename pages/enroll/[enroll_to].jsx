@@ -122,7 +122,7 @@ const EnrollmentsForm = () => {
 
       setUserReq(INITIAL_USER);
       setLoading(false);
-      router("/thanks");
+      router.push("/thanks");
     } catch (err) {
       let {
         response: {
