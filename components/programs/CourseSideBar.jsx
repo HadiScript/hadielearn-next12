@@ -70,28 +70,53 @@ const CourseSideBar = ({ course }) => {
           <div className="sidebar__widget mb-20 ">
             <div className="sidebar__widget-title mb-20">
               <h4>Schedule</h4>
+              {/* {JSON.stringify(course)} */}
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item text-end "><h5>{course.timming}</h5></li>
+                <li
+                  className={`list-group-item ${
+                    course.monday && `list-group-item-success`
+                  } `}
+                >
+                  Monday
+                </li>
+                <li
+                  className={`list-group-item ${
+                    course.tuesday && `list-group-item-success`
+                  } `}
+                >
+                  Tuesday
+                </li>
+                <li
+                  className={`list-group-item ${
+                    course.wednesday && `list-group-item-success`
+                  } `}
+                >
+                  Wednesday
+                </li>
+                <li
+                  className={`list-group-item ${
+                    course.thursday && `list-group-item-success`
+                  } `}
+                >
+                  Thursday
+                </li>
+                <li
+                  className={`list-group-item ${
+                    course.frinday && `list-group-item-success`
+                  } `}
+                >
+                  Frinday
+                </li>
 
-              <ul class="list-group list-group-flush">
-                {course?.days?.map((x, index) => (
-                  <li
-                    class="list-group-item d-flex align-items-center gap-1"
-                    key={index}
-                  >
-                    <BiCheck size={25} />{" "}
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        // alignItems : "center",
-                        marginTop: "15px",
-                        width: "100%",
-                      }}
-                    >
-                      <p>{x}</p>
-                      <p>{course.timming}</p>
-                    </div>
-                  </li>
-                ))}
+                <li
+                  className={`list-group-item ${
+                    course.frinday && `list-group-item-success`
+                  } `}
+                >
+                  Saturday
+                </li>
+                
               </ul>
             </div>
           </div>
