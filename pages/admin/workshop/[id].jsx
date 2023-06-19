@@ -214,7 +214,28 @@ const EditWorkshop = () => {
     }
   };
 
-  console.log();
+  useEffect(() => {
+    const fetchingTeachers = async () => {
+      try {
+        setTeachersLoading(true);
+        const { data } = await axios.get(`${API}/get-all-instructors`, {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        });
+        setTeachers(data);
+
+        setTeachersLoading(false);
+      } catch (error) {
+        setTeachersLoading(false);
+        console.log(error);
+        toast.error("Try Again");
+      }
+    };
+
+    if (auth && auth.token) fetchingTeachers();
+  }, [auth && auth.token]);
+
   return (
     <>
       <PanelHeader />
