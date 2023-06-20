@@ -1,10 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import { BiCheck } from "react-icons/bi";
+import { AiOutlineCheck } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { TbPointFilled } from "react-icons/tb";
 
 const CourseSideBar = ({ course }) => {
+  console.log(course, "here is the course");
+
   return (
     <>
       <div className="col-xl-4 col-lg-4 ">
@@ -70,52 +72,47 @@ const CourseSideBar = ({ course }) => {
           <div className="sidebar__widget mb-20 ">
             <div className="sidebar__widget-title mb-20">
               <h4>Schedule</h4>
-              {/* {JSON.stringify(course)} */}
               <ul className="list-group list-group-flush">
-                <li className="list-group-item text-end "><h5>{course.timming}</h5></li>
-                <li
-                  className={`list-group-item ${
-                    course.monday && `list-group-item-success`
-                  } `}
+             
+                { course.monday && <li
+                  className={`list-group-item d-flex justify-content-between align-items-center `}
                 >
-                  Monday
-                </li>
-                <li
-                  className={`list-group-item ${
-                    course.tuesday && `list-group-item-success`
-                  } `}
+                  <span> <AiOutlineCheck /> Monday</span>
+                  <span>{course.timming}</span>
+                </li>}
+               { course.tuesday &&<li
+                  className={`list-group-item d-flex justify-content-between align-items-center `}
                 >
-                  Tuesday
-                </li>
-                <li
-                  className={`list-group-item ${
-                    course.wednesday && `list-group-item-success`
-                  } `}
-                >
-                  Wednesday
-                </li>
-                <li
-                  className={`list-group-item ${
-                    course.thursday && `list-group-item-success`
-                  } `}
-                >
-                  Thursday
-                </li>
-                <li
-                  className={`list-group-item ${
-                    course.frinday && `list-group-item-success`
-                  } `}
-                >
-                  Frinday
-                </li>
+                  <span> <AiOutlineCheck /> Tuesday </span>
+                  <span>{course.timming}</span>
+                </li>}
 
-                <li
-                  className={`list-group-item ${
-                    course.frinday && `list-group-item-success`
-                  } `}
+               {course.wednesday && <li
+                  className={`list-group-item d-flex justify-content-between align-items-center `}
                 >
-                  Saturday
-                </li>
+                  <span> <AiOutlineCheck /> Wednesday </span>
+                  <span>{course.timming}</span>
+                </li>}
+
+              { course.thursday &&  <li
+                  className={`list-group-item d-flex justify-content-between align-items-center `}
+                >
+                  <span> <AiOutlineCheck /> Thursday </span>
+                  <span>{course.timming}</span>
+                </li>}
+
+               { course.friday &&<li
+                  className={`list-group-item d-flex justify-content-between align-items-center `}
+                >
+                  <span> <AiOutlineCheck /> Friday </span>
+                  <span>{course.timming}</span>
+                </li>}
+             {  course.saturday &&<li
+                  className={`list-group-item d-flex justify-content-between align-items-center `}
+                >
+                  <span> <AiOutlineCheck /> Saturday </span>
+                  <span>{course.timming}</span>
+                </li>}
                 
               </ul>
             </div>
