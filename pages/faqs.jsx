@@ -10,11 +10,17 @@ import Link from "next/link";
 const FAQs = ({ list = 5, component = true }) => {
   return (
     <>
-      <SEOHead
-        title={"FAQs - Hadi E-learning"}
-        desc={""}
-        conLink={"https://hadielearning.com/faqs"}
-      />
+      <Head>
+        <title>FAQs - Hadi E-learning</title>
+        <link rel="canonical" href="https://hadielearning.com/faqs" />
+
+        <meta name="robots" content="INDEX, follow" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="author" content="Hadi" />
+      </Head>
 
       <PagesNavbar page="contactPage" />
 

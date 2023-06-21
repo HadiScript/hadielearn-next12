@@ -13,7 +13,7 @@ const SEOHead = ({ title, desc, conLink }) => {
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <meta name="author" content="Hadi E-Learning" />
+      <meta name="author" content="Hadi" />
     </Head>
   );
 };
