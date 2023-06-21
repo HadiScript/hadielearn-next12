@@ -79,26 +79,6 @@ function MyApp({ Component, pageProps }) {
                   gtag('js', new Date()); gtag('config', 'G-XMP1680JR1');
                 </script>
 
-                <script
-                  type="application/ld+json"
-                  dangerouslySetInnerHTML={{
-                    __html: `
-            {
-              "@context": "http://schema.org",
-              "@type": "WebSite",
-              "url": "https://hadielearning.com/",
-              "name": "Hadi E-learning",
-              "alternateName": "An excellent online learning platform",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://hadielearning.com/?s={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }
-          `,
-                  }}
-                />
-
                 {/* end nazeer */}
                 <script
                   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
