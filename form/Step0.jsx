@@ -152,6 +152,7 @@ const Step0 = ({
                 <option value="digital-marketing">Digital Merketing</option>
                 <option value="3ds-max-and-autocad">3Ds Max and AutoCAD</option>
                 <option value="mean-stack">MEAN Stack</option>
+                <option value="mern-stack">MERN Stack</option>
               </select>
             </div>
           )}
