@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import LMSLayout from "../../../panel/newLMS/layouts";
 import useActiveBatches from "../../../panel/newLMS/hooks/useActiveBatches";
 import ActiveBatchModels from "../../../panel/newLMS/modals/activeBatchModal";
-import { BsFolder2Open } from "react-icons/bs";
+import { BsCheck, BsFolder2Open } from "react-icons/bs";
 
-import { Card } from "antd";
+import { Card, Tag } from "antd";
 import Link from "next/link";
 import { FaEdit } from "react-icons/fa";
 import { useRouter } from "next/router";
+import markComplete from "../../../panel/newLMS/hooks/markComplete";
 
 const ActiveBatches = () => {
   const router = useRouter();
   const { batches, loading } = useActiveBatches();
+  const { markCompleted, loading: completedLoading } = markComplete();
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
   const [openInstructorModels, setOpenInstructorModels] = useState(false);
@@ -22,6 +24,12 @@ const ActiveBatches = () => {
       <Card>
         <div className="table-responsive">
           <h3 className="mb-3">Active Batch</h3>
+          {completedLoading && (
+            <>
+              <br />
+              <> loading...</>
+            </>
+          )}
           <table
             class="table table-striped  text-dark"
             style={{ backgroundColor: "", borderRadius: "10px" }}
@@ -35,6 +43,7 @@ const ActiveBatches = () => {
                 <th scope="col"> Instructors </th>
                 <th scope="col"> From </th>
                 <th scope="col"> To </th>
+                <th scope="col"> </th>
                 <th scope="col"> </th>
                 <th scope="col"> </th>
               </tr>
@@ -77,6 +86,11 @@ const ActiveBatches = () => {
                           router.push(`/lms-test/batch/${x._id}`);
                         }}
                       />
+                    </td>
+                    <td className="text-dark">
+                      <Tag role="button" onClick={() => markCompleted(x._id)}>
+                        Mark as complete {x._id}
+                      </Tag>
                     </td>
                   </tr>
                 ))
