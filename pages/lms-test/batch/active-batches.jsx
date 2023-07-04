@@ -6,8 +6,11 @@ import { BsFolder2Open } from "react-icons/bs";
 
 import { Card } from "antd";
 import Link from "next/link";
+import { FaEdit } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const ActiveBatches = () => {
+  const router = useRouter();
   const { batches, loading } = useActiveBatches();
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
@@ -32,7 +35,6 @@ const ActiveBatches = () => {
                 <th scope="col"> Instructors </th>
                 <th scope="col"> From </th>
                 <th scope="col"> To </th>
-                <th scope="col"> </th>
                 <th scope="col"> </th>
                 <th scope="col"> </th>
               </tr>
@@ -65,6 +67,14 @@ const ActiveBatches = () => {
                         onClick={() => {
                           setCurrent(x);
                           setOpen(true);
+                        }}
+                      />
+                    </td>
+                    <td className="text-dark">
+                      <FaEdit
+                        role="button"
+                        onClick={() => {
+                          router.push(`/lms-test/batch/${x._id}`);
                         }}
                       />
                     </td>
