@@ -48,7 +48,7 @@ const ActiveBatchModels = ({
         open={open}
         onOk={() => setOpen(false)}
         onCancel={() => setOpen(false)}
-        width={1000}
+        width={1300}
       >
         <Descriptions
           title={`${current.courseDetails?.title}`}

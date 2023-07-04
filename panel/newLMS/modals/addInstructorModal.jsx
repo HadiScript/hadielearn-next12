@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Tag } from "antd";
+import { Button, Modal, Select, Tag } from "antd";
 // import useUserRole from "../../hooks/useRole";
 
 // adds
@@ -42,6 +42,7 @@ const AddInstructorModal = ({
       const { users: loadedUsers, totalPages: loadedTotalPages } =
         response.data;
 
+      // setUsers([...users, loadedUsers]);
       setUsers(loadedUsers);
       setTotalPages(loadedTotalPages);
       setLoading(false);
@@ -89,6 +90,10 @@ const AddInstructorModal = ({
     }
   };
 
+  const handleChange = (value) => {
+    setCurrentPage(value);
+  };
+
   return (
     <>
       <Modal
@@ -103,14 +108,42 @@ const AddInstructorModal = ({
         <Tag color="red"> Please check carefully payments status </Tag>
         <br />
         <br />
-        <Search
-          addonBefore="Students"
-          placeholder="input search text"
-          allowClear
-          value={searchQuery}
-          onChange={handleSearch}
-          style={{ width: 304 }}
-        />
+        <Space wrap>
+          <Search
+            addonBefore="Students"
+            placeholder="input search text"
+            allowClear
+            value={searchQuery}
+            onChange={handleSearch}
+            style={{ width: 304 }}
+          />
+          <Select
+            // defaultValue={"Select Page"}
+            style={{
+              width: 120,
+            }}
+            placeholder="Select Page"
+            onChange={handleChange}
+            options={[
+              {
+                value: 1,
+                label: 1,
+              },
+              {
+                value: 2,
+                label: 2,
+              },
+              {
+                value: 3,
+                label: 3,
+              },
+              {
+                value: 4,
+                label: 4,
+              },
+            ]}
+          />
+        </Space>
         <List
           className="mt-4"
           itemLayout="horizontal"
@@ -119,37 +152,38 @@ const AddInstructorModal = ({
           renderItem={(item, index) => (
             <>
               {addingStudentsLoading && <>loading...</>}
-
-              <List.Item
-                actions={[
-                  <a
-                    key="list-loadmore-edit"
-                    onClick={() => {
-                      AddInstructor(current._id, item._id);
-                      setCurrentTeacher(item);
-                    }}
-                  >
-                    Add {item.enrolledBatches.includes}
-                  </a>,
-                  // <a key="list-loadmore-more">more</a>,
-                ]}
-              >
-                <List.Item.Meta
-                  avatar={
-                    <Avatar
-                      src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                    />
-                  }
-                  title={<a href="https://ant.design">{item.name}</a>}
-                  description={
-                    <>
-                      <Tag color="blue">
-                        Assigned Batches : {item.assignedBatches?.length}
-                      </Tag>
-                    </>
-                  }
-                />
-              </List.Item>
+              {!current.teachers.some((x) => x._id === item._id) && (
+                <List.Item
+                  actions={[
+                    <a
+                      key="list-loadmore-edit"
+                      onClick={() => {
+                        AddInstructor(current._id, item._id);
+                        setCurrentTeacher(item);
+                      }}
+                    >
+                      Add {item?.enrolledBatches?.includes}
+                    </a>,
+                    // <a key="list-loadmore-more">more</a>,
+                  ]}
+                >
+                  <List.Item.Meta
+                    avatar={
+                      <Avatar
+                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
+                      />
+                    }
+                    title={<a href="https://ant.design">{item.name}</a>}
+                    description={
+                      <>
+                        <Tag color="blue">
+                          Assigned Batches : {item?.assignedBatches?.length}
+                        </Tag>
+                      </>
+                    }
+                  />
+                </List.Item>
+              )}
             </>
           )}
         />
