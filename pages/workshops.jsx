@@ -130,4 +130,13 @@ export async function getServerSideProps() {
   };
 }
 
+// export async function getServerSideProps() {
+//   const { data } = await axios.get(`/workshops`);
+//   return {
+//     props: {
+//       workshops: data.allworkshops,
+//     },
+//   };
+// }
+
 export default Workshops;

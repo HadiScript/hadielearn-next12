@@ -109,6 +109,10 @@ const AdminLayout = ({ children }) => {
                       <li>
                         <Link href={`/admin/media/library`}>Blog Media</Link>
                       </li>
+                      <hr />
+                      <li>
+                        <Link href={`/admin-test`}>New Panel</Link>
+                      </li>
                     </ul>
                   </div>
                 </div>

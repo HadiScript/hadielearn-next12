@@ -5,7 +5,8 @@ import { BiPlus } from "react-icons/bi";
 
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-import { Select } from "antd";
+import { Card, Select } from "antd";
+import Btn from "../../components/ui/Btn";
 
 const EditCourseForm = ({
   title,
@@ -64,7 +65,7 @@ const EditCourseForm = ({
   );
 
   return (
-    <div>
+    <Card>
       {/* {JSON.stringify(singleData)} */}
       {singleLoading && <p>loading...</p>}
       <div className="form-group py-2">
@@ -544,10 +545,10 @@ const EditCourseForm = ({
       </div>
       {/* ends */}
 
-      <button className="z-btn" onClick={submitHandler}>
-        {loading ? "loading..." : "Submit"}
-      </button>
-    </div>
+      <Btn loading={loading} onClick={submitHandler}>
+        Submit
+      </Btn>
+    </Card>
   );
 };
 export default EditCourseForm;

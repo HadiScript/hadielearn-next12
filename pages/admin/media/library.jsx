@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../context/auth";
-import { GallaryContext } from "../../../context/gallaryContext";
 import { useRouter } from "next/router";
 import { Upload, message, Image, Badge } from "antd";
 import { InboxOutlined, CloseCircleFilled } from "@ant-design/icons";
-import PanelHeader from "../../../panel/common/PanelHeader";
-import AdminLayout from "../../../panel/admin/AdminLayout";
 import axios from "axios";
+
+import { AuthContext } from "../../../context/auth";
+import { GallaryContext } from "../../../context/gallaryContext";
+import AdminLayout from "../../../panel/admin/AdminLayout";
+import PanelHeader from "../../../panel/common/PanelHeader";
 import { API } from "../../../config/API";
+
 //
 const { Dragger } = Upload;
 
