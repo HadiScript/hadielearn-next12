@@ -95,6 +95,13 @@ const LMSNavs = () => {
       >
         Droped Students
       </Menu.Item>
+      <Menu.Item
+        onClick={() => router.push("/admin-test")}
+        className="mt-3"
+        icon={<MdImageSearch />}
+      >
+        Admin
+      </Menu.Item>
     </Menu>
   );
 };

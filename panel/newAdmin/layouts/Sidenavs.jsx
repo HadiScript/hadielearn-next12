@@ -48,7 +48,7 @@ const Sidenavs = () => {
         CMS
       </Menu.Item>
       <Menu.Item
-        // onClick={() => router.push("/cms-test")}
+        onClick={() => router.push("/lms-test")}
         className="mt-1"
         icon={<MdCastForEducation />}
       >
