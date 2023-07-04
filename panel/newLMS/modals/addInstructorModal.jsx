@@ -63,6 +63,7 @@ const AddInstructorModal = ({
   const AddInstructor = async (x, y) => {
     try {
       setAddingStudentsLoading(true);
+      // console.log(y, "from add isntructor")
 
       const { data } = await axios.put(`${API}/lms/add/${x}/teacher`, {
         teacherId: y,
@@ -80,6 +81,7 @@ const AddInstructorModal = ({
             { name: currentTeacher.name, _id: currentTeacher._id },
           ],
         });
+        setUsers(users.filter((x) => x._id !== y));
         setAddingStudentsLoading(false);
       }
       setAddingStudentsLoading(false);

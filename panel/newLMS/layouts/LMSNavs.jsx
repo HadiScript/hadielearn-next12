@@ -75,7 +75,7 @@ const LMSNavs = () => {
         Create Batches
       </Menu.Item>
       <Menu.Item
-        onClick={() => router.push("/cms-test/workshops/add-workshops")}
+        onClick={() => router.push("/lms-test/student/all-students")}
         className="mt-3"
         icon={<FaPlus />}
       >

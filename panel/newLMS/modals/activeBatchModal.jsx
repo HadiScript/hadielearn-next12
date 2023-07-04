@@ -5,6 +5,7 @@ import axios from "axios";
 import AddInstructorModal from "./addInstructorModal";
 import { API } from "../../../config/API";
 import AddStuModal from "./addStudentsModal";
+import { toast } from "react-hot-toast";
 
 const ActiveBatchModels = ({
   setOpen,
@@ -30,6 +31,28 @@ const ActiveBatchModels = ({
             enrolledStudents: current.enrolledStudents.filter(
               (x) => x._id !== sID
             ),
+          });
+        } else if (data.error) {
+          toast.error("Error");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const UnAssignedTeachers = async (sID, bID) => {
+    try {
+      let ok = confirm("Are you sure?");
+      if (ok) {
+        const { data } = await axios.put(`${API}/lms/remove/${bID}/teacher`, {
+          teacherId: sID,
+        });
+        if (data.ok) {
+          toast.success("Instructor UnAssigned", { position: "bottom-center" });
+          setCurrent({
+            ...current,
+            teachers: current.teachers.filter((x) => x._id !== sID),
           });
         } else if (data.error) {
           toast.error("Error");
@@ -134,7 +157,7 @@ const ActiveBatchModels = ({
                 <Tag
                   role="button"
                   color="red"
-                  // onClick={() => UnAssigned(item._id, current._id)}
+                  onClick={() => UnAssignedTeachers(item._id, current._id)}
                 >
                   Un Assign
                 </Tag>,

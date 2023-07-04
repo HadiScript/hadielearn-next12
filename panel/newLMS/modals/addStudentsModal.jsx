@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Tag } from "antd";
+import { Button, Modal, Select, Tag } from "antd";
 // import useUserRole from "../../hooks/useRole";
 
 // adds
@@ -68,12 +68,16 @@ const AddStuModal = ({ current, openStudentModal, setOpenStudentModal }) => {
         setAddingStudentsLoading(false);
         toast.success(data.message, { position: "bottom-center" });
       }
-      console.log("2");
+      // console.log("2");
     } catch (error) {
       setAddingStudentsLoading(false);
 
       console.log(error, { position: "bottom-center" });
     }
+  };
+
+  const handleChange = (value) => {
+    setCurrentPage(value);
   };
 
   return (
@@ -90,14 +94,42 @@ const AddStuModal = ({ current, openStudentModal, setOpenStudentModal }) => {
         <Tag color="red"> Please check carefully payments status </Tag>
         <br />
         <br />
-        <Search
-          addonBefore="Students"
-          placeholder="input search text"
-          allowClear
-          value={searchQuery}
-          onChange={handleSearch}
-          style={{ width: 304 }}
-        />
+        <Space wrap>
+          <Search
+            addonBefore="Students"
+            placeholder="input search text"
+            allowClear
+            value={searchQuery}
+            onChange={handleSearch}
+            style={{ width: 304 }}
+          />
+          <Select
+            // defaultValue={"Select Page"}
+            style={{
+              width: 120,
+            }}
+            placeholder="Select Page"
+            onChange={handleChange}
+            options={[
+              {
+                value: 1,
+                label: 1,
+              },
+              {
+                value: 2,
+                label: 2,
+              },
+              {
+                value: 3,
+                label: 3,
+              },
+              {
+                value: 4,
+                label: 4,
+              },
+            ]}
+          />
+        </Space>
         <List
           className="mt-4"
           itemLayout="horizontal"
