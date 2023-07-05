@@ -48,14 +48,15 @@ const Home = () => {
       <Modal
         centered
         open={open}
-        // onOk={() => {
-        //   localStorage.setItem("modal", false);
-        //   setOpen(false);
-        // }}
-        // onCancel={() => {
-        //   localStorage.setItem("modal", false);
-        //   setOpen(false);
-        // }}
+        onOk={() => {
+          localStorage.setItem("modal", false);
+          setOpen(false);
+        }}
+        onCancel={() => {
+          localStorage.setItem("modal", false);
+          setOpen(false);
+        }}
+        className="modal-notifications"
         width={1000}
         footer={[
           <Btn

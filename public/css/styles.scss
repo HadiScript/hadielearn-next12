@@ -13,3 +13,8 @@
   height: 82vh; /* Adjust the height as needed */
   //   background-color: #f5f5f5; /* Add background color or styles as desired */
 }
+
+.modal-notifications .ant-modal-content {
+  background: transparent;
+  box-shadow: none;
+}
