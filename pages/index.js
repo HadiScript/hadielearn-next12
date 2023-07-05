@@ -13,9 +13,11 @@ import { Button, Modal } from "antd";
 import { useEffect } from "react";
 import Image from "next/image";
 import Btn from "../components/ui/Btn";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [open, setOpen] = useState();
+  const router = useRouter();
   useEffect(() => {
     let fromLocal = localStorage.getItem("modal", open);
 
@@ -46,14 +48,14 @@ const Home = () => {
       <Modal
         centered
         open={open}
-        onOk={() => {
-          localStorage.setItem("modal", false);
-          setOpen(false);
-        }}
-        onCancel={() => {
-          localStorage.setItem("modal", false);
-          setOpen(false);
-        }}
+        // onOk={() => {
+        //   localStorage.setItem("modal", false);
+        //   setOpen(false);
+        // }}
+        // onCancel={() => {
+        //   localStorage.setItem("modal", false);
+        //   setOpen(false);
+        // }}
         width={1000}
         footer={[
           <Btn
@@ -62,17 +64,20 @@ const Home = () => {
             onClick={() => {
               localStorage.setItem("modal", false);
               setOpen(false);
+              router.push("/enroll/program");
             }}
           >
             Enroll Now
           </Btn>,
         ]}
       >
-        <img
+        <Image
           className="mt-4"
           src={`/assets/image/modal-notifications.jpg`}
-          width="100%"
-          height="450px"
+          layout="responsive"
+          width={1000}
+          height={600}
+          sizes="(max-width: 768px) 150vw, 150vw"
           alt="modal-image"
         />
       </Modal>
