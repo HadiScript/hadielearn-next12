@@ -61,11 +61,11 @@ const LMSNavs = () => {
         Active Batches
       </Menu.Item>
       <Menu.Item
-        onClick={() => router.push("/cms-test/courses/add-courses")}
+        onClick={() => router.push("/lms-test/batch/completed-batches")}
         className="mt-1"
         icon={<FaPlus />}
       >
-        Deactive Batches
+        Completed Batches
       </Menu.Item>
       <Menu.Item
         onClick={() => router.push("/lms-test/batch/create-batches")}
@@ -82,7 +82,7 @@ const LMSNavs = () => {
         Students
       </Menu.Item>
       <Menu.Item
-        onClick={() => router.push("/cms-test/library")}
+        onClick={() => router.push("/lms-test/student/enrolled-students")}
         className="mt-1"
         icon={<MdImageSearch />}
       >

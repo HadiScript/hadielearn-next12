@@ -23,7 +23,7 @@ const ActiveBatches = () => {
     <LMSLayout>
       <Card>
         <div className="table-responsive">
-          <h3 className="mb-3">Active Batch</h3>
+          <h4 className="mb-3">Active Batch</h4>
           {completedLoading && (
             <>
               <br />

@@ -16,6 +16,7 @@ const ActiveBatchModels = ({
   setCurrent,
   openInstructorModels,
   setOpenInstructorModels,
+  from = "active-batches",
 }) => {
   const UnAssigned = async (sID, bID) => {
     try {
@@ -109,20 +110,25 @@ const ActiveBatchModels = ({
           <Descriptions.Item label="Completed">
             {current.completed ? "Yes" : "No"}
           </Descriptions.Item>
-          <Descriptions.Item label="Settings">
-            <Space wrap>
-              <Button type="primary" onClick={() => setOpenStudentModal(true)}>
-                Add Students
-              </Button>
-              <Button
-                type="dashed"
-                role="button"
-                onClick={() => setOpenInstructorModels(true)}
-              >
-                Assign Instructor to this batch
-              </Button>
-            </Space>
-          </Descriptions.Item>
+          {current.completed === false && (
+            <Descriptions.Item label="Settings">
+              <Space wrap>
+                <Button
+                  type="primary"
+                  onClick={() => setOpenStudentModal(true)}
+                >
+                  Add Students
+                </Button>
+                <Button
+                  type="dashed"
+                  role="button"
+                  onClick={() => setOpenInstructorModels(true)}
+                >
+                  Assign Instructor to this batch
+                </Button>
+              </Space>
+            </Descriptions.Item>
+          )}
         </Descriptions>
         <Divider orientation="left">Enrolled Students</Divider>
         <List
@@ -134,8 +140,10 @@ const ActiveBatchModels = ({
               actions={[
                 <Tag
                   role="button"
-                  color="red"
-                  onClick={() => UnAssigned(item._id, current._id)}
+                  color={!current.completed ? "red" : "gray"}
+                  onClick={() =>
+                    !current.completed ? UnAssigned(item._id, current._id) : ""
+                  }
                 >
                   Un Assign
                 </Tag>,
@@ -169,18 +177,22 @@ const ActiveBatchModels = ({
         />
       </Modal>
 
-      <AddStuModal
-        current={current}
-        openStudentModal={openStudentModal}
-        setOpenStudentModal={setOpenStudentModal}
-      />
+      {!current.completed && (
+        <AddStuModal
+          current={current}
+          openStudentModal={openStudentModal}
+          setOpenStudentModal={setOpenStudentModal}
+        />
+      )}
 
-      <AddInstructorModal
-        setCurrent={setCurrent}
-        current={current}
-        openInstructorModels={openInstructorModels}
-        setOpenInstructorModels={setOpenInstructorModels}
-      />
+      {!current.completed && (
+        <AddInstructorModal
+          setCurrent={setCurrent}
+          current={current}
+          openInstructorModels={openInstructorModels}
+          setOpenInstructorModels={setOpenInstructorModels}
+        />
+      )}
     </>
   );
 };
