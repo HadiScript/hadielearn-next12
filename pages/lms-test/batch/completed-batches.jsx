@@ -77,11 +77,12 @@ const CompletedBatches = () => {
         setCurrent={setCurrent}
         open={open}
         setOpen={setOpen}
+       
         // openStudentModal={openStudentModal}
         // setOpenStudentModal={setOpenStudentModal}
         // openInstructorModels={openInstructorModels}
         // setOpenInstructorModels={setOpenInstructorModels}
-        from={'completed-batches'}
+        from={"completed-batches"}
       />
     </LMSLayout>
   );
