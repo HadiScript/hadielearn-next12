@@ -7,6 +7,8 @@ import Certification_Model from "../../../panel/newLMS/modals/students/certifica
 import PaymentModels from "../../../panel/newLMS/modals/students/paymentsModal";
 import CompletedBatchesModel from "../../../panel/newLMS/modals/students/completedBatchesModal";
 import {
+  Avatar,
+  Button,
   Card,
   Descriptions,
   Divider,
