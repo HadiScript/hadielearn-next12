@@ -3,13 +3,19 @@ import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { API } from "../../../../config/API";
+import { useContext } from "react";
+import { AuthContext } from "../../../../context/auth";
 
 const PaymentModels = ({
   paymentModels,
   setPaymentModel,
   current,
   setCurrent,
+  batch,
+  setBatch,
+  from = "all-students",
 }) => {
+  const [auth] = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [currentPayment, setCurrentPayment] = useState({});
@@ -40,18 +46,45 @@ const PaymentModels = ({
         if (data.ok) {
           toast.success("Payment is added successfully");
           setPaymentLoading(false);
-          setCurrent({
-            ...current,
-            payments: [
-              ...current.payments,
-              { amount, comment, completed, batch: batchId },
-            ],
-          });
 
           setAmount(0);
           setCompleted(false);
           setComment("");
           setBatchId("");
+          if (from === "all-students") {
+            setCurrent({
+              ...current,
+              payments: [
+                ...current.payments,
+                { amount, comment, completed, batch: batchId },
+              ],
+            });
+          } else if (from === "batches") {
+            const updatedEnrolledStudents = batch.enrolledStudents.map(
+              (student) => {
+                if (student._id === current._id) {
+                  return {
+                    ...student,
+                    payments: [
+                      ...student.payments,
+                      {
+                        completed,
+                        amount,
+                        comment,
+                        addBy: auth?.user?._id,
+                        batch: batch._id,
+                      },
+                    ],
+                  };
+                }
+                return student;
+              }
+            );
+            setBatch({
+              ...batch,
+              enrolledStudents: updatedEnrolledStudents,
+            });
+          }
         }
       }
     } catch (error) {
@@ -83,10 +116,38 @@ const PaymentModels = ({
           setAmount(0);
           setComment("");
           setCompleted(false);
-          setCurrent({
-            ...current,
-            payments: [...current.payments, { completed, completed, amount }],
-          });
+
+          if (from === "all-students") {
+            setCurrent({
+              ...current,
+              payments: [...current.payments, { completed, completed, amount }],
+            });
+          } else if (from === "batches") {
+            const updatedEnrolledStudents = batch.enrolledStudents.map(
+              (student) => {
+                if (student._id === current._id) {
+                  return {
+                    ...student,
+                    payments: [
+                      ...student.payments,
+                      {
+                        completed,
+                        amount,
+                        comment,
+                        addBy: auth?.user?._id,
+                        batch: batch._id,
+                      },
+                    ],
+                  };
+                }
+                return student;
+              }
+            );
+            setBatch({
+              ...batch,
+              enrolledStudents: updatedEnrolledStudents,
+            });
+          }
         }
       }
     } catch (error) {
@@ -95,6 +156,8 @@ const PaymentModels = ({
       console.log(error);
     }
   };
+
+  console.log(current, "ffrom payment in compelted batch");
 
   return (
     <>
@@ -198,11 +261,17 @@ const PaymentModels = ({
                 name="batchId"
               >
                 <option>* Select From Enrolled Batches</option>
-                {current?.enrolledBatches?.map((x, index) => (
-                  <option key={index} value={x._id}>
-                    {x.title}
-                  </option>
-                ))}
+                {from === "all-students"
+                  ? current?.enrolledBatches?.map((x, index) => (
+                      <option key={index} value={x._id}>
+                        {x.title}
+                      </option>
+                    ))
+                  : current?.enrolledBatches?.map((x, index) => (
+                      <option key={index} value={x}>
+                        {x}
+                      </option>
+                    ))}
               </select>
             </div>
           )}
@@ -217,11 +286,17 @@ const PaymentModels = ({
                 name="batchId"
               >
                 <option>* Select From Completed Batches</option>
-                {current?.completedBatches?.map((x, index) => (
-                  <option key={index} value={x._id}>
-                    {x.title}
-                  </option>
-                ))}
+                {from === "all-students"
+                  ? current?.completedBatches?.map((x, index) => (
+                      <option key={index} value={x._id}>
+                        {x.title}
+                      </option>
+                    ))
+                  : current?.completedBatches?.map((x, index) => (
+                      <option key={index} value={x}>
+                        {x}
+                      </option>
+                    ))}
               </select>
             </div>
           )}

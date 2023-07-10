@@ -6,6 +6,8 @@ import AddInstructorModal from "./addInstructorModal";
 import { API } from "../../../config/API";
 import AddStuModal from "./addStudentsModal";
 import { toast } from "react-hot-toast";
+import PaymentModels from "./students/paymentsModal";
+import { useState } from "react";
 
 const ActiveBatchModels = ({
   setOpen,
@@ -16,8 +18,16 @@ const ActiveBatchModels = ({
   setCurrent,
   openInstructorModels,
   setOpenInstructorModels,
+  paymentModel,
+  SetPaymentModel,
   from = "active-batches",
 }) => {
+  const [payment_Model, setPayment_Model] = useState(false);
+  const [CurrentStudentForPayments, setCurrentStudentForPayments] = useState(
+    {}
+  );
+  const [certifateLoading, setCertifateLoading] = useState(false);
+
   const UnAssigned = async (sID, bID) => {
     try {
       let ok = confirm("Are you sure?");
@@ -64,6 +74,46 @@ const ActiveBatchModels = ({
     }
   };
 
+  const giveHimCertifications = async (sID, bID) => {
+    if (!current.completed) {
+      return toast.error("batch is not completed yet:|");
+    }
+
+    setCertifateLoading(true);
+    try {
+      let ok = confirm("Are you sure?");
+      if (ok) {
+        const { data } = await axios.put(
+          `${API}/lms/certifications/${sID}/${bID}`
+        );
+        if (data.ok) {
+          const updatedEnrolledStudents = current.enrolledStudents.map(
+            (student) => {
+              if (student._id === sID) {
+                return {
+                  ...student,
+                  certifications: [...student.certifications, { batch: bID }],
+                };
+              }
+              return student;
+            }
+          );
+          setCurrent({
+            ...current,
+            enrolledStudents: updatedEnrolledStudents,
+          });
+          toast.success("Certifated", { position: "bottom-center" });
+          setCertifateLoading(false);
+        } else if (data.error) {
+          toast.error("Error");
+          setCertifateLoading(false);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Modal
@@ -75,7 +125,9 @@ const ActiveBatchModels = ({
         width={1300}
       >
         <Descriptions
-          title={`${current.courseDetails?.title}`}
+          title={`${current.courseDetails?.title} + ${
+            certifateLoading && "loading..."
+          }`}
           bordered
           column={{
             xxl: 4,
@@ -138,6 +190,54 @@ const ActiveBatchModels = ({
           renderItem={(item) => (
             <List.Item
               actions={[
+                <span>
+                  {!item.payments?.find((x) => x.batch === current._id)
+                    ?.completed ? (
+                    <Tag
+                      color="blue"
+                      role="button"
+                      onClick={() => {
+                        setPayment_Model(true);
+                        setCurrentStudentForPayments(item);
+                      }}
+                    >
+                      Update Payments
+                    </Tag>
+                  ) : (
+                    <div>
+                      {item.certifications.find(
+                        (x) => x.batch === current._id
+                      ) ? (
+                        <Tag color="blue"> Certified </Tag>
+                      ) : (
+                        <Tag
+                          color="green"
+                          role="button"
+                          onClick={() =>
+                            giveHimCertifications(item._id, current._id)
+                          }
+                        >
+                          Give him certificate
+                        </Tag>
+                      )}
+                    </div>
+                  )}
+                </span>,
+                <Tag
+                  role="button"
+                  color={
+                    item.payments?.find((x) => x.batch === current._id)
+                      ?.completed
+                      ? "green"
+                      : "blue"
+                  }
+                >
+                  payments -
+                  {item.payments?.find((x) => x.batch === current._id)
+                    ?.completed
+                    ? " Completed"
+                    : " No"}
+                </Tag>,
                 <Tag
                   role="button"
                   color={!current.completed ? "red" : "gray"}
@@ -149,6 +249,7 @@ const ActiveBatchModels = ({
                 </Tag>,
               ]}
             >
+              {/* {()=>console.log(item, "from there")} */}
               <List.Item.Meta title={item.name} description={item._id} />
             </List.Item>
           )}
@@ -193,6 +294,16 @@ const ActiveBatchModels = ({
           setOpenInstructorModels={setOpenInstructorModels}
         />
       )}
+
+      <PaymentModels
+        from="batches"
+        paymentModels={payment_Model}
+        setPaymentModel={setPayment_Model}
+        batch={current}
+        setBatch={setCurrent}
+        current={CurrentStudentForPayments}
+        setCurrent={setCurrentStudentForPayments}
+      />
     </>
   );
 };

@@ -9,6 +9,7 @@ import Step0 from "../../form/Step0";
 import MultiStepProgressBar from "../../form/MultiStepProgressBar";
 import Step3 from "../../form/Step3";
 import Step4 from "../../form/Step4";
+import { API } from "../../config/API";
 
 const INITIAL_USER = {
   firstName: "",
@@ -44,6 +45,8 @@ const EnrollmentsForm = () => {
   const [parentPhoneNumber, setParentPhoneNumber] = useState("");
   const [whatsAppphoneNumber, setWhatsAppPhoneNumber] = useState("");
   const [idCard, setIdCard] = useState("");
+
+  const [fetchCoursesData, setFetchCoursesData] = useState([]);
 
   //   singleData States
   const [singleData, setSingleData] = useState({});
@@ -199,6 +202,23 @@ const EnrollmentsForm = () => {
     }
   }, [email]);
 
+  const fetchingCourses = async () => {
+    try {
+      const { data } = await axios.get(`${API}/courses-form`);
+      if (data.courses) {
+        setFetchCoursesData(data.courses);
+      }
+    } catch (error) {
+      toast.error("Failed, try again");
+    }
+  };
+
+  useEffect(() => {
+    if (enroll_to === "program") fetchingCourses();
+  }, [enroll_to]);
+
+  // console.log(fetchCoursesData, "here are the all coruses");
+
   return (
     <>
       <SEOHead
@@ -235,6 +255,7 @@ const EnrollmentsForm = () => {
                     _enroll_to={enroll_to}
                     whatsAppphoneNumber={whatsAppphoneNumber}
                     setWhatsAppPhoneNumber={setWhatsAppPhoneNumber}
+                    fetchCoursesData={fetchCoursesData}
                   />
 
                   {/* <CardText /> */}
@@ -298,6 +319,7 @@ const EnrollmentsForm = () => {
                     wantToAchieve={userReq.wantToAchieve}
                     setEducation={setEducation}
                     // setEnrollTo={setEnrollTo}
+                    fetchCoursesData={fetchCoursesData}
                   />
                 </div>
               </div>

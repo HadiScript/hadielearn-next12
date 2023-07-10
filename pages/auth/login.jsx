@@ -54,6 +54,8 @@ const Login = () => {
           router.push("/admin");
         } else if (data.user?.role === "author") {
           router.push("/employee");
+        } else if (data.user?.role === "instructor") {
+          router.push("/inst-test");
         } else {
           router.push("/subscriber");
         }

@@ -26,6 +26,7 @@ const Step0 = ({
   setWorkshop,
   whatsAppphoneNumber,
   setWhatsAppPhoneNumber,
+  fetchCoursesData,
 }) => {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -104,7 +105,7 @@ const Step0 = ({
                 >
                   Please enter correct number
                 </span>
-              )}{" "}
+              )}
             </label>
             <input
               required
@@ -145,6 +146,12 @@ const Step0 = ({
                 }}
               >
                 <option value="">Choose</option>
+                {fetchCoursesData?.map((x) => (
+                  <option key={x._id} value={x.slug}>
+                    {x.title}
+                  </option>
+                ))}
+                {/* 
                 <option value="freelancing">Freelancing</option>
                 <option value="shopify-and-wordpress">
                   Shopify and WordPress
@@ -157,7 +164,7 @@ const Step0 = ({
                 <option value="amazon-va">Amazon VA</option>
                 <option value="video-editing">Video Editing</option>
                 <option value="seo">Search Engine Optimization (SEO)</option>
-                <option value="graphics-designing">Graphic Designing </option>
+                <option value="graphics-designing">Graphic Designing </option> */}
               </select>
             </div>
           )}
