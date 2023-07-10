@@ -1,14 +1,10 @@
 import { Menu } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
-import { FaChalkboardTeacher, FaPlus } from "react-icons/fa";
-import {
-  MdCategory,
-  MdImageSearch,
-  MdLibraryBooks,
-  MdOutlineCreateNewFolder,
-  MdOutlineDashboardCustomize,
-  MdOutlineLibraryBooks,
-} from "react-icons/md";
+import { BsCardList } from "react-icons/bs";
+import { LuFileSpreadsheet, LuFolders, LuAlertTriangle } from "react-icons/lu";
+import { FaRegComments } from "react-icons/fa";
+import { MdOutlinePlayLesson } from "react-icons/md";
+
 import { useRouter } from "next/router";
 
 const BatchNavs = ({ BatchId }) => {
@@ -29,31 +25,38 @@ const BatchNavs = ({ BatchId }) => {
       <div className="mt-4 mb-4 text-center">
         <h4 className="text-light">Hadi E-Learning</h4>
       </div>
-      {/* {JSON.stringify(router)} */}
-      <Menu.Item className="" icon={<HomeOutlined />}>
+      <Menu.Item
+        onClick={() => router.push("/inst-test")}
+        className=""
+        icon={<HomeOutlined />}
+      >
         Home
       </Menu.Item>
-      <Menu.Item className="mt-1" icon={<MdOutlineDashboardCustomize />}>
-        Dashboard
+      <Menu.Item
+        className="mt-1"
+        onClick={() => router.push(`/inst-test/batch/description/${BatchId}`)}
+        icon={<BsCardList />}
+      >
+        Description
       </Menu.Item>
       <Menu.Item
         className="mt-3"
         onClick={() => router.push(`/inst-test/batch/lessons/${BatchId}`)}
-        icon={<MdOutlineDashboardCustomize />}
+        icon={<MdOutlinePlayLesson />}
       >
         Lessons
       </Menu.Item>
       <Menu.Item
         className="mt-1"
         onClick={() => router.push(`/inst-test/batch/assets/${BatchId}`)}
-        icon={<MdOutlineDashboardCustomize />}
+        icon={<LuFileSpreadsheet />}
       >
         Assets
       </Menu.Item>
       <Menu.Item
         className="mt-1"
         onClick={() => router.push(`/inst-test/batch/folders/${BatchId}`)}
-        icon={<MdOutlineDashboardCustomize />}
+        icon={<LuFolders />}
       >
         Folders
       </Menu.Item>
@@ -61,14 +64,14 @@ const BatchNavs = ({ BatchId }) => {
       <Menu.Item
         onClick={() => router.push(`/inst-test/batch/notice/${BatchId}`)}
         className="mt-1"
-        icon={<MdOutlineDashboardCustomize />}
+        icon={<LuAlertTriangle />}
       >
         Announcment
       </Menu.Item>
       <Menu.Item
         className="mt-1"
         onClick={() => router.push(`/inst-test/batch/comments/${BatchId}`)}
-        icon={<MdOutlineDashboardCustomize />}
+        icon={<FaRegComments />}
       >
         Comments
       </Menu.Item>

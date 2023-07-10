@@ -25,6 +25,12 @@ const Home = () => {
       setOpen(true);
       localStorage.setItem("modal", true);
     }
+
+    const timeout = setTimeout(() => {
+      setOpen(true);
+    }, 5000);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (

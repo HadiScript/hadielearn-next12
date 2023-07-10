@@ -21,13 +21,13 @@ const InstructorAssignedBatches = () => {
             <List.Item>
               <List.Item.Meta
                 title={
-                  <Link href={`/inst-test/batch/${item._id}`}>
+                  <Link href={`/inst-test/batch/description/${item._id}`}>
                     {item.title}
                   </Link>
                 }
                 description={item._id}
               />
-              <Link href={`/inst-test/batch/${item._id}`}>
+              <Link href={`/inst-test/batch/description/${item._id}`}>
                 <BsBoxArrowUpRight role="button" size={18} />
               </Link>
             </List.Item>

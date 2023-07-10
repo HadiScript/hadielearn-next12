@@ -80,7 +80,7 @@ const SingleBatchNotice = () => {
   }, [auth && auth.token, id]);
 
   return (
-    <BatchLayout>
+    <BatchLayout BatchId={id}>
       {notice && (
         <Row className="mb-4">
           <Card>
