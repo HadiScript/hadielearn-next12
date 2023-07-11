@@ -7,6 +7,13 @@ import { MdOutlinePlayLesson } from "react-icons/md";
 
 import { useRouter } from "next/router";
 
+export const navsStyle = { backgroundColor: "#e6f4ff", color: "#1677ff" };
+export const getActivesLink = (x) => {
+  const router = useRouter();
+  if (router.pathname.includes(x)) return true;
+  return false;
+};
+
 const BatchNavs = ({ BatchId }) => {
   const router = useRouter();
 
@@ -36,6 +43,7 @@ const BatchNavs = ({ BatchId }) => {
         className="mt-1"
         onClick={() => router.push(`/inst-test/batch/description/${BatchId}`)}
         icon={<BsCardList />}
+        style={getActivesLink("description") ? navsStyle : {}}
       >
         Description
       </Menu.Item>
@@ -43,6 +51,7 @@ const BatchNavs = ({ BatchId }) => {
         className="mt-3"
         onClick={() => router.push(`/inst-test/batch/lessons/${BatchId}`)}
         icon={<MdOutlinePlayLesson />}
+        style={getActivesLink("lessons") ? navsStyle : {}}
       >
         Lessons
       </Menu.Item>
@@ -50,6 +59,7 @@ const BatchNavs = ({ BatchId }) => {
         className="mt-1"
         onClick={() => router.push(`/inst-test/batch/assets/${BatchId}`)}
         icon={<LuFileSpreadsheet />}
+        style={getActivesLink("assets") ? navsStyle : {}}
       >
         Assets
       </Menu.Item>
@@ -57,6 +67,7 @@ const BatchNavs = ({ BatchId }) => {
         className="mt-1"
         onClick={() => router.push(`/inst-test/batch/folders/${BatchId}`)}
         icon={<LuFolders />}
+        style={getActivesLink("folders") ? navsStyle : {}}
       >
         Folders
       </Menu.Item>
@@ -64,6 +75,7 @@ const BatchNavs = ({ BatchId }) => {
       <Menu.Item
         onClick={() => router.push(`/inst-test/batch/notice/${BatchId}`)}
         className="mt-1"
+        style={getActivesLink("notice") ? navsStyle : {}}
         icon={<LuAlertTriangle />}
       >
         Announcment
@@ -72,6 +84,7 @@ const BatchNavs = ({ BatchId }) => {
         className="mt-1"
         onClick={() => router.push(`/inst-test/batch/comments/${BatchId}`)}
         icon={<FaRegComments />}
+        style={getActivesLink("comments") ? navsStyle : {}}
       >
         Comments
       </Menu.Item>

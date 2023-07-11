@@ -12,7 +12,10 @@ import { FaRegComments } from "react-icons/fa";
 import { MdOutlinePlayLesson } from "react-icons/md";
 
 const SingleBatchDashboard = () => {
-  const { id } = useRouter().query;
+  const router = useRouter();
+  const { id } = router.query;
+
+
   const [auth] = useContext(AuthContext);
 
   const [batch, setBatch] = useState({});
