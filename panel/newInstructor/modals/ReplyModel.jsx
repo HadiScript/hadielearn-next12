@@ -99,8 +99,8 @@ const ReplyModel = ({ current, setCurrent, open, setOpen }) => {
       <div style={{ marginTop: "20px" }}>
         <div
           style={{
-            backgroundColor: "#C5C5C5",
-            padding: "5px",
+            backgroundColor: "#ededed",
+            padding: "20px",
             borderRadius: "5px",
             marginBottom: "10px",
           }}
@@ -112,6 +112,7 @@ const ReplyModel = ({ current, setCurrent, open, setOpen }) => {
           <br />
           <p>{current.text} </p>
         </div>
+        <hr />
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="commentForm">
             <Form.Control

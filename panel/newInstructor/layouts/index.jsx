@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { API } from "../../../config/API";
 import axios from "axios";
 import Redirecting from "../../common/Redrecting";
+import ProfileModal from "../../profileModal/ProfileModal";
 const { Sider, Header, Content } = Layout;
 const { useBreakpoint } = Grid;
 
@@ -21,8 +22,11 @@ const BatchLayout = ({ children, BatchId }) => {
   const breakpoints = useBreakpoint();
 
   const router = useRouter();
-  const [auth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
+
+  // profile modals
+  const [openProfile, setOpenProfile] = useState(false);
 
   const showDrawer = () => {
     setDrawerVisibility(true);
@@ -46,7 +50,8 @@ const BatchLayout = ({ children, BatchId }) => {
       label: <span>Profile</span>,
       icon: <AiOutlineUser />,
       onClick: () => {
-        router.push(`/cms-test/my-profile/${auth?.user?._id}`);
+        // router.push(`/cms-test/my-profile/${auth?.user?._id}`);
+        setOpenProfile(true);
       },
     },
     {
@@ -86,82 +91,88 @@ const BatchLayout = ({ children, BatchId }) => {
   };
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      {breakpoints.md && (
-        <DefaultSider>
-          <Sider
+    <>
+      <Layout style={{ minHeight: "100vh" }}>
+        {breakpoints.md && (
+          <DefaultSider>
+            <Sider
+              style={{
+                overflow: "auto",
+                height: "100vh",
+                position: "fixed",
+                left: 0,
+                top: 0,
+                bottom: 0,
+              }}
+            >
+              <BatchNavs BatchId={BatchId} />
+            </Sider>
+          </DefaultSider>
+        )}
+        <Layout>
+          <Header
+            className="bg-light"
             style={{
-              overflow: "auto",
-              height: "100vh",
-              position: "fixed",
-              left: 0,
-              top: 0,
-              bottom: 0,
+              width: "100%",
+              backgroundColor: "white !important",
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "20px",
+              alignItems: "center",
+              padding: "20px",
             }}
           >
-            <BatchNavs BatchId={BatchId} />
-          </Sider>
-        </DefaultSider>
-      )}
-      <Layout>
-        <Header
-          className="bg-light"
-          style={{
-            width: "100%",
-            backgroundColor: "white !important",
-            display: "flex",
-            justifyContent: "space-between",
-            gap: "20px",
-            alignItems: "center",
-            padding: "20px",
-          }}
-        >
-          {!breakpoints.md && (
-            <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />
-          )}
-          <h5 style={{ color: "#0f3f5d" }}>
-            {" "}
-            Welcome <span className="text-capitalize">
-              {auth?.user?.name}
-            </span>,{" "}
-          </h5>
-          <Dropdown menu={{ items }}>
-            <Avatar
-              style={{
-                backgroundColor: "#0f3f5d",
-                color: "white",
-                justifySelf: "end",
-              }}
-              src={auth?.user?.image && auth?.user?.image?.url}
-            >
-              {!auth?.user?.image && auth?.user?.name[0]}
-            </Avatar>
-          </Dropdown>
+            {!breakpoints.md && (
+              <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />
+            )}
+            <h5 style={{ color: "#0f3f5d" }}>
+              {" "}
+              Welcome{" "}
+              <span className="text-capitalize">{auth?.user?.name}</span>,{" "}
+            </h5>
+            <Dropdown menu={{ items }}>
+              <Avatar
+                style={{
+                  backgroundColor: "#0f3f5d",
+                  color: "white",
+                  justifySelf: "end",
+                }}
+                src={auth?.user?.image && auth?.user?.image?.url}
+              >
+                {!auth?.user?.image && auth?.user?.name[0]}
+              </Avatar>
+            </Dropdown>
 
-          <Drawer
-            style={{ background: "linear-gradient(329deg,#31af98,#0f3f5d)" }}
-            placement="left"
-            closable={false}
-            onClose={closeDrawer}
-            visible={drawerVisibility}
-            extra={<CloseOutlined onClick={closeDrawer} />}
+            <Drawer
+              style={{ background: "linear-gradient(329deg,#31af98,#0f3f5d)" }}
+              placement="left"
+              closable={false}
+              onClose={closeDrawer}
+              visible={drawerVisibility}
+              extra={<CloseOutlined onClick={closeDrawer} />}
+            >
+              <BatchNavs BatchId={BatchId} />
+            </Drawer>
+          </Header>
+          <Content
+            style={{
+              minHeight: "80vh",
+              margin: "10px",
+              marginTop: "20px",
+              padding: "10px",
+              // background: "white",
+            }}
           >
-            <BatchNavs BatchId={BatchId} />
-          </Drawer>
-        </Header>
-        <Content
-          style={{
-            minHeight: "80vh",
-            margin: "10px",
-            marginTop: "20px",
-            padding: "10px",
-            // background: "white",
-          }}
-        >
-          {loading ? <Redirecting /> : children}
-        </Content>
+            {loading ? <Redirecting /> : children}
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+      <ProfileModal
+        open={openProfile}
+        setOpen={setOpenProfile}
+        id={auth?.user?._id}
+      />
+    </>
   );
 };
 

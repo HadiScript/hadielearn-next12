@@ -136,6 +136,9 @@ const SingleBatchFolders = () => {
     const addAssignmentsURL = `${API}/lms/remove-assignment/${x}/${y}`;
     assignments({}, addAssignmentsURL);
   };
+
+  console.log("items --->", items);
+
   return (
     <>
       <BatchLayout BatchId={id}>
