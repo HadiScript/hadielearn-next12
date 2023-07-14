@@ -46,7 +46,7 @@ const LMSNavs = () => {
         Courses
       </Menu.Item>
       <Menu.Item
-        onClick={() => router.push("/lms-test/courses/add-courses")}
+        onClick={() => router.push("/lms-test/courses/new")}
         className="mt-1"
         icon={<MdOutlineCreateNewFolder />}
       >
