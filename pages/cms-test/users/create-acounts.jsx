@@ -134,6 +134,7 @@ const createAccount = () => {
                   <option value="author">Author (Employee)</option>
                   <option value="instructor">Course Instructor</option>
                   <option value="student">student</option>
+                  <option value="cord">Student Coordinator</option>
                 </select>
               </div>
             </div>

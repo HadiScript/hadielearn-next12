@@ -45,7 +45,6 @@ const Login = () => {
         toast.error(data.error);
         setLoading(false);
       } else {
-        // save user and token response in context, localstorage then redirect user to dashboard
         setAuth({ user: data.user, token: data.token });
         localStorage.setItem("auth", JSON.stringify(data));
         toast.success("Successfully logged in");
@@ -54,6 +53,8 @@ const Login = () => {
           router.push("/admin");
         } else if (data.user?.role === "author") {
           router.push("/employee");
+        } else if (data.user?.role === "cord") {
+          router.push("/lms-test");
         } else if (data.user?.role === "instructor") {
           router.push("/inst-test");
         } else if (data.user?.role === "student") {

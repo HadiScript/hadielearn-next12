@@ -101,7 +101,7 @@ const StuHeader = ({ page = "notFromContact" }) => {
                   <div className="header__bottom-right d-flex justify-content-end align-items-center">
                     <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                       <Dropdown menu={{ items }} className="mx-3">
-                        <Avatar> {auth?.user?.name[0]} </Avatar>
+                        <Avatar src={auth?.user?.name[0]} /> 
                       </Dropdown>
                     </div>
                     <div className="sidebar__menu d-lg-none">

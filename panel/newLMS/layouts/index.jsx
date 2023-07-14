@@ -13,11 +13,8 @@ import { API } from "../../../config/API";
 import LMSNavs from "./LMSNavs";
 import Redirecting from "../../common/Redrecting";
 
-
 const { Sider, Header, Content } = Layout;
 const { useBreakpoint } = Grid;
-
-
 
 const LMSLayout = ({ children }) => {
   const [drawerVisibility, setDrawerVisibility] = useState(false);
@@ -73,8 +70,12 @@ const LMSLayout = ({ children }) => {
 
   const getCurrentAdmin = async () => {
     try {
-      const { data } = await axios.get(`${API}/current-cms-user`);
-      console.log(data, "From admin");
+      const { data } = await axios.get(`${API}/current-cms-user`, {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      });
+
       if (data.ok) {
         setLoading(false);
       }
