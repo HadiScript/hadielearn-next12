@@ -70,7 +70,7 @@ const LMSLayout = ({ children }) => {
 
   const getCurrentAdmin = async () => {
     try {
-      const { data } = await axios.get(`${API}/current-cms-user`, {
+      const { data } = await axios.get(`${API}/current-lms-user`, {
         headers: {
           Authorization: `Bearer ${auth?.token}`,
         },
