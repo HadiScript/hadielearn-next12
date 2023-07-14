@@ -85,7 +85,7 @@ const AllCourses = () => {
                     <td className="text-dark">
                       <BiEdit
                         onClick={() => {
-                          router.push(`/cms-test/courses/${x?._id}`);
+                          router.push(`/lms-test/courses/${x?._id}`);
                         }}
                       />
                     </td>
