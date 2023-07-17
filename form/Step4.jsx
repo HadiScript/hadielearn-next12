@@ -17,6 +17,7 @@ const Step4 = ({
   workshop,
   setWorkshop,
   _enroll_to,
+  fetchCoursesData,
 
   MultiStepProgressBar,
 }) => {
@@ -78,7 +79,7 @@ const Step4 = ({
             <label>
               Choose Course<span className="text-danger">*</span>
             </label>
-            <select
+            {/* <select
               required
               className="form-select"
               value={course}
@@ -99,7 +100,21 @@ const Step4 = ({
               <option value="amazon-va">Amazon VA</option>
               <option value="video-editing">Video Editing</option>
               <option value="seo">Search Engine Optimization (SEO)</option>
-              <option value="graphics-designing">Graphic Designing </option>
+              <option value="graphics-designing">Graphic Designing </option> */}
+            <select
+              required
+              className="form-select"
+              value={course}
+              onChange={(e) => {
+                setCourse(e.target.value);
+              }}
+            >
+              <option value="">Choose</option>
+              {fetchCoursesData?.map((x) => (
+                <option key={x._id} value={x.slug}>
+                  {x.title}
+                </option>
+              ))}
             </select>
           </div>
         )}

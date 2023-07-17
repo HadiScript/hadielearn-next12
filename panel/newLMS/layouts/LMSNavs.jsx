@@ -52,6 +52,14 @@ const LMSNavs = () => {
       >
         Dashboard
       </Menu.Item>
+      <Menu.Item
+        className="mt-2"
+        icon={<MdOutlineDashboardCustomize />}
+        onClick={() => router.push("/lms-test/applications")}
+        style={getActivesLink("lms-test") ? navsStyle : {}}
+      >
+        Applications
+      </Menu.Item>
 
       <Menu.Item
         className="mt-3"
