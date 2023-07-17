@@ -99,16 +99,16 @@ const ActiveBatches = () => {
           </table>
         </div>
       </Card>
-      <ActiveBatchModels
-        current={current}
-        setCurrent={setCurrent}
-        open={open}
-        setOpen={setOpen}
-        openStudentModal={openStudentModal}
-        setOpenStudentModal={setOpenStudentModal}
-        openInstructorModels={openInstructorModels}
-        setOpenInstructorModels={setOpenInstructorModels}
-      />
+        <ActiveBatchModels
+          current={current}
+          setCurrent={setCurrent}
+          open={open}
+          setOpen={setOpen}
+          openStudentModal={openStudentModal}
+          setOpenStudentModal={setOpenStudentModal}
+          openInstructorModels={openInstructorModels}
+          setOpenInstructorModels={setOpenInstructorModels}
+        />
     </LMSLayout>
   );
 };

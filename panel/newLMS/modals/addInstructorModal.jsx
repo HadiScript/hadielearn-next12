@@ -60,7 +60,7 @@ const AddInstructorModal = ({
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
-  const AddInstructor = async (x, y) => {
+  const AddInstructor = async (x, y, inst) => {
     try {
       setAddingStudentsLoading(true);
       // console.log(y, "from add isntructor")
@@ -76,10 +76,7 @@ const AddInstructorModal = ({
         toast.success(data.message, { position: "bottom-center" });
         setCurrent({
           ...current,
-          teachers: [
-            ...current.teachers,
-            { name: currentTeacher.name, _id: currentTeacher._id },
-          ],
+          teachers: [...current.teachers, inst],
         });
         setUsers(users.filter((x) => x._id !== y));
         setAddingStudentsLoading(false);
@@ -160,7 +157,7 @@ const AddInstructorModal = ({
                     <a
                       key="list-loadmore-edit"
                       onClick={() => {
-                        AddInstructor(current._id, item._id);
+                        AddInstructor(current._id, item._id, item);
                         setCurrentTeacher(item);
                       }}
                     >

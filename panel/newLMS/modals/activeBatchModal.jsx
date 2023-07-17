@@ -1,5 +1,5 @@
 import { Button, Descriptions, Divider, List, Modal, Space, Tag } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 import AddInstructorModal from "./addInstructorModal";
@@ -13,9 +13,9 @@ const ActiveBatchModels = ({
   setOpen,
   open,
   current,
+  setCurrent,
   openStudentModal,
   setOpenStudentModal,
-  setCurrent,
   openInstructorModels,
   setOpenInstructorModels,
   paymentModel,
@@ -23,6 +23,9 @@ const ActiveBatchModels = ({
   from = "active-batches",
 }) => {
   const [payment_Model, setPayment_Model] = useState(false);
+
+  const [addPaymentsModel, setAddPaymentsModel] = useState(false);
+  const [updatePaymentsModel, setUpdatePaymentsModel] = useState(false);
   const [CurrentStudentForPayments, setCurrentStudentForPayments] = useState(
     {}
   );
@@ -114,6 +117,50 @@ const ActiveBatchModels = ({
     }
   };
 
+  // console.log("Payments Check For the enrolled Students", current);
+
+  const renderPaymentStatus = (student) => {
+    console.log("before payment", student);
+
+    const payment = student.payments.find((p) => p.batch._id === current._id);
+
+    console.log("After payment", payment);
+
+    if (payment && payment.completed) {
+      return (
+        <Tag role="button" color="#0f3f5d">
+          Give him certification
+        </Tag>
+      );
+    } else if (payment && !payment.completed) {
+      return (
+        <Tag
+          onClick={() => {
+            setCurrentStudentForPayments(student);
+            setUpdatePaymentsModel(true);
+          }}
+          role="button"
+          color="#31af98"
+        >
+          Update payment
+        </Tag>
+      );
+    } else {
+      return (
+        <Tag
+          onClick={() => {
+            setAddPaymentsModel(true);
+            setCurrentStudentForPayments(student);
+          }}
+          role="button"
+          color="blue"
+        >
+          Add payment
+        </Tag>
+      );
+    }
+  };
+
   return (
     <>
       <Modal
@@ -189,55 +236,26 @@ const ActiveBatchModels = ({
           dataSource={current?.enrolledStudents}
           renderItem={(item) => (
             <List.Item
+              key={item._id}
               actions={[
-                <span>
-                  {!item.payments?.find((x) => x.batch === current._id)
-                    ?.completed ? (
-                    <Tag
-                      color="blue"
-                      role="button"
-                      onClick={() => {
-                        setPayment_Model(true);
-                        setCurrentStudentForPayments(item);
-                      }}
-                    >
-                      Update Payments
-                    </Tag>
-                  ) : (
-                    <div>
-                      {item.certifications.find(
-                        (x) => x.batch === current._id
-                      ) ? (
-                        <Tag color="blue"> Certified </Tag>
-                      ) : (
-                        <Tag
-                          color="green"
-                          role="button"
-                          onClick={() =>
-                            giveHimCertifications(item._id, current._id)
-                          }
-                        >
-                          Give him certificate
-                        </Tag>
-                      )}
-                    </div>
-                  )}
-                </span>,
+                renderPaymentStatus(item),
+
+                // just give detail is payment added or not?
                 <Tag
                   role="button"
                   color={
-                    item.payments?.find((x) => x.batch === current._id)
+                    item.payments?.find((x) => x.batch._id === current._id)
                       ?.completed
                       ? "green"
                       : "blue"
                   }
                 >
-                  payments -
-                  {item.payments?.find((x) => x.batch === current._id)
-                    ?.completed
-                    ? " Completed"
-                    : " No"}
+                  payments - {item.payments?.length}
+                  {item.payments?.find((x) => x.batch._id === current._id)
+                    ? "Added"
+                    : " Not Added"}
                 </Tag>,
+
                 <Tag
                   role="button"
                   color={!current.completed ? "red" : "gray"}
@@ -245,11 +263,10 @@ const ActiveBatchModels = ({
                     !current.completed ? UnAssigned(item._id, current._id) : ""
                   }
                 >
-                  Un Assign
+                  Un Assign - {current._id}
                 </Tag>,
               ]}
             >
-              {/* {()=>console.log(item, "from there")} */}
               <List.Item.Meta title={item.name} description={item._id} />
             </List.Item>
           )}
@@ -281,6 +298,7 @@ const ActiveBatchModels = ({
       {!current.completed && (
         <AddStuModal
           current={current}
+          setCurrent={setCurrent}
           openStudentModal={openStudentModal}
           setOpenStudentModal={setOpenStudentModal}
         />
@@ -297,15 +315,78 @@ const ActiveBatchModels = ({
 
       <PaymentModels
         from="batches"
-        paymentModels={payment_Model}
-        setPaymentModel={setPayment_Model}
         batch={current}
         setBatch={setCurrent}
-        current={CurrentStudentForPayments}
-        setCurrent={setCurrentStudentForPayments}
+        setUpdatePaymentsModel={setUpdatePaymentsModel}
+        updatePaymentsModel={updatePaymentsModel}
+        currentStudent={CurrentStudentForPayments}
+        setCurrentStudent={setCurrentStudentForPayments}
+        addPaymentsModel={addPaymentsModel}
+        setAddPaymentsModel={setAddPaymentsModel}
+
+        // paymentModels={payment_Model}
+        // setPaymentModel={setPayment_Model}
+        // batch={current}
+        // setBatch={setCurrent}
+        // current={CurrentStudentForPayments}
+        // setCurrent={setCurrentStudentForPayments}
       />
     </>
   );
 };
 
 export default ActiveBatchModels;
+
+// add and update payments
+// <span>
+//   {!item.payments?.find((x) => x.batch._id === current._id) ? (
+//     <Tag
+//       color="blue"
+//       role="button"
+//       onClick={() => {
+//         setPayment_Model(true);
+//         setCurrentStudentForPayments(item);
+//       }}
+//     >
+//       Add Payments
+//     </Tag>
+//   ) : (
+//     !item.payments?.find((x) => x.batch._id === current._id)
+//       .completed && (
+//       <Tag
+//         color="blue"
+//         role="button"
+//         onClick={() => {
+//           setPayment_Model(true);
+//           setCurrentStudentForPayments(item);
+//         }}
+//       >
+//         Update Payments
+//       </Tag>
+//     )
+//   )}
+// </span>,
+
+// // give him certificate
+// <span>
+//   {item.payments?.find((x) => x.batch._id === current._id)
+//     ?.completed && (
+//     <div>
+//       {item.certifications?.find(
+//         (x) => x.batch._id === current._id
+//       ) ? (
+//         <Tag color="blue"> Certified </Tag>
+//       ) : (
+//         <Tag
+//           color="green"
+//           role="button"
+//           onClick={() =>
+//             giveHimCertifications(item._id, current._id)
+//           }
+//         >
+//           Give him certificate
+//         </Tag>
+//       )}
+//     </div>
+//   )}
+// </span>,

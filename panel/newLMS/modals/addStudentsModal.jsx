@@ -12,7 +12,12 @@ import { toast } from "react-hot-toast";
 import { API } from "../../../config/API";
 const { Search } = Input;
 
-const AddStuModal = ({ current, openStudentModal, setOpenStudentModal }) => {
+const AddStuModal = ({
+  current,
+  openStudentModal,
+  setOpenStudentModal,
+  setCurrent,
+}) => {
   //   const { users } = useUserRole({ role: "student" });
 
   const [loading, setLoading] = useState(false);
@@ -56,7 +61,7 @@ const AddStuModal = ({ current, openStudentModal, setOpenStudentModal }) => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
-  const AddStudent = async (x, y) => {
+  const AddStudent = async (x, y, stu) => {
     try {
       setAddingStudentsLoading(true);
       const { data } = await axios.put(`${API}/lms/add/${y}/${x}/student`);
@@ -67,14 +72,19 @@ const AddStuModal = ({ current, openStudentModal, setOpenStudentModal }) => {
       } else {
         setAddingStudentsLoading(false);
         toast.success(data.message, { position: "bottom-center" });
+        setCurrent((prevState) => ({
+          ...prevState,
+          enrolledStudents: [...prevState.enrolledStudents, stu],
+        }));
+
+        console.log(stu, 'add stu from setCurrent')
       }
-      // console.log("2");
     } catch (error) {
       setAddingStudentsLoading(false);
-
       console.log(error, { position: "bottom-center" });
     }
   };
+
 
   const handleChange = (value) => {
     setCurrentPage(value);
@@ -144,7 +154,7 @@ const AddStuModal = ({ current, openStudentModal, setOpenStudentModal }) => {
                   actions={[
                     <a
                       key="list-loadmore-edit"
-                      onClick={() => AddStudent(current._id, item._id)}
+                      onClick={() => AddStudent(current._id, item._id, item)}
                     >
                       Add {item.enrolledBatches.includes}
                     </a>,
