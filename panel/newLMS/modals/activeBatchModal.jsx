@@ -117,20 +117,30 @@ const ActiveBatchModels = ({
     }
   };
 
-  // console.log("Payments Check For the enrolled Students", current);
-
   const renderPaymentStatus = (student) => {
-    console.log("before payment", student);
-
     const payment = student.payments.find((p) => p.batch._id === current._id);
-
-    console.log("After payment", payment);
 
     if (payment && payment.completed) {
       return (
-        <Tag role="button" color="#0f3f5d">
-          Give him certification
-        </Tag>
+        <>
+          {student?.certifications?.find((x) => x.batch === current?._id) ? (
+            <Tag
+              role="button"
+              color="#0f3f5d"
+              onClick={() => giveHimCertifications(student?._id, current?._id)}
+            >
+              Certified
+            </Tag>
+          ) : (
+            <Tag
+              role="button"
+              color="#0f3f5d"
+              onClick={() => giveHimCertifications(student?._id, current?._id)}
+            >
+              Give him certificate
+            </Tag>
+          )}
+        </>
       );
     } else if (payment && !payment.completed) {
       return (

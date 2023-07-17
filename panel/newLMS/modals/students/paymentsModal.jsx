@@ -307,9 +307,9 @@ const PaymentModels = ({
   };
 
   useEffect(() => {
-    let studentPayment = currentStudent.payments?.find(
-      (x) => x.batch._id === batch._id
-    );
+    let studentPayment =
+      currentStudent &&
+      currentStudent.payments?.find((x) => x.batch._id === batch._id);
     if (studentPayment) {
       setBatchId(batch._id);
       setAmount(studentPayment.amount);
@@ -317,7 +317,7 @@ const PaymentModels = ({
       setCompleted(studentPayment.completed);
       setCurrentPaymentId(studentPayment._id);
     }
-  }, [currentStudent.payments, batch._id]);
+  }, [currentStudent && currentStudent.payments, batch?._id]);
 
   return (
     <>

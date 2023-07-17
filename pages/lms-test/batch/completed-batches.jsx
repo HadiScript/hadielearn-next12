@@ -11,6 +11,7 @@ const CompletedBatches = () => {
   const { batches, loading } = useCompletedBatches();
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
+  const [openStudentModal, setOpenStudentModal] = useState(false);
 
   return (
     <LMSLayout>
@@ -72,12 +73,22 @@ const CompletedBatches = () => {
         </div>
       </Card>
 
+      {/* current={current}
+          setCurrent={setCurrent}
+          open={open}
+          setOpen={setOpen}
+          openStudentModal={openStudentModal}
+          setOpenStudentModal={setOpenStudentModal}
+          openInstructorModels={openInstructorModels}
+          setOpenInstructorModels={setOpenInstructorModels} */}
+
       <ActiveBatchModels
         current={current}
         setCurrent={setCurrent}
         open={open}
         setOpen={setOpen}
-       
+        openStudentModal={openStudentModal}
+        setOpenStudentModal={setOpenStudentModal}
         // openStudentModal={openStudentModal}
         // setOpenStudentModal={setOpenStudentModal}
         // openInstructorModels={openInstructorModels}

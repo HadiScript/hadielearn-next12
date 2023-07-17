@@ -135,50 +135,53 @@ const EnrolledStudents = () => {
           />
         </Space>
 
-        <List
-          className="mt-4"
-          itemLayout="horizontal"
-          dataSource={users}
-          loading={loading}
-          renderItem={(item, index) => (
-            <>
-              <List.Item
-                actions={[
-                  <a
-                    key="list-loadmore-edit"
-                    onClick={() => {
-                      setCurrent(item);
-                      setOpen(true);
-                    }}
-                  >
-                    View Detail
-                  </a>,
-                ]}
-              >
-                <List.Item.Meta
-                  avatar={
-                    <Avatar
-                      src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                    />
-                  }
-                  title={<a href="https://ant.design">{item.name}</a>}
-                  description={
-                    <>
-                      <Tag color="blue" role="button">
-                        Assigned Batches : {item.enrolledBatches.length}
-                      </Tag>
-                    </>
-                  }
-                />
-              </List.Item>
-            </>
-          )}
-        />
-        {currentPage < totalPages && (
-          <div className="text-center">
-            <Button onClick={handleLoadMore}>Load More</Button>
-          </div>
-        )}
+      
+         { users.length > 0 ? <> <List
+            className="mt-4"
+            itemLayout="horizontal"
+            dataSource={users}
+            loading={loading}
+            renderItem={(item, index) => (
+              <>
+                <List.Item
+                  actions={[
+                    <a
+                      key="list-loadmore-edit"
+                      onClick={() => {
+                        setCurrent(item);
+                        setOpen(true);
+                      }}
+                    >
+                      View Detail
+                    </a>,
+                  ]}
+                >
+                  <List.Item.Meta
+                    avatar={
+                      <Avatar
+                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
+                      />
+                    }
+                    title={<a href="https://ant.design">{item.name}</a>}
+                    description={
+                      <>
+                        <Tag color="blue" role="button">
+                          Assigned Batches : {item.enrolledBatches.length}
+                        </Tag>
+                      </>
+                    }
+                  />
+                </List.Item>
+              </>
+            )}
+          />
+
+          {currentPage < totalPages && (
+            <div className="text-center">
+              <Button onClick={handleLoadMore}>Load More</Button>
+            </div>
+          )}</> : <h5 className="text-center" > No Users </h5> }
+       
       </Card>
 
       <Modal
