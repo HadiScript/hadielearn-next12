@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Link from "next/link";
 import useGlobalContext from "../../hooks/useGlobalContext";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth";
 
 const TopHeader = ({
   h4class,
@@ -14,6 +16,7 @@ const TopHeader = ({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { stickyMenu } = useGlobalContext();
+  const [auth] = useContext(AuthContext);
 
   return (
     <>
@@ -79,13 +82,23 @@ const TopHeader = ({
                         </ul>
                       </nav>
                     </div>
-                    <div className="header__btn d-none d-sm-block d-xl-block ml-50">
-                      <Link href="/enroll/program">
-                        <span className={`z-btn ${btn_class}`}>
-                          Enroll Program
-                        </span>
-                      </Link>
-                    </div>
+                    {auth?.user?.role === "cord" ? (
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/lms-test">
+                          <span role="button" className={`z-btn ${btn_class}`}>
+                            LMS
+                          </span>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/enroll/program">
+                          <span className={`z-btn ${btn_class}`} role="button">
+                            Enroll Program
+                          </span>
+                        </Link>
+                      </div>
+                    )}
                     <div
                       onClick={handleShow}
                       className="sidebar__menu d-lg-none"

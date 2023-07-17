@@ -255,6 +255,24 @@ const CreateBatchForm = () => {
                 Friday
               </label>
             </div>
+            <div className="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="flexCheckDefault"
+                value="friday"
+                checked={days.saturday}
+                onChange={() =>
+                  setDays((prev) => ({
+                    ...prev,
+                    ["saturday"]: !days.saturday,
+                  }))
+                }
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Saturday
+              </label>
+            </div>
           </div>
         </div>
 

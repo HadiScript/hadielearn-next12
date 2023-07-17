@@ -31,7 +31,11 @@ const CMSNavs = () => {
         <h4 className="text-light">Hadi E-Learning</h4>
       </div>
       {/* {JSON.stringify(router)} */}
-      <Menu.Item className="" icon={<HomeOutlined />}>
+      <Menu.Item
+        className=""
+        onClick={() => router.push("/")}
+        icon={<HomeOutlined />}
+      >
         Home
       </Menu.Item>
       <Menu.Item className="mt-1" icon={<MdOutlineDashboardCustomize />}>
