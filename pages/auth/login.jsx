@@ -137,13 +137,24 @@ const Login = () => {
                   </div>
 
                   {!password || !email ? (
-                    <div className="col-12">
+                    <div className="col-12 d-flex justify-content-between align-items-center">
                       <button className="z-btn-disable">Login</button>
+                      <span
+                        role="button"
+                        onClick={() =>
+                          router.push("/auth/request-forget-password")
+                        }
+                      >
+                        Forgotten password?
+                      </span>
                     </div>
                   ) : (
-                    <button className="z-btn mx-2" onClick={onFinish}>
-                      {loading ? "loading..." : "Login"}
-                    </button>
+                    <div className="col-12 d-flex justify-content-between align-items-center">
+                      <button className="z-btn mx-2 " onClick={onFinish}>
+                        {loading ? "loading..." : "Login"}
+                      </button>
+                      <span>Forgotten password?</span>
+                    </div>
                   )}
                 </div>
               </div>
