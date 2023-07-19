@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { AuthContext } from "../../../context/auth";
 import { API } from "../../../config/API";
 import axios from "axios";
-import { Empty } from "antd";
 
 const AllBlogs = () => {
   const router = useRouter();
@@ -73,9 +72,6 @@ const AllBlogs = () => {
               </tr>
             </thead>
             <tbody>
-              {AllBlogs.length === 0 && (
-                <p className="mx-3 my-2 text-light">Empty</p>
-              )}
               {AllBlogs &&
                 allBlogs?.map((x) => (
                   <tr>

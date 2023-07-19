@@ -41,6 +41,8 @@ const EditBlog = () => {
   const [loadCategories, setLoadCategories] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [loadingImage, setLoadingImage] = useState(false);
+
   useEffect(() => {
     const fetchCats = async () => {
       const { data } = await axios.get(`${API}/categories`);
@@ -176,6 +178,58 @@ const EditBlog = () => {
     }
   };
 
+  const removeImage = async (public_id) => {
+    setLoadingImage(true);
+
+    try {
+      const { data } = await axios.post(
+        `${API}/delete-blog-image/${id}`,
+        {
+          filepath: public_id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
+
+      if (data) {
+        toast.success("Removed");
+        fetchSingleBlog();
+        setLoadingImage(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoadingImage(false);
+    }
+  };
+
+  const handleFeaturedImage = async (e) => {
+    const file = e.target.files[0];
+    let formData = new FormData();
+
+    formData.append("image", file);
+    setLoadingImage(true);
+
+    try {
+      const { data } = await axios.post(`${API}/upload-image`, formData, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      });
+      setImage({
+        url: data.url,
+        public_id: data.public_id,
+      });
+
+      setLoadingImage(false);
+    } catch (error) {
+      console.log(error);
+      setLoadingImage(false);
+    }
+  };
+
   return (
     <>
       <PanelHeader />
@@ -247,6 +301,33 @@ const EditBlog = () => {
             onChange={onChange}
           />
         </div>
+
+        <div className="form-group py-2">
+          <h5 for="exampleFormControlInput1">Featured Image</h5>
+          <input
+            onChange={handleFeaturedImage}
+            type="file"
+            accept="images/*"
+            // hidden
+            className="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
+
+        {loadingImage && <>loading...</>}
+
+        {image && image?.url && (
+          <>
+            <span
+              className="text-danger"
+              onClick={() => removeImage(image?.public_id)}
+            >
+              {" "}
+              delete image{" "}
+            </span>
+            <br />
+          </>
+        )}
 
         {image && image?.url && (
           <div className="form-group py-2">
