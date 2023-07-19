@@ -17,7 +17,7 @@ const initialState = {
   metaDescription: "",
   title: "",
   tags: "",
-  description : "",
+  description: "",
 };
 
 const EditBlog = () => {
@@ -196,18 +196,6 @@ const EditBlog = () => {
         </div>
 
         <div className="form-group py-2">
-          <h5 for="exampleFormControlInput1">Description</h5>
-          <textarea
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="description"
-            placeholder="Blog Description"
-            value={formData.description}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group py-2">
           <h5 for="exampleFormControlInput1"> Seo Title</h5>
           <input
             type="text"
@@ -243,6 +231,19 @@ const EditBlog = () => {
             name="title"
             placeholder="Title"
             value={formData.title}
+            onChange={onChange}
+          />
+        </div>
+
+        <div className="form-group py-2">
+          <h5 for="exampleFormControlInput1">Description</h5>
+          <textarea
+            type="text"
+            className="form-control"
+            id="exampleFormControlInput1"
+            name="description"
+            placeholder="Blog Description"
+            value={formData.description}
             onChange={onChange}
           />
         </div>

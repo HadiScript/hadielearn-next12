@@ -4,10 +4,10 @@ import Fade from "react-reveal/Fade";
 import Link from "next/link";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
-import { courses_data } from "../../data/courses";
+// import { courses_data } from "../../data/courses";
 import { CgArrowLongRight } from "react-icons/cg";
 
-const Courses = () => {
+const Courses = ({ courses_data }) => {
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -55,7 +55,7 @@ const Courses = () => {
     ],
   };
 
-  const avaliCourses = courses_data.filter((x) => x.available === true);
+  // const avaliCourses = courses_data?.filter((x) => x.available === true);
 
   return (
     <div className="container  pt-100 pb-80">
@@ -77,11 +77,11 @@ const Courses = () => {
       </div>
       <Fade bottom cascade>
         <Slider className="project__slider" {...settings}>
-          {avaliCourses.map((x, index) => (
+          {courses_data?.slice(0, 6)?.map((x, index) => (
             <div className="blog__item-2 mb-50 fix">
               <div className={`blog__thumb-2 w-img fix `}>
                 <Link href={`/program/${x.slug}`}>
-                  <img src={x.image} alt="" />
+                  <img src={x.image?.url} alt="" style={{ height: "250px" }} />
                 </Link>
               </div>
 
@@ -94,8 +94,13 @@ const Courses = () => {
                 >
                   <Link href={`/program/${x.slug}`}>{x.title}</Link>
                 </span>
-                <p className="pt-20">{x.Overview.substring(0, 60)}...</p>
-                <Link href={`/program/${x.slug}`} >
+                <p
+                  className="pt-20"
+                  dangerouslySetInnerHTML={{
+                    __html: x.overview.substring(0, 150) + "...",
+                  }}
+                />
+                <Link href={`/program/${x.slug}`}>
                   <span className="link-btn-2">
                     Read More
                     <i>

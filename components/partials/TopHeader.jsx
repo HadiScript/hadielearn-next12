@@ -6,6 +6,8 @@ import Link from "next/link";
 import useGlobalContext from "../../hooks/useGlobalContext";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
+import { Avatar } from "antd";
+import { LoginOutlined } from "@ant-design/icons";
 
 const TopHeader = ({
   h4class,
@@ -98,6 +100,17 @@ const TopHeader = ({
                           </span>
                         </Link>
                       </div>
+
+                      // <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                      //   <Link href="/auth/login">
+                      //     <span
+                      //       className={`z-btn ${btn_class} d-flex justify-content-center align-items-center gap-2`}
+                      //       role="button"
+                      //     >
+                      //       Login <LoginOutlined />
+                      //     </span>
+                      //   </Link>
+                      // </div>
                     )}
                     <div
                       onClick={handleShow}

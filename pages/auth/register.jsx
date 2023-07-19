@@ -5,9 +5,8 @@ import { toast } from "react-hot-toast";
 import { AiOutlineRollback } from "react-icons/ai";
 import { AuthContext } from "../../context/auth";
 import { API } from "../../config/API";
-import Btn from "../../components/ui/Btn";
 
-const Login = () => {
+const Register = () => {
   // context
   const [auth, setAuth] = useContext(AuthContext);
   // hooks
@@ -17,6 +16,8 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [name, setName] = useState("");
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -33,22 +34,25 @@ const Login = () => {
   };
 
   const payloadValues = {
+    name,
     email,
     password,
   };
 
   const onFinish = async () => {
+    if (password != password2) {
+      return toast.error("Password is not match");
+    }
     try {
       setLoading(true);
-      const { data } = await axios.post(`${API}/login`, payloadValues);
+      const { data } = await axios.post(`${API}/auth/register`, payloadValues);
       console.log(data);
       if (data.error) {
         toast.error(data.error);
         setLoading(false);
       } else {
-        setAuth({ user: data.user, token: data.token });
-        localStorage.setItem("auth", JSON.stringify(data));
-        toast.success("Successfully logged in");
+        toast.success("Successfully Regisger");
+        router.push("/auth/login");
         setLoading(false);
         if (data.user?.role === "admin") {
           router.push("/admin");
@@ -94,13 +98,28 @@ const Login = () => {
                     <div className="col-md-8  col-sm-12 mb-4  ">
                       <span
                         className="d-flex align-items-center gap-2"
-                        onClick={() => router.push('/')}
+                        onClick={() => router.back()}
                       >
-                        <AiOutlineRollback /> <span>Home</span>
+                        <AiOutlineRollback /> <span>Back</span>
                       </span>
                     </div>
-                    <h2> Login </h2>
+                    <h2> Register </h2>
                     <br />
+                    <div className="form-group py-3">
+                      <label>
+                        Name <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        className="form-control"
+                        placeholder="example@gmail.com"
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+
                     <div className="form-group py-3">
                       <label>
                         Email <span className="text-danger">*</span>
@@ -121,18 +140,33 @@ const Login = () => {
                       />
                     </div>
 
-                    <div className="form-group py-3">
-                      <label>
-                        Password<span className="text-danger">*</span>
-                      </label>
-                      <input
-                        required
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
+                    <div className="row">
+                      <div className="col-6 py-3">
+                        <label>
+                          Password<span className="text-danger">*</span>
+                        </label>
+                        <input
+                          required
+                          type="password"
+                          className="form-control"
+                          name="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                      <div className="col-6 py-3">
+                        <label>
+                          Confirm Password<span className="text-danger">*</span>
+                        </label>
+                        <input
+                          required
+                          type="password"
+                          className="form-control"
+                          name="password2"
+                          value={password2}
+                          onChange={(e) => setPassword2(e.target.value)}
+                        />
+                      </div>
                     </div>
                     <br />
                   </div>
@@ -140,7 +174,7 @@ const Login = () => {
                   {!password || !email ? (
                     <div className="col-12 d-flex justify-content-between align-items-start">
                       <div>
-                        <button className="z-btn-disable">Login</button>
+                        <button className="z-btn-disable">Register</button>
                         <br />
                         <br />
                         <span
@@ -155,16 +189,16 @@ const Login = () => {
                       </div>
                       <button
                         className="z-btn-register"
-                        onClick={() => router.push("/auth/register")}
+                        onClick={() => router.push("/auth/login")}
                       >
-                        Register
+                        Login
                       </button>
                     </div>
                   ) : (
                     <div className="col-12 d-flex justify-content-between align-items-start">
                       <div>
                         <button className="z-btn mx-2 " onClick={onFinish}>
-                          {loading ? "loading..." : "Login"}
+                          {loading ? "loading..." : "Register"}
                         </button>
                         <br />
                         <br />
@@ -180,9 +214,9 @@ const Login = () => {
                       </div>
                       <button
                         className="z-btn-register"
-                        onClick={() => router.push("/auth/register")}
+                        onClick={() => router.push("/auth/login")}
                       >
-                        Register
+                        Login
                       </button>
                     </div>
                   )}
@@ -196,4 +230,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

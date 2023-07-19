@@ -13,7 +13,7 @@ const BlogSingleItem = ({
   video_icon,
   viewCount,
   description,
-  slug
+  slug,
 }) => {
   return (
     <>
@@ -23,7 +23,7 @@ const BlogSingleItem = ({
           className={`blog__thumb-2 w-img fix ${video_icon && "p-relative"}`}
         >
           <Link href={`/blog/${slug}`}>
-            <img src={image} alt="blog-image" />
+            <img src={image} alt="blog-image" height={200} />
           </Link>
           {video_icon && video_icon}
         </div>
@@ -32,7 +32,7 @@ const BlogSingleItem = ({
             <div className="blog__user pr-20 mr-20">
               <Link href={`/blog/${slug}`}>
                 <>
-                  <img src={user_image} alt="author image" height={"50px"} />
+                  <img src={user_image} alt="author image" height={"50px"}  role="button"/>
                   <h6>{name}</h6>
                 </>
               </Link>
@@ -42,9 +42,11 @@ const BlogSingleItem = ({
             </div>
           </div>
           <h3>
-            <Link href={`/blog/${slug}`}><>{title}</></Link>
+            <Link href={`/blog/${slug}`}>
+              <>{title}</>
+            </Link>
           </h3>
-          <p>{description.substring(0,150)} ...</p>
+          <p>{description.substring(0, 150)} ...</p>
           <div className="blog__btn d-sm-flex justify-content-between">
             <div className="blog__btn">
               <Link href={`/blog/${slug}`} className="link-btn-2">

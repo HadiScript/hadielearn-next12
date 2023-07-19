@@ -14,8 +14,11 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Btn from "../components/ui/Btn";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { API } from "../config/API";
 
-const Home = () => {
+const Home = ({ courses }) => {
+  const [course_data, setCourse_data] = useState(courses);
   const [open, setOpen] = useState();
   const router = useRouter();
   useEffect(() => {
@@ -44,7 +47,8 @@ const Home = () => {
       />
       <ResponsiveHeros />
       <HomeAbout />
-      <Courses />
+      {/* {JSON.stringify(course_data)} */}
+      <Courses courses_data={course_data} />
       <HomeWorkshops />
       <CTA />
       <Testimonials />
@@ -92,5 +96,14 @@ const Home = () => {
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const { data } = await axios.get(`${API}/courses`);
+  return {
+    props: {
+      courses: data.courses,
+    },
+  };
+}
 
 export default Home;

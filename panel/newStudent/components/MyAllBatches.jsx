@@ -8,6 +8,8 @@ import { useState } from "react";
 import { AuthContext } from "../../../context/auth";
 import { useContext } from "react";
 import { Card, Col, Row } from "antd";
+import CTA from "../../../components/partials/CTA";
+import Footer from "../../../components/partials/Footer";
 const { Meta } = Card;
 
 const MyAllBatches = () => {
@@ -48,11 +50,13 @@ const MyAllBatches = () => {
                 Welcome{" "}
                 <span className="text-capitalize"> {auth?.user?.name} </span>
               </h2>
-              <p style={{ fontSize: "18px" }}>Your all Assigned Batches</p>
+              {/* <p style={{ fontSize: "18px" }}>Your all Assigned Batches</p> */}
+              {loading && (
+                <div className="my-5">loading...</div>
+              )}
             </div>
           </div>
         </div>
-        {loading && <>loading...</>}
         <Row>
           {myBatches.length > 0 ? (
             myBatches?.map((x) => (
@@ -74,10 +78,18 @@ const MyAllBatches = () => {
               </Col>
             ))
           ) : (
-            <p>No Batch</p>
+            <div className="col-12 text-center">
+              <h5>Sorry {auth?.user?.name}, You don't have any batch.</h5>
+              <br />
+              <br />
+              <br />
+              <CTA />
+            </div>
           )}
         </Row>
       </div>
+
+      <Footer />
     </>
   );
 };
