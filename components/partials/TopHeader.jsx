@@ -81,6 +81,14 @@ const TopHeader = ({
                               How it works?
                             </Link>
                           </li>
+                          <li>
+                            <Link
+                              href="/blogs"
+                              style={{ fontSize: "17px" }}
+                            >
+                              blogs
+                            </Link>
+                          </li>
                         </ul>
                       </nav>
                     </div>

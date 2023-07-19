@@ -29,11 +29,11 @@ const Home = ({ courses }) => {
       localStorage.setItem("modal", true);
     }
 
-    const timeout = setTimeout(() => {
-      setOpen(true);
-    }, 5000);
+    // const timeout = setTimeout(() => {
+    //   setOpen(true);
+    // }, 5000);
 
-    return () => clearTimeout(timeout);
+    // return () => clearTimeout(timeout);
   }, []);
 
   return (
