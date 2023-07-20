@@ -53,7 +53,7 @@ const Programs = ({ courses }) => {
         src="/assets/image/bg-gird1.jpg"
         alt="background"
         className="position-absolute "
-        style={{ color: "transparent", zIndex: "-1", top: 0, width : "100%" }}
+        style={{ color: "transparent", zIndex: "-1", top: 0, width: "100%" }}
       />
       <TopHeader />
 
@@ -101,6 +101,8 @@ const Programs = ({ courses }) => {
                         style={{
                           backgroundColor: "#0f3f5d",
                           border: "none",
+                          borderTopRightRadius : "0px",
+                          borderBottomRightRadius : "0px",
                           color: "white",
                           height: "40px",
                         }}
@@ -126,59 +128,9 @@ const Programs = ({ courses }) => {
         </Fade>
       </div>
 
-      <div className="container">
-        <Fade bottom cascade>
-          <div className="row mt-100">
-            {filteredCourses?.map((x) => (
-              <div className="col-xl-4 col-lg-4 col-md-4">
-                <div key={x.id} className="blog__item-22 mb-50 fix">
-                  <div className={`blog__thumb-22 w-img fix `}>
-                    <Link href={`/program/${x.slug}`}>
-                      <img
-                        src={x.image?.url}
-                        alt=""
-                        style={{ height: "250px" }}
-                      />
-                    </Link>
-                  </div>
+    
 
-                  <div className="blog__content-2">
-                    <span
-                      style={{
-                        fontWeight: "bold",
-                        fontSize: "20px",
-                      }}
-                    >
-                      <Link href={`/program/${x.slug}`}>{x.title}</Link>
-                    </span>
-                    <Link href={`/program/${x.slug}`}>
-                      <p className="mt-20 text-muted" role="button">
-                        {ReactHtmlParser(
-                          extractTextFromHtml(x.overview).substring(0, 70) +
-                            "..."
-                        )}
-                      </p>
-                    </Link>
-                    {/* <Link href={`/program/${x.slug}`}>
-                    <span className="link-btn-2">
-                      Read More
-                      <i>
-                        <CgArrowLongRight />
-                      </i>
-                      <i>
-                        <CgArrowLongRight />
-                      </i>
-                    </span>
-                  </Link> */}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Fade>
-      </div>
-
-      {/* <CourseList courses_data={course_data} /> */}
+      <CourseList courses_data={course_data} searchQuery={searchQuery} />
 
       <Footer />
     </>

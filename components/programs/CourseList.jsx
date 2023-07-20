@@ -1,11 +1,65 @@
 import React from "react";
 import Link from "next/link";
 import CourseItem from "./CourseItem";
+import { Fade } from "react-reveal";
+import ReactHtmlParser from "react-html-parser";
 
-const CourseList = ({ courses_data }) => {
+const CourseList = ({ courses_data, searchQuery }) => {
+  const filteredCourses = courses_data.filter((course) => {
+    return course.title.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
+  // const extractTextFromHtml = (html) => {
+  //   const doc = new DOMParser().parseFromString(html, "text/html");
+  //   return doc.body.textContent || "";
+  // };
+
   return (
     <>
-      <section className="blog__area pt-120 pb-120">
+      <div className="container">
+        <Fade bottom cascade>
+          <div className="row mt-100">
+            {filteredCourses?.map((x) => (
+              <div className="col-xl-4 col-lg-4 col-md-4">
+                <div key={x.id} className="blog__item-22 mb-50 fix">
+                  <div className={`blog__thumb-22 w-img fix `}>
+                    <Link href={`/program/${x.slug}`}>
+                      <img
+                        src={x.image?.url}
+                        alt=""
+                        style={{ height: "250px" }}
+                      />
+                    </Link>
+                  </div>
+
+                  <div className="blog__content-2">
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "20px",
+                      }}
+                    >
+                      <Link href={`/program/${x.slug}`}>{x.title}</Link>
+                    </span>
+                    <Link href={`/program/${x.slug}`}>
+                      <p
+                        className="mt-20 text-muted"
+                        role="button"
+                        dangerouslySetInnerHTML={{
+                          __html: x.overview.substring(0, 150) + "...",
+                        }}
+                      >
+                        {/* {ReactHtmlParser(x.overview) + "..."} */}
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Fade>
+      </div>
+      {/* <section className="blog__area pt-120 pb-120">
         <div className="container">
           <div className="row">
             <div className="col-xl-8 col-lg-8">
@@ -35,60 +89,10 @@ const CourseList = ({ courses_data }) => {
               </div>
             </div>
 
-            <div className="col-xl-4 col-lg-4">
-              <div className="blog__sidebar">
-                {/* <div className="sidebar__widget mb-50 ">
-                  <div className="sidebar__widget-title mb-50">
-                    <h4>Popular Tags</h4>
-                  </div>
-                  <div className="sidebar__widget-content">
-                    <div className="tags">
-                      <p to="#">DigitalSkillsWorkshop</p>
-                      <p to="#">TechTraining</p>
-                      <p to="#">DigitalLiteracy</p>
-                      <p to="#">TechForAll</p>
-                      <p to="#">DigitalEmpowerment</p>
-                      <p to="#">DigitalInclusion</p>
-                      <p to="#">DigitalTransformation</p>
-                      <p to="#">TechSkillsForAll</p>
-                      <p to="#">FutureOfWork</p>
-                      <p to="#">BridgingTheDigitalDivide</p>
-                    </div>
-                  </div>
-                </div> */}
-
-                {/* <div
-                  className="text-center"
-                  style={{
-                    backgroundColor: "#0f3f5d",
-                    padding: "20px",
-                    borderRadius: "20px",
-                  }}
-                >
-                  <h3 className="text-light">Level up. Enroll. Empower now!</h3>
-                  <br />
-                  <Link href="/enroll/program">
-                    <span
-                      style={{
-                        width: "100%",
-                        backgroundColor: "transparent",
-                        color: "white",
-                        border: "1px solid white",
-                        padding: "5px 50px 5px",
-
-                        borderRadius: "10px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Enroll Now
-                    </span>
-                  </Link>
-                </div> */}
-              </div>
-            </div>
+       
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
