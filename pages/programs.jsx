@@ -9,7 +9,6 @@ import { API } from "../config/API";
 import TopHeader from "../components/partials/TopHeader";
 import { FaSearch } from "react-icons/fa";
 import ReactHtmlParser from "react-html-parser";
-
 import { Fade } from "react-reveal";
 import {
   Button,
@@ -54,7 +53,7 @@ const Programs = ({ courses }) => {
         src="/assets/image/bgPrograms.svg"
         alt="background"
         className="position-absolute "
-        style={{ color: "transparent", zIndex: "-1", top : 0 }}
+        style={{ color: "transparent", zIndex: "-1", top: 0 }}
       />
       <TopHeader />
 
@@ -82,9 +81,13 @@ const Programs = ({ courses }) => {
           <div className="container">
             <Row className="justify-content-center align-items-center">
               <Col xs="auto" className="mb-2">
-                <Button style={{ backgroundColor: "#0f3f5d", border: "none" }}>
-                  Enroll Now
-                </Button>
+                <Link href={'/enroll/program'}>
+                  <Button
+                    style={{ backgroundColor: "#0f3f5d", border: "none" }}
+                  >
+                    Enroll Now
+                  </Button>
+                </Link>
               </Col>
 
               <Col md="5" xs="12" className="mb-2">
@@ -172,7 +175,7 @@ const Programs = ({ courses }) => {
         </div>
       </div>
 
-      <CourseList courses_data={course_data} />
+      {/* <CourseList courses_data={course_data} /> */}
 
       <Footer />
     </>
