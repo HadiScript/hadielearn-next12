@@ -50,10 +50,10 @@ const Programs = ({ courses }) => {
         conLink={"https://hadielearning.com/programs"}
       />
       <img
-        src="/assets/image/bgPrograms.svg"
+        src="/assets/image/bg-gird1.jpg"
         alt="background"
         className="position-absolute "
-        style={{ color: "transparent", zIndex: "-1", top: 0 }}
+        style={{ color: "transparent", zIndex: "-1", top: 0, width : "100%" }}
       />
       <TopHeader />
 
@@ -81,7 +81,7 @@ const Programs = ({ courses }) => {
           <div className="container">
             <Row className="justify-content-center align-items-center">
               <Col xs="auto" className="mb-2">
-                <Link href={'/enroll/program'}>
+                <Link href={"/enroll/program"}>
                   <Button
                     style={{ backgroundColor: "#0f3f5d", border: "none" }}
                   >
@@ -127,37 +127,39 @@ const Programs = ({ courses }) => {
       </div>
 
       <div className="container">
-        <div className="row mt-100">
-          {filteredCourses?.map((x) => (
-            <div className="col-xl-4 col-lg-4 col-md-4">
-              <div key={x.id} className="blog__item-22 mb-50 fix">
-                <div className={`blog__thumb-22 w-img fix `}>
-                  <Link href={`/program/${x.slug}`}>
-                    <img
-                      src={x.image?.url}
-                      alt=""
-                      style={{ height: "250px" }}
-                    />
-                  </Link>
-                </div>
+        <Fade bottom cascade>
+          <div className="row mt-100">
+            {filteredCourses?.map((x) => (
+              <div className="col-xl-4 col-lg-4 col-md-4">
+                <div key={x.id} className="blog__item-22 mb-50 fix">
+                  <div className={`blog__thumb-22 w-img fix `}>
+                    <Link href={`/program/${x.slug}`}>
+                      <img
+                        src={x.image?.url}
+                        alt=""
+                        style={{ height: "250px" }}
+                      />
+                    </Link>
+                  </div>
 
-                <div className="blog__content-2">
-                  <span
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: "20px",
-                    }}
-                  >
-                    <Link href={`/program/${x.slug}`}>{x.title}</Link>
-                  </span>
-                  <Link href={`/program/${x.slug}`}>
-                    <p className="mt-20 text-muted" role="button">
-                      {ReactHtmlParser(
-                        extractTextFromHtml(x.overview).substring(0, 70) + "..."
-                      )}
-                    </p>
-                  </Link>
-                  {/* <Link href={`/program/${x.slug}`}>
+                  <div className="blog__content-2">
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "20px",
+                      }}
+                    >
+                      <Link href={`/program/${x.slug}`}>{x.title}</Link>
+                    </span>
+                    <Link href={`/program/${x.slug}`}>
+                      <p className="mt-20 text-muted" role="button">
+                        {ReactHtmlParser(
+                          extractTextFromHtml(x.overview).substring(0, 70) +
+                            "..."
+                        )}
+                      </p>
+                    </Link>
+                    {/* <Link href={`/program/${x.slug}`}>
                     <span className="link-btn-2">
                       Read More
                       <i>
@@ -168,11 +170,12 @@ const Programs = ({ courses }) => {
                       </i>
                     </span>
                   </Link> */}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Fade>
       </div>
 
       {/* <CourseList courses_data={course_data} /> */}
