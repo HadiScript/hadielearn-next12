@@ -37,7 +37,7 @@ const CourseList = ({ courses_data }) => {
 
             <div className="col-xl-4 col-lg-4">
               <div className="blog__sidebar">
-                <div className="sidebar__widget mb-50 ">
+                {/* <div className="sidebar__widget mb-50 ">
                   <div className="sidebar__widget-title mb-50">
                     <h4>Popular Tags</h4>
                   </div>
@@ -55,9 +55,9 @@ const CourseList = ({ courses_data }) => {
                       <p to="#">BridgingTheDigitalDivide</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div
+                {/* <div
                   className="text-center"
                   style={{
                     backgroundColor: "#0f3f5d",
@@ -83,7 +83,7 @@ const CourseList = ({ courses_data }) => {
                       Enroll Now
                     </span>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

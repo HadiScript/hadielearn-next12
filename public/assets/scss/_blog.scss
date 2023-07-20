@@ -51,11 +51,24 @@
     }
     &-2 {
       border: 1px solid $border-10;
-      // height: 500px;
+      height: 550px;
       @include box-shadow(0px 1px 2px 0px rgba(10, 0, 58, 0.342));
       @include border-radius(10px);
       &:hover {
         & .blog__thumb-2 {
+          & img {
+            @include transform(scale(1.1));
+          }
+        }
+      }
+    }
+    &-22 {
+      border: 1px solid $border-10;
+      height: 450px;
+      @include box-shadow(0px 1px 2px 0px rgba(10, 0, 58, 0.281));
+      @include border-radius(10px);
+      &:hover {
+        & .blog__thumb-22 {
           & img {
             @include transform(scale(1.1));
           }
