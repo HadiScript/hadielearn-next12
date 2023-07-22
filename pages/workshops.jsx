@@ -45,7 +45,7 @@ const Workshops = ({ workshops }) => {
                   <div className="blog__item-3 mb-50 fix">
                     <div className={`blog__thumb-3 w-img fix `}>
                       <Link href={`/workshop-detail/${x.slug} `}>
-                        <img src={x.image?.url} alt="workshop_image" />
+                        <img src={x.image?.url} alt="workshop_image"/>
                       </Link>
                     </div>
                     <div className="blog__content-2">

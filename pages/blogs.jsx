@@ -5,6 +5,7 @@ import Footer from "../components/partials/Footer";
 import BlogArea from "../components/blogs/BlogArea";
 import Router, { useRouter } from "next/router";
 import { API } from "../config/API";
+import NewBlogArea from "../components/blogs/NewBlogArea";
 
 const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
   const router = useRouter();
@@ -70,7 +71,9 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
     <>
       <Tops
         headTitle={"Some interesting blogs to know more about Hadi E-learning."}
-        headDesc={"Meta description: Interesting blogs to explore more about Hadi E-learning and all the courses Hadi is offering to you. "}
+        headDesc={
+          "Meta description: Interesting blogs to explore more about Hadi E-learning and all the courses Hadi is offering to you. "
+        }
         conLink={`https://hadielearning.com/blogs`}
         breadTitle={"Blogs"}
         breadSubTtile={
@@ -95,6 +98,8 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
         mostViewed={mostView}
         whichPage={"blogs"}
       />
+
+      {/* <NewBlogArea blogs_data={allBlogs} /> */}
 
       <Footer />
     </>
