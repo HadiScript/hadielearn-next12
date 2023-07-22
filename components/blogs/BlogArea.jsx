@@ -32,7 +32,7 @@ const BlogArea = ({
             <div className="col-xl-8 col-lg-8">
               <div className="blog__wrapper mr-50">
                 {allBlogs.length === 0 && <h2> Empty: </h2>}
-                {allBlogs?.map((x) => (
+                {/* {allBlogs?.map((x) => (
                   <article key={x._id} className="postcard light green">
                     <Link
                       className="postcard__img_link"
@@ -65,22 +65,9 @@ const BlogArea = ({
                           {x.description.substring(0, 100)}...
                         </div>
                       </Link>
-                      {/* <ul className="postcard__tagbox">
-                        <li className="tag__item">
-                          <i className="fas fa-tag mr-2"></i>Podcast
-                        </li>
-                        <li className="tag__item">
-                          <i className="fas fa-clock mr-2"></i>55 mins.
-                        </li>
-                        <li className="tag__item play green">
-                          <a href="#">
-                            <i className="fas fa-play mr-2"></i>Play Episode
-                          </a>
-                        </li>
-                      </ul> */}
                     </div>
                   </article>
-                ))}
+                ))} */}
               </div>
               {whichPage === "blogs" && (
                 <>
