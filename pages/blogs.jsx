@@ -83,7 +83,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
         image={"/assets/images/bread.jpg"}
       />
 
-      <BlogArea
+      {/* <BlogArea
         allBlogs={allBlogs}
         RecentBlogs={RecentBlogs}
         Categories={categories}
@@ -97,7 +97,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
         setSearchQuery={setSearchQuery}
         mostViewed={mostView}
         whichPage={"blogs"}
-      />
+      /> */}
 
       {/* <NewBlogArea blogs_data={allBlogs} /> */}
 
