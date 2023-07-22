@@ -19,4 +19,4 @@ jobs:
             git pull
             npm install -f
             npm run build
-            pm2 reload 6 --update-env
+            pm2 reload frontend --update-env
