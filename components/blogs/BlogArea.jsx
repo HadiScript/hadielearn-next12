@@ -32,7 +32,7 @@ const BlogArea = ({
             <div className="col-xl-8 col-lg-8">
               <div className="blog__wrapper mr-50">
                 {allBlogs.length === 0 && <h2> Empty: </h2>}
-                {/* {allBlogs?.map((x) => (
+                {allBlogs?.map((x) => (
                   <article key={x._id} className="postcard light green">
                     <Link
                       className="postcard__img_link"
@@ -67,7 +67,7 @@ const BlogArea = ({
                       </Link>
                     </div>
                   </article>
-                ))} */}
+                ))}
               </div>
               {whichPage === "blogs" && (
                 <>
