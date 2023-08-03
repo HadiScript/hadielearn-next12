@@ -92,7 +92,7 @@ const TopHeader = ({
                         </ul>
                       </nav>
                     </div>
-                    {auth?.user?.role === "cord" ? (
+                    { auth && auth?.user && auth?.user?.role === "cord" ? (
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/lms-test">
                           <span role="button" className={`z-btn ${btn_class}`}>

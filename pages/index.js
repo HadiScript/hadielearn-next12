@@ -19,22 +19,22 @@ import { API } from "../config/API";
 
 const Home = ({ courses }) => {
   const [course_data, setCourse_data] = useState(courses);
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    let fromLocal = localStorage.getItem("modal", open);
+  // useEffect(() => {
+  // //   let fromLocal = localStorage.getItem("modal", open);
 
-    if (!fromLocal) {
-      setOpen(true);
-      localStorage.setItem("modal", true);
-    }
+  // //   if (!fromLocal) {
+  // //     setOpen(true);
+  // //     localStorage.setItem("modal", true);
+  // //   }
 
-    // const timeout = setTimeout(() => {
-    //   setOpen(true);
-    // }, 5000);
+  // //   // const timeout = setTimeout(() => {
+  // //   //   setOpen(true);
+  // //   // }, 5000);
 
-    // return () => clearTimeout(timeout);
-  }, []);
+  // //   // return () => clearTimeout(timeout);
+  // // }, []);
 
   return (
     <>
