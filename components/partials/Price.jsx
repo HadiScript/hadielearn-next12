@@ -19,7 +19,7 @@ const Price = () => {
             {/* <div className="col-xl-7 col-lg-6"> */}
             <SinglePrice
               title="Registeration Fee"
-              price="5000"
+              price="0"
               point1={""}
               point2={""}
               point={""}
