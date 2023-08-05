@@ -90,20 +90,40 @@ const TopHeader = ({
                       </nav>
                     </div>
 
-                    {/* {auth && auth?.user && auth?.user?.role === "cord" ? (
-                      <>cord btn</>
+                    {auth && auth?.user && auth?.user?.role === "cord" ? (
+                      <Link href="/lms-test">
+                        <span role="button" className={`z-btn ${btn_class}`}>
+                          LMS
+                        </span>
+                      </Link>
                     ) : auth?.user?.role === "admin" ? (
-                      <>admin btn</>
+                      <Link href="/admin">
+                        <span role="button" className={`z-btn ${btn_class}`}>
+                          Dashboards
+                        </span>
+                      </Link>
                     ) : auth?.user?.role === "student" ? (
-                      <>stu btn</>
+                      <Link href="/student-test">
+                        <span role="button" className={`z-btn ${btn_class}`}>
+                          Learning
+                        </span>
+                      </Link>
                     ) : auth?.user?.role === "instructor" ? (
-                      <>teacher btn</>
+                      <Link href="/inst-test">
+                        <span role="button" className={`z-btn ${btn_class}`}>
+                          Batches
+                        </span>
+                      </Link>
                     ) : (
-                      <>enroll btn</>
-                    )} */}
+                      <Link href="/enroll/program">
+                        <span className={`z-btn ${btn_class}`} role="button">
+                          Enroll Program
+                        </span>
+                      </Link>
+                    )}
 
                     {/* for the lms */}
-                    {auth && auth?.user && auth?.user?.role === "cord" ? (
+                    {/* {auth && auth?.user && auth?.user?.role === "cord" ? (
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/lms-test">
                           <span role="button" className={`z-btn ${btn_class}`}>
@@ -119,7 +139,7 @@ const TopHeader = ({
                           </span>
                         </Link>
                       </div>
-                    )}
+                    )} */}
 
                     <div
                       onClick={handleShow}
