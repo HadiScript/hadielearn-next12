@@ -51,11 +51,11 @@ const Login = () => {
         toast.success("Successfully logged in");
         setLoading(false);
         if (data.user?.role === "admin") {
-          router.push("/admin");
+          router.push("/");
         } else if (data.user?.role === "author") {
           router.push("/employee");
         } else if (data.user?.role === "cord") {
-          router.push("/lms-test");
+          router.push("/");
         } else if (data.user?.role === "instructor") {
           router.push("/inst-test");
         } else if (data.user?.role === "student") {
@@ -94,7 +94,7 @@ const Login = () => {
                     <div className="col-md-8  col-sm-12 mb-4  ">
                       <span
                         className="d-flex align-items-center gap-2"
-                        onClick={() => router.push('/')}
+                        onClick={() => router.push("/")}
                       >
                         <AiOutlineRollback /> <span>Home</span>
                       </span>

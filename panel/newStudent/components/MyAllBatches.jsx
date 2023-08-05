@@ -10,10 +10,13 @@ import { useContext } from "react";
 import { Card, Col, Row } from "antd";
 import CTA from "../../../components/partials/CTA";
 import Footer from "../../../components/partials/Footer";
+import { FiExternalLink } from "react-icons/fi";
+import { useRouter } from "next/router";
 const { Meta } = Card;
 
 const MyAllBatches = () => {
   const [auth] = useContext(AuthContext);
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [myBatches, setMyBatches] = useState([]);
 
@@ -51,12 +54,11 @@ const MyAllBatches = () => {
                 <span className="text-capitalize"> {auth?.user?.name} </span>
               </h2>
               {/* <p style={{ fontSize: "18px" }}>Your all Assigned Batches</p> */}
-              {loading && (
-                <div className="my-5">loading...</div>
-              )}
+              {loading && <div className="my-5">loading...</div>}
             </div>
           </div>
         </div>
+
         <Row>
           {myBatches.length > 0 ? (
             myBatches?.map((x) => (
@@ -64,12 +66,28 @@ const MyAllBatches = () => {
                 <Card
                   style={{
                     width: 300,
+                    borderRight: "2px solid #0f3f5d",
                   }}
+                  actions={[
+                    <span
+                      onClick={() =>
+                        router.push(`/student-test/batch/description/${x._id}`)
+                      }
+                      className="d-flex justify-content-center align-items-center gap-2"
+                    >
+                      Batch <FiExternalLink />
+                    </span>,
+                  ]}
                 >
                   <Meta
                     title={
-                      <Link href={`/student-test/batch/${x._id}`}>
-                        {x.title}
+                      <Link href={`/student-test/batch/description/${x._id}`}>
+                        <span
+                          role="button"
+                          style={{ fontWeight: "bold", color: "#0f3f5d" }}
+                        >
+                          {x.title}
+                        </span>
                       </Link>
                     }
                     description={x._id}

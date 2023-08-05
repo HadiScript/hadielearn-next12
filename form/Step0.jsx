@@ -4,6 +4,8 @@ import React from "react";
 import { useState } from "react";
 import { AiOutlineRollback } from "react-icons/ai";
 
+import PhoneInput from "react-phone-input-2";
+
 const Step0 = ({
   email,
 
@@ -98,22 +100,22 @@ const Step0 = ({
           <div className="col-md-12 col-sm-12 col-xs-12 py-3">
             <label>
               WhatsApp<span className="text-danger">*</span>
-              {show2 && (
-                <span
-                  style={{ color: "red", marginLeft: "3px" }}
-                  className="ml-2"
-                >
-                  Please enter correct number
-                </span>
-              )}
             </label>
-            <input
+            {/* <input
               required
               type="text"
               className="form-control"
               name="phoneNumber"
               value={singleData?.whatsAppphoneNumber}
-              onChange={(e) => handleInputChange(e)}
+              onChange={(value) => setWhatsAppPhoneNumber(value)}
+            /> */}
+            <PhoneInput
+              country={"pk"} // Set a default country
+              inputClass="form-control"
+              inputStyle={{ width: "100%" }}
+              placeholder="Enter whatsApp number"
+              value={singleData?.whatsAppphoneNumber}
+              onChange={(value) => setWhatsAppPhoneNumber(value)}
             />
             <small style={{ fontSize: "12px" }}>
               Could you please confirm your WhatsApp Number

@@ -1,5 +1,6 @@
 import AllContext from "../context/AllContext";
 import "../public/css/styles.scss";
+import "react-phone-input-2/lib/style.css";
 import { Toaster } from "react-hot-toast";
 
 import TimeAgo from "javascript-time-ago";

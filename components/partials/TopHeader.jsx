@@ -82,17 +82,28 @@ const TopHeader = ({
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="/blogs"
-                              style={{ fontSize: "17px" }}
-                            >
+                            <Link href="/blogs" style={{ fontSize: "17px" }}>
                               blogs
                             </Link>
                           </li>
                         </ul>
                       </nav>
                     </div>
-                    { auth && auth?.user && auth?.user?.role === "cord" ? (
+
+                    {/* {auth && auth?.user && auth?.user?.role === "cord" ? (
+                      <>cord btn</>
+                    ) : auth?.user?.role === "admin" ? (
+                      <>admin btn</>
+                    ) : auth?.user?.role === "student" ? (
+                      <>stu btn</>
+                    ) : auth?.user?.role === "instructor" ? (
+                      <>teacher btn</>
+                    ) : (
+                      <>enroll btn</>
+                    )} */}
+
+                    {/* for the lms */}
+                    {auth && auth?.user && auth?.user?.role === "cord" ? (
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/lms-test">
                           <span role="button" className={`z-btn ${btn_class}`}>
@@ -108,18 +119,8 @@ const TopHeader = ({
                           </span>
                         </Link>
                       </div>
-
-                      // <div className="header__btn d-none d-sm-block d-xl-block ml-50">
-                      //   <Link href="/auth/login">
-                      //     <span
-                      //       className={`z-btn ${btn_class} d-flex justify-content-center align-items-center gap-2`}
-                      //       role="button"
-                      //     >
-                      //       Login <LoginOutlined />
-                      //     </span>
-                      //   </Link>
-                      // </div>
                     )}
+
                     <div
                       onClick={handleShow}
                       className="sidebar__menu d-lg-none"

@@ -4,11 +4,12 @@ import { useRouter } from "next/router";
 import { HomeOutlined, LogoutOutlined } from "@ant-design/icons";
 import { MdOutlinePlayLesson } from "react-icons/md";
 import { LuFolders } from "react-icons/lu";
-import { BsChatLeftDots } from "react-icons/bs";
+import { BsCardChecklist, BsChatLeftDots } from "react-icons/bs";
 import {
   getActivesLink,
   navsStyle,
 } from "../../newInstructor/layouts/BatchNavs";
+import { FaFileInvoice } from "react-icons/fa";
 
 const StuNavs = ({ id }) => {
   const router = useRouter();
@@ -28,8 +29,20 @@ const StuNavs = ({ id }) => {
       <div className="mt-4 mb-4 text-center">
         <h4 className="text-light">Welcome Student,</h4>
       </div>
-      <Menu.Item className="mt-5" icon={<HomeOutlined />}>
+      <Menu.Item
+        onClick={() => router.push(`/student-test/`)}
+        className="mt-5"
+        icon={<HomeOutlined />}
+      >
         Home
+      </Menu.Item>
+      <Menu.Item
+        onClick={() => router.push(`/student-test/batch/description/${id}`)}
+        style={getActivesLink("/student-test/description") ? navsStyle : {}}
+        className="mt-5"
+        icon={<BsCardChecklist />}
+      >
+        Description
       </Menu.Item>
       <Menu.Item
         style={getActivesLink("lessons") ? navsStyle : {}}
@@ -55,8 +68,12 @@ const StuNavs = ({ id }) => {
         Discussions
       </Menu.Item>
 
-      <Menu.Item className="" icon={<LogoutOutlined />}>
-        Logout
+      <Menu.Item
+        className=""
+        style={{ cursor: "not-allowed" }}
+        icon={<FaFileInvoice />}
+      >
+        Batch Invoice
       </Menu.Item>
     </Menu>
   );

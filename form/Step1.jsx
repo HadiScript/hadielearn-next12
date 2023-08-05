@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineRollback } from "react-icons/ai";
+import PhoneInput from "react-phone-input-2";
 
 const Step1 = ({
   currentStep,
@@ -186,7 +187,7 @@ const Step1 = ({
         />
       </div>
       <div className="row">
-        <div className="col-md-6 col-sm-12 col-xs-12 py-3">
+        {/* <div className="col-md-6 col-sm-12 col-xs-12 py-3">
           <label>
             WhatsApp<span className="text-danger">*</span>
             {show2 && (
@@ -206,9 +207,21 @@ const Step1 = ({
             value={whatsAppphoneNumber}
             onChange={(e) => handleInputChange2(e)}
           />
-        </div>
+        </div> */}
 
         <div className="col-md-6 col-sm-12 col-xs-12 py-3">
+          <label>WhatsApp</label>
+          <PhoneInput
+            country={"pk"} // Set a default country
+            inputClass="form-control"
+            inputStyle={{ width: "100%" }}
+            placeholder="Enter whatsApp number"
+            value={whatsAppphoneNumber}
+            onChange={(value) => setWhatsAppPhoneNumber(value)}
+          />
+        </div>
+
+        {/* <div className="col-md-6 col-sm-12 col-xs-12 py-3">
           <label>
             Phone<span className="text-danger">*</span>
             {show && (
@@ -228,16 +241,31 @@ const Step1 = ({
             value={phoneNumber}
             onChange={(e) => handleInputChange(e)}
           />
+        </div> */}
+        <div className="col-md-6 col-sm-12 col-xs-12 py-3">
+          <label>
+            Phone<span className="text-danger">*</span>
+          </label>
+          <PhoneInput
+            country={"pk"} // Set a default country
+            inputClass="form-control"
+            inputStyle={{ width: "100%" }}
+            placeholder="Enter phone number"
+            value={phoneNumber}
+            onChange={(value) => setPhoneNumber(value)}
+          />
         </div>
-      </div>
+      </div>  
+
+     
 
       <div className="d-flex justify-content-between">
         <>{previousButton()}</>
         {!(firstName.length >= 3) ||
         !(lastName.length >= 3) ||
         !gender ||
-        show !== false ||
-        // !(phoneNumber.length === 11 || phoneNumber.length === 13) ||
+        !phoneNumber ||
+        !whatsAppphoneNumber ||
         !dateOfBirth ? (
           <button className="z-btn-disable">next</button>
         ) : (

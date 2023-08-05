@@ -117,11 +117,15 @@ const EnrollmentsForm = () => {
       setLoading(true);
       const payload = { ...data };
 
-      const response = await axios.post(
+      const { data } = await axios.post(
         "https://api.hadielearning.com/api/enroll-stu",
         // "http://localhost:5000/api/enroll-stu",
         payload
       );
+
+      if (data.error) {
+        return toast.error(data.error);
+      }
 
       setUserReq(INITIAL_USER);
       setLoading(false);
@@ -266,7 +270,7 @@ const EnrollmentsForm = () => {
                     email={userReq.email}
                     lastName={userReq.lastName}
                     firstName={userReq.firstName}
-                    phoneNumber={userReq.phoneNumber}
+                    phoneNumber={phoneNumber}
                     setPhoneNumber={setPhoneNumber}
                     dateOfBirth={dateOfBirth}
                     setdateOfBirth={setdateOfBirth}

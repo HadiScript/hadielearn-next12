@@ -9,9 +9,11 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 import { AuthContext } from "../../../context/auth";
 import { AiOutlineLogout } from "react-icons/ai";
+import ProfileModal from "../../profileModal/ProfileModal";
 
 const InstHeader = ({ page = "notFromContact" }) => {
   const [auth, setAuth] = useContext(AuthContext);
+  const [openProfile, setOpenProfile] = useState(false);
   const router = useRouter();
 
   const [show, setShow] = useState(false);
@@ -23,7 +25,8 @@ const InstHeader = ({ page = "notFromContact" }) => {
     {
       label: auth?.user?.name,
       key: "0",
-      icon: <RxAvatar size={17}/>,
+      icon: <RxAvatar size={17} />,
+      onClick: () => setOpenProfile(true),
     },
     {
       type: "divider",
@@ -39,7 +42,7 @@ const InstHeader = ({ page = "notFromContact" }) => {
         router.push("/auth/login");
       },
       key: "3",
-        icon: <AiOutlineLogout size={17} />,
+      icon: <AiOutlineLogout size={17} />,
     },
   ];
 
@@ -88,12 +91,16 @@ const InstHeader = ({ page = "notFromContact" }) => {
                   <div className="header__bottom-right d-flex justify-content-end align-items-center">
                     <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                       <Dropdown menu={{ items }} className="mx-3">
-                        <Avatar> {auth?.user?.name[0]} </Avatar>
+                        <Avatar src={auth?.user?.image?.url}>
+                          {auth?.user?.name[0]}
+                        </Avatar>
                       </Dropdown>
                     </div>
                     <div className="sidebar__menu d-lg-none">
                       <Dropdown menu={{ items }} className="mx-3">
-                        <Avatar />
+                        <Avatar src={auth?.user?.image?.url}>
+                          {auth?.user?.name}
+                        </Avatar>
                       </Dropdown>
                     </div>
                   </div>
@@ -103,6 +110,11 @@ const InstHeader = ({ page = "notFromContact" }) => {
           </div>
         </div>
       </header>
+      <ProfileModal
+        open={openProfile}
+        setOpen={setOpenProfile}
+        id={auth?.user?._id}
+      />
     </>
   );
 };
