@@ -6,9 +6,13 @@ import { Card, Descriptions, Modal, Space, Tag } from "antd";
 import TableComponent from "../../../components/Applications/TableComponent";
 import { toast } from "react-hot-toast";
 import Btn from "../../../components/ui/Btn";
+import { saveAs } from "file-saver";
+import Papa from "papaparse";
 
 const Applications = () => {
   const [enrollments, setEnrollments] = useState([]);
+
+  const [limit, setLimit] = useState(10);
 
   const [searchInput, setSearchInput] = useState("");
   const [fromDate, setFromDate] = useState("");
@@ -27,7 +31,7 @@ const Applications = () => {
     const fetchingData = async () => {
       try {
         const { data } = await axios.get(
-          `${API}/fetch/enrollments?page=${currentPage}&limit=10&search=${searchInput}&fromDate=${fromDate}&endDate=${endDate}&enrollTo=${enrollToSelect}&course=${courseSelect}`
+          `${API}/fetch/enrollments?page=${currentPage}&limit=${limit}&search=${searchInput}&fromDate=${fromDate}&endDate=${endDate}&enrollTo=${enrollToSelect}&course=${courseSelect}`
         );
         setEnrollments(data.enrollments);
         setTotalPages(data.totalPages);
@@ -44,6 +48,7 @@ const Applications = () => {
     enrollToSelect,
     currentPage,
     courseSelect,
+    limit,
   ]);
 
   const fetchingCourses = async () => {
@@ -69,6 +74,39 @@ const Applications = () => {
     setEndDate("");
     setEnrollToSelect("");
     setCourseSelect("");
+  };
+
+  // const dataToCSV = (data) => {
+  //   const headers = Object.keys(data[0]);
+  //   const rows = data.map((item) => headers.map((header) => item[header]));
+  //   const csvData = [headers, ...rows].map((row) => row.join(","));
+
+  //   return csvData.join("\n");
+  // };
+
+  const dataToCSV = (data) => {
+    const csv = Papa.unparse(data, {
+      header: true,
+    });
+    return csv;
+  };
+
+  const exportToCSV = () => {
+    const filtererdArray = [];
+
+    enrollments.forEach((item) => {
+      filtererdArray.push({
+        name: item.firstName + item.lastName,
+        email: item.lastName,
+        phone: item.phoneNumber,
+        whatsApp: item.whatsAppphoneNumber,
+      });
+    });
+
+    const csvData = dataToCSV(filtererdArray);
+
+    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+    saveAs(blob, "data.csv");
   };
 
   return (
@@ -121,7 +159,24 @@ const Applications = () => {
               </option>
             ))}
           </select>
+
+          <select
+            className="form-control"
+            value={limit}
+            onChange={(e) => {
+              setLimit(e.target.value);
+            }}
+            id="enrollToSelect"
+          >
+            <option value={10}>10 - limit</option>
+
+            <option value={20}>20 - limit</option>
+            <option value={50}>50 - limit</option>
+            <option value={100}>100 - limit</option>
+            <option value={200}>200 - limit</option>
+          </select>
           <Btn onClick={Reset}> Reset </Btn>
+          <Btn onClick={exportToCSV}> Export CSV </Btn>
         </Space>
         <Card className="mt-5">
           <h5> Enrollments: {totalDataCount} </h5>
