@@ -91,35 +91,45 @@ const TopHeader = ({
                     </div>
 
                     {auth && auth?.user && auth?.user?.role === "cord" ? (
-                      <Link href="/lms-test">
-                        <span role="button" className={`z-btn ${btn_class}`}>
-                          LMS
-                        </span>
-                      </Link>
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/lms-test">
+                          <span role="button" className={`z-btn ${btn_class}`}>
+                            LMS
+                          </span>
+                        </Link>
+                      </div>
                     ) : auth?.user?.role === "admin" ? (
-                      <Link href="/admin">
-                        <span role="button" className={`z-btn ${btn_class}`}>
-                          Dashboards
-                        </span>
-                      </Link>
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/admin">
+                          <span role="button" className={`z-btn ${btn_class}`}>
+                            Dashboards
+                          </span>
+                        </Link>
+                      </div>
                     ) : auth?.user?.role === "student" ? (
-                      <Link href="/student-test">
-                        <span role="button" className={`z-btn ${btn_class}`}>
-                          Learning
-                        </span>
-                      </Link>
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/student-test">
+                          <span role="button" className={`z-btn ${btn_class}`}>
+                            Learning
+                          </span>
+                        </Link>
+                      </div>
                     ) : auth?.user?.role === "instructor" ? (
-                      <Link href="/inst-test">
-                        <span role="button" className={`z-btn ${btn_class}`}>
-                          Batches
-                        </span>
-                      </Link>
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/inst-test">
+                          <span role="button" className={`z-btn ${btn_class}`}>
+                            Batches
+                          </span>
+                        </Link>
+                      </div>
                     ) : (
-                      <Link href="/enroll/program">
-                        <span className={`z-btn ${btn_class}`} role="button">
-                          Enroll Program
-                        </span>
-                      </Link>
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/enroll/program">
+                          <span className={`z-btn ${btn_class}`} role="button">
+                            Enroll Program
+                          </span>
+                        </Link>
+                      </div>
                     )}
 
                     {/* for the lms */}
