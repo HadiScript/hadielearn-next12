@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/auth";
 import { API } from "../../../config/API";
 import Redirecting from "../../common/Redrecting";
+import { useRouter } from "next/router";
 
 const { Sider, Content } = Layout;
 const { useBreakpoint } = Grid;
@@ -19,6 +20,7 @@ const StuLayout = ({ children, batch, assets, notice }) => {
   const breakpoints = useBreakpoint();
   const [auth] = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const showDrawer = () => {
     setDrawerVisibility(true);
