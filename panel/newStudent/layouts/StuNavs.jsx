@@ -27,7 +27,7 @@ const StuNavs = ({ id }) => {
       }}
     >
       <div className="mt-4 mb-4 text-center">
-        <h4 className="text-light">Welcome Student,</h4>
+        <h4 className="text-light">Hadi Elearning</h4>
       </div>
       <Menu.Item
         onClick={() => router.push(`/student-test/`)}
@@ -38,7 +38,7 @@ const StuNavs = ({ id }) => {
       </Menu.Item>
       <Menu.Item
         onClick={() => router.push(`/student-test/batch/description/${id}`)}
-        style={getActivesLink("/student-test/description") ? navsStyle : {}}
+        style={getActivesLink("description") ? navsStyle : {}}
         className="mt-5"
         icon={<BsCardChecklist />}
       >
@@ -51,6 +51,14 @@ const StuNavs = ({ id }) => {
         icon={<MdOutlinePlayLesson />}
       >
         Lessons
+      </Menu.Item>
+      <Menu.Item
+        onClick={() => router.push(`/student-test/batch/description/${id}`)}
+        style={getActivesLink("/student-test/description") ? navsStyle : {}}
+        className="mt-5"
+        icon={<BsCardChecklist />}
+      >
+        Assets
       </Menu.Item>
       <Menu.Item
         style={getActivesLink("folders") ? navsStyle : {}}

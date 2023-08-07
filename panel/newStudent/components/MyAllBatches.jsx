@@ -29,7 +29,7 @@ const MyAllBatches = () => {
         },
       });
       setLoading(false);
-      console.log(data, ".from getll batches");
+      // console.log(data, ".from getll batches");
       setMyBatches(data.enrolledBatches);
     } catch (error) {
       toast.error("Failed, try again");
@@ -50,10 +50,9 @@ const MyAllBatches = () => {
           <div className="col-xl-7">
             <div className="section-title section__title-3 mb-70">
               <h2>
-                Welcome{" "}
+                Welcome
                 <span className="text-capitalize"> {auth?.user?.name} </span>
               </h2>
-              {/* <p style={{ fontSize: "18px" }}>Your all Assigned Batches</p> */}
               {loading && <div className="my-5">loading...</div>}
             </div>
           </div>
@@ -71,7 +70,7 @@ const MyAllBatches = () => {
                   actions={[
                     <span
                       onClick={() =>
-                        router.push(`/student-test/batch/description/${x._id}`)
+                        router.push(`/student-test/batch/${x._id}`)
                       }
                       className="d-flex justify-content-center align-items-center gap-2"
                     >
@@ -81,7 +80,7 @@ const MyAllBatches = () => {
                 >
                   <Meta
                     title={
-                      <Link href={`/student-test/batch/description/${x._id}`}>
+                      <Link href={`/student-test/batch/${x._id}`}>
                         <span
                           role="button"
                           style={{ fontWeight: "bold", color: "#0f3f5d" }}

@@ -11,6 +11,8 @@ import HooksLayout from "../../../../panel/newStudent/layouts/components/HooksLa
 import { Card, Space, Tooltip } from "antd";
 import { FaFolder } from "react-icons/fa";
 import InFolders from "../../../../panel/newStudent/modals/InFolders";
+import NewLayout from "../../../../panel/newStudent/layouts/NewLayout";
+import StatsBatch from "../../../../panel/newStudent/components/StatsBatch";
 
 const StudentBatchFolders = () => {
   const router = useRouter();
@@ -46,8 +48,9 @@ const StudentBatchFolders = () => {
 
   return (
     <>
-      <HooksLayout>
-        <Card title="Folders">
+      <NewLayout batchID={id}>
+        <StatsBatch id={id} from={"folders"} />
+        <Card title="Folders" className="my-4">
           {loading && <>loading..</>}
           <Space wrap>
             {BatchFolders.map((x) => (
@@ -70,7 +73,7 @@ const StudentBatchFolders = () => {
             ))}
           </Space>
         </Card>
-      </HooksLayout>
+      </NewLayout>
 
       <InFolders open={open} setOpen={setOpen} current={current} auth={auth} />
     </>

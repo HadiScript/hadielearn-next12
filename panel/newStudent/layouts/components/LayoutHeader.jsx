@@ -59,7 +59,6 @@ const LayoutHeader = ({
 
   return (
     <>
-      {" "}
       <Header
         className="bg-light"
         style={{
@@ -78,7 +77,7 @@ const LayoutHeader = ({
         <h5 style={{ color: "#0f3f5d" }}>
           {breakpoints.sm && (
             <span className="text-capitalize">
-              {batch.title} | {batch?.courseDetails?.title}
+              Welcome {auth?.user?.name}
             </span>
           )}
         </h5>
@@ -127,12 +126,12 @@ const LayoutHeader = ({
           <StuNavs />
         </Drawer>
       </Header>
-      <BatchNotification
+      {/* <BatchNotification
         notice={notice}
         open={notificationModal}
         setOpen={setNotificationModal}
         batchName={batch?.title}
-      />
+      /> */}
       <ProfileModal
         open={openProfile}
         setOpen={setOpenProfile}

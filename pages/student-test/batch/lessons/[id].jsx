@@ -2,11 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import axios from "axios";
-import { Card, List } from "antd";
+import { Card, Col, Row, Statistic, List } from "antd";
+
 import { toast } from "react-hot-toast";
 import { API } from "../../../../config/API";
-import HooksLayout from "../../../../panel/newStudent/layouts/components/HooksLayout";
 import { AuthContext } from "../../../../context/auth";
+import NewLayout from "../../../../panel/newStudent/layouts/NewLayout";
+import { MdOutlinePlayLesson } from "react-icons/md";
+import { BsFolderSymlink } from "react-icons/bs";
+import { AiOutlineDownload } from "react-icons/ai";
+import { FaComments } from "react-icons/fa";
+import StatsBatch from "../../../../panel/newStudent/components/StatsBatch";
 
 const StudentBatchLessons = () => {
   const { id } = useRouter().query;
@@ -37,35 +43,52 @@ const StudentBatchLessons = () => {
   }, [auth && auth.token, id]);
 
   return (
-    <HooksLayout>
-      {/* {JSON.stringify(batchLessons)} */}
-      <Card title="Lessons">
-        <List
-          itemLayout="horizontal"
-          loading={loading}
-          dataSource={batchLessons}
-          renderItem={(item, index) => (
-            <List.Item
-              actions={[
-                <>
-                  {item.completed ? (
-                    <span className="text-success">completed</span>
-                  ) : (
-                    <></>
-                  )}
-                </>,
-              ]}
-              key={index}
-            >
-              <List.Item.Meta
-                title={item.title}
-                description={item.description}
-              />
-            </List.Item>
-          )}
-        />
-      </Card>
-    </HooksLayout>
+    <NewLayout batchID={id}>
+      <StatsBatch id={id} from={"lessons"} />
+
+      <div className="my-4">
+        <Card title="Lessons">
+          <List
+            itemLayout="horizontal"
+            loading={loading}
+            dataSource={batchLessons}
+            renderItem={(item, index) => (
+              <List.Item
+                style={{
+                  backgroundColor: `${item.complete ? "#0f3f5d" : "#0f3f5d1c"}`,
+                  padding: "20px",
+                  borderRadius: "10px",
+                  marginBottom: "10px",
+                }}
+                actions={[
+                  <>
+                    {item.complete ? (
+                      <span className="text-light">completed</span>
+                    ) : (
+                      <></>
+                    )}
+                  </>,
+                ]}
+                key={index}
+              >
+                <List.Item.Meta
+                  title={
+                    <span className={item.complete && "text-light"}>
+                      {item.title}
+                    </span>
+                  }
+                  description={
+                    <span className={item.complete && "text-light"}>
+                      {item.description}
+                    </span>
+                  }
+                />
+              </List.Item>
+            )}
+          />
+        </Card>
+      </div>
+    </NewLayout>
   );
 };
 

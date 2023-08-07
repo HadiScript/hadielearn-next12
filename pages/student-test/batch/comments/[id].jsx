@@ -8,13 +8,14 @@ import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../../../config/API";
-import { Avatar, Card, List } from "antd";
+import { Avatar, Card, Col, List, Row } from "antd";
 import moment from "moment";
 import { MessageOutlined } from "@ant-design/icons";
 import { BiTrash } from "react-icons/bi";
 import ReplyModel from "../../../../panel/newInstructor/modals/ReplyModel";
 import { Form } from "react-bootstrap";
 import Btn from "../../../../components/ui/Btn";
+import NewLayout from "../../../../panel/newStudent/layouts/NewLayout";
 
 const IconText = ({ icon, text, onClick }) => (
   <div onClick={onClick} className="d-flex align-items-center gap-1">
@@ -104,73 +105,77 @@ const BatchStudentsBatch = () => {
 
   return (
     <>
-      <HooksLayout>
-        <Card>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="commentForm">
-              <Form.Control
-                as="textarea"
-                rows={2}
-                placeholder="Enter your comment..."
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              />
-            </Form.Group>
-            <Btn loading={loading} className="mt-2" onClick={handleSubmit}>
-              Send
-            </Btn>
-          </Form>
-        </Card>
-        <hr />
-        <List
-          itemLayout="vertical"
-          size="large"
-          loading={loading}
-          dataSource={batchComments}
-          renderItem={(item) => (
-            <List.Item
-              style={{
-                backgroundColor: "white",
-                borderRadius: "10px",
-                marginBottom: "15px",
-              }}
-              key={item._id}
-              actions={[
-                <IconText
-                  onClick={() => {
-                    setReplyModal(true);
-                    setCurrentComment(item);
+      <NewLayout>
+        <Row justify={"center"}>
+          <Col md={12} sm={24} xs={24} lg={12}>
+            <Card>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="commentForm">
+                  <Form.Control
+                    as="textarea"
+                    rows={2}
+                    placeholder="Enter your comment..."
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                  />
+                </Form.Group>
+                <Btn loading={loading} className="mt-2" onClick={handleSubmit}>
+                  Send
+                </Btn>
+              </Form>
+            </Card>
+            <hr />
+            <List
+              itemLayout="vertical"
+              size="large"
+              loading={loading}
+              dataSource={batchComments}
+              renderItem={(item) => (
+                <List.Item
+                  style={{
+                    backgroundColor: "white",
+                    borderRadius: "10px",
+                    marginBottom: "15px",
                   }}
-                  icon={MessageOutlined}
-                  text="Reply"
-                  key="list-vertical-message"
-                />,
-                <>
-                  {auth?.user?._id === item.commentBy._id && (
-                    <BiTrash
-                      role="button"
-                      onClick={() => deleteComment(item._id)}
-                    />
-                  )}
-                </>,
-              ]}
-            >
-              <List.Item.Meta
-                avatar={<Avatar src={item.commentBy?.image?.url} />}
-                title={
-                  <>
-                    <strong>{item.commentBy?.name}</strong> -
-                    <small style={{ fontWeight: "normal" }}>
-                      {moment(item.createdAt).fromNow()}
-                    </small>
-                  </>
-                }
-                description={item.text}
-              />
-            </List.Item>
-          )}
-        />
-      </HooksLayout>
+                  key={item._id}
+                  actions={[
+                    <IconText
+                      onClick={() => {
+                        setReplyModal(true);
+                        setCurrentComment(item);
+                      }}
+                      icon={MessageOutlined}
+                      text="Reply"
+                      key="list-vertical-message"
+                    />,
+                    <>
+                      {auth?.user?._id === item.commentBy._id && (
+                        <BiTrash
+                          role="button"
+                          onClick={() => deleteComment(item._id)}
+                        />
+                      )}
+                    </>,
+                  ]}
+                >
+                  <List.Item.Meta
+                    avatar={<Avatar src={item.commentBy?.image?.url} />}
+                    title={
+                      <>
+                        <strong>{item.commentBy?.name}</strong> -
+                        <small style={{ fontWeight: "normal" }}>
+                          {moment(item.createdAt).fromNow()}
+                        </small>
+                      </>
+                    }
+                    description={item.text}
+                  />
+                </List.Item>
+              )}
+            />
+          </Col>
+        </Row>
+      </NewLayout>
       <ReplyModel
         current={currentComment}
         setCurrent={setCurrentComment}

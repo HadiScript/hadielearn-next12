@@ -21,20 +21,20 @@ const Home = ({ courses }) => {
   const [course_data, setCourse_data] = useState(courses);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  // useEffect(() => {
-  // //   let fromLocal = localStorage.getItem("modal", open);
+  useEffect(() => {
+    let fromLocal = localStorage.getItem("modal", open);
 
-  // //   if (!fromLocal) {
-  // //     setOpen(true);
-  // //     localStorage.setItem("modal", true);
-  // //   }
+    if (!fromLocal) {
+      setOpen(true);
+      localStorage.setItem("modal", true);
+    }
 
-  // //   // const timeout = setTimeout(() => {
-  // //   //   setOpen(true);
-  // //   // }, 5000);
+    // const timeout = setTimeout(() => {
+    //   setOpen(true);
+    // }, 5000);
 
-  // //   // return () => clearTimeout(timeout);
-  // // }, []);
+    // return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <>
@@ -85,7 +85,7 @@ const Home = ({ courses }) => {
       >
         <Image
           className="mt-4"
-          src={`/assets/image/modal-notifications.jpg`}
+          src={`/assets/image/modal-notifications2.jpg`}
           layout="responsive"
           width={1000}
           height={600}

@@ -1,9 +1,7 @@
 import { useState } from "react";
-
 import { Layout, Grid } from "antd";
 import { DefaultSider } from "./style/wrap.style";
 import StuNavs from "./StuNavs";
-import StuNavsRight from "./StuNavsRight";
 import LayoutHeader from "./components/LayoutHeader";
 import { useEffect } from "react";
 import { useContext } from "react";
@@ -16,26 +14,12 @@ import axios from "axios";
 const { Sider, Content } = Layout;
 const { useBreakpoint } = Grid;
 
-const StuLayout = ({ children, batch, batchId, assets, notice }) => {
+const NewLayout = ({ children, batchID }) => {
   const [drawerVisibility, setDrawerVisibility] = useState(false);
   const breakpoints = useBreakpoint();
   const [auth] = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  const showDrawer = () => {
-    setDrawerVisibility(true);
-  };
-  const closeDrawer = () => {
-    setDrawerVisibility(false);
-  };
-
-  // current-student
-  useEffect(() => {
-    if (auth?.token) {
-      getCurrentAdmin();
-    }
-  }, [auth?.token]);
 
   const getCurrentAdmin = async () => {
     try {
@@ -49,11 +33,25 @@ const StuLayout = ({ children, batch, batchId, assets, notice }) => {
         setLoading(false);
       }
     } catch (err) {
+      router.push("/");
       setLoading(false);
       console.log(err);
-      router.push("/");
     }
   };
+
+  const showDrawer = () => {
+    setDrawerVisibility(true);
+  };
+  const closeDrawer = () => {
+    setDrawerVisibility(false);
+  };
+
+  // current-student
+  useEffect(() => {
+    if (auth && auth?.token) {
+      getCurrentAdmin();
+    }
+  }, [auth && auth?.token]);
 
   return (
     <>
@@ -62,6 +60,7 @@ const StuLayout = ({ children, batch, batchId, assets, notice }) => {
           <DefaultSider>
             <Sider
               style={{
+                // width: "350px !important", // Adjust the width here as needed
                 overflow: "auto",
                 height: "100vh",
                 position: "fixed",
@@ -69,20 +68,23 @@ const StuLayout = ({ children, batch, batchId, assets, notice }) => {
                 top: 0,
                 bottom: 0,
               }}
+              // collapsedWidth="80" // Adjust the collapsed width as needed
+              width="250" // Adjust the width here as needed
+              // breakpoint="md"
             >
-              <StuNavs id={batchId} />
+              <StuNavs id={batchID} />
             </Sider>
           </DefaultSider>
         )}
         <Layout
           style={{
-            marginRight: breakpoints.md ? 100 : 0,
+            marginLeft: breakpoints.md ? "50px" : 0,
           }}
         >
           <LayoutHeader
             showDrawer={showDrawer}
-            batch={batch}
-            notice={notice}
+            // batch={batch}
+            // notice={notice}
             closeDrawer={closeDrawer}
             drawerVisibility={drawerVisibility}
           />
@@ -98,26 +100,9 @@ const StuLayout = ({ children, batch, batchId, assets, notice }) => {
             {loading ? <Redirecting /> : children}
           </Content>
         </Layout>
-        {breakpoints.md && (
-          <DefaultSider>
-            <Sider
-              width={300}
-              style={{
-                overflow: "auto",
-                height: "100vh",
-                position: "fixed",
-                right: 0,
-                top: 0,
-                bottom: 0,
-              }}
-            >
-              <StuNavsRight batch={batch} assets={assets} />
-            </Sider>
-          </DefaultSider>
-        )}
       </Layout>
     </>
   );
 };
 
-export default StuLayout;
+export default NewLayout;
