@@ -54,7 +54,8 @@ const HooksLayout = ({ children }) => {
       loading={loading}
       notice={notice[0]}
     >
-      {loading ? <p className="text-center"> loading...</p> : children}
+      {children}
+      {/* {loading ? <p className="text-center"> loading...</p> : children} */}
     </StuLayout>
   );
 };

@@ -54,10 +54,6 @@ const DescriptionBatch = () => {
             xs: 1,
           }}
         >
-          <Descriptions.Item label={`Instructor`}>
-            {/* {teachers?.teacher[0]?.name} */}
-            {JSON.stringify(teachers.teachers)}
-          </Descriptions.Item>
           <Descriptions.Item label="Lessons">{lessons}</Descriptions.Item>
           <Descriptions.Item label="Assets">{assets}</Descriptions.Item>
           <Descriptions.Item label="Folders">{folders}</Descriptions.Item>
