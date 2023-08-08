@@ -19,6 +19,7 @@ const StatsBatch = ({ id, from }) => {
   const [folders, setFolders] = useState(0);
   const [comments, setComments] = useState(0);
   const [lessons, setLessons] = useState(0);
+  const [batch, setBatch] = useState("");
 
   const fetchingAllStatsForBatch = async (x) => {
     try {
@@ -27,6 +28,7 @@ const StatsBatch = ({ id, from }) => {
       setFolders(data.folders);
       setLessons(data.lessons);
       setComments(data.comments);
+      setBatch(data.batch.title);
     } catch (error) {
       console.log(error);
       toast.error("Failed, Try Again");
@@ -43,7 +45,7 @@ const StatsBatch = ({ id, from }) => {
     <>
       <Row gutter={[16, 16]} className="mb-4">
         <Col xs={24} sm={24} md={12} lg={12}>
-          <h3 style={{ color: "#0f3f5d" }}>React JS Mastery Course</h3>
+          <h3 style={{ color: "#0f3f5d" }}>{batch}</h3>
         </Col>
       </Row>
 

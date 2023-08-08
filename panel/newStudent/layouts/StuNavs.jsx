@@ -4,7 +4,11 @@ import { useRouter } from "next/router";
 import { HomeOutlined, LogoutOutlined } from "@ant-design/icons";
 import { MdOutlinePlayLesson } from "react-icons/md";
 import { LuFolders } from "react-icons/lu";
-import { BsCardChecklist, BsChatLeftDots } from "react-icons/bs";
+import {
+  BsCalendarEvent,
+  BsCardChecklist,
+  BsChatLeftDots,
+} from "react-icons/bs";
 import {
   getActivesLink,
   navsStyle,
@@ -74,6 +78,14 @@ const StuNavs = ({ id }) => {
         icon={<BsChatLeftDots />}
       >
         Discussions
+      </Menu.Item>
+
+      <Menu.Item
+        style={getActivesLink("time-table") ? navsStyle : {}}
+        onClick={() => router.push(`/student-test/batch/time-table/${id}`)}
+        icon={<BsCalendarEvent />}
+      >
+        Time Table
       </Menu.Item>
 
       <Menu.Item
