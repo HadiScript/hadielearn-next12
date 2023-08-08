@@ -6,14 +6,7 @@ import { toast } from "react-hot-toast";
 import { API } from "../../../config/API";
 import { BiTrash } from "react-icons/bi";
 
-const InFolders = ({
-  open,
-  setOpen,
-  current,
-  auth,
-  BatchFolders,
-  setCurrent,
-}) => {
+const InFolders = ({ open, setOpen, current, auth, setCurrent }) => {
   const [file_name, setFile_name] = useState("");
   const [file, setFile] = useState("");
   const [public_id, setPublic_id] = useState("");
@@ -112,7 +105,6 @@ const InFolders = ({
 
   const removeAssignments = async (x, y) => {
     try {
-      setUploading(true);
       const { data } = await axios.put(
         `${API}/lms/remove-assignment/${x}/${y}`,
         {},
@@ -123,7 +115,6 @@ const InFolders = ({
         }
       );
       if (data.ok) {
-        setUploading(false);
         toast.success("Removed");
         setCurrent({
           ...current,
