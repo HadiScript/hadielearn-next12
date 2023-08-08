@@ -92,18 +92,7 @@ const Applications = () => {
   };
 
   const exportToCSV = () => {
-    const filtererdArray = [];
-
-    enrollments.forEach((item) => {
-      filtererdArray.push({
-        name: item.firstName + item.lastName,
-        email: item.lastName,
-        phone: item.phoneNumber,
-        whatsApp: item.whatsAppphoneNumber,
-      });
-    });
-
-    const csvData = dataToCSV(filtererdArray);
+    const csvData = dataToCSV(enrollments);
 
     const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
     saveAs(blob, "data.csv");
@@ -174,6 +163,9 @@ const Applications = () => {
             <option value={50}>50 - limit</option>
             <option value={100}>100 - limit</option>
             <option value={200}>200 - limit</option>
+            <option value={2000}>200 - limit</option>
+            <option value={5000}>200 - limit</option>
+            <option value={10000}>200 - limit</option>
           </select>
           <Btn onClick={Reset}> Reset </Btn>
           <Btn onClick={exportToCSV}> Export CSV </Btn>

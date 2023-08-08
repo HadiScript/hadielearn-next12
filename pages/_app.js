@@ -74,13 +74,6 @@ function MyApp({ Component, pageProps }) {
                   src="https://www.googletagmanager.com/gtag/js?id=G-XMP1680JR1"
                 ></script>
 
-                {/* ads */}
-                <script
-                  async
-                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098252304490801"
-                  crossOrigin="anonymous"
-                ></script>
-
                 <script
                   dangerouslySetInnerHTML={{
                     __html: `
@@ -121,6 +114,13 @@ function MyApp({ Component, pageProps }) {
                 <script
                   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
                   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+                  crossOrigin="anonymous"
+                ></script>
+
+                {/* ads */}
+                <script
+                  async
+                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098252304490801"
                   crossOrigin="anonymous"
                 ></script>
               </Head>

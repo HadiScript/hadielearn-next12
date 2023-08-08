@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import { Avatar } from "antd";
 import { LoginOutlined } from "@ant-design/icons";
+import { MdOutlineOnlinePrediction } from "react-icons/md";
 
 const TopHeader = ({
   h4class,
@@ -110,7 +111,7 @@ const TopHeader = ({
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/student-test">
                           <span role="button" className={`z-btn ${btn_class}`}>
-                            Learning
+                            My Learning <MdOutlineOnlinePrediction size={25 } className="mx-2" />
                           </span>
                         </Link>
                       </div>

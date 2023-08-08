@@ -50,7 +50,7 @@ const StuHeader = ({ page = "notFromContact" }) => {
           user: null,
           token: "",
         });
-        router.push("/auth/login");
+        router.push("/");
       },
       key: "3",
       icon: <AiOutlineLogout size={17} />,

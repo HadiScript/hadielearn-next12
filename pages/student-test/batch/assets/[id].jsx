@@ -8,6 +8,7 @@ import { AuthContext } from "../../../../context/auth";
 import { toast } from "react-hot-toast";
 import StatsBatch from "../../../../panel/newStudent/components/StatsBatch";
 import { Card, List } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 
 const BatchAssets = () => {
   const [auth] = useContext(AuthContext);
@@ -54,7 +55,7 @@ const BatchAssets = () => {
                 }}
                 actions={[
                   <>
-                    <span className="">Download</span>
+                    <DownloadOutlined onClick={() => window.open(item.file)} />
                   </>,
                 ]}
                 key={index}
