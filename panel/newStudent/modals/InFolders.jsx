@@ -82,9 +82,6 @@ const InFolders = ({
       assetUrl = assetUpload.replace(/^http:\/\//i, "https://");
     }
 
-    // const addAssignmentsURL = `${API}/lms/add-assignments/${x}`;
-    // assignments({ file: assetUrl, file_name, public_id }, addAssignmentsURL);
-
     try {
       const { data } = await axios.put(
         `${API}/lms/stu-add-assignments/${x}`,
@@ -96,8 +93,8 @@ const InFolders = ({
         }
       );
       if (data.ok) {
+        setUploading(false);
         toast.success("added", { position: "bottom-center" });
-        // fetchingBatchItems(id);
         setCurrent({
           ...current,
           data: [...current.data, data.singleData],
@@ -115,6 +112,7 @@ const InFolders = ({
 
   const removeAssignments = async (x, y) => {
     try {
+      setUploading(true);
       const { data } = await axios.put(
         `${API}/lms/remove-assignment/${x}/${y}`,
         {},
@@ -125,6 +123,7 @@ const InFolders = ({
         }
       );
       if (data.ok) {
+        setUploading(false);
         toast.success("Removed");
         setCurrent({
           ...current,
