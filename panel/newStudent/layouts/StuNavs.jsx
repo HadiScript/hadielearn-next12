@@ -58,7 +58,7 @@ const StuNavs = ({ id }) => {
       </Menu.Item>
       <Menu.Item
         onClick={() => router.push(`/student-test/batch/description/${id}`)}
-        style={getActivesLink("/student-test/description") ? navsStyle : {}}
+        style={getActivesLink("/student-test/assets") ? navsStyle : {}}
         className="mt-5"
         icon={<BsCardChecklist />}
       >

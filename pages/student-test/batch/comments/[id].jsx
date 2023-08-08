@@ -105,7 +105,7 @@ const BatchStudentsBatch = () => {
 
   return (
     <>
-      <NewLayout>
+      <NewLayout batchID={id}>
         <Row justify={"center"}>
           <Col md={12} sm={24} xs={24} lg={12}>
             <Card>
