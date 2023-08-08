@@ -172,6 +172,7 @@ const InFolders = ({ open, setOpen, current, auth, setCurrent }) => {
 
       <Divider> Uploaded Files </Divider>
       <List
+        loading={uploading}
         dataSource={current.data}
         itemLayout="horizontal"
         renderItem={(item) => (

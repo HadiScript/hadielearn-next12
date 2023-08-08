@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }) {
                   async
                   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098252304490801"
                   crossOrigin="anonymous"
-                ></script>
+                />
               </Head>
 
               <Toaster />
