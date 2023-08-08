@@ -158,14 +158,13 @@ const Applications = () => {
             id="enrollToSelect"
           >
             <option value={10}>10 - limit</option>
-
             <option value={20}>20 - limit</option>
             <option value={50}>50 - limit</option>
             <option value={100}>100 - limit</option>
             <option value={200}>200 - limit</option>
-            <option value={2000}>200 - limit</option>
-            <option value={5000}>200 - limit</option>
-            <option value={10000}>200 - limit</option>
+            <option value={2000}>2000 - limit</option>
+            <option value={5000}>5000 - limit</option>
+            <option value={10000}>10000 - limit</option>
           </select>
           <Btn onClick={Reset}> Reset </Btn>
           <Btn onClick={exportToCSV}> Export CSV </Btn>
