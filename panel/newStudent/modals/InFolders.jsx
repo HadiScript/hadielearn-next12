@@ -6,7 +6,14 @@ import { toast } from "react-hot-toast";
 import { API } from "../../../config/API";
 import { BiTrash } from "react-icons/bi";
 
-const InFolders = ({ open, setOpen, current, auth }) => {
+const InFolders = ({
+  open,
+  setOpen,
+  current,
+  auth,
+  BatchFolders,
+  setCurrent,
+}) => {
   const [file_name, setFile_name] = useState("");
   const [file, setFile] = useState("");
   const [public_id, setPublic_id] = useState("");
@@ -91,6 +98,14 @@ const InFolders = ({ open, setOpen, current, auth }) => {
       if (data.ok) {
         toast.success("added", { position: "bottom-center" });
         // fetchingBatchItems(id);
+        setCurrent({
+          ...current,
+          data: [...current.data, data.singleData],
+        });
+
+        setFile_name("");
+        setFile("");
+        setPublic_id("");
       }
     } catch (error) {
       setUploading(false);
@@ -111,7 +126,10 @@ const InFolders = ({ open, setOpen, current, auth }) => {
       );
       if (data.ok) {
         toast.success("Removed");
-        
+        setCurrent({
+          ...current,
+          data: current.data.filter((x) => x._id !== y),
+        });
       }
     } catch (error) {
       setUploading(false);

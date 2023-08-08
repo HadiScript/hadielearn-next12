@@ -75,7 +75,14 @@ const StudentBatchFolders = () => {
         </Card>
       </NewLayout>
 
-      <InFolders open={open} setOpen={setOpen} current={current} auth={auth} />
+      <InFolders
+        open={open}
+        setOpen={setOpen}
+        current={current}
+        setCurrent={setCurrent}
+        auth={auth}
+        BatchFolders={BatchFolders}
+      />
     </>
   );
 };
