@@ -85,7 +85,11 @@ const DescriptionBatch = () => {
 
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card role="button" onClick={()=>router.push(`/student-test/batch/lessons/${id}`)} bordered={false}>
+          <Card
+            role="button"
+            onClick={() => router.push(`/student-test/batch/lessons/${id}`)}
+            bordered={false}
+          >
             <Statistic
               // title="Lessons"
               value={`Lessons ${lessons}`}
@@ -97,7 +101,11 @@ const DescriptionBatch = () => {
           </Card>
         </Col>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card role="button" onClick={()=>router.push(`/student-test/batch/folders/${id}`)} bordered={false}>
+          <Card
+            role="button"
+            onClick={() => router.push(`/student-test/batch/folders/${id}`)}
+            bordered={false}
+          >
             <Statistic
               value={`folders ${folders}`}
               valueStyle={{
@@ -108,7 +116,11 @@ const DescriptionBatch = () => {
           </Card>
         </Col>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card role="button" onClick={()=>router.push(`/student-test/batch/assets/${id}`)} bordered={false}>
+          <Card
+            role="button"
+            onClick={() => router.push(`/student-test/batch/assets/${id}`)}
+            bordered={false}
+          >
             <Statistic
               value={`Assets ${assets}`}
               valueStyle={{
@@ -119,7 +131,11 @@ const DescriptionBatch = () => {
           </Card>
         </Col>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card role="button" onClick={()=>router.push(`/student-test/batch/comments/${id}`)} bordered={false}>
+          <Card
+            role="button"
+            onClick={() => router.push(`/student-test/batch/comments/${id}`)}
+            bordered={false}
+          >
             <Statistic
               value={`Comments ${comments}`}
               valueStyle={{
@@ -140,16 +156,18 @@ const DescriptionBatch = () => {
             />
           </Card>
         </Col>
-        <Col xs={24} sm={24} md={16} lg={16}>
-          <Card bordered={false}>
-            <div className="alert alert-success" role="alert">
-              <h4 className="alert-heading">{notice.heading}</h4>
-              <p>{notice.text}</p>
-              <hr />
-              <p className="mb-0">{moment(notice.createdAt).fromNow()}</p>
-            </div>
-          </Card>
-        </Col>
+        {notice && (
+          <Col xs={24} sm={24} md={16} lg={16}>
+            <Card bordered={false}>
+              <div className="alert alert-success" role="alert">
+                <h4 className="alert-heading">{notice.heading}</h4>
+                <p>{notice.text}</p>
+                <hr />
+                <p className="mb-0">{moment(notice.createdAt).fromNow()}</p>
+              </div>
+            </Card>
+          </Col>
+        )}
       </Row>
     </NewLayout>
   );
