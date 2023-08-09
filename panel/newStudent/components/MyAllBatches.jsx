@@ -70,7 +70,7 @@ const MyAllBatches = () => {
                   actions={[
                     <span
                       onClick={() =>
-                        router.push(`/student-test/batch/${x._id}`)
+                        router.push(`/student-test/batch/description/${x._id}`)
                       }
                       className="d-flex justify-content-center align-items-center gap-2"
                     >
@@ -80,7 +80,7 @@ const MyAllBatches = () => {
                 >
                   <Meta
                     title={
-                      <Link href={`/student-test/batch/${x._id}`}>
+                      <Link href={`/student-test/batch/description/${x._id}`}>
                         <span
                           role="button"
                           style={{ fontWeight: "bold", color: "#0f3f5d" }}
