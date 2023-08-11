@@ -1,5 +1,5 @@
 import { Menu } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { BackwardFilled, HomeOutlined } from "@ant-design/icons";
 import { FaChalkboardTeacher, FaPlus } from "react-icons/fa";
 import {
   MdCategory,
@@ -101,9 +101,9 @@ const CMSNavs = () => {
       <Menu.Item
         onClick={() => router.push("/admin-test")}
         className="mt-3"
-        icon={<MdImageSearch />}
+        icon={<BackwardFilled />}
       >
-        Admin
+        Back
       </Menu.Item>
     </Menu>
   );

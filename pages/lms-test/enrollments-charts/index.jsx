@@ -144,7 +144,7 @@ const EnrollmentsCharts = () => {
       </Row>
 
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={12} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Card title="GENDER DATA" bordered={false}>
             {/* {JSON.stringify(enrollmentsData)} */}
             <ResponsiveContainer width="100%" height={300}>
@@ -158,32 +158,48 @@ const EnrollmentsCharts = () => {
                   outerRadius={80}
                   fill="#0f3f5d"
                   label
-                />
+                >
+                  {transformedData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
                 <Tooltip />
                 <Legend />
               </PieChart>
             </ResponsiveContainer>
           </Card>
         </Col>
-        <Col xs={24} sm={24} md={12} lg={12}>
+        <Col xs={24} sm={24} md={16} lg={16}>
           <Card title="BY COURSE DATA" bordered={false}>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart
-                data={transformedDataForGroupedDataForCourses}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="course" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="count" fill="#0f3f5d" />
-              </BarChart>
-            </ResponsiveContainer>
+            <div style={{ height: "100%", overflowY: "scroll" }}>
+              <div style={{ height: "550px" }}>
+                <ResponsiveContainer width="100%" height={500}>
+                  <BarChart
+                    data={transformedDataForGroupedDataForCourses}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis
+                      dataKey="course"
+                      interval={0}
+                      angle={-45}
+                      textAnchor="end"
+                    />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="count" fill="#0f3f5d" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </Card>
         </Col>
       </Row>

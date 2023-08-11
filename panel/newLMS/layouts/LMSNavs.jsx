@@ -1,5 +1,5 @@
 import { Menu } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { BackwardFilled, HomeOutlined } from "@ant-design/icons";
 import { FaBackspace, FaChalkboardTeacher, FaPlus } from "react-icons/fa";
 import {
   MdCategory,
@@ -139,9 +139,9 @@ const LMSNavs = () => {
         <Menu.Item
           onClick={() => router.push("/admin-test")}
           className="mt-3"
-          icon={<FaBackspace />}
+          icon={<BackwardFilled />}
         >
-          Batch
+          Back
         </Menu.Item>
       )}
     </Menu>
