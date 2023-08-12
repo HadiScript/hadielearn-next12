@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LMSLayout from "../../../panel/newLMS/layouts";
 import { API } from "../../../config/API";
 import axios from "axios";
@@ -8,8 +8,10 @@ import { toast } from "react-hot-toast";
 import Btn from "../../../components/ui/Btn";
 import { saveAs } from "file-saver";
 import Papa from "papaparse";
+import { AuthContext } from "../../../context/auth";
 
 const Applications = () => {
+  const [auth] = useContext(AuthContext);
   const [enrollments, setEnrollments] = useState([]);
 
   const [limit, setLimit] = useState(10);
@@ -31,7 +33,12 @@ const Applications = () => {
     const fetchingData = async () => {
       try {
         const { data } = await axios.get(
-          `${API}/fetch/enrollments?page=${currentPage}&limit=${limit}&search=${searchInput}&fromDate=${fromDate}&endDate=${endDate}&enrollTo=${enrollToSelect}&course=${courseSelect}`
+          `${API}/fetch/enrollments?page=${currentPage}&limit=${limit}&search=${searchInput}&fromDate=${fromDate}&endDate=${endDate}&enrollTo=${enrollToSelect}&course=${courseSelect}`,
+          {
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
         );
         setEnrollments(data.enrollments);
         setTotalPages(data.totalPages);
@@ -75,14 +82,6 @@ const Applications = () => {
     setEnrollToSelect("");
     setCourseSelect("");
   };
-
-  // const dataToCSV = (data) => {
-  //   const headers = Object.keys(data[0]);
-  //   const rows = data.map((item) => headers.map((header) => item[header]));
-  //   const csvData = [headers, ...rows].map((row) => row.join(","));
-
-  //   return csvData.join("\n");
-  // };
 
   const dataToCSV = (data) => {
     const csv = Papa.unparse(data, {
