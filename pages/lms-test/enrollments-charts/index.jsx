@@ -34,6 +34,7 @@ import {
 const EnrollmentsCharts = () => {
   const [auth] = useContext(AuthContext);
   const [enrollmentsData, setEnrollmentsData] = useState([]);
+  const [enrollmentsByDay, setEnrollmentsByDay] = useState([]);
 
   const fetchingEnrollmentsData = async () => {
     try {
@@ -46,8 +47,32 @@ const EnrollmentsCharts = () => {
   };
 
   useEffect(() => {
+    const dataFetching = async () => {
+      try {
+        const { data } = await axios.get(`${API}/fetch/enrollments/per/day`);
+        // console.log(data, "from data fetching");
+        setEnrollmentsByDay(data);
+      } catch (error) {
+        console.log(error);
+        toast.error(error);
+      }
+    };
+
+    if (auth && auth.token) dataFetching();
+  }, [auth && auth.token]);
+
+  useEffect(() => {
     if (auth && auth.token) fetchingEnrollmentsData();
   }, [auth && auth.token]);
+
+  const transformingEnrollmentOfEachDay = enrollmentsByDay.map((entry) => ({
+    date: entry.date,
+    count: entry.count,
+  }));
+
+  const sortedEnrollmentByEachDay = transformingEnrollmentOfEachDay.sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
 
   const genderData = enrollmentsData?.reduce((acc, enrollment) => {
     const { gender } = enrollment;
@@ -118,7 +143,7 @@ const EnrollmentsCharts = () => {
           <Card title="ENROLLMENTS TREND">
             <ResponsiveContainer width="100%" height={300}>
               <LineChart
-                data={transformedDataOfGroupedData}
+                data={sortedEnrollmentByEachDay}
                 margin={{
                   top: 5,
                   right: 30,
@@ -130,13 +155,7 @@ const EnrollmentsCharts = () => {
                 <XAxis dataKey="date" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="count"
-                  stroke="#0f3f5d"
-                  activeDot={{ r: 8 }}
-                />
+                <Line type="monotone" dataKey="count" stroke="#0f3f5d" />
               </LineChart>
             </ResponsiveContainer>
           </Card>
@@ -174,9 +193,9 @@ const EnrollmentsCharts = () => {
         </Col>
         <Col xs={24} sm={24} md={16} lg={16}>
           <Card title="BY COURSE DATA" bordered={false}>
-            <div style={{ height: "100%", overflowY: "scroll" }}>
-              <div style={{ height: "550px" }}>
-                <ResponsiveContainer width="100%" height={500}>
+            {/* <div style={{ height: "100%", overflowY: "scroll" }}>
+              <div style={{ height: "550px" }}> */}
+                <ResponsiveContainer width="100%" height={300}>
                   <BarChart
                     data={transformedDataForGroupedDataForCourses}
                     margin={{
@@ -189,17 +208,17 @@ const EnrollmentsCharts = () => {
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis
                       dataKey="course"
-                      interval={0}
-                      angle={-45}
-                      textAnchor="end"
+                      // interval={0}
+                      // angle={-45}
+                      // textAnchor="end"
                     />
                     <YAxis />
                     <Tooltip />
                     <Bar dataKey="count" fill="#0f3f5d" />
                   </BarChart>
                 </ResponsiveContainer>
-              </div>
-            </div>
+              {/* </div>
+            </div> */}
           </Card>
         </Col>
       </Row>
@@ -227,7 +246,7 @@ const EnrollmentsCharts = () => {
       <Card className="my-3" title="ENROLLMENTS BY CITIES">
         <div style={{ height: "100%", overflowY: "auto" }}>
           <div style={{ height: "450px" }}>
-            <ResponsiveContainer width="100%" height={7000}>
+            <ResponsiveContainer width="100%" height={9000}>
               <BarChart
                 layout="vertical"
                 data={transformedData_groupedDataForCity}
