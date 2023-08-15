@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import { useEffect } from "react";
 import { API } from "../../config/API";
+import { toast } from "react-hot-toast";
 
 const Admin = () => {
   const [stats, setStats] = useState({});
@@ -23,6 +24,7 @@ const Admin = () => {
       setStats(data);
     } catch (error) {
       console.log(error);
+      toast.error(error);
     }
   };
 

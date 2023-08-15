@@ -54,12 +54,12 @@ const PaymentsEnrolledStudents = () => {
     <Row gutter={[16, 16]}>
       <Col xs={24} sm={24} md={12} lg={12}>
         <Card bordered={false}>
-          <PaymentChart data={paymentsData} />
+          {paymentsData && <PaymentChart data={paymentsData} />}
         </Card>
       </Col>
       <Col xs={24} sm={24} md={12} lg={12}>
         <Card bordered={false}>
-          <EnrolledStudents data={enrlByStu} />
+          {enrlByStu && <EnrolledStudents data={enrlByStu} />}
         </Card>
       </Col>
     </Row>
