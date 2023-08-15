@@ -1,61 +1,58 @@
 import React from "react";
 import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { Card, Col, Row, Statistic } from "antd";
-const Stats = () => {
+import { MdOutlineGroups3, MdOutlinePlaylistAdd } from "react-icons/md";
+import { TbFolders } from "react-icons/tb";
+import { CgToolbarBottom } from "react-icons/cg";
+
+const Stats = ({ data }) => {
   return (
     <Row gutter={[16, 16]}>
       <Col xs={24} sm={24} md={6} lg={6}>
         <Card bordered={false}>
           <Statistic
-            title="Active"
-            value={11.28}
-            precision={2}
+            title="Enrollments"
+            value={data.enrollments}
             valueStyle={{
               color: "#0f3f5d",
             }}
-            prefix={<ArrowUpOutlined />}
+            prefix={<MdOutlinePlaylistAdd />}
           />
         </Card>
       </Col>
       <Col xs={24} sm={24} md={6} lg={6}>
         <Card bordered={false}>
           <Statistic
-            title="Idle"
-            value={9.3}
-            precision={2}
+            title="Batches"
+            value={data.batches}
             valueStyle={{
               color: "#0f3f5d",
             }}
-            prefix={<ArrowDownOutlined />}
-            suffix="%"
+            prefix={<MdOutlineGroups3 />}
           />
         </Card>
       </Col>
       <Col xs={24} sm={24} md={6} lg={6}>
         <Card bordered={false}>
           <Statistic
-            title="Idle"
-            value={9.3}
-            precision={2}
+            title="Folders"
+            value={data.folders}
             valueStyle={{
               color: "#0f3f5d",
             }}
-            prefix={<ArrowDownOutlined />}
-            suffix="%"
+            prefix={<TbFolders />}
           />
         </Card>
       </Col>
       <Col xs={24} sm={24} md={6} lg={6}>
         <Card bordered={false}>
           <Statistic
-            title="Idle"
-            value={9.3}
-            precision={2}
+            title="Assets"
+            value={data.assets}
             valueStyle={{
               color: "#0f3f5d",
             }}
-            prefix={<ArrowDownOutlined />}
-            suffix="%"
+            prefix={<CgToolbarBottom />}
           />
         </Card>
       </Col>

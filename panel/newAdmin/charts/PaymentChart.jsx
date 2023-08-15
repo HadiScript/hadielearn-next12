@@ -12,74 +12,7 @@ import {
 import moment from "moment";
 import { Divider, List } from "antd";
 
-const data = [
-  {
-    title: "Ant Design Title 1",
-  },
-  {
-    title: "Ant Design Title 2",
-  },
-  {
-    title: "Ant Design Title 3",
-  },
-  {
-    title: "Ant Design Title 4",
-  },
-];
-
-const paymentLogs = [
-  {
-    _id: "1",
-    from: "user1",
-    amount: 100,
-    comment: "Payment 1",
-    addedBy: "admin1",
-    createdAt: "2023-06-25T09:00:00.000Z",
-  },
-  {
-    _id: "2",
-    from: "user2",
-    amount: 150,
-    comment: "Payment 2",
-    addedBy: "admin2",
-    createdAt: "2023-06-26T10:30:00.000Z",
-  },
-  {
-    _id: "3",
-    from: "user2",
-    amount: 15,
-    comment: "Payment 2",
-    addedBy: "admin2",
-    createdAt: "2023-06-26T10:30:00.000Z",
-  },
-  {
-    _id: "3",
-    from: "user2",
-    amount: 135,
-    comment: "Payment 2",
-    addedBy: "admin2",
-    createdAt: "2023-06-26T10:30:00.000Z",
-  },
-  {
-    _id: "3",
-    from: "user2",
-    amount: 195,
-    comment: "Payment 2",
-    addedBy: "admin2",
-    createdAt: "2023-06-26T10:30:00.000Z",
-  },
-  {
-    _id: "3",
-    from: "user2",
-    amount: 135,
-    comment: "Payment 2",
-    addedBy: "admin2",
-    createdAt: "2023-06-26T10:30:00.000Z",
-  },
-  // Add more payment logs as needed
-];
-
-const PaymentChart = () => {
+const PaymentChart = ({ data }) => {
   const renderTooltip = (props) => {
     const { active, payload } = props;
     if (active && payload && payload.length) {
@@ -89,18 +22,22 @@ const PaymentChart = () => {
       );
       return (
         <div className="custom-tooltip">
-          <p>{formattedDate}</p>
+          <p>
+            {formattedDate} - {dataPoint.amount}
+          </p>
         </div>
       );
     }
     return null;
   };
 
+  const listPayments = data.slice(0, 5);
+
   return (
     <>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
-          data={paymentLogs}
+          data={data}
           margin={{
             top: 5,
             right: 30,
@@ -121,19 +58,16 @@ const PaymentChart = () => {
           />
         </LineChart>
       </ResponsiveContainer>
-      <Divider orientation="left">Recent Payments</Divider>
+      {/* <Divider orientation="left">Recent Payments</Divider>
       <List
         itemLayout="horizontal"
-        dataSource={data}
+        dataSource={listPayments}
         renderItem={(item, index) => (
           <List.Item>
-            <List.Item.Meta
-              title={<a href="https://ant.design">{item.title}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            />
+            <List.Item.Meta title={item.amount} description={item.comment} />
           </List.Item>
         )}
-      />
+      /> */}
     </>
   );
 };

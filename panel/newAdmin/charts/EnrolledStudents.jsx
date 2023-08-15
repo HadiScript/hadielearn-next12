@@ -12,52 +12,7 @@ import {
 
 import { Divider, List } from "antd";
 
-const data2 = [
-  {
-    title: "Ant Design Title 1",
-  },
-  {
-    title: "Ant Design Title 2",
-  },
-  {
-    title: "Ant Design Title 3",
-  },
-  {
-    title: "Ant Design Title 4",
-  },
-];
-
-const data = [
-  {
-    title: "Check",
-    enrolledStudentsCount: 53,
-  },
-  {
-    title: "b52312",
-    enrolledStudentsCount: 29,
-  },
-  {
-    title: "Mern Stack ",
-    enrolledStudentsCount: 0,
-  },
-  {
-    title: "b2",
-    enrolledStudentsCount: 10,
-  },
-  {
-    title: "b2",
-    enrolledStudentsCount: 14,
-  },
-  {
-    title: "b2",
-    enrolledStudentsCount: 98,
-  },
-  {
-    title: "b2",
-    enrolledStudentsCount: 53,
-  },
-];
-const EnrolledStudents = () => {
+const EnrolledStudents = ({ data }) => {
   return (
     <>
       <ResponsiveContainer width="100%" height={300}>
@@ -83,8 +38,8 @@ const EnrolledStudents = () => {
           />
         </BarChart>
       </ResponsiveContainer>
-      <Divider orientation="left">Recent Activites</Divider>
-      <List
+      {/* <Divider orientation="left">Recent Activites</Divider> */}
+      {/* <List
         itemLayout="horizontal"
         dataSource={data2}
         renderItem={(item, index) => (
@@ -95,7 +50,7 @@ const EnrolledStudents = () => {
             />
           </List.Item>
         )}
-      />
+      /> */}
     </>
   );
 };
