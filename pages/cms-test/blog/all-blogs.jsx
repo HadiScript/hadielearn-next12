@@ -71,14 +71,14 @@ const AllBlogs = () => {
                 </tr>
               </thead>
               <tbody>
-                {AllBlogs.length === 0 && (
+                {allBlogs.length === 0 && (
                   <p className="mx-3 my-2 text-dark">Empty</p>
                 )}
                 {AllBlogs &&
-                  allBlogs?.map((x) => (
+                  allBlogs?.map((x, i) => (
                     <tr>
                       <th className="text-dark" scope="row ">
-                        1
+                        {++i}
                       </th>
                       <td className="text-dark">{x?.categories[0]?.name}</td>
                       <td className="text-dark">{x?.title}</td>

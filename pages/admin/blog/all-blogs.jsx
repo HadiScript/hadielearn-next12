@@ -73,10 +73,10 @@ const AllBlogs = () => {
             </thead>
             <tbody>
               {AllBlogs &&
-                allBlogs?.map((x) => (
+                allBlogs?.map((x, index) => (
                   <tr>
                     <th className="text-light" scope="row ">
-                      1
+                      {++index}
                     </th>
                     <td className="text-light">{x?.categories[0]?.name}</td>
                     <td className="text-light">{x?.title}</td>
@@ -84,7 +84,8 @@ const AllBlogs = () => {
                     <td className="text-light">
                       <BiEdit
                         onClick={() => {
-                          router.push(`/admin/blog/${x?._id}`);
+                          // router.push(`/admin/blog/${x?._id}`);
+                          router.push(`/cms-test/blog/${x?._id}`);
                         }}
                       />
                     </td>

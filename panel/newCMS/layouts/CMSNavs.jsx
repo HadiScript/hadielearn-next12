@@ -2,11 +2,13 @@ import { Menu } from "antd";
 import { BackwardFilled, HomeOutlined } from "@ant-design/icons";
 import { FaChalkboardTeacher, FaPlus } from "react-icons/fa";
 import {
+  MdAdd,
   MdCategory,
   MdImageSearch,
   MdLibraryBooks,
   MdOutlineCreateNewFolder,
   MdOutlineDashboardCustomize,
+  MdOutlineDensitySmall,
   MdOutlineLibraryBooks,
 } from "react-icons/md";
 import { useRouter } from "next/router";
@@ -91,9 +93,28 @@ const CMSNavs = () => {
       >
         Add Workshops
       </Menu.Item>
+
+      {/* blogs */}
+      <Menu.Item
+        onClick={() => router.push("/cms-test/blog/add-blogs")}
+        className="mt-3"
+        icon={<MdAdd />}
+      >
+        Add Blog
+      </Menu.Item>
+
+      <Menu.Item
+        onClick={() => router.push("/cms-test/blog/all-blogs")}
+        className="mt-1"
+        icon={<MdOutlineDensitySmall />}
+      >
+        All Blogs
+      </Menu.Item>
+
+
       <Menu.Item
         onClick={() => router.push("/cms-test/library")}
-        className="mt-1"
+        className="mt-3"
         icon={<MdImageSearch />}
       >
         Media
