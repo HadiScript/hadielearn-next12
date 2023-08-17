@@ -21,7 +21,7 @@ const CMSLayout = ({ children }) => {
   const breakpoints = useBreakpoint();
 
   const router = useRouter();
-  const [auth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
 
   const showDrawer = () => {
@@ -29,15 +29,6 @@ const CMSLayout = ({ children }) => {
   };
   const closeDrawer = () => {
     setDrawerVisibility(false);
-  };
-
-  const signOut = () => {
-    localStorage.removeItem("auth");
-    setAuth({
-      user: null,
-      token: "",
-    });
-    router.push("/auth/login");
   };
 
   const items = [
@@ -61,7 +52,14 @@ const CMSLayout = ({ children }) => {
         </span>
       ),
       icon: <LogoutOutlined />,
-      onClick: signOut,
+      onClick: () => {
+        localStorage.removeItem("auth");
+        setAuth({
+          user: null,
+          token: "",
+        });
+        router.push("/auth/login");
+      },
     },
   ];
 

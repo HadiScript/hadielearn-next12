@@ -111,7 +111,11 @@ const TopHeader = ({
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/student-test">
                           <span role="button" className={`z-btn ${btn_class}`}>
-                            My Learning <MdOutlineOnlinePrediction size={25 } className="mx-2" />
+                            My Learning{" "}
+                            <MdOutlineOnlinePrediction
+                              size={25}
+                              className="mx-2"
+                            />
                           </span>
                         </Link>
                       </div>
@@ -120,6 +124,14 @@ const TopHeader = ({
                         <Link href="/inst-test">
                           <span role="button" className={`z-btn ${btn_class}`}>
                             Batches
+                          </span>
+                        </Link>
+                      </div>
+                    ) : auth?.user?.role === "author" ? (
+                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                        <Link href="/cms-test">
+                          <span role="button" className={`z-btn ${btn_class}`}>
+                            CMS
                           </span>
                         </Link>
                       </div>

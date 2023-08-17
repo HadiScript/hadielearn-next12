@@ -53,7 +53,7 @@ const Login = () => {
         if (data.user?.role === "admin") {
           router.push("/");
         } else if (data.user?.role === "author") {
-          router.push("/employee");
+          router.push("/");
         } else if (data.user?.role === "cord") {
           router.push("/");
         } else if (data.user?.role === "instructor") {
