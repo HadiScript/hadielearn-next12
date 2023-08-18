@@ -123,7 +123,7 @@ const EnrollmentsForm = () => {
         // "http://localhost:5000/api/enroll-stu",
         payload
       );
-      console.log(payload, "here is 22");
+      // console.log(payload, "here is 22");
       if (data.error) {
         return toast.error(data.error);
       }
@@ -190,7 +190,7 @@ const EnrollmentsForm = () => {
       const { data } = await axios.get(
         `https://api.hadielearning.com/api/user/${email}`
       );
-      console.log("single data", data.user, data.finded);
+      // console.log("single data", data.user, data.finded);
       setSingleData(data.user);
       setOk(data.finded);
 

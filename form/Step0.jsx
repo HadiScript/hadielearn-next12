@@ -66,6 +66,8 @@ const Step0 = ({
     }
   };
 
+  // console.log(singleData, "from step 0");
+
   return (
     <div>
       <div className="col-md-8  col-sm-12 mb-4  ">
@@ -202,7 +204,7 @@ const Step0 = ({
 
       {singleData && ok && (
         <div className="col-md-12">
-          {!(course || workshop) || show !== false ? (
+          {!(course || workshop) || !whatsAppphoneNumber || show !== false ? (
             <button className="z-btn-disable">Submit</button>
           ) : (
             <>{submit()}</>
