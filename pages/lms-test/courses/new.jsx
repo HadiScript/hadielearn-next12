@@ -92,15 +92,21 @@ const AddCourse = () => {
   };
 
   const handleRemoveLecture = (index) => {
-    const updatedLectures = [...lectures];
-    updatedLectures.splice(index, 1);
-    setLectures(updatedLectures);
+    const ok = confirm("Are you sure?");
+    if (ok) {
+      const updatedLectures = [...lectures];
+      updatedLectures.splice(index, 1);
+      setLectures(updatedLectures);
+    }
   };
 
   const handleRemoveFAQs = (index) => {
-    const updatedFAQs = [...faqs];
-    updatedFAQs.splice(index, 1);
-    setFaqs(updatedFAQs);
+    const ok = confirm("Are your sure?");
+    if (ok) {
+      const updatedFAQs = [...faqs];
+      updatedFAQs.splice(index, 1);
+      setFaqs(updatedFAQs);
+    }
   };
 
   // upload image
