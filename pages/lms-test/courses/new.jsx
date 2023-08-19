@@ -658,7 +658,7 @@ const AddCourse = () => {
 
           {/* FAQS */}
           <div className="row py-5">
-            <h5> FAQs</h5>
+            <h5> FAQs </h5>
 
             {faqs.map((lecture, index) => (
               <React.Fragment key={index}>

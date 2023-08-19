@@ -53,12 +53,12 @@ const PaymentsEnrolledStudents = () => {
   return (
     <Row gutter={[16, 16]}>
       <Col xs={24} sm={24} md={12} lg={12}>
-        <Card bordered={false}>
+        <Card bordered={false} title="Payments">
           {paymentsData && <PaymentChart data={paymentsData} />}
         </Card>
       </Col>
       <Col xs={24} sm={24} md={12} lg={12}>
-        <Card bordered={false}>
+        <Card bordered={false} title="Students Count By Each Course">
           {enrlByStu && <EnrolledStudents data={enrlByStu} />}
         </Card>
       </Col>

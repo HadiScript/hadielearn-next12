@@ -127,6 +127,13 @@ const EnrollmentsCharts = () => {
     count: groupedDataForCity[city],
   }));
 
+  const sortedDataOfCities = transformedData_groupedDataForCity.sort(function (
+    a,
+    b
+  ) {
+    return b.count - a.count;
+  });
+
   const COLORS = [
     "#0f3f5d",
     "#FF8042",
@@ -186,7 +193,11 @@ const EnrollmentsCharts = () => {
                   ))}
                 </Pie>
                 <Tooltip />
-                <Legend />
+                <Legend
+                  formatter={(value, entry, index) => (
+                    <span style={{ textTransform: "capitalize" }}>{value}</span>
+                  )}
+                />
               </PieChart>
             </ResponsiveContainer>
           </Card>
@@ -195,29 +206,29 @@ const EnrollmentsCharts = () => {
           <Card title="BY COURSE DATA" bordered={false}>
             {/* <div style={{ height: "100%", overflowY: "scroll" }}>
               <div style={{ height: "550px" }}> */}
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart
-                    data={transformedDataForGroupedDataForCourses}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                      dataKey="course"
-                      // interval={0}
-                      // angle={-45}
-                      // textAnchor="end"
-                    />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="count" fill="#0f3f5d" />
-                  </BarChart>
-                </ResponsiveContainer>
-              {/* </div>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart
+                data={transformedDataForGroupedDataForCourses}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="course"
+                  // interval={0}
+                  // angle={-45}
+                  // textAnchor="end"
+                />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="count" fill="#0f3f5d" />
+              </BarChart>
+            </ResponsiveContainer>
+            {/* </div>
             </div> */}
           </Card>
         </Col>
@@ -246,10 +257,10 @@ const EnrollmentsCharts = () => {
       <Card className="my-3" title="ENROLLMENTS BY CITIES">
         <div style={{ height: "100%", overflowY: "auto" }}>
           <div style={{ height: "450px" }}>
-            <ResponsiveContainer width="100%" height={9000}>
+            <ResponsiveContainer width="100%" height={14000}>
               <BarChart
                 layout="vertical"
-                data={transformedData_groupedDataForCity}
+                data={sortedDataOfCities}
                 margin={{
                   top: 20,
                   right: 20,
@@ -258,7 +269,13 @@ const EnrollmentsCharts = () => {
                 }}
               >
                 <CartesianGrid />
-                <YAxis dataKey="city" type="category" />{" "}
+                <YAxis
+                  dataKey="city"
+                  type="category"
+                  tickFormatter={(value) =>
+                    value.charAt(0).toUpperCase() + value.slice(1)
+                  } // Capitalize the first letter of each city name
+                />
                 <XAxis dataKey="count" type="number" /> {/* Y-axis for count */}
                 <Tooltip cursor={{ strokeDasharray: "3 3" }} />
                 <Bar dataKey="count" fill="#0f3f5d" />
