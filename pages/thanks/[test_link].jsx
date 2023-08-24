@@ -21,7 +21,7 @@ const Thanks = () => {
   // }, 400000);
 
   useEffect(() => {
-    toast.success("Your application has been submitted!", { duration: 400000 });
+    toast.success("Your application has been submitted!", { duration: 4000 });
   }, []);
 
   return (
