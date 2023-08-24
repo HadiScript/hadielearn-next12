@@ -135,7 +135,7 @@ const EnrollmentsForm = () => {
 
       setUserReq(INITIAL_USER);
       setLoading(false);
-      router.push("/thanks");
+      router.push(`/thanks/${testOFCourse.slug}`);
     } catch (err) {
       let {
         response: {
