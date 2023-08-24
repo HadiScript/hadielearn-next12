@@ -10,6 +10,7 @@ import MultiStepProgressBar from "../../form/MultiStepProgressBar";
 import Step3 from "../../form/Step3";
 import Step4 from "../../form/Step4";
 import { API } from "../../config/API";
+import { test_links } from "../../form/test_links";
 
 const INITIAL_USER = {
   firstName: "",
@@ -113,10 +114,14 @@ const EnrollmentsForm = () => {
 
     // console.log(data, "here is");
     // return;
+
+    let testOFCourse = test_links.find((x) => x.slug === course);
+
     try {
       setLoading(true);
-      const payload = { ...dataPayload };
+      const payload = { ...dataPayload, testLink: testOFCourse.test };
       // console.log(payload, "here is");
+      // return;
 
       const { data } = await axios.post(
         "https://api.hadielearning.com/api/enroll-stu",

@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import Link from "next/link";
 import useGlobalContext from "../../hooks/useGlobalContext";
 import { AuthContext } from "../../context/auth";
+import { MdOutlineOnlinePrediction } from "react-icons/md";
 
 const PagesNavbar = ({ page = "notFromContact", btn_class = "z-btn-3" }) => {
   const [auth] = useContext(AuthContext);
