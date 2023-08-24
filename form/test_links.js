@@ -15,7 +15,7 @@ export const test_links = [
     _id: "648b0c6be81d0fcb77a78784",
     title: "WordPress And Shopify Mastery Course",
     slug: "wordpress-and-shopify-mastery-course",
-    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=wordpress-mastery-course-evaluation-quiz",
+    test: `https://www.proprofs.com/quiz-school/ugc/story.php?title=wordpress-mastery-course-evaluation-quiz`,
   },
   {
     _id: "648b0d35e81d0fcb77a7879b",

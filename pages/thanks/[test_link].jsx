@@ -6,20 +6,22 @@ import React, { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { test_links } from "../../form/test_links";
 import { BiLinkExternal } from "react-icons/bi";
+import { Button } from "antd";
+import Link from "next/link";
+import { AiOutlineRollback } from "react-icons/ai";
 
 const Thanks = () => {
   const router = useRouter();
   const { test_link } = router.query;
 
-  const finddedTest = test_links.find((x) => x._id === test_link);
+  const finddedTest = test_links.find((x) => x.slug === test_link);
 
-  console.log(test_link, router.query, finddedTest, "here is ");
-  setTimeout(() => {
-    router.push("/");
-  }, 4000);
+  // setTimeout(() => {
+  //   router.push("/");
+  // }, 400000);
 
   useEffect(() => {
-    toast.success("Your aplication has been submitted !");
+    toast.success("Your application has been submitted!", { duration: 400000 });
   }, []);
 
   return (
@@ -61,8 +63,8 @@ const Thanks = () => {
             <a
               style={{ color: "#6da1ed" }}
               className="mx-4"
-              href={`${finddedTest?.test}`}
-              target="_"
+              href={finddedTest?.test}
+              target="_blank"
             >
               Go for quiz <BiLinkExternal />
             </a>
@@ -72,6 +74,22 @@ const Thanks = () => {
           <br />
           <span className="text-center">
             We have sent you the confirmation email
+          </span>
+          <br />
+          <br />
+          <span
+            onClick={() => router.push("/")}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 4,
+              cursor: "pointer",
+              color: "#6da1ed",
+              fontWeight: "bold",
+            }}
+          >
+            <AiOutlineRollback /> Back to home
           </span>
         </div>
       </div>
