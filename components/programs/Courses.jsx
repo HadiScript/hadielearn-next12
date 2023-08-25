@@ -8,6 +8,8 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { CgArrowLongRight } from "react-icons/cg";
 
 const Courses = ({ courses_data }) => {
+  console.log(courses_data, "hre is data");
+
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -56,7 +58,7 @@ const Courses = ({ courses_data }) => {
   };
 
   // const avaliCourses = courses_data?.filter((x) => x.available === true);
-
+  return <>helo</>;
   return (
     <div className="container  pt-100 pb-80">
       <div className="row">
@@ -97,7 +99,7 @@ const Courses = ({ courses_data }) => {
                 <p
                   className="pt-20"
                   dangerouslySetInnerHTML={{
-                    __html: x.overview.substring(0, 150) + "...",
+                    __html: x.plainOverview.substring(0, 150) + "...",
                   }}
                 />
                 <Link href={`/program/${x.slug}`}>

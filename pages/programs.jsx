@@ -38,7 +38,7 @@ const Programs = ({ courses }) => {
   //   return doc.body.textContent || "";
   // };
 
-  console.log(courses, "here ")
+  console.log(courses, "hree is courses");
 
   return (
     <>
@@ -138,9 +138,8 @@ const Programs = ({ courses }) => {
 };
 
 export async function getServerSideProps() {
-  // const { data } = await axios.get(`${API}/courses`);
-  const { data } = await axios.get(`http://localhost:5000/api/courses`);
-  console.log({ data });
+  const { data } = await axios.get(`${API}/courses`);
+  // const { data } = await axios.get(`http://localhost:5000/api/courses`);
 
   return {
     props: {

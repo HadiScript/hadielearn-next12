@@ -37,13 +37,7 @@ const CourseList = ({ courses_data, searchQuery }) => {
                     <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
                   </span>
                   <Link href={`/program/${x._doc.slug}`}>
-                    <p
-                      className="mt-20 text-muted"
-                      role="button"
-                      // dangerouslySetInnerHTML={{
-                      //   __html: x?.plainOverview?.substring(0, 150) + "...",
-                      // }}
-                    >
+                    <p className="mt-20 text-muted" role="button">
                       {x?.plainOverview?.substring(0, 100) + "..."}
                     </p>
                   </Link>
