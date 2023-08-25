@@ -8,7 +8,7 @@ import axios from "axios";
 import { API } from "../config/API";
 import TopHeader from "../components/partials/TopHeader";
 import { FaSearch } from "react-icons/fa";
-import ReactHtmlParser from "react-html-parser";
+// import ReactHtmlParser from "react-html-parser";
 import { Fade } from "react-reveal";
 import {
   Button,
@@ -101,8 +101,8 @@ const Programs = ({ courses }) => {
                         style={{
                           backgroundColor: "#0f3f5d",
                           border: "none",
-                          borderTopRightRadius : "0px",
-                          borderBottomRightRadius : "0px",
+                          borderTopRightRadius: "0px",
+                          borderBottomRightRadius: "0px",
                           color: "white",
                           height: "40px",
                         }}
@@ -127,8 +127,6 @@ const Programs = ({ courses }) => {
           </div>
         </Fade>
       </div>
-
-    
 
       <CourseList courses_data={course_data} searchQuery={searchQuery} />
 
