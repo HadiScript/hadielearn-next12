@@ -65,4 +65,10 @@ export const test_links = [
     slug: "react-js-mastery-course",
     test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=mzgwmjyznw94fo",
   },
+  {
+    _id: "64e87448845222690ed2502c",
+    title: "Shopify Mastery Course",
+    slug: "shopify-mastery-course",
+    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=mzgwmjyznw94fo",
+  },
 ];

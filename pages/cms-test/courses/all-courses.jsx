@@ -79,18 +79,18 @@ const AllCourses = () => {
                     <th className="text-dark" scope="row ">
                       {++index}
                     </th>
-                    <td className="text-dark">{x?.categories[0]?.name}</td>
-                    <td className="text-dark">{x?.title}</td>
-                    <td className="text-dark">{x?.instructor?.name}</td>
+                    <td className="text-dark">{x?._doc?.categories[0]?.name}</td>
+                    <td className="text-dark">{x?._doc?.title}</td>
+                    <td className="text-dark">{x?._doc?.instructor?.name}</td>
                     <td className="text-dark">
                       <BiEdit
                         onClick={() => {
-                          router.push(`/cms-test/courses/${x?._id}`);
+                          router.push(`/cms-test/courses/${x?._doc?._id}`);
                         }}
                       />
                     </td>
                     <td className="text-dark">
-                      <TbTrash onClick={() => deleteCourse(x?._id)} />
+                      <TbTrash onClick={() => deleteCourse(x?._doc?._id)} />
                     </td>
                   </tr>
                 ))

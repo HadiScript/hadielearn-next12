@@ -139,7 +139,7 @@ const Step4 = ({
         )}
       </div>
       <div className="form-group py-3">
-        <label>Your interests</label>
+        <label>Your Interests</label>
         <textarea
           type="text"
           className="form-control"

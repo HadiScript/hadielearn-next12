@@ -115,11 +115,11 @@ const EnrollmentsForm = () => {
     // console.log(data, "here is");
     // return;
 
-    let testOFCourse = test_links.find((x) => x.slug === course);
+    let testOFCourse = test_links?.find((x) => x.slug === course);
 
     try {
       setLoading(true);
-      const payload = { ...dataPayload, testLink: testOFCourse.test };
+      const payload = { ...dataPayload, testLink: testOFCourse?.test };
       // console.log(payload, "here is");
       // return;
 

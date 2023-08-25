@@ -103,7 +103,7 @@ const Login = () => {
                     <br />
                     <div className="form-group py-3">
                       <label>
-                        Email <span className="text-danger">*</span>
+                        Email<span className="text-danger">*</span>
                         {show && (
                           <small className="text-danger mx-3">
                             Invalid Email

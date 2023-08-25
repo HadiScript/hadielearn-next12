@@ -83,7 +83,7 @@ const Step0 = ({
       <h5>Basic information</h5>
       <div className="form-group py-3">
         <label>
-          Email <span className="text-danger">*</span>
+          Email<span className="text-danger">*</span>
           {show && <small className="text-danger mx-3"> Invalid Email</small>}
           {singleDataLoading && "Loading..."}
         </label>
