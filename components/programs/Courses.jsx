@@ -8,7 +8,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { CgArrowLongRight } from "react-icons/cg";
 
 const Courses = ({ courses_data }) => {
-  console.log(courses_data, "hre is data");
+  
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -57,8 +57,8 @@ const Courses = ({ courses_data }) => {
     ],
   };
 
-  // const avaliCourses = courses_data?.filter((x) => x.available === true);
-  return <>helo</>;
+  // const avaliCourses = courses_data?.filter((x) => x._doc.available === true);
+
   return (
     <div className="container  pt-100 pb-80">
       <div className="row">
@@ -82,8 +82,8 @@ const Courses = ({ courses_data }) => {
           {courses_data?.slice(0, 6)?.map((x, index) => (
             <div className="blog__item-2 mb-50 fix">
               <div className={`blog__thumb-2 w-img fix `}>
-                <Link href={`/program/${x.slug}`}>
-                  <img src={x.image?.url} alt="" style={{ height: "250px" }} />
+                <Link href={`/program/${x._doc.slug}`}>
+                  <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
                 </Link>
               </div>
 
@@ -94,7 +94,7 @@ const Courses = ({ courses_data }) => {
                     fontSize: "20px",
                   }}
                 >
-                  <Link href={`/program/${x.slug}`}>{x.title}</Link>
+                  <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
                 </span>
                 <p
                   className="pt-20"
@@ -102,7 +102,7 @@ const Courses = ({ courses_data }) => {
                     __html: x.plainOverview.substring(0, 150) + "...",
                   }}
                 />
-                <Link href={`/program/${x.slug}`}>
+                <Link href={`/program/${x._doc.slug}`}>
                   <span className="link-btn-2">
                     Read More
                     <i>
