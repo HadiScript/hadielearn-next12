@@ -8,7 +8,7 @@ import axios from "axios";
 import { API } from "../config/API";
 import TopHeader from "../components/partials/TopHeader";
 import { FaSearch } from "react-icons/fa";
-// import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 import { Fade } from "react-reveal";
 import {
   Button,
@@ -30,13 +30,15 @@ const Programs = ({ courses }) => {
   };
 
   const filteredCourses = course_data.filter((course) => {
-    return course.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return course._doc.title.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
-  const extractTextFromHtml = (html) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent || "";
-  };
+  // const extractTextFromHtml = (html) => {
+  //   const doc = new DOMParser().parseFromString(html, "text/html");
+  //   return doc.body.textContent || "";
+  // };
+
+  console.log(courses, "here ")
 
   return (
     <>
@@ -136,7 +138,10 @@ const Programs = ({ courses }) => {
 };
 
 export async function getServerSideProps() {
-  const { data } = await axios.get(`${API}/courses`);
+  // const { data } = await axios.get(`${API}/courses`);
+  const { data } = await axios.get(`http://localhost:5000/api/courses`);
+  console.log({ data });
+
   return {
     props: {
       courses: data.courses,

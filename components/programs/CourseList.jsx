@@ -6,7 +6,7 @@ import ReactHtmlParser from "react-html-parser";
 
 const CourseList = ({ courses_data, searchQuery }) => {
   const filteredCourses = courses_data.filter((course) => {
-    return course.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return course._doc.title.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   return (
@@ -16,11 +16,11 @@ const CourseList = ({ courses_data, searchQuery }) => {
         <div className="row mt-100">
           {filteredCourses?.map((x) => (
             <div className="col-xl-4 col-lg-4 col-md-4">
-              <div key={x.id} className="blog__item-22 mb-50 fix">
+              <div key={x._doc.id} className="blog__item-22 mb-50 fix">
                 <div className={`blog__thumb-22 w-img fix `}>
-                  <Link href={`/program/${x.slug}`}>
+                  <Link href={`/program/${x._doc.slug}`}>
                     <img
-                      src={x.image?.url}
+                      src={x._doc.image?.url}
                       alt=""
                       style={{ height: "250px" }}
                     />
@@ -34,16 +34,18 @@ const CourseList = ({ courses_data, searchQuery }) => {
                       fontSize: "20px",
                     }}
                   >
-                    <Link href={`/program/${x.slug}`}>{x.title}</Link>
+                    <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
                   </span>
-                  <Link href={`/program/${x.slug}`}>
+                  <Link href={`/program/${x._doc.slug}`}>
                     <p
                       className="mt-20 text-muted"
                       role="button"
-                      dangerouslySetInnerHTML={{
-                        __html: x?.overview?.substring(0, 150) + "...",
-                      }}
-                    ></p>
+                      // dangerouslySetInnerHTML={{
+                      //   __html: x?.plainOverview?.substring(0, 150) + "...",
+                      // }}
+                    >
+                      {x?.plainOverview?.substring(0, 100) + "..."}
+                    </p>
                   </Link>
                 </div>
               </div>
