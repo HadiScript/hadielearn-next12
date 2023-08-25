@@ -116,7 +116,7 @@ const Step0 = ({
               inputClass="form-control"
               inputStyle={{ width: "100%" }}
               placeholder="Enter whatsApp number"
-              value={singleData?.whatsAppphoneNumber}
+              value={whatsAppphoneNumber}
               onChange={(value) => setWhatsAppPhoneNumber(value)}
             />
             <small style={{ fontSize: "12px" }}>
