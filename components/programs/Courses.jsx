@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import Fade from "react-reveal/Fade";
 import Link from "next/link";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-
-// import { courses_data } from "../../data/courses";
+import { Rate, Tag } from "antd";
+import { FaUser } from "react-icons/fa";
+import { IoMdTime } from "react-icons/io";
 import { CgArrowLongRight, CgLock } from "react-icons/cg";
 
 export const checkStringTitle = (title) => {
@@ -98,66 +99,68 @@ const Courses = ({ courses_data }) => {
               </div>
 
               <div className="blog__content-2">
+                <div className="mt-1 mb-2 d-flex align-items-center gap-3">
+                  <Rate
+                    value={3}
+                    style={{ color: "#0f3f5d", fontSize: "10px" }}
+                  />
+                  <small>(2/200)</small>
+                </div>
                 <span
                   style={{
                     fontWeight: "bold",
                     fontSize: "20px",
                   }}
                 >
-                  <Link href={`/program/${x._doc.slug}`}>
-                    {/* {x._doc.title.substring(0, 30)} */}
-                    {checkStringTitle(x._doc.title)}
-                  </Link>
+                  <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
                 </span>
-                {/* <ul className="my-4 ">
-                  <li
-                    className="my-3"
-                    style={{ display: "flex", alignItems: "center", gap: 5 }}
-                  >
-                    {x._doc.instructor && !x._doc.instructor.image ? (
+
+                <div
+                  className={`${
+                    x._doc.title.length > 35 ? "mt-2" : "mt-4"
+                  }  d-flex align-items-center justify-content-between `}
+                >
+                  <div className="d-flex align-items-center gap-1">
+                    <IoMdTime size={18} />
+                    <small style={{ fontSize: "10px" }}>
+                      {x._doc.duration}
+                    </small>
+                  </div>
+                  <div className="d-flex align-items-center gap-1">
+                    <IoMdTime size={18} />
+                    <small style={{ fontSize: "10px" }}>40 classes</small>
+                  </div>
+                  <div className="d-flex align-items-center gap-1">
+                    <IoMdTime size={18} />
+                    <small style={{ fontSize: "10px" }}>102 hrs</small>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    borderTop: "1px solid #8080808c",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                  className="pt-2 mt-3"
+                >
+                  <div className="d-flex align-items-center gap-2">
+                    {x._doc.instructor && !x._doc.instructor?.image ? (
                       <FaUser size={25} color="gray" />
                     ) : (
                       <img
-                        src={x._doc.instructor.image.url}
+                        src={x._doc.instructor?.image.url}
                         alt=""
                         height={30}
                       />
                     )}
-                    <span style={{ fontWeight: "bold" }}>
-                      {x._doc.instructor.name}
-                    </span>
-                  </li>
-                  <li
-                    className="my-4"
-                    style={{ display: "flex", alignItems: "center", gap: 5 }}
-                  >
-                    <span style={{ fontWeight: "bold" }}>
-                      {x._doc.duration}
-                    </span>
-                  </li>
-                </ul> */}
-
-                <p
-                  className="pt-20"
-                  style={{
-                    textAlign: "justify",
-                    fontFamily: "Raleway, sans-serif",
-                  }}
-                  dangerouslySetInnerHTML={{
-                    __html: x.plainOverview.substring(0, 150) + "...",
-                  }}
-                />
-                <Link href={`/program/${x._doc.slug}`}>
-                  <span className="link-btn-2">
-                    Read More
-                    <i>
-                      <CgArrowLongRight />
-                    </i>
-                    <i>
-                      <CgArrowLongRight />
-                    </i>
+                    <span>{x._doc.instructor.name}</span>
+                  </div>
+                  <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>
+                    Free
                   </span>
-                </Link>
+                </div>
               </div>
             </div>
           ))}

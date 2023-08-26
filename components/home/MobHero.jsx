@@ -1,5 +1,5 @@
 import React from "react";
-// import Slider from "react-slick";
+import Slider from "react-slick";
 import { BsCaretDown } from "react-icons/bs";
 import Link from "next/link";
 
@@ -22,7 +22,7 @@ const MobHero = () => {
       {/* <VideoPopup videoId="yJg-Y5byMMw" /> */}
 
       <section className="slider__area">
-        {/* <Slider className="testimonial__slider" {...settings}> */}
+        <Slider className="testimonial__slider" {...settings}>
           <div className={`single-slider `}>
             <div style={{ height: "62px" }} />
             <div
@@ -68,7 +68,7 @@ const MobHero = () => {
             </div>
           </div>
 
-          {/* <div className={`single-slider `}>
+          <div className={`single-slider `}>
             <div style={{ height: "62px" }} />
             <div
               className={`d-flex align-items-center home_slider_2`}
@@ -103,23 +103,16 @@ const MobHero = () => {
                         Hadi E-Learning: Quality IT training in Pakistan.
                         Subsidized courses for accessibility.
                       </p>
-                      <Link href="/about-us" className="z-btn">
-                        About us
-                      </Link>
-
-                      <Link
-                        href="/programs"
-                        className="z-btn z-btn-white mx-2 "
-                      >
-                        Programs
+                      <Link href="/programs">
+                        <button className="z-btn">Programs</button>
                       </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div> */}
-        {/* </Slider> */}
+          </div>
+        </Slider>
       </section>
     </>
   );
