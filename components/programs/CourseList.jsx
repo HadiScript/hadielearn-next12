@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { Card, Col, Rate, Row, Tag } from "antd";
+import { Card, Rate } from "antd";
 import { FaUser } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
+import { HiOutlineDocumentText } from "react-icons/hi";
+import { BsCalendar } from "react-icons/bs";
 
 const checkStringTitle = (title) => {
   if (title?.length > 23) {
@@ -32,77 +34,29 @@ const CourseList = ({ courses_data, searchQuery }) => {
         <div className="row mt-100">
           {filteredCourses?.map((x) => (
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
-              <Card
-                cover={
-                  <img
-                    alt={x._doc.title}
-                    src={x._doc.image?.url}
-                    height={200}
-                  />
-                }
-                actions={[
-                  <div
+              <div className="blog__item-2 mb-50 fix">
+                <div className={`blog__thumb-2 w-img fix `}>
+                  <Link href={`/program/${x._doc.slug}`}>
+                    <img
+                      src={x._doc.image?.url}
+                      alt=""
+                      style={{ height: "250px" }}
+                    />
+                  </Link>
+                </div>
+
+                <div className="blog__content-2">
+                  <span
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 4,
-                      marginLeft: "20px",
+                      fontWeight: "bold",
+                      fontSize: "20px",
                     }}
                   >
-                    {x._doc.instructor && !x._doc.instructor?.image ? (
-                      <FaUser size={25} color="gray" />
-                    ) : (
-                      <img
-                        src={x._doc.instructor?.image.url}
-                        alt=""
-                        height={30}
-                      />
-                    )}
-                    <span style={{ color: "#0f3f5d", fontWeight: "500" }}>
-                      {" "}
-                      {x._doc.instructor.name}
-                    </span>
-                  </div>,
-                  <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>
-                    Free
-                  </span>,
-                ]}
-              >
-                <div className="d-flex align-items-center gap-2 mb-3">
-                  <small>4.5</small>
-                  <Rate
-                    value={4.5}
-                    style={{ color: "#0f3f5d", fontSize: "10px" }}
-                  />
+                    <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
+                  </span>
+                  <p className="mt-4">{x.plainOverview.substring(0,130)}...</p>
                 </div>
-                <Link href={`/program/${x._doc.slug}`}>
-                  <h3 style={{ fontSize: "22px" }} role="button">
-                    {checkStringTitle(x._doc.title)}
-                  </h3>
-                </Link>
-                <div
-                  className={`mt-3  d-flex align-items-center justify-content-between `}
-                >
-                  <div className="d-flex align-items-center gap-1">
-                    <IoMdTime size={18} />
-                    <small style={{ fontSize: "13px" }}>
-                      {x._doc.duration}
-                    </small>
-                  </div>
-                  <div className="d-flex align-items-center gap-1">
-                    <IoMdTime size={18} />
-                    <small style={{ fontSize: "13px" }}>
-                      {x._doc.classes} classes
-                    </small>
-                  </div>
-                  <div className="d-flex align-items-center gap-1">
-                    <IoMdTime size={18} />
-                    <small style={{ fontSize: "13px" }}>
-                      {DurationsTOHrs(x._doc)} hrs
-                    </small>
-                  </div>
-                </div>
-              </Card>
+              </div>
             </div>
 
             // <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
