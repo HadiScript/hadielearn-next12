@@ -54,6 +54,14 @@ const Courses = ({ courses_data }) => {
     slidesToScroll: 2,
     responsive: [
       {
+        breakpoint: 992, // Medium screens
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 0,
+        },
+      },
+      {
         breakpoint: 767,
         settings: {
           slidesToShow: 1,
@@ -65,6 +73,14 @@ const Courses = ({ courses_data }) => {
   };
 
   // const avaliCourses = courses_data?.filter((x) => x._doc.available === true);
+
+  const DurationsTOHrs = (course) => {
+    const hoursPerClass = 1.5;
+
+    const totalCourseHours = course.classes * hoursPerClass;
+
+    return totalCourseHours;
+  };
 
   return (
     <div className="container  pt-100 pb-80">
@@ -128,11 +144,15 @@ const Courses = ({ courses_data }) => {
                   </div>
                   <div className="d-flex align-items-center gap-1">
                     <IoMdTime size={18} />
-                    <small style={{ fontSize: "10px" }}>40 classes</small>
+                    <small style={{ fontSize: "10px" }}>
+                      {x._doc.classes} classes
+                    </small>
                   </div>
                   <div className="d-flex align-items-center gap-1">
                     <IoMdTime size={18} />
-                    <small style={{ fontSize: "10px" }}>102 hrs</small>
+                    <small style={{ fontSize: "10px" }}>
+                      {DurationsTOHrs(x._doc)} hrs
+                    </small>
                   </div>
                 </div>
 

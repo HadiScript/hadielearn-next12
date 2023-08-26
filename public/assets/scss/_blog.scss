@@ -103,10 +103,13 @@
       padding: 10px 30px;
       padding-bottom: 25px;
       @media #{$sm} {
-        padding: 30px;
+        // padding: 30px;
       }
       @media #{$xs} {
-        padding: 30px;
+        // padding: 30px;
+      }
+      @media #{$md} {
+        // padding: 30px;
       }
       & h3 {
         font-size: 30px;
