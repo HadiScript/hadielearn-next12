@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { AiOutlineRollback } from "react-icons/ai";
+import PhoneInput from "react-phone-input-2";
 
 const Step3 = ({
   currentStep,
@@ -83,13 +84,21 @@ const Step3 = ({
             </span>
           )}
         </label>
-        <input
+        {/* <input
           type="text"
           className="form-control"
           placeholder=""
           name="parentPhoneNumber"
           value={parentPhoneNumber}
           onChange={(e) => handleInputChange(e)}
+        /> */}
+        <PhoneInput
+          country={"pk"} // Set a default country
+          inputClass="form-control"
+          inputStyle={{ width: "100%" }}
+          placeholder=""
+          value={parentPhoneNumber}
+          onChange={(value) => setParentPhoneNumber(value)}
         />
       </div>
       <div className="d-flex justify-content-between">

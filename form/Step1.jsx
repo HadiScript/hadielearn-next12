@@ -1,3 +1,4 @@
+import { DatePicker } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -33,7 +34,8 @@ const Step1 = ({
   }
 
   if (dateOfBirth) {
-    const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in YYYY-MM-DD format
+    // const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in YYYY-MM-DD format
+    const currentDate = new Date(); // Get the current date in YYYY-MM-DD format
 
     if (dateOfBirth > currentDate) {
       toast.error("Please select a date in the past", {
@@ -176,14 +178,15 @@ const Step1 = ({
         <label>
           Date of Birth<span className="text-danger">*</span>
         </label>
-        <input
+        <DatePicker
           required
           type="date"
           className="form-control"
-          placeholder="last Name"
+          placeholder="Date of bith"
           name="dateOfBirth"
           value={dateOfBirth}
-          onChange={(e) => setdateOfBirth(e.target.value)}
+          onChange={(e) => setdateOfBirth(e)}
+          // onChange={(e) => setdateOfBirth(e.target.value)}
         />
       </div>
       <div className="row">
@@ -210,7 +213,7 @@ const Step1 = ({
         </div> */}
 
         <div className="col-md-6 col-sm-12 col-xs-12 py-3">
-          <label>WhatsApp</label>
+          <label>WhatsApp<span className="text-danger">*</span></label>
           <PhoneInput
             country={"pk"} // Set a default country
             inputClass="form-control"

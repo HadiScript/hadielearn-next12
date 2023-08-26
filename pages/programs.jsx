@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 import SEOHead from "../components/functions/SEOHead";
-import PagesNavbar from "../components/partials/PageNavbar";
-import Breadcrumbs from "../components/partials/Breadcrumbs";
 import Footer from "../components/partials/Footer";
 import CourseList from "../components/programs/CourseList";
 import axios from "axios";
 import { API } from "../config/API";
 import TopHeader from "../components/partials/TopHeader";
 import { FaSearch } from "react-icons/fa";
-import ReactHtmlParser from "react-html-parser";
 import { Fade } from "react-reveal";
-import {
-  Button,
-  Form,
-  FormControl,
-  InputGroup,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import Link from "next/link";
-import { CgArrowLongRight } from "react-icons/cg";
 
 const Programs = ({ courses }) => {
   const [course_data, setCourse_data] = useState(courses);

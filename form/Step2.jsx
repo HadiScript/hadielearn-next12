@@ -1,3 +1,4 @@
+import { Input } from "antd";
 import { useRouter } from "next/router";
 import React from "react";
 import { useState } from "react";
@@ -25,13 +26,16 @@ const Step2 = ({
     const cnicNumber = event.target.value;
     const formattedPhoneNumber = cnicNumber.replace(/[^0-9-]/g, ""); // Remove non-digit and non-hyphen characters
 
-    if (/^(?:\d{5}-\d{7}-\d{1}|\d{13})$/.test(formattedPhoneNumber)) {
-      setIdCard(formattedPhoneNumber);
-      setShow(false); // Hide the alert if the number is correct
-    } else {
-      setIdCard(formattedPhoneNumber);
-      setShow(true); // Show the alert if the number is incorrect
+    if (/^\d{0,13}$/.test(cnicNumber)) {
+      setIdCard(cnicNumber);
     }
+    // if (/^(?:\d{5}-\d{7}-\d{1}|\d{13})$/.test(formattedPhoneNumber)) {
+    //   setIdCard(formattedPhoneNumber);
+    //   setShow(false); // Hide the alert if the number is correct
+    // } else {
+    //   setIdCard(formattedPhoneNumber);
+    //   setShow(true); // Show the alert if the number is incorrect
+    // }
   };
 
   return (

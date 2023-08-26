@@ -5,11 +5,17 @@ import Link from "next/link";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 // import { courses_data } from "../../data/courses";
-import { CgArrowLongRight } from "react-icons/cg";
+import { CgArrowLongRight, CgLock } from "react-icons/cg";
+
+export const checkStringTitle = (title) => {
+  if (title?.length > 40) {
+    return title.substring(0, 30) + "...";
+  } else {
+    return title;
+  }
+};
 
 const Courses = ({ courses_data }) => {
-  
-
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -83,7 +89,11 @@ const Courses = ({ courses_data }) => {
             <div className="blog__item-2 mb-50 fix">
               <div className={`blog__thumb-2 w-img fix `}>
                 <Link href={`/program/${x._doc.slug}`}>
-                  <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
+                  <img
+                    src={x._doc.image?.url}
+                    alt=""
+                    style={{ height: "250px" }}
+                  />
                 </Link>
               </div>
 
@@ -94,10 +104,45 @@ const Courses = ({ courses_data }) => {
                     fontSize: "20px",
                   }}
                 >
-                  <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
+                  <Link href={`/program/${x._doc.slug}`}>
+                    {/* {x._doc.title.substring(0, 30)} */}
+                    {checkStringTitle(x._doc.title)}
+                  </Link>
                 </span>
+                {/* <ul className="my-4 ">
+                  <li
+                    className="my-3"
+                    style={{ display: "flex", alignItems: "center", gap: 5 }}
+                  >
+                    {x._doc.instructor && !x._doc.instructor.image ? (
+                      <FaUser size={25} color="gray" />
+                    ) : (
+                      <img
+                        src={x._doc.instructor.image.url}
+                        alt=""
+                        height={30}
+                      />
+                    )}
+                    <span style={{ fontWeight: "bold" }}>
+                      {x._doc.instructor.name}
+                    </span>
+                  </li>
+                  <li
+                    className="my-4"
+                    style={{ display: "flex", alignItems: "center", gap: 5 }}
+                  >
+                    <span style={{ fontWeight: "bold" }}>
+                      {x._doc.duration}
+                    </span>
+                  </li>
+                </ul> */}
+
                 <p
                   className="pt-20"
+                  style={{
+                    textAlign: "justify",
+                    fontFamily: "Raleway, sans-serif",
+                  }}
                   dangerouslySetInnerHTML={{
                     __html: x.plainOverview.substring(0, 150) + "...",
                   }}
