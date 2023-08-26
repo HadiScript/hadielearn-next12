@@ -76,7 +76,9 @@ const CourseList = ({ courses_data, searchQuery }) => {
                   />
                 </div>
                 <Link href={`/program/${x._doc.slug}`}>
-                  <h3 role="button">{checkStringTitle(x._doc.title)}</h3>
+                  <h3 style={{ fontSize: "22px" }} role="button">
+                    {checkStringTitle(x._doc.title)}
+                  </h3>
                 </Link>
                 <div
                   className={`mt-3  d-flex align-items-center justify-content-between `}
