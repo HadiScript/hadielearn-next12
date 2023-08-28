@@ -21,7 +21,7 @@ export const test_links = [
     _id: "648b0d35e81d0fcb77a7879b",
     title: "The Freelancing Masterclass",
     slug: "the-freelancing-masterclass",
-    test: "",
+    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=freelancing-mastery-course",
   },
   {
     _id: "648b0f3be81d0fcb77a787c4",
@@ -69,6 +69,6 @@ export const test_links = [
     _id: "64e87448845222690ed2502c",
     title: "Shopify Mastery Course",
     slug: "shopify-mastery-course",
-    test: "-",
+    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=shopify-mastery-course-evaluation-quiz",
   },
 ];
