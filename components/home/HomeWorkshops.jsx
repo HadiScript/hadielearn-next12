@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-
+import Btn from "../ui/Btn";
 
 const HomeWorkshops = () => {
   return (
@@ -33,8 +33,8 @@ const HomeWorkshops = () => {
                   understanding of the subject matter. Register now to secure
                   your spot!
                 </p>
-                <Link href={"/workshops"} className="z-btn mt-5">
-                  See All
+                <Link href={"/workshops"} className="mt-5">
+                  <Btn> See All</Btn>
                 </Link>
               </div>
             </div>

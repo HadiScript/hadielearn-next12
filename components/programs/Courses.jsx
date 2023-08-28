@@ -3,11 +3,6 @@ import Slider from "react-slick";
 import Fade from "react-reveal/Fade";
 import Link from "next/link";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { FaUser, FaBusinessTime } from "react-icons/fa";
-import { IoMdTime } from "react-icons/io";
-import { Card, Rate } from "antd";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import { BsCalendar } from "react-icons/bs";
 
 const checkStringTitle = (title) => {
   if (title?.length > 25) {
