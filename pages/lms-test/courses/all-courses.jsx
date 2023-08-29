@@ -80,7 +80,7 @@ const AllCourses = () => {
                       {++index}
                     </th>
                     <td className="text-dark">{x?._doc?.categories[0]?.name}</td>
-                    <td className="text-dark">{x?_doc?.title}</td>
+                    <td className="text-dark">{x?.AuthContext_doc?.title}</td>
                     <td className="text-dark">{x?._doc?.instructor?.name}</td>
                     <td className="text-dark">
                       <BiEdit
