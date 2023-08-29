@@ -5,6 +5,7 @@ import PagesNavbar from "../components/partials/PageNavbar";
 import Footer from "../components/partials/Footer";
 
 const privacyAndPolicy = () => {
+  console.log("");
   return (
     <>
       <SEOHead
