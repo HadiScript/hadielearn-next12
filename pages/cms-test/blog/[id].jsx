@@ -36,6 +36,7 @@ const EditBlog = () => {
   const [singleLoading, setSingleLoading] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const [image, setImage] = useState({});
+  const [imageLoading, setImageLoading] = useState(false);
   const [content, setcontent] = useState("");
   const [categories, setCategories] = useState([]);
   const [loadCategories, setLoadCategories] = useState([]);
@@ -176,6 +177,33 @@ const EditBlog = () => {
     }
   };
 
+  const removeImage = async (public_id) => {
+    try {
+      setImageLoading(true);
+
+      const { data } = await axios.post(
+        `${API}/delete-blog-image/${id}`,
+        {
+          filepath: public_id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
+      if (data.ok) {
+        toast.success("Image is removed");
+        setImage({});
+        setImageLoading(false);
+      }
+    } catch (error) {
+      setImageLoading(false);
+      console.log("error");
+      toast.error("Try again, failed");
+    }
+  };
+
   return (
     <>
       <CMSLayout>
@@ -246,11 +274,18 @@ const EditBlog = () => {
               onChange={onChange}
             />
           </div>
-
+          {imageLoading && "loading..."}
           {image && image?.url && (
             <div className="form-group py-2">
               <h5 for="exampleFormControlInput1">Featured Image</h5>
               <img width="auto" height={300} src={image?.url} />
+              <br />
+              <span
+                className="text-danger"
+                onClick={() => removeImage(image?.public_id)}
+              >
+                Remove Image
+              </span>
             </div>
           )}
 
