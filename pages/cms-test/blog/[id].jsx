@@ -137,6 +137,31 @@ const EditBlog = () => {
     reader.readAsDataURL(file);
   };
 
+  const handleFeaturedImage = async (e) => {
+    const file = e.target.files[0];
+    let formData = new FormData();
+
+    formData.append("image", file);
+    setImageLoading(true);
+
+    try {
+      const { data } = await axios.post(`${API}/upload-image`, formData, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      });
+      setImage({
+        url: data.url,
+        public_id: data.public_id,
+      });
+
+      setImageLoading(false);
+    } catch (error) {
+      console.log(error);
+      setImageLoading(false);
+    }
+  };
+
   const submitForm = async (e) => {
     e.preventDefault();
     try {
@@ -192,9 +217,9 @@ const EditBlog = () => {
           },
         }
       );
-      if (data.ok) {
+      if (data.result) {
         toast.success("Image is removed");
-        setImage({});
+        setImage({ url: "", public_id: "" });
         setImageLoading(false);
       }
     } catch (error) {
@@ -222,7 +247,6 @@ const EditBlog = () => {
               // onChange={onChange}
             />
           </div>
-
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Description</h5>
             <textarea
@@ -259,9 +283,7 @@ const EditBlog = () => {
               onChange={onChange}
             />
           </div>
-
           <hr />
-
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Title</h5>
             <input
@@ -274,6 +296,19 @@ const EditBlog = () => {
               onChange={onChange}
             />
           </div>
+
+          <div className="form-group py-2">
+            <h5 for="exampleFormControlInput1">Featured Image</h5>
+            <input
+              onChange={handleFeaturedImage}
+              type="file"
+              accept="images/*"
+              // hidden
+              className="form-control"
+              id="exampleFormControlInput1"
+            />
+          </div>
+
           {imageLoading && "loading..."}
           {image && image?.url && (
             <div className="form-group py-2">
@@ -288,7 +323,6 @@ const EditBlog = () => {
               </span>
             </div>
           )}
-
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Content</h5>
             <input
@@ -300,7 +334,6 @@ const EditBlog = () => {
             <br />
             <Editor theme="snow" value={content} onChange={setcontent} />
           </div>
-
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Categories</h5>
             <Select
@@ -316,7 +349,6 @@ const EditBlog = () => {
               ))}
             </Select>
           </div>
-
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Poplar Tags</h5>
             <input
@@ -332,7 +364,6 @@ const EditBlog = () => {
               #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)
             </small>
           </div>
-
           <br />
           <Btn loading={loading} onClick={submitForm}>
             Edit

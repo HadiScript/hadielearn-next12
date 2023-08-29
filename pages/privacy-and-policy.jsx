@@ -145,6 +145,9 @@ const privacyAndPolicy = () => {
             By using our Site, you consent to our Privacy Policy and agree to
             its terms.
           </b>
+          <br/>
+          <br/>
+          <br/>
         </div>
       </div>
 
