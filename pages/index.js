@@ -19,8 +19,8 @@ import { API } from "../config/API";
 
 const Home = ({ courses }) => {
   const [course_data, setCourse_data] = useState(courses);
-  const [open, setOpen] = useState(false);
-  const router = useRouter();
+  // const [open, setOpen] = useState(false);
+  // const router = useRouter();
   // useEffect(() => {
   //   let fromLocal = localStorage.getItem("modal", open);
 
