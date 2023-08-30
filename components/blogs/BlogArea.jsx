@@ -4,9 +4,7 @@ import BlogLeftSideBar from "./BlogLeftSideBar";
 import BlogSingleItem from "./BlogSingleItem";
 
 // icons
-import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg";
-import { FiPlay } from "react-icons/fi";
-import { IoEllipsisHorizontal } from "react-icons/io5";
+import { BiBookOpen } from "react-icons/bi";
 import moment from "moment/moment";
 
 const BlogArea = ({
@@ -47,11 +45,11 @@ const BlogArea = ({
                     </Link>
                     <div className="postcard__text t-dark">
                       <Link href={`/blog/${x.slug}`}>
-                        <h1 className="postcard__title green">
+                        <h5 className="postcard__title green">
                           <a href="#">{x?.title}</a>
-                        </h1>
+                        </h5>
                       </Link>
-                      <div className="postcard__subtitle small">
+                      <div className="d-flex justify-content-between  postcard__subtitle small">
                         <time datetime="2020-05-25 12:00:00">
                           <i
                             style={{ color: "#0f3f5d" }}
@@ -59,11 +57,15 @@ const BlogArea = ({
                           ></i>{" "}
                           {moment(x.createdAt).fromNow()}
                         </time>
+                        <b style={{ color: "#0f3f5d" }}>
+                          <span className="mx-1"> {x.viewCount}</span>
+                          <span>views</span>
+                        </b>
                       </div>
                       <div className="postcard__bar"></div>
                       <Link href={`/blog/${x.slug}`}>
                         <div className="postcard__preview-txt">
-                          {x.description.substring(0, 100)}...
+                          {x.description.substring(0, 150)}...
                         </div>
                       </Link>
                     </div>

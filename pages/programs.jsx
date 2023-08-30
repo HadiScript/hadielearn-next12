@@ -51,12 +51,14 @@ const Programs = ({ courses }) => {
       <div className="position-relative">
         <div className="container d-flex flex-column justify-content-center align-items-center mt-150">
           <Fade bottom cascade>
-            <h1
-              className="text-center"
-              style={{ fontSize: "60px", color: "#0f3f5d" }}
-            >
-              Programs to level up your digital skills
-            </h1>
+            <div className="page__title-content">
+              <h1
+                className="pragrams-h1 text-center"
+                style={{ fontSize: "40px", color: "#0f3f5d" }}
+              >
+                Programs to level up your digital skills
+              </h1>
+            </div>
             <p className="text-center mb-4 mt-3" style={{ maxWidth: "800px" }}>
               <em>
                 We have got all your digital skill training needs covered with

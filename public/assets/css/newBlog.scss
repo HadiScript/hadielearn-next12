@@ -19,7 +19,6 @@ $main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
   position: relative;
   color: #ffffff;
 
-
   &.light {
     background-color: #e1e5ea;
   }
@@ -127,7 +126,7 @@ $main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
     flex-wrap: inherit;
 
     .postcard__title {
-      font-size: 2rem;
+      font-size: 1.7rem;
     }
 
     .postcard__tagbox {
@@ -285,5 +284,16 @@ $main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
       $main-yellow-rgb-015,
       transparent 50%
     );
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .postcard {
+    .postcard__title {
+      font-size: 1rem;
+    }
+    .postcard__preview-txt {
+      display:none;
+    }
   }
 }
