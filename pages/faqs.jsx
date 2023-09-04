@@ -8,7 +8,7 @@ import { faqs_data } from "../data/faqs";
 import Link from "next/link";
 import Head from "next/head";
 
-const FAQs = ({ list = 8, component = true }) => {
+const FAQs = ({ list = 13, component = true }) => {
   return (
     <>
       <Head>
