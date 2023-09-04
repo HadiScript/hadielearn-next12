@@ -55,4 +55,31 @@ export const faqs_data = [
     answer:
       "Hadi E-learning has various specially structured courses to offer. All these courses provide comprehensive knowledge of a particular digital field. These courses are designed to enhance the skill set of the students. Not just that, our courses also provide complete guidance on how to implement the skills they have learned. Hence, empowering the students so they can be financially independent.",
   },
+
+  {
+    question: "What is the duration of validity for this free offer?",
+    answer: "It's a limited time offer.",
+  },
+  {
+    question: "What is the duration of validity for this free offer?",
+    answer: "It's a limited time offer.",
+  },
+  {
+    question:
+      "What is the prerequisite for enrolling in the course, and do I need to pass a test to gain admission?",
+    answer:
+      "Yes, enrollment in course requires passing, once you pass the test, will you be added to the relevant group.",
+  },
+  {
+    question:
+      "Is it possible for a student to retake the test if they fail it on their first attempt?",
+    answer:
+      "Yes, students have the option to retake the test if they do not pass it on their initial attempt.",
+  },
+  {
+    question:
+      "Is class placement determined by a waiting list or on a first-come-first-serve basis after passing the test?",
+    answer:
+      "Class arrangements are made on a first-come-first-serve basis for students who have passed the test.",
+  },
 ];
