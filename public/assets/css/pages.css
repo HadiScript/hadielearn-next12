@@ -340,6 +340,77 @@
   text-align: end;
 }
 
+/* pass right box */
+#rightBox-pass {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.right-box-pass-image {
+  border-radius: 20px;
+  margin-right: -77px;
+  /* margin-right: -211px; */
+  margin-top: -78px;
+}
+
+.right-box-pass-image2 {
+  border-radius: 20px;
+  margin-right: -83px;
+
+  /* margin-right: -211px; */
+  margin-top: -58px;
+}
+
+.right-box-pass-image img {
+  width: 450px;
+  height: auto;
+}
+
+.right-box-pass-image2 img {
+  width: 450px;
+  height: auto;
+}
+
+.right-box-content-pass {
+  width: 400px;
+  margin-right: 20px;
+  margin-top: 40px;
+  padding-top: 5px;
+  padding-left: 40px;
+  border-top: 2px solid gray;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.right-box-content-pass::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  font-weight: bold;
+}
+
+.right-box-content-pass h2 {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 40px;
+  padding-left: 40px;
+  text-align: end;
+}
+
+.right-box-content-pass h5 {
+  padding-left: 40px;
+}
+
+/* ----- */
+
 /* right box 3  */
 
 #rightBox3 {
@@ -397,10 +468,69 @@
   text-align: center;
 }
 
+/* left box for fail */
+
+/* left box 3 */
+
+#leftBox3-fail {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.left-box-content3-fail {
+  width: 450px;
+  margin-left: 10px;
+  margin-right: 50px;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 2px solid gray;
+  position: relative;
+}
+
+.left-box-content3-fail::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  font-weight: bold;
+}
+
+.left-box-content3-fail h2 {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 40px;
+  width: 60%;
+}
+
+.left-box-image3-fail {
+  border-radius: 20px;
+  margin-left: -145px;
+  margin-top: -30px;
+}
+
+.left-box-image3-fail img {
+  width: 400px;
+  height: auto;
+}
+
+/* ------------------- */
+
+/* tablet */
 @media (max-width: 983px) {
   .boxes h1 {
     font-size: 50px;
   }
+
+  .right-box-content h5 {
+    font-size: 14px;
+  }
+
   .star-heading {
     width: 500px;
     font-size: 30px;
@@ -504,6 +634,40 @@
     text-align: end;
   }
 
+  /* pass */
+
+  /* pass */
+
+  .right-box-pass-image2 img {
+    width: 300px;
+  }
+  .right-box-content-pass {
+    width: 400px;
+    margin-right: 30px;
+    margin-left: 40px;
+    margin-top: 0px;
+    padding-top: 0px;
+    border-top: 2px solid gray;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .right-box-content-pass h2 {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 30px;
+  }
+
+  .right-box-content-pass h5 {
+    font-size: 15px !important;
+  }
+
+  /* ---- */
+
+  /* --- */
+
   /* last right box */
 
   #rightBox3 {
@@ -555,6 +719,55 @@
     padding-left: 30px;
     text-align: end;
   }
+
+  /* left box 3 fail */
+
+  #leftBox3-fail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 30px;
+  }
+
+  .left-box-content3-fail {
+    width: 450px;
+    margin-left: 10px;
+    margin-right: 50px;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid gray;
+    position: relative;
+  }
+
+  .left-box-content3-fail::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: gray;
+    font-weight: bold;
+  }
+
+  .left-box-content3-fail h2 {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .left-box-image3-fail {
+    margin-left: -112px;
+    margin-top: -30px;
+  }
+
+  .left-box-image3-fail img {
+    width: 300px;
+    height: auto;
+  }
+
+  /* ------------------- */
 }
 
 /* for the mobile */
@@ -562,6 +775,14 @@
 @media (max-width: 480px) {
   .boxes h1 {
     font-size: 30px;
+  }
+
+  .right-box-content h5 {
+    font-size: 8px;
+  }
+
+  .boxes h5 {
+    font-size: 10px;
   }
 
   .star-heading {
@@ -665,6 +886,39 @@
 
   /* last right box */
 
+  /* pass */
+
+  .right-box-pass-image2 img {
+    width: 150px;
+  }
+  .right-box-content-pass {
+    width: 400px;
+    margin-right: 30px;
+    margin-left: 65px;
+    margin-top: -30px;
+    padding-top: 0px;
+    border-top: 2px solid gray;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .right-box-content-pass h2 {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    padding-left: 0px;
+  }
+
+  .right-box-content-pass h5 {
+    font-size: 10px !important;
+    padding-left: 0px !important;
+  }
+
+  /* ---- */
+
+  /* --- */
+
   #rightBox3 {
     display: flex;
     flex-direction: row;
@@ -700,6 +954,52 @@
     font-size: 15px;
     padding-left: 30px;
     text-align: end;
+  }
+
+  /* left box 3 fail */
+
+  #leftBox3-fail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 30px;
+  }
+
+  .left-box-content3-fail {
+    width: 450px;
+    margin-left: 10px;
+    margin-right: 50px;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid gray;
+    position: relative;
+  }
+
+  .left-box-content3-fail::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: gray;
+    font-weight: bold;
+  }
+
+  .left-box-content3-fail h2 {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .left-box-image3-fail {
+    margin-left: -40px;
+    margin-top: 20px;
+  }
+
+  .left-box-image3-fail img {
+    width: 150px;
+    height: auto;
   }
 }
 

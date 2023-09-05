@@ -75,7 +75,10 @@ const howItWorks = () => {
               </div>
 
               <div className="right-box-content">
-                <h2>Fill out the registration form</h2>
+                <h2>
+                  Fill out the registration form and get the link to the
+                  relevant entry test.
+                </h2>
               </div>
 
               <h1>04</h1>
@@ -86,10 +89,47 @@ const howItWorks = () => {
             <div id="leftBox3">
               <h1>05</h1>
               <div className="left-box-content3">
-                <h2>Pay registration fee</h2>
+                <h2>Take the Test</h2>
               </div>
               <div className="left-box-image3">
                 <img src="/assets/images/flow/5th.png" />
+              </div>
+            </div>
+          </Fade>
+
+          <Fade bottom cascade>
+            <div id="rightBox-pass">
+              <div className="right-box-pass-image2">
+                <img src="/assets/images/new_flow/Pass.png" />
+              </div>
+
+              <div className="right-box-content-pass">
+                <div className="">
+                  <h2 className="text-start">Pass</h2>
+                  <h5>
+                    You will be added to the waitlist and will be entertained on
+                    a first come first basis.
+                  </h5>
+                </div>
+              </div>
+
+              <h1>5.1</h1>
+            </div>
+          </Fade>
+
+          <Fade bottom cascade>
+            <div id="leftBox3-fail">
+              <h1>5.2</h1>
+              <div className="left-box-content3-fail">
+                <a href="#leftBox2-fail">
+                  <h2>Fail</h2>
+                  <h5 style={{ maxWidth: "300px" }}>
+                    Don't worry! Get back to step 5 and reattempt.
+                  </h5>
+                </a>
+              </div>
+              <div className="left-box-image3-fail">
+                <img src="/assets/images/new_flow/Fail.png" />
               </div>
             </div>
           </Fade>
