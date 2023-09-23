@@ -255,7 +255,7 @@ const WorkshopDetails = ({ workshop }) => {
               {!(currentDate.getTime() > dateTime_workshop.getTime()) && (
                 <>
                   <Link href={"/enroll/workshop"} className="z-btn z-btn-3 ">
-                    Register Now
+                   <button className="z-btn"> Register Now</button>
                   </Link>
                   <hr />
                 </>

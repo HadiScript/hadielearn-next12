@@ -70,7 +70,7 @@ const EnrollmentsForm = () => {
 
   let selectedEnrolled;
   if (enrollTo && enrollTo === "workshop") {
-    selectedEnrolled = tempData ;
+    selectedEnrolled = tempData;
   }
 
   const dataPayload =
@@ -136,7 +136,12 @@ const EnrollmentsForm = () => {
 
       setUserReq(INITIAL_USER);
       setLoading(false);
-      router.push(`/thanks/${testOFCourse.slug}`);
+      if (enrollTo && enrollTo === "workshop") {
+        toast.success("Submit");
+        router.push(`/`);
+      } else {
+        router.push(`/thanks/${testOFCourse.slug}`);
+      }
     } catch (err) {
       let {
         response: {
