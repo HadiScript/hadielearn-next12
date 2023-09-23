@@ -8,6 +8,8 @@ import { BiCheck } from "react-icons/bi";
 import axios from "axios";
 import Footer from "../../components/partials/Footer";
 import { API } from "../../config/API";
+import { tempData } from "../../data/tempData";
+import { useEffect } from "react";
 
 const WorkshopDetails = ({ workshop }) => {
   const router = useRouter();
@@ -32,6 +34,11 @@ const WorkshopDetails = ({ workshop }) => {
     second: "numeric",
     hour12: true,
   });
+  useEffect(() => {
+    if (slug === "how-to-break-into-cyber-security") {
+      setSelected(tempData);
+    }
+  }, [slug]);
   return (
     <>
       <Tops
@@ -160,18 +167,29 @@ const WorkshopDetails = ({ workshop }) => {
                     <h4>Date & Timing</h4>
                   </div>
                   <div className="sidebar__widget-content">
-                    <div className="tags">
-                      {formattedDate} | {formattedTime}
-                    </div>
+                    {slug == "how-to-break-into-cyber-security" ? (
+                      <div className="tags">{selected?.meetingTiming}</div>
+                    ) : (
+                      <div className="tags">
+                        {formattedDate} | {formattedTime}
+                      </div>
+                    )}
                   </div>
                 </div>
-                {!(currentDate.getTime() > dateTime_workshop.getTime()) && (
-                  <Link
-                    href={"/enroll/workshop"}
-                    className="z-btn z-btn-3 w-100"
-                  >
-                    Register Now
+
+                {slug === "how-to-break-into-cyber-security" ? (
+                  <Link href={"/enroll/workshop"} className="z-btn-register ">
+                    <button className="z-btn"> Register Now</button>
                   </Link>
+                ) : (
+                  !(currentDate.getTime() > dateTime_workshop.getTime()) && (
+                    <Link
+                      href={"/enroll/workshop"}
+                      className="z-btn z-btn-3 w-100"
+                    >
+                      Register Now
+                    </Link>
+                  )
                 )}
               </div>
             </div>
@@ -187,19 +205,34 @@ const WorkshopDetails = ({ workshop }) => {
                 </p>
               </div>
               <div className="services__img mb-45 w-img">
-                <img src={selected?.image?.url} alt="image_from_workshp" />
+                {slug === "how-to-break-into-cyber-security" ? (
+                  <img
+                    src={"/assets/images/check/workshop2.webp"}
+                    alt="workshop_image"
+                  />
+                ) : (
+                  <img src={selected?.image?.url} alt="image_from_workshp" />
+                )}
               </div>
 
               <div className="services__list mb-40">
                 <div className="service-text">
                   <h3>Outlines</h3>
-                  <p style={{ fontSize: "18px" }}>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: selected?.outlines,
-                      }}
-                    />
-                  </p>
+                  {slug === "how-to-break-into-cyber-security" ? (
+                    <>
+                      {selected?.outlines.map((x) => (
+                        <p style={{ fontSize: "18px" }}>{x}</p>
+                      ))}
+                    </>
+                  ) : (
+                    <p style={{ fontSize: "18px" }}>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: selected?.outlines,
+                        }}
+                      />
+                    </p>
+                  )}
                 </div>
                 {/* <ul>
                   {selected?.outline.map((x, index) => (

@@ -118,6 +118,9 @@ const AddWorkshops = () => {
       return;
     }
 
+    console.log(payloadData);
+    return;
+
     try {
       setloading(true);
 
@@ -359,7 +362,7 @@ const AddWorkshops = () => {
 
         <br />
         <br />
-        <Btn  onClick={submitHandler} loading={loading}>
+        <Btn onClick={submitHandler} loading={loading}>
           Submit
         </Btn>
       </Card>

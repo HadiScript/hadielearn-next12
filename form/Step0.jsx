@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AiOutlineRollback } from "react-icons/ai";
 
 import PhoneInput from "react-phone-input-2";
+import { tempData } from "../data/tempData";
 
 const Step0 = ({
   email,
@@ -188,7 +189,7 @@ const Step0 = ({
               >
                 <option value="">Choose</option>
                 {/* <option value="autocad">AutoCAD</option> */}
-                <option value="ux-design">UX Design</option>
+                <option value={tempData.slug}>{tempData.title}</option>
               </select>
             </div>
           )}

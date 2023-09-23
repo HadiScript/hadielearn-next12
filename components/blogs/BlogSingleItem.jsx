@@ -17,13 +17,12 @@ const BlogSingleItem = ({
 }) => {
   return (
     <>
-      {/* _blogs style -2 style height as auto */}
       <div className="blog__item-3 mb-50 fix">
         <div
           className={`blog__thumb-3 w-img fix ${video_icon && "p-relative"}`}
         >
           <Link role="button" href={`/blog/${slug}`}>
-            <img src={image} alt="blog-image"  />
+            <img src={image} alt="blog-image" />
           </Link>
           {video_icon && video_icon}
         </div>
@@ -51,9 +50,9 @@ const BlogSingleItem = ({
               <>{title}</>
             </Link>
           </h3>
-          <p >{description.substring(0, 150)} ...</p>
+          <p>{description.substring(0, 150)} ...</p>
           <div className="blog__btn d-sm-flex justify-content-between">
-            <div role="button"  className="blog__btn">
+            <div role="button" className="blog__btn">
               <Link href={`/blog/${slug}`} className="link-btn-2">
                 <>
                   Read More
@@ -64,7 +63,7 @@ const BlogSingleItem = ({
               </Link>
             </div>
             <div role="button" className="blog__comment">
-              <Link  href={`/blog/${slug}`}>
+              <Link href={`/blog/${slug}`}>
                 <small>View {viewCount} </small>
               </Link>
             </div>

@@ -1,4 +1,6 @@
 import React from "react";
+import { BiArrowToRight } from "react-icons/bi";
+import { FaCheck } from "react-icons/fa";
 
 const Background = () => {
   return (
@@ -13,22 +15,61 @@ const Background = () => {
                   <h2>Background</h2>
                 </div>
                 <p style={{ fontSize: "18px" }}>
-                  The youth of Pakistan has been deprived of ample opportunities
-                  for quite a while. With a large percentage of youth in our
-                  population, we still, are unable to provide them with a
-                  pathway that can lead to a bright future. This situation has
-                  caused immense disappointment in our younger generation and
-                  has urged the youth to look for opportunities aboard.
-                </p>
-                <p style={{ fontSize: "18px" }}>
-                  With years of consideration and planning, we have come up with
-                  a solution to play a positive role in the lives of Pakistani
-                  youth and ultimately, for the betterment of society.
+                  Pakistan's economic conditions have gone through turbulence in
+                  recent years. This situation has caused a void of
+                  opportunities in the countries which has discouraged the youth
+                  greatly. To address this disappointment among the youth of the
+                  country Hadi E-learning plans to offer:
                 </p>
 
-                <a href="#about" className="z-btn">
+                <div className="about__list">
+                  <ul>
+                    <li>
+                      <span>
+                        <i>
+                          <FaCheck />
+                        </i>
+                        Free IT training to the youth.
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i>
+                          <FaCheck />
+                        </i>
+                        Training in in-demand futuristic fields.
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i>
+                          <FaCheck />
+                        </i>
+                        Mentorship to make students ready for the industry.
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i>
+                          <FaCheck />
+                        </i>
+                        Opportunities to be financially independent.
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i>
+                          <FaCheck />
+                        </i>
+                        Strengthening the country's economy through skilled HR.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* <a href="#about" className="z-btn">
                   Learn More
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="col-xl-7 col-lg-6 col-md-6">

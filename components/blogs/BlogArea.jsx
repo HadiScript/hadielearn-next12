@@ -32,6 +32,39 @@ const BlogArea = ({
                 {allBlogs.length === 0 && <h2> Empty: </h2>}
 
                 {allBlogs?.map((x) => (
+                  <div key={x._id} class="card">
+                    <img
+                      src={x?.image?.url}
+                      class="card__image"
+                      alt="Blog Image"
+                    />
+                    <div class="card__content">
+                      <h2 class="card__content-title">{x?.title}</h2>
+                      <p class="card__content-description">
+                        {x.description.substring(0, 120)}...
+                      </p>
+                      <div class="card__content-meta">
+                        <p class="card__content-meta-views">
+                          <b style={{ color: "#0f3f5d" }}>
+                            <span className="mx-1"> {x.viewCount}</span>
+                            <span>views</span>
+                          </b>
+                        </p>
+                        <p class="card__content-meta-date">
+                          <time datetime="2020-05-25 12:00:00">
+                            <i
+                              style={{ color: "#0f3f5d" }}
+                              className="fas fa-calendar-alt mr-2"
+                            ></i>{" "}
+                            {moment(x.createdAt).fromNow()}
+                          </time>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {/* {allBlogs?.map((x) => (
                   <article key={x._id} className="postcard light green">
                     <Link
                       className="postcard__img_link"
@@ -70,7 +103,7 @@ const BlogArea = ({
                       </Link>
                     </div>
                   </article>
-                ))}
+                ))} */}
               </div>
               {whichPage === "blogs" && (
                 <>

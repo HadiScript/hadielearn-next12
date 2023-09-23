@@ -1,4 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "node_modules/react-modal-video/scss/modal-video.scss";
+
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 @import "react-datetime-picker/dist/DateTimePicker.css";
@@ -7,6 +9,10 @@
 @import "../assets/css/pages.css";
 @import "../assets/scss/main.scss";
 @import "../assets/css/newBlog.scss";
+
+.slick-dots {
+  margin-top: 70px !important; /* Adjust the values as needed */
+}
 
 .sticky-colm {
   position: sticky;
@@ -30,3 +36,7 @@
 //   left: 12px;
 //   pointer-events: none;
 // }
+
+#mascot {
+  height: 450px !important;
+}

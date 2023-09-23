@@ -17,6 +17,7 @@ const Btn = ({
       style={{
         backgroundColor: disable ? `gray` : danger ? "red" : "#0f3f5d",
         color: "white",
+        border: "none",
       }}
     >
       {children}

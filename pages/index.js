@@ -16,6 +16,9 @@ import Btn from "../components/ui/Btn";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { API } from "../config/API";
+import Stats from "../components/home/Stats";
+
+// import Stats from "../components/home/Stats";
 
 const Home = ({ courses }) => {
   const [course_data, setCourse_data] = useState(courses);
@@ -45,7 +48,10 @@ const Home = ({ courses }) => {
         }
         conLink={"https://hadielearning.com/"}
       />
+
       <ResponsiveHeros />
+
+      <Stats />
       <HomeAbout />
       {/* {JSON.stringify(course_data)} */}
       <Courses courses_data={course_data} />
@@ -54,7 +60,6 @@ const Home = ({ courses }) => {
       <Testimonials />
       <Brands />
       <Footer />
-      {/* asdsad */}
 
       {/* <Modal
         centered

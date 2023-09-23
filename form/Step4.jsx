@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { AiOutlineRollback } from "react-icons/ai";
+import { tempData } from "../data/tempData";
 
 const Step4 = ({
   currentStep,
@@ -133,7 +134,7 @@ const Step4 = ({
               }}
             >
               <option value="">Choose</option>
-              <option value="ux-design">UX Design</option>
+              <option value={tempData.slug}>{tempData.title}</option>
             </select>
           </div>
         )}

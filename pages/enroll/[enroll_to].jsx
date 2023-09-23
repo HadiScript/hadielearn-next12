@@ -11,6 +11,7 @@ import Step3 from "../../form/Step3";
 import Step4 from "../../form/Step4";
 import { API } from "../../config/API";
 import { test_links } from "../../form/test_links";
+import { tempData } from "../../data/tempData";
 
 const INITIAL_USER = {
   firstName: "",
@@ -69,7 +70,7 @@ const EnrollmentsForm = () => {
 
   let selectedEnrolled;
   if (enrollTo && enrollTo === "workshop") {
-    selectedEnrolled = workshop_data.find((x) => x.key === workshop);
+    selectedEnrolled = tempData ;
   }
 
   const dataPayload =

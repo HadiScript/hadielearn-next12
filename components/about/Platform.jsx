@@ -13,7 +13,7 @@ const Platform = () => {
     >
       <div className="container">
         <div className="about__area-2 pt-0">
-          <div className="row pt-120">
+          <div className="row pt-4">
             <div className="col-xl-7 col-lg-6">
               {/* <Fade left> */}
               <div className="about__thumb-2 p-relative m-img  text-center ">
@@ -44,29 +44,9 @@ const Platform = () => {
                   online learning platforms. Together, we can empower our youth
                   and bridge the gap to global opportunities.
                 </p>
-                <a href="#mission" className="z-btn">
+                {/* <a href="#mission" className="z-btn">
                   Hadi's Mission
-                </a>
-              </div>
-              {/* </Fade> */}
-            </div>
-          </div>
-
-          <div className="row pt-120" id="mission">
-            <div className="col">
-              {/* <Fade right> */}
-              <div className="about__content">
-                <div className="section__title section__title-3 mb-25">
-                  <h2>Mission Statement</h2>
-                </div>
-                <p>
-                  The mission of Hadi E-Learning is to empower the youth with
-                  the treasure of technical knowledge. We want our talented
-                  youth to excel in this digital age and set higher benchmarks
-                  for themselves. We aim and strive to create opportunities for
-                  them so they don't have to stop on their road to success due
-                  to hurdles like fewer or no opportunities.
-                </p>
+                </a> */}
               </div>
               {/* </Fade> */}
             </div>

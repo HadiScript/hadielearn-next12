@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Btn from "../ui/Btn";
 
 const SinglePrice = ({ title, price, active, linkTitle }) => {
   return (
@@ -30,7 +31,7 @@ const SinglePrice = ({ title, price, active, linkTitle }) => {
               </ul>
             </div> */}
             <Link href="/enroll/program" className="price-btn">
-              {linkTitle}
+              <Btn>{linkTitle}</Btn>
             </Link>
           </div>
         </div>
