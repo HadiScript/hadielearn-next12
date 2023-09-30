@@ -109,7 +109,7 @@ Flexibility"
                 <div className="accordion" id="accordionExample">
                   {/* frist */}
 
-                  <div className="card accordion-item">
+                  <div className="accordion-cards accordion-item">
                     <div className="card-header accordion-header" id="acc_0">
                       <h5 className="mb-0">
                         <button
@@ -139,8 +139,8 @@ Flexibility"
                   {faqs_data.slice(1, list).map((x, index) => (
                     <>
                       {index !== 0 && (
-                        <div className="card">
-                          <div className="card-header" id={`acc_${index}`}>
+                        <div className="accordion-cards">
+                          <div id={`acc_${index}`}>
                             <h5 className="mb-0">
                               <button
                                 className="btn btn-link collapsed"
@@ -169,7 +169,7 @@ Flexibility"
                     </>
                   ))}
 
-                  <div className="card">
+                  <div className="accordion-cards">
                     <div className="card-header" id={`acc_99`}>
                       <h5 className="mb-0">
                         <button

@@ -41,8 +41,9 @@ const HomeAbout = () => {
                     lead you through specially structured computer short courses
                     that will not only enhance your IT skills but will also help
                     you navigate efficiency through your career path.
-                  </p>
-                  <p style={{ marginTop: "-20px" }}>
+                    <br />
+                    {/* </p>
+                  <p style={{ marginTop: "-20px" }}> */}
                     Hadi’s mission is to empower the country's youth with the
                     strength of modern skills so they can have equal
                     opportunities to excel in their careers as anyone else in

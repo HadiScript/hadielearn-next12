@@ -4,17 +4,18 @@ const Vission = ({ image }) => {
   return (
     <>
       <div className="expart__tab-content white-bg">
-        {/* <div
+        <div
           className="expart__thumb"
           style={{
-            background: `url(assets/images/check/mission_files/case-${image}.jpg)`,
+            backgroundImage: `url(/assets/images/check/vission.webp`,
             backgroundPosition: "center",
             backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
           }}
-        ></div> */}
+        ></div>
         <div className="row">
-          {/* <div className="col-xl-6 col-lg-6 offset-lg-6"> */}
-          <div className="col-xl-12 col-lg-12">
+          <div className="col-xl-6 col-lg-6 offset-lg-6">
+            {/* <div className="col-xl-12 col-lg-12"> */}
             <div className="expart__content">
               <h3>The vision we perceived</h3>
               <q>

@@ -33,7 +33,7 @@ const SingleCount = ({ counter, title, color }) => {
 const Stats = () => {
   return (
     <>
-      <section className="counter__area pt-140 pb-85">
+      <section className="counter__area pt-140 pb-20">
         <div className="container">
           <div className="row">
             <SingleCount counter={300} title="Live classes" color="primary" />

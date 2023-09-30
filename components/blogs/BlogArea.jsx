@@ -32,25 +32,43 @@ const BlogArea = ({
                 {allBlogs.length === 0 && <h2> Empty: </h2>}
 
                 {allBlogs?.map((x) => (
-                  <div key={x._id} class="card">
-                    <img
-                      src={x?.image?.url}
-                      class="card__image"
-                      alt="Blog Image"
-                    />
-                    <div class="card__content">
-                      <h2 class="card__content-title">{x?.title}</h2>
-                      <p class="card__content-description">
-                        {x.description.substring(0, 120)}...
-                      </p>
-                      <div class="card__content-meta">
-                        <p class="card__content-meta-views">
+                  <div key={x._id} className="card">
+                    <Link
+                      className="postcard__img_link"
+                      href={`/blog/${x.slug}`}
+                    >
+                      <img
+                        role="button"
+                        src={x?.image?.url}
+                        className="card__image"
+                        alt="Blog Image"
+                      />
+                    </Link>
+                    <div className="card__content">
+                      <Link
+                        className="postcard__img_link"
+                        href={`/blog/${x.slug}`}
+                      >
+                        <h2 role="button" className="card__content-title">
+                          {x?.title}
+                        </h2>
+                      </Link>
+                      <Link
+                        className="postcard__img_link"
+                        href={`/blog/${x.slug}`}
+                      >
+                        <p role="button" className="card__content-description">
+                          {x.description.substring(0, 120)}...
+                        </p>
+                      </Link>
+                      <div className="card__content-meta">
+                        <p className="card__content-meta-views">
                           <b style={{ color: "#0f3f5d" }}>
                             <span className="mx-1"> {x.viewCount}</span>
                             <span>views</span>
                           </b>
                         </p>
-                        <p class="card__content-meta-date">
+                        <p className="card__content-meta-date">
                           <time datetime="2020-05-25 12:00:00">
                             <i
                               style={{ color: "#0f3f5d" }}

@@ -14,21 +14,42 @@ const Testimonials = () => {
   const testimonialData = [
     {
       id: 1,
-      name: "Abbas Ali",
+      name: "Alizah Jamal",
       content:
-        "This course was exactly what I needed to jumpstart my career in designing. The hands-on projects were challenging but rewarding, and I appreciated the personalized feedback from the instructor. I would highly recommend this course to anyone looking to gain practical skills in Designing.",
+        "The 2-month graphic designing course has been amazing so far! I've gained a ton of new knowledge and the instructor is super helpful and supportive. It's been a fantastic experience!",
     },
     {
       id: 2,
-      name: "Hassas Mukhtar",
+      name: "Owais Khanzada",
       content:
-        "I had no prior experience in development, but this course was so well-designed that I was able to quickly pick up the basics. The instructor was patient and encouraging, and I appreciated the community atmosphere that was fostered in the course. I'm now excited to explore ReactJS further and see where it can take me!",
+        "Experience is amazing, being at Karachi and connecting with Hadi e learning was super smooth, and the mentor Ms Zahra Mohsin she's got immense knowledge regarding SEO , her friendly and cooperative nature makes it even more simple and easier to understand, highly recommended ☺️",
     },
     {
       id: 3,
-      name: "Taqi",
+      name: "Ubaid Ali",
       content:
-        "I've taken a lot of courses in 3d max, but this one stood out for its depth and rigor. The instructor was clearly an expert in the field and challenged us to think critically about the material. I appreciated the emphasis on real-world applications and the opportunity to work with industry-standard tools. This course has definitely helped me take my skills to the next level.",
+        "I've been learning React JS through Hadi E-learning, and I can't express how grateful I am for the experience. The way they present complex concepts with simplicity and clarity is truly commendable. The examples they provide are not only relevant but also incredibly helpful in solidifying my understanding. Thanks to their efforts, I've gained a new level of confidence in my React skills.",
+    },
+
+    {
+      id: 4,
+      name: "Ayesha Hafeez",
+      content:
+        "I really want to appreciate Hadi eLearning platform because they provide high quality education in their classes. Currently, i am enroll in Seo course and the instructor explain everything very well. It's a best platform to learn and grow.",
+    },
+
+    {
+      id: 5,
+      name: "M. Zain Hassan Sabri",
+      content:
+        "Hadi E-Learning is a great platform for students who wants to learn new things while sitting at home and the tutors are much better than any other institute. They make sure you learn everything and teaches you in the best way possible.",
+    },
+
+    {
+      id: 6,
+      name: "Jannat Awan",
+      content:
+        "I recently had the opportunity to enroll in the Hadi E-learning Free WordPress Course, and I must say it exceeded my expectations. The course content was comprehensive and well-structured, making it easy for beginners like me to grasp the fundamentals of WordPress.",
     },
   ];
 

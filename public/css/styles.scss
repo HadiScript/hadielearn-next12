@@ -40,3 +40,12 @@
 #mascot {
   height: 450px !important;
 }
+
+.faq__accordion .accordion-cards {
+  margin-bottom: 20px !important;
+  border: none !important;
+  // background: transparent !important;
+  background: white !important;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px 0px rgba(3, 0, 53, 0.1);
+}

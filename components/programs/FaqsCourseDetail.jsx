@@ -12,7 +12,7 @@ const FaqsCourseDetail = ({ details, page }) => {
 
                 {page === "outline" && (
                   <>
-                    <div className="card accordion-item">
+                    <div className="accordion-cards accordion-item">
                       <div className="card-header accordion-header" id="acc_0">
                         <h5 className="mb-0">
                           <button
@@ -44,7 +44,7 @@ const FaqsCourseDetail = ({ details, page }) => {
                         {UperIndex === 0 ? (
                           <></>
                         ) : (
-                          <div className="card">
+                          <div className="accordion-cards">
                             <div
                               className="card-header"
                               id={`acc_${UperIndex}`}
@@ -81,7 +81,7 @@ const FaqsCourseDetail = ({ details, page }) => {
 
                 {page === "FAQs" && (
                   <>
-                    <div className="card accordion-item">
+                    <div className="accordion-cards accordion-item">
                       <div className="card-header accordion-header" id="acc_0">
                         <h5 className="mb-0">
                           <button
