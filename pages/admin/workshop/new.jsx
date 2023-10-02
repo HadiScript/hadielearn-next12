@@ -26,7 +26,7 @@ const NewCourse = () => {
   const [breadTitle, setBreadTitle] = useState("");
   const [content, setContent] = useState();
   const [outlines, setOutlines] = useState();
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState();
   const [conclusion, setConclusion] = useState("");
   const [dateAndTime, setDateAndTime] = useState(new Date());
   const [instructor, setInstructor] = useState("");
@@ -119,10 +119,28 @@ const NewCourse = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append("breadTitle", breadTitle);
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("outlines", outlines);
+    formData.append("image", image); // Assuming `image` is the File object from an input type="file"
+    formData.append("conclusion", conclusion);
+    formData.append("dateAndTime", dateAndTime);
+    formData.append("instructor", instructor);
+    formData.append("zoomLink", zoomLink);
+    formData.append("meetingId", meetingId);
+    formData.append("pascodeId", pascodeId);
+    formData.append("meetingTiming", meetingTiming);
+    formData.append("tags", tags);
+    categories.forEach((category) => {
+      formData.append("categories", category);
+    });
+
     try {
       setloading(true);
 
-      const { data } = await axios.post(`${API}/create-workshop`, payloadData);
+      const { data } = await axios.post(`${API}/create-workshop`, formData);
 
       if (data.error) {
         toast.error(data.error, { position: "bottom-center" });
@@ -195,7 +213,8 @@ const NewCourse = () => {
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1"> Workshop Image</h5>
             <input
-              onChange={handleImage}
+              // onChange={handleImage}
+              onChange={(e) => setImage(e.target.files[0])}
               type="file"
               accept="images/*"
               // hidden
@@ -205,8 +224,17 @@ const NewCourse = () => {
           </div>
           {loadingImage && "loading..."}
 
-          {image && image?.url && (
-            <img width="auto" height={300} src={image?.url} />
+          {image && (
+            <>
+              <img
+                width="auto"
+                height={300}
+                src={URL.createObjectURL(image)}
+                onClick={() => setImage()}
+              />
+              <br />
+              <small>Just click on image to remove.</small>
+            </>
           )}
 
           <hr />

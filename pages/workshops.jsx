@@ -9,6 +9,7 @@ import { API } from "../config/API";
 import ModalVideo from "react-modal-video";
 import { FiPlay } from "react-icons/fi";
 import { tempData } from "../data/tempData";
+import { toImageUrl } from "../utils/ImageURL";
 
 const VideoPopup = ({ videoId, isVideoOpen, setIsVideoOpen }) => {
   return (
@@ -66,8 +67,8 @@ const Workshops = ({ workshops }) => {
                 <br />
                 <br />
 
-              {/* starting here */}
-              {/* {JSON.stringify(tempData)} */}
+                {/* starting here */}
+                {/* {JSON.stringify(tempData)} */}
                 <div className="blog__item-2 mb-50 fix">
                   <div className={`blog__thumb-2  w-img fix p-relative`}>
                     <Link href={`/workshop-detail/${tempData.slug} `}>
@@ -147,7 +148,14 @@ const Workshops = ({ workshops }) => {
                   <div key={index} className="blog__item-2 mb-50 fix">
                     <div className={`blog__thumb-2  w-img fix p-relative`}>
                       <Link href={`/workshop-detail/${x.slug} `}>
-                        <img src={x.image?.url} alt="workshop_image" />
+                        {x.image.url.includes("uploads") ? (
+                          <img
+                            src={toImageUrl(x.image?.url)}
+                            alt="workshop_image"
+                          />
+                        ) : (
+                          <img src={x.image?.url} alt="workshop_image" />
+                        )}
                       </Link>
 
                       {/* <div className="blog__play p-absolute">

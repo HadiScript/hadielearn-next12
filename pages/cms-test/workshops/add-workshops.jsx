@@ -67,12 +67,15 @@ const AddWorkshops = () => {
           Authorization: `Bearer ${auth.token}`,
         },
       });
-      setImage({
-        url: data.url,
-        public_id: data.public_id,
-      });
 
-      setLoadingImage(false);
+      console.log("Image Url", data);
+
+      // setImage({
+      //   url: data.url,
+      //   public_id: data.public_id,
+      // });
+
+      // setLoadingImage(false);
     } catch (error) {
       console.log(error);
       setLoadingImage(false);
@@ -118,18 +121,35 @@ const AddWorkshops = () => {
       return;
     }
 
-    console.log(payloadData);
-    return;
+    const formData = new FormData();
+    formData.append("breadTitle", breadTitle);
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("outlines", outlines);
+    formData.append("image", image); // Assuming `image` is the File object from an input type="file"
+    formData.append("conclusion", conclusion);
+    formData.append("dateAndTime", dateAndTime);
+    formData.append("instructor", instructor);
+    formData.append("zoomLink", zoomLink);
+    formData.append("meetingId", meetingId);
+    formData.append("pascodeId", pascodeId);
+    formData.append("meetingTiming", meetingTiming);
+    formData.append("tags", tags);
+    formData.append("categories", categories);
+
+    // console.log(payloadData);
+    // return;
 
     try {
       setloading(true);
 
-      const { data } = await axios.post(`${API}/create-workshop`, payloadData);
+      const { data } = await axios.post(`${API}/create-workshop`, formData);
 
       if (data.error) {
         toast.error(data.error, { position: "bottom-center" });
         setloading(false);
       } else {
+        console.log(data, "data");
         toast.success("Course created successfully", {
           position: "bottom-center",
         });
@@ -195,7 +215,8 @@ const AddWorkshops = () => {
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1"> Workshop Image</h5>
           <input
-            onChange={handleImage}
+            // onChange={handleImage}
+            onChange={(e) => setImage(e.target.files[0])}
             type="file"
             accept="images/*"
             // hidden
