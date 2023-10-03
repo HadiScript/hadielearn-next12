@@ -30,6 +30,7 @@ const Step0 = ({
   whatsAppphoneNumber,
   setWhatsAppPhoneNumber,
   fetchCoursesData,
+  fetchWorkshopsData,
 }) => {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -188,8 +189,11 @@ const Step0 = ({
                 }}
               >
                 <option value="">Choose</option>
-                {/* <option value="autocad">AutoCAD</option> */}
-                <option value={tempData.slug}>{tempData.title}</option>
+                {fetchWorkshopsData.map((x) => (
+                  <option key={x._id} value={x.slug}>
+                    {x.title}
+                  </option>
+                ))}
               </select>
             </div>
           )}

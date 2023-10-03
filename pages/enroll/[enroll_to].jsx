@@ -49,6 +49,7 @@ const EnrollmentsForm = () => {
   const [idCard, setIdCard] = useState("");
 
   const [fetchCoursesData, setFetchCoursesData] = useState([]);
+  const [fetchWorkshopsData, setFetchWorkshopsData] = useState([]);
 
   //   singleData States
   const [singleData, setSingleData] = useState({});
@@ -229,11 +230,28 @@ const EnrollmentsForm = () => {
     }
   };
 
+  const fetchingWorkshops = async () => {
+    try {
+      // const { data } = await axios.get(`${API}/workshops-form`);
+      const { data } = await axios.get(
+        `http://localhost:5000/api/workshops-form`
+      );
+      if (data._workshops) {
+        setFetchWorkshopsData(data._workshops);
+      }
+    } catch (error) {
+      toast.error("Failed, try again");
+    }
+  };
+
   useEffect(() => {
     if (enroll_to === "program") fetchingCourses();
   }, [enroll_to]);
+  useEffect(() => {
+    if (enroll_to === "workshop") fetchingWorkshops();
+  }, [enroll_to]);
 
-  // console.log(fetchCoursesData, "here are the all coruses");
+  console.log(fetchWorkshopsData, "here are the all coruses");
 
   return (
     <>
@@ -272,6 +290,7 @@ const EnrollmentsForm = () => {
                     whatsAppphoneNumber={whatsAppphoneNumber}
                     setWhatsAppPhoneNumber={setWhatsAppPhoneNumber}
                     fetchCoursesData={fetchCoursesData}
+                    fetchWorkshopsData={fetchWorkshopsData}
                   />
 
                   {/* <CardText /> */}
@@ -336,6 +355,7 @@ const EnrollmentsForm = () => {
                     setEducation={setEducation}
                     // setEnrollTo={setEnrollTo}
                     fetchCoursesData={fetchCoursesData}
+                    fetchWorkshopsData={fetchWorkshopsData}
                   />
                 </div>
               </div>

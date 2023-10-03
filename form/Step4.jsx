@@ -19,7 +19,7 @@ const Step4 = ({
   setWorkshop,
   _enroll_to,
   fetchCoursesData,
-
+  fetchWorkshopsData,
   MultiStepProgressBar,
 }) => {
   const navigate = useRouter();
@@ -134,7 +134,11 @@ const Step4 = ({
               }}
             >
               <option value="">Choose</option>
-              <option value={tempData.slug}>{tempData.title}</option>
+              {fetchWorkshopsData.map((x) => (
+                <option key={x._id} value={x.slug}>
+                  {x.title}
+                </option>
+              ))}
             </select>
           </div>
         )}
