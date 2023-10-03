@@ -39,6 +39,7 @@ const EnrollmentsForm = () => {
   const [education, setEducation] = useState("");
   const [course, setCourse] = useState("");
   const [workshop, setWorkshop] = useState("");
+  const [selectedEnrolled, setSelectedEnrolled] = useState({});
   const [enrollTo, setEnrollTo] = useState("");
   const [userReq, setUserReq] = useState(INITIAL_USER);
   const [loading, setLoading] = useState(false);
@@ -68,11 +69,6 @@ const EnrollmentsForm = () => {
   const handleCheckboxChange = (event) => {
     setGender(event.target.value);
   };
-
-  let selectedEnrolled;
-  if (enrollTo && enrollTo === "workshop") {
-    selectedEnrolled = tempData;
-  }
 
   const dataPayload =
     singleData && ok
@@ -114,16 +110,11 @@ const EnrollmentsForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // console.log(data, "here is");
-    // return;
-
     let testOFCourse = test_links?.find((x) => x.slug === course);
 
     try {
       setLoading(true);
       const payload = { ...dataPayload, testLink: testOFCourse?.test };
-      // console.log(payload, "here is");
-      // return;
 
       const { data } = await axios.post(
         "https://api.hadielearning.com/api/enroll-stu",
@@ -249,7 +240,9 @@ const EnrollmentsForm = () => {
     if (enroll_to === "workshop") fetchingWorkshops();
   }, [enroll_to]);
 
-  console.log(fetchWorkshopsData, "here are the all coruses");
+  useEffect(() => {
+    setSelectedEnrolled(fetchWorkshopsData.find((x) => x.slug === workshop));
+  }, [workshop]);
 
   return (
     <>
