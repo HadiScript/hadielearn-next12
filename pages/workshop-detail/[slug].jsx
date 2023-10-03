@@ -10,6 +10,7 @@ import Footer from "../../components/partials/Footer";
 import { API } from "../../config/API";
 import { tempData } from "../../data/tempData";
 import { useEffect } from "react";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const WorkshopDetails = ({ workshop }) => {
   const router = useRouter();
@@ -34,11 +35,7 @@ const WorkshopDetails = ({ workshop }) => {
     second: "numeric",
     hour12: true,
   });
-  useEffect(() => {
-    if (slug === "how-to-break-into-cyber-security") {
-      setSelected(tempData);
-    }
-  }, [slug]);
+
   return (
     <>
       <Tops
@@ -52,8 +49,7 @@ const WorkshopDetails = ({ workshop }) => {
         image={"/assets/images/bread.jpg"}
       />
 
-      {/* start */}
-      {/* <section className="services__details pt-115 pb-100">
+      <section className="services__details pt-115 pb-100">
         <div className="container">
           <div className="row">
             <div className="col-xl-4 col-lg-4 order-last order-lg-first">
@@ -81,6 +77,7 @@ const WorkshopDetails = ({ workshop }) => {
                     </div>
                   </div>
                 </div>
+
                 {!(currentDate.getTime() > dateTime_workshop.getTime()) && (
                   <Link
                     href={"/enroll/workshop"}
@@ -88,108 +85,6 @@ const WorkshopDetails = ({ workshop }) => {
                   >
                     Register Now
                   </Link>
-                )}
-              </div>
-            </div>
-            <div className="col-xl-8 col-lg-8">
-              <div className="services__text">
-                <h2>{selected?.title}</h2>
-                <br />
-                <h3>{selected?.heading1}</h3>
-                <p>{selected?.content1}</p>
-              </div>
-              <div className="services__img mb-45 w-img">
-                <img
-                  src={`/assets/images/workshop/${selected?.image}.jpg`}
-                  alt=""
-                />
-              </div>
-
-              <div className="services__list mb-40">
-                <div className="service-text">
-                  <h3>Outlines</h3>
-                  <p style={{ fontSize: "18px" }}> {selected?.outlineLine}</p>
-                </div>
-                <ul>
-                  {selected?.outline.map((x, index) => (
-                    <li
-                      key={index}
-                      className="d-flex justify-content-start align-items-center gap-2"
-                    >
-                      {" "}
-                      <BiCheck size={25} />{" "}
-                      <span style={{ fontSize: "17px" }}>{x}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="services__text">
-                <h4>Conclusion</h4>
-                <p>{selected?.conclusion}</p>
-              </div>
-
-              {!(currentDate.getTime() > dateTime_workshop.getTime()) && (
-                <>
-                  <Link href={"/enroll/workshop"} className="z-btn z-btn-3 ">
-                    Register Now
-                  </Link>
-                  <hr />
-                </>
-              )}
-              <WriteComments selected={selected} />
-             
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* ends */}
-
-      <section className="services__details pt-115 pb-100">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-4 col-lg-4 order-last order-lg-first">
-              <div className="services__sidebar mr-50">
-                <div className="sidebar__widget  mb-30 ">
-                  <div className="sidebar__widget-title mb-50">
-                    <h4>Popular Tags</h4>
-                  </div>
-                  <div className="sidebar__widget-content">
-                    <div className="tags">
-                      {selected?.tags.map((x, index) => (
-                        <p key={index}>{x}</p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="sidebar__widget  mb-30 ">
-                  <div className="sidebar__widget-title mb-20">
-                    <h4>Date & Timing</h4>
-                  </div>
-                  <div className="sidebar__widget-content">
-                    {slug == "how-to-break-into-cyber-security" ? (
-                      <div className="tags">{selected?.meetingTiming}</div>
-                    ) : (
-                      <div className="tags">
-                        {formattedDate} | {formattedTime}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {slug === "how-to-break-into-cyber-security" ? (
-                  <Link href={"/enroll/workshop"} className="z-btn-register ">
-                    <button className="z-btn"> Register Now</button>
-                  </Link>
-                ) : (
-                  !(currentDate.getTime() > dateTime_workshop.getTime()) && (
-                    <Link
-                      href={"/enroll/workshop"}
-                      className="z-btn z-btn-3 w-100"
-                    >
-                      Register Now
-                    </Link>
-                  )
                 )}
               </div>
             </div>
@@ -205,34 +100,26 @@ const WorkshopDetails = ({ workshop }) => {
                 </p>
               </div>
               <div className="services__img mb-45 w-img">
-                {slug === "how-to-break-into-cyber-security" ? (
+                {selected.image.url.includes("uploads") ? (
                   <img
-                    src={"/assets/images/check/workshop2.webp"}
+                    src={toImageUrl(selected.image?.url)}
                     alt="workshop_image"
                   />
                 ) : (
-                  <img src={selected?.image?.url} alt="image_from_workshp" />
+                  <img src={selected.image?.url} alt="workshop_image" />
                 )}
               </div>
 
               <div className="services__list mb-40">
                 <div className="service-text">
                   <h3>Outlines</h3>
-                  {slug === "how-to-break-into-cyber-security" ? (
-                    <>
-                      {selected?.outlines.map((x) => (
-                        <p style={{ fontSize: "18px" }}>{x}</p>
-                      ))}
-                    </>
-                  ) : (
-                    <p style={{ fontSize: "18px" }}>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: selected?.outlines,
-                        }}
-                      />
-                    </p>
-                  )}
+                  <p style={{ fontSize: "18px" }}>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: selected?.outlines,
+                      }}
+                    />
+                  </p>
                 </div>
                 {/* <ul>
                   {selected?.outline.map((x, index) => (
@@ -255,7 +142,7 @@ const WorkshopDetails = ({ workshop }) => {
               {!(currentDate.getTime() > dateTime_workshop.getTime()) && (
                 <>
                   <Link href={"/enroll/workshop"} className="z-btn z-btn-3 ">
-                   <button className="z-btn"> Register Now</button>
+                    <button className="z-btn"> Register Now</button>
                   </Link>
                   <hr />
                 </>
