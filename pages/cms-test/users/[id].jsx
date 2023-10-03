@@ -10,6 +10,7 @@ import { AuthContext } from "../../../context/auth";
 import Btn from "../../../components/ui/Btn";
 import CMSLayout from "../../../panel/newCMS/layouts";
 import { Card } from "antd";
+import { toImageUrl } from "../../../utils/ImageURL";
 
 const EditUser = () => {
   const router = useRouter();
@@ -22,7 +23,8 @@ const EditUser = () => {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [status, setStatus] = useState("");
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState();
+  const [previousImage, setPreviousImage] = useState();
   const [password, setPassword] = useState();
   const [password2, setPassword2] = useState();
   const [exp, setExp] = useState("");
@@ -41,7 +43,7 @@ const EditUser = () => {
         setEmail(data.email);
         setStatus(data.status);
         setRole(data.role);
-        setImage(data.image);
+        setPreviousImage(data.image);
         setExp(data.exp);
       } catch (err) {
         console.log(err);
@@ -77,6 +79,20 @@ const EditUser = () => {
     }
   };
 
+  const deleteImage = async (e) => {
+    try {
+      const { data } = await axios.post(`${API}/delete-image`, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error("Error while deleting image.");
+      setImageLoading(false);
+    }
+  };
+
   // function
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,18 +102,26 @@ const EditUser = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("name", name);
+    formData.append("password", password);
+    formData.append("status", status);
+    formData.append("image", image); // Assuming `image` is the File object from an input type="file"
+    formData.append("exp", exp);
+
     setLoading(true);
 
     try {
-      const { data } = await axios.put(`${API}/update-user-by-admin`, {
-        id,
-        name,
-        password,
-        status,
-        role,
-        image,
-        exp,
-      });
+      const { data } = await axios.put(
+        `${API}/update-user-by-admin`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       // console.log("update_user", data);
       if (data?.error) {
         toast.error(data.error);
@@ -125,11 +149,12 @@ const EditUser = () => {
       <CMSLayout>
         <Card>
           {imageLoading && "loading..."}
-          {!image && (
+          {!image && !previousImage && (
             <div className="form-group py-2">
               <h5 for="exampleFormControlInput1"> Your Image</h5>
               <input
-                onChange={handleImage}
+                // onChange={handleImage}
+                onChange={(e) => setImage(e.target.files[0])}
                 type="file"
                 accept="images/*"
                 // hidden
@@ -139,12 +164,12 @@ const EditUser = () => {
             </div>
           )}
 
-          {image && (
+          {image && !previousImage && (
             <div className="row pb-3">
               <div className="col-md-12 text-center">
                 <img
                   className="text-center bg-red"
-                  src={image?.url}
+                  src={image && URL.createObjectURL(image)}
                   style={{
                     width: "100px",
                     height: "100px",
@@ -152,7 +177,30 @@ const EditUser = () => {
                   }}
                 />
                 <div className="col-md-12  text-center">
-                  <small className="text-danger">delete</small>
+                  <small className="text-danger" onClick={() => setImage()}>
+                    delete
+                  </small>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {previousImage && (
+            <div className="row pb-3">
+              <div className="col-md-12 text-center">
+                <img
+                  className="text-center bg-red"
+                  src={toImageUrl(previousImage.url)}
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    borderRadius: "50%",
+                  }}
+                />
+                <div className="col-md-12  text-center">
+                  <small className="text-danger" onClick={deleteImage}>
+                    delete
+                  </small>
                 </div>
               </div>
             </div>

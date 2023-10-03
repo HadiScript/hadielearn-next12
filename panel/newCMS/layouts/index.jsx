@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { API } from "../../../config/API";
 import axios from "axios";
 import Redirecting from "../../common/Redrecting";
+import { toImageUrl } from "../../../utils/ImageURL";
 const { Sider, Header, Content } = Layout;
 const { useBreakpoint } = Grid;
 
@@ -130,7 +131,12 @@ const CMSLayout = ({ children }) => {
                 color: "white",
                 justifySelf: "end",
               }}
-              src={auth?.user?.image && auth?.user?.image?.url}
+              src={
+                auth?.user?.image &&
+                auth?.user?.image?.url.includes("profileImages")
+                  ? toImageUrl(auth?.user?.image?.url)
+                  : auth?.user?.image?.url
+              }
             >
               {!auth?.user?.image && auth?.user?.name[0]}
             </Avatar>
