@@ -82,7 +82,7 @@ const EnrollmentsForm = () => {
           meetingId: selectedEnrolled && selectedEnrolled.meetingId,
           passcodeId: selectedEnrolled && selectedEnrolled.pascodeId,
           link: selectedEnrolled && selectedEnrolled.zoomLink,
-          authorName: selectedEnrolled && selectedEnrolled.userName,
+          authorName: selectedEnrolled && selectedEnrolled.instructor.name,
           heading: selectedEnrolled && selectedEnrolled.title,
           meetingTiming: selectedEnrolled && selectedEnrolled.meetingTiming,
         }
@@ -102,7 +102,7 @@ const EnrollmentsForm = () => {
           meetingId: selectedEnrolled && selectedEnrolled.meetingId,
           passcodeId: selectedEnrolled && selectedEnrolled.pascodeId,
           link: selectedEnrolled && selectedEnrolled.zoomLink,
-          authorName: selectedEnrolled && selectedEnrolled.userName,
+          authorName: selectedEnrolled && selectedEnrolled.instructor.name,
           heading: selectedEnrolled && selectedEnrolled.title,
           meetingTiming: selectedEnrolled && selectedEnrolled.meetingTiming,
         };
@@ -243,6 +243,7 @@ const EnrollmentsForm = () => {
   useEffect(() => {
     setSelectedEnrolled(fetchWorkshopsData.find((x) => x.slug === workshop));
   }, [workshop]);
+
 
   return (
     <>
