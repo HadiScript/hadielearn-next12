@@ -233,9 +233,7 @@ const EnrollmentsForm = () => {
   const fetchingWorkshops = async () => {
     try {
       // const { data } = await axios.get(`${API}/workshops-form`);
-      const { data } = await axios.get(
-        `http://localhost:5000/api/workshops-form`
-      );
+      const { data } = await axios.get(`${API}/workshops-form`);
       if (data._workshops) {
         setFetchWorkshopsData(data._workshops);
       }
