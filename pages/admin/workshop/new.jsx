@@ -140,7 +140,11 @@ const NewCourse = () => {
     try {
       setloading(true);
 
-      const { data } = await axios.post(`${API}/create-workshop`, formData);
+      const { data } = await axios.post(`${API}/create-workshop`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (data.error) {
         toast.error(data.error, { position: "bottom-center" });
