@@ -98,7 +98,7 @@ const Workshops = ({ workshops }) => {
                       <div className="blog__meta-2 mb-15 d-sm-flex align-items-center">
                         <div className="d-flex align-items-center  pr-20 mr-20">
                           <Link href={`/workshop-detail/${x.slug} `}>
-                            {x.instructor?.image?.url.includes("uploads") ? (
+                            {x.instructor?.image?.url.includes("profileImages") ? (
                               <img
                                 src={toImageUrl(x.instructor?.image?.url)}
                                 className="pr-10"
