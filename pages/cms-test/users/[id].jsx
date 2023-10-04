@@ -81,17 +81,25 @@ const EditUser = () => {
 
   const deleteImage = async (e) => {
     try {
-      const { data } = await axios.post(`${API}/delete-image`, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      });
+      setImageLoading(true);
+      const { data } = await axios.post(
+        `${API}/delete-image-admin`,
+        { _id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
 
       if (data.ok) {
         setPreviousImage();
+        setImageLoading(false);
       }
     } catch (error) {
       console.log(error);
+      setImageLoading(false);
+
       toast.error("Error while deleting image.");
       setImageLoading(false);
     }

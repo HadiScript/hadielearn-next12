@@ -50,33 +50,6 @@ const UserSettings = () => {
     }
   }, [auth && auth.token]);
 
-  //   handling profile image
-  const handleImage = async (e) => {
-    const file = e.target.files[0];
-    let formData = new FormData();
-
-    formData.append("image", file);
-    setImageLoading(true);
-
-    try {
-      const { data } = await axios.post(`${API}/upload-image`, formData, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      });
-      // console.log('uploaded image data', data)
-      setImage({
-        url: data.url,
-        public_id: data.public_id,
-      });
-
-      setImageLoading(false);
-    } catch (error) {
-      console.log(error);
-      setImageLoading(false);
-    }
-  };
-
   const deleteImage = async (e) => {
     try {
       setImageLoading(true);
@@ -86,8 +59,8 @@ const UserSettings = () => {
         },
       });
       if (data.ok) {
-        setPreviousImage();
         setImageLoading(false);
+        setPreviousImage();
       }
     } catch (error) {
       console.log(error);
@@ -140,22 +113,6 @@ const UserSettings = () => {
       console.log(err);
       toast.error("User update failed. Try again.");
       setLoading(false);
-    }
-  };
-
-  const removeImage = async (x) => {
-    try {
-      setImageLoading(true);
-
-      const { data } = await axios.post(`${API}/delete-image`, { filepath: x });
-      if (data) {
-        toast.success("Your image has been removed");
-        currentUser();
-        setImageLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-      setImageLoading(false);
     }
   };
 
