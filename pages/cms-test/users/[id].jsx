@@ -86,6 +86,10 @@ const EditUser = () => {
           Authorization: `Bearer ${auth.token}`,
         },
       });
+
+      if (data.ok) {
+        setPreviousImage();
+      }
     } catch (error) {
       console.log(error);
       toast.error("Error while deleting image.");
