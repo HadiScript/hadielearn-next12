@@ -7,8 +7,6 @@ import Link from "next/link";
 import { CgArrowLongRight } from "react-icons/cg";
 import { API } from "../config/API";
 import ModalVideo from "react-modal-video";
-import { FiPlay } from "react-icons/fi";
-import { tempData } from "../data/tempData";
 import { toImageUrl } from "../utils/ImageURL";
 
 const VideoPopup = ({ videoId, isVideoOpen, setIsVideoOpen }) => {
@@ -100,12 +98,21 @@ const Workshops = ({ workshops }) => {
                       <div className="blog__meta-2 mb-15 d-sm-flex align-items-center">
                         <div className="d-flex align-items-center  pr-20 mr-20">
                           <Link href={`/workshop-detail/${x.slug} `}>
-                            <img
-                              className="pr-10"
-                              src={x.instructor?.image?.url}
-                              alt=""
-                              height={80}
-                            />
+                            {x.instructor?.image?.url.includes("uploads") ? (
+                              <img
+                                src={toImageUrl(x.instructor?.image?.url)}
+                                className="pr-10"
+                                alt="istructor image"
+                                height={80}
+                              />
+                            ) : (
+                              <img
+                                className="pr-10"
+                                src={x.instructor?.image?.url}
+                                alt="istructor image"
+                                height={80}
+                              />
+                            )}
                           </Link>
                           <div>
                             <span

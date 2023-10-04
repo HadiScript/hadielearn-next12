@@ -226,6 +226,9 @@ const NewCourse = () => {
               id="exampleFormControlInput1"
             />
           </div>
+          <small className="form-text">
+            Please upload image within 1mb, formet jpg,jpeg,webp
+          </small>
           {loadingImage && "loading..."}
 
           {image && (

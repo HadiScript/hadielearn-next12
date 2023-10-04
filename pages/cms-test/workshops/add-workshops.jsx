@@ -25,7 +25,7 @@ const AddWorkshops = () => {
   const [breadTitle, setBreadTitle] = useState("");
   const [content, setContent] = useState();
   const [outlines, setOutlines] = useState();
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState();
   const [conclusion, setConclusion] = useState("");
   const [dateAndTime, setDateAndTime] = useState(new Date());
   const [instructor, setInstructor] = useState("");
@@ -52,52 +52,6 @@ const AddWorkshops = () => {
     };
     fetchCats();
   }, []);
-
-  // upload image
-  const handleImage = async (e) => {
-    const file = e.target.files[0];
-    let formData = new FormData();
-
-    formData.append("image", file);
-    setLoadingImage(true);
-
-    try {
-      const { data } = await axios.post(`${API}/upload-image`, formData, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      });
-
-      console.log("Image Url", data);
-
-      // setImage({
-      //   url: data.url,
-      //   public_id: data.public_id,
-      // });
-
-      // setLoadingImage(false);
-    } catch (error) {
-      console.log(error);
-      setLoadingImage(false);
-    }
-  };
-
-  const payloadData = {
-    breadTitle,
-    title,
-    content,
-    outlines,
-    image,
-    conclusion,
-    dateAndTime,
-    instructor,
-    zoomLink,
-    meetingId,
-    pascodeId,
-    meetingTiming,
-    tags,
-    categories,
-  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -135,22 +89,24 @@ const AddWorkshops = () => {
     formData.append("pascodeId", pascodeId);
     formData.append("meetingTiming", meetingTiming);
     formData.append("tags", tags);
-    formData.append("categories", categories);
-
-    // console.log(payloadData);
-    // return;
+    categories.forEach((category) => {
+      formData.append("categories", category);
+    });
 
     try {
       setloading(true);
 
-      const { data } = await axios.post(`${API}/create-workshop`, formData);
+      const { data } = await axios.post(`${API}/create-workshop`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (data.error) {
         toast.error(data.error, { position: "bottom-center" });
         setloading(false);
       } else {
-        console.log(data, "data");
-        toast.success("Course created successfully", {
+        toast.success("Workshop created successfully", {
           position: "bottom-center",
         });
         setloading(false);
@@ -200,7 +156,7 @@ const AddWorkshops = () => {
         </div>
 
         <div className="form-group py-2">
-          <h5 for="exampleFormControlInput1"> Course Title</h5>
+          <h5 for="exampleFormControlInput1"> Workshop Title</h5>
           <input
             type="text"
             className="form-control"
@@ -224,10 +180,22 @@ const AddWorkshops = () => {
             id="exampleFormControlInput1"
           />
         </div>
+        <small className="form-text">
+          Please upload image within 1mb, formet jpg,jpeg,webp
+        </small>
         {loadingImage && "loading..."}
 
-        {image && image?.url && (
-          <img width="auto" height={300} src={image?.url} />
+        {image && (
+          <div className="form-group py-2">
+            <img
+              width="auto"
+              height={300}
+              src={URL.createObjectURL(image)}
+              onClick={() => setImage()}
+            />
+            <br />
+            <small>Just click on image to remove.</small>
+          </div>
         )}
 
         <hr />
