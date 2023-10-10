@@ -137,7 +137,7 @@ const allWorkshops = () => {
                     <td className="text-dark">{x?.instructor?.name}</td>
 
                     <td className="text-dark">
-                      {x?._doc?.show ? (
+                      {x?.show ? (
                         <Btn onClick={() => disableWorkshop(x?._id)}>
                           Enabled
                         </Btn>
