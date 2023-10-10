@@ -24,37 +24,46 @@ const Applications = () => {
   const [totalPages, setTotalPages] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [courseSelect, setCourseSelect] = useState("");
+  const [workshopSelect, setWorkshopSelect] = useState("");
   const [fetchedCourses, setFetchedCourses] = useState([]);
+  const [fetchWorkshopsData, setFetchWorkshopsData] = useState([]);
+
+  const [loading, setLoading] = useState(false);
 
   const [open, setOpen] = useState(false);
   const [currentObj, setCurrentObj] = useState({});
 
+  const fetchingData = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `${API}/fetch/enrollments?page=${currentPage}&limit=${limit}&search=${searchInput}&fromDate=${fromDate}&endDate=${endDate}&enrollTo=${enrollToSelect}&course=${courseSelect}&workshop=${workshopSelect}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
+      setEnrollments(data.enrollments);
+      setTotalPages(data.totalPages);
+      setTotalDataCount(data.total);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchingData = async () => {
-      try {
-        const { data } = await axios.get(
-          `${API}/fetch/enrollments?page=${currentPage}&limit=${limit}&search=${searchInput}&fromDate=${fromDate}&endDate=${endDate}&enrollTo=${enrollToSelect}&course=${courseSelect}`,
-          {
-            headers: {
-              Authorization: `Bearer ${auth.token}`,
-            },
-          }
-        );
-        setEnrollments(data.enrollments);
-        setTotalPages(data.totalPages);
-        setTotalDataCount(data.total);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchingData();
+    if (auth && auth.token) fetchingData();
   }, [
+    auth && auth.token,
     searchInput,
     fromDate,
     endDate,
     enrollToSelect,
     currentPage,
     courseSelect,
+    workshopSelect,
     limit,
   ]);
 
@@ -69,9 +78,29 @@ const Applications = () => {
     }
   };
 
+  const fetchingWorkshops = async () => {
+    try {
+      // const { data } = await axios.get(`${API}/workshops-form`);
+      const { data } = await axios.get(`${API}/workshopfilters`);
+      console.log(data, "workshop data");
+      if (data._workshops) {
+        setFetchWorkshopsData(data._workshops);
+      }
+    } catch (error) {
+      toast.error("Failed, try again");
+    }
+  };
+
   useEffect(() => {
     if (enrollToSelect === "program") {
       fetchingCourses();
+    }
+  }, [enrollToSelect]);
+
+  useEffect(() => {
+    if (enrollToSelect === "workshop") {
+      console.log("running for workshops");
+      fetchingWorkshops();
     }
   }, [enrollToSelect]);
 
@@ -95,6 +124,10 @@ const Applications = () => {
 
     const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
     saveAs(blob, "data.csv");
+  };
+
+  const refreshData = () => {
+    fetchingData();
   };
 
   return (
@@ -128,25 +161,45 @@ const Applications = () => {
             }}
             id="enrollToSelect"
           >
-            <option>select</option>
+            <option value={""}>Select</option>
             <option value="workshop">Workshop</option>
             <option value="program">Program</option>
           </select>
-          <select
-            className="form-control"
-            value={courseSelect}
-            onChange={(e) => {
-              setCourseSelect(e.target.value);
-            }}
-            id="enrollToSelect"
-          >
-            <option>Choose Course</option>
-            {fetchedCourses?.map((x) => (
-              <option key={x._id} value={x.slug}>
-                {x.title}
-              </option>
-            ))}
-          </select>
+          {enrollToSelect === "program" && (
+            <select
+              className="form-control"
+              value={courseSelect}
+              onChange={(e) => {
+                setCourseSelect(e.target.value);
+              }}
+              id="enrollToSelect"
+            >
+              <option value={""}>Choose Course</option>
+              {fetchedCourses?.map((x) => (
+                <option key={x._id} value={x.slug}>
+                  {x.title}
+                </option>
+              ))}
+            </select>
+          )}
+
+          {enrollToSelect === "workshop" && (
+            <select
+              className="form-control"
+              value={workshopSelect}
+              onChange={(e) => {
+                setWorkshopSelect(e.target.value);
+              }}
+              id="enrollToSelect"
+            >
+              <option value={""}>Choose Workshop</option>
+              {fetchWorkshopsData?.map((x) => (
+                <option key={x._id} value={x.slug}>
+                  {x.title}
+                </option>
+              ))}
+            </select>
+          )}
 
           <select
             className="form-control"
@@ -156,6 +209,7 @@ const Applications = () => {
             }}
             id="enrollToSelect"
           >
+            <option value={0}>Limit Export</option>
             <option value={10}>10 - limit</option>
             <option value={20}>20 - limit</option>
             <option value={50}>50 - limit</option>
@@ -164,12 +218,17 @@ const Applications = () => {
             <option value={2000}>2000 - limit</option>
             <option value={5000}>5000 - limit</option>
             <option value={10000}>10000 - limit</option>
+            <option value={15000}>15000 - limit</option>
           </select>
           <Btn onClick={Reset}> Reset </Btn>
           <Btn onClick={exportToCSV}> Export CSV </Btn>
+          <Btn onClick={refreshData}> Refresh </Btn>
         </Space>
         <Card className="mt-5">
-          <h5> Enrollments: {totalDataCount} </h5>
+          <h5>
+            {" "}
+            Enrollments: {totalDataCount} {loading && "loading..."}
+          </h5>
           <br />
           <TableComponent
             enrollments={enrollments}

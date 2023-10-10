@@ -135,12 +135,8 @@ const EnrollmentsForm = () => {
         router.push(`/thanks/${testOFCourse.slug}`);
       }
     } catch (err) {
-      let {
-        response: {
-          data: { message },
-        },
-      } = err;
-      toast.error(message, { position: "bottom-right" });
+      toast.error("Failed, try again", { position: "bottom-right" });
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -236,6 +232,7 @@ const EnrollmentsForm = () => {
   useEffect(() => {
     if (enroll_to === "program") fetchingCourses();
   }, [enroll_to]);
+  
   useEffect(() => {
     if (enroll_to === "workshop") fetchingWorkshops();
   }, [enroll_to]);
@@ -243,7 +240,6 @@ const EnrollmentsForm = () => {
   useEffect(() => {
     setSelectedEnrolled(fetchWorkshopsData.find((x) => x.slug === workshop));
   }, [workshop]);
-
 
   return (
     <>
