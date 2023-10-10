@@ -7,12 +7,15 @@ import CMSLayout from "../../../panel/newCMS/layouts";
 import { API } from "../../../config/API";
 import { AuthContext } from "../../../context/auth";
 import { Card } from "antd";
+import Btn from "../../../components/ui/Btn";
+import toast from "react-hot-toast";
 
 const allWorkshops = () => {
   const router = useRouter();
   const [auth] = useContext(AuthContext);
   const [allWorkshops, setAllWorkshops] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
 
   const fetchingAllWorkshops = async () => {
     try {
@@ -50,6 +53,55 @@ const allWorkshops = () => {
     }
   };
 
+  const disableWorkshop = async (id) => {
+    try {
+      setShowLoading(true);
+      const { data } = await axios.put(
+        `${API}/workshop/show-or-not/${id}`,
+        { showOrNot: false },
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      );
+      if (data.ok) {
+        setShowLoading(false);
+        toast.success("Workshop has been disable");
+        fetchingAllWorkshops();
+      }
+    } catch (error) {
+      console.log(error);
+      setShowLoading(false);
+      toast.error("Try again");
+    }
+  };
+
+  const enableWorkshop = async (id) => {
+    try {
+      setShowLoading(true);
+      const { data } = await axios.put(
+        `${API}/workshop/show-or-not/${id}`,
+        { showOrNot: true },
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      );
+
+      if (data.ok) {
+        setShowLoading(false);
+        toast.success("Workshop has been disable");
+        fetchingAllWorkshops();
+      }
+    } catch (error) {
+      console.log(error);
+      setShowLoading(false);
+      toast.error("Try again");
+    }
+  };
+
   return (
     <CMSLayout>
       <Card>
@@ -83,6 +135,21 @@ const allWorkshops = () => {
                     <td className="text-dark">{x?.categories[0]?.name}</td>
                     <td className="text-dark">{x?.title}</td>
                     <td className="text-dark">{x?.instructor?.name}</td>
+
+                    <td className="text-dark">
+                      {x?._doc?.show ? (
+                        <Btn onClick={() => disableWorkshop(x?._id)}>
+                          Enabled
+                        </Btn>
+                      ) : (
+                        <Btn
+                          danger={true}
+                          onClick={() => enableWorkshop(x?._id)}
+                        >
+                          Disabled
+                        </Btn>
+                      )}
+                    </td>
 
                     <td className="text-dark">
                       <BiEdit

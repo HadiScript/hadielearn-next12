@@ -1,43 +1,58 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect } from "react";
 
+import StuHeader from "../../panel/newStudent/components/StuHeader";
+import FirstCol from "../../panel/profiling/firstCol";
+import ProfileLayout from "../../panel/profiling/ProfileLayout";
+import SecondCol from "../../panel/profiling/secondCol";
+import toast from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../config/API";
-
 import { AuthContext } from "../../context/auth";
-import Redirecting from "../../panel/common/Redrecting";
-import StuHeader from "../../panel/newStudent/components/StuHeader";
-import MyAllBatches from "../../panel/newStudent/components/MyAllBatches";
 
 const Studetn = () => {
-  const [auth] = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
+  const [auth] = React.useContext(AuthContext);
 
-  useEffect(() => {
-    if (auth?.token) {
-      getCurrentStudent();
-    }
-  }, [auth?.token]);
+  const [loading, setLoading] = React.useState(false);
+  const [profile, setProfile] = React.useState({});
 
-  const getCurrentStudent = async () => {
+  const gettingMyProfile = async () => {
+    setLoading(true);
     try {
-      const { data } = await axios.get(`${API}/current-student`);
-      if (data.ok) {
-        setLoading(false);
-      }
-    } catch (err) {
+      const { data } = await axios.get(`${API}/my-profile`);
+      console.log({ data });
+      setProfile(data._profile);
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed, try again");
+    } finally {
       setLoading(false);
-      console.log(err);
-      router.push("/");
     }
   };
 
-  return loading ? (
-    <Redirecting />
-  ) : (
-    <>
-      <StuHeader page="contactPage" />
-      <MyAllBatches />
-    </>
+  useEffect(() => {
+    if (auth && auth.token) {
+      gettingMyProfile();
+    }
+  }, [auth && auth.token]);
+
+  return (
+    <ProfileLayout>
+     
+      <div
+        class="container rounded bg-white mb-5"
+        style={{ paddingTop: "50px" }}
+      >
+        <div class="row">
+          <FirstCol
+            user={auth?.user}
+            skills={profile?.skills}
+            socials={profile?.socials}
+            bio={profile?.bio}
+          />
+          <SecondCol profile={profile}/>
+        </div>
+      </div>
+    </ProfileLayout>
   );
 };
 
