@@ -10,6 +10,7 @@ const TableComponent = ({
   setCurrentPage,
   setOpen,
   setCurrentObj,
+  enrollToSelect,
 }) => {
   const pageSize = 10; // Number of items per page
   const pageRangeDisplayed = 5; // Number of page numbers to display in the pagination bar
@@ -32,16 +33,32 @@ const TableComponent = ({
       key: "phoneNumber",
     },
     {
-      title: "Course",
-      dataIndex: "course",
-      key: "course",
+      title: "WhatsApp",
+      dataIndex: "whatsAppphoneNumber",
+      key: "whatsAppphoneNumber",
     },
+    enrollToSelect === "workshop"
+      ? {
+          title: "Workshop",
+          dataIndex: "workshop",
+          key: "workshop",
+          // render: (_, record) => (
+          //   // <span>{moment(`${record.createdAt}`).fromNow()}</span>
+          //   <span>{record.workshop.slice(0,15)}</span>
+          // ),
+        }
+      : {
+          title: "Course",
+          dataIndex: "course",
+          key: "course",
+        },
     {
       title: "At",
       // dataIndex: "createdAt",
       key: "createdAt",
       render: (_, record) => (
-        <span>{moment(`${record.createdAt}`).fromNow()}</span>
+        // <span>{moment(`${record.createdAt}`).fromNow()}</span>
+        <span>{record.createdAt.slice(0,10)}</span>
       ),
     },
     {
@@ -74,6 +91,7 @@ const TableComponent = ({
 
   return (
     <>
+      {enrollToSelect}
       <Table
         dataSource={enrollments}
         columns={columns}

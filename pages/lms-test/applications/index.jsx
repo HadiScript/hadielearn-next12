@@ -120,7 +120,13 @@ const Applications = () => {
   };
 
   const exportToCSV = () => {
-    const csvData = dataToCSV(enrollments);
+    let _enrollments = [];
+
+    enrollments.map((x) => {
+      _enrollments.push({ ...x, dateOfBirth: x.dateOfBirth.slice(0, 10) });
+    });
+
+    const csvData = dataToCSV(_enrollments);
 
     const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
     saveAs(blob, "data.csv");
@@ -226,7 +232,6 @@ const Applications = () => {
         </Space>
         <Card className="mt-5">
           <h5>
-            {" "}
             Enrollments: {totalDataCount} {loading && "loading..."}
           </h5>
           <br />
@@ -236,6 +241,7 @@ const Applications = () => {
             totalPages={totalPages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            enrollToSelect={enrollToSelect}
             setOpen={setOpen}
             setCurrentObj={setCurrentObj}
           />
