@@ -1,29 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
-import { Button, Card, List, Modal } from "antd";
+import { Button, Card } from "antd";
+import ProjectList from "../../panel/profiling/ProjectList";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../config/API";
-import { useEffect } from "react";
-import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
-import { BsPen } from "react-icons/bs";
-import EducationEditModal from "../../panel/profiling/EducationEditModal";
-import EduList from "../../panel/profiling/EduList";
+import ProjectEditModal from "../../panel/profiling/ProjectEditModal";
 
-const Education = () => {
+const Portfolio = () => {
   const [auth] = useContext(AuthContext);
   const [formData, setFormData] = useState({
-    school: "",
-    degree: "",
+    title: "",
     to: "",
     from: "",
     current: false,
     description: "",
+    link: "",
   });
 
+  const [projectData, setProjectData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [eduList, setEduList] = useState([]);
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
 
@@ -35,14 +32,14 @@ const Education = () => {
     }
   };
 
-  const addEducation = async () => {
+  const addProject = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.put(`${API}/add-education`, formData);
+      const { data } = await axios.put(`${API}/add-project`, formData);
       // console.log(data);
       if (data.ok) {
         toast.success("Added");
-        setEduList([...eduList, data.education]);
+        myPortfolio();
       } else if (data.error) {
         toast.error(data.error);
       }
@@ -54,12 +51,12 @@ const Education = () => {
     }
   };
 
-  const myEducation = async () => {
+  const myPortfolio = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`${API}/my-education`);
+      const { data } = await axios.get(`${API}/my-portfolio`);
       if (data.ok) {
-        setEduList(data.education);
+        setProjectData(data.portfolio);
       }
     } catch (error) {
       console.log(error);
@@ -69,13 +66,13 @@ const Education = () => {
     }
   };
 
-  const deleteEducation = async (x) => {
+  const deleteProject = async (x) => {
     setLoading(true);
     try {
-      const { data } = await axios.put(`${API}/delete-education`, { _id: x });
+      const { data } = await axios.put(`${API}/delete-project`, { _id: x });
       if (data.ok) {
         toast.success("Removed");
-        setEduList(eduList.filter((i) => i._id !== x));
+        setProjectData(projectData.filter((i) => i._id !== x));
       }
     } catch (error) {
       console.log(error);
@@ -85,7 +82,7 @@ const Education = () => {
     }
   };
 
-  const EditEdu = async (datas) => {
+  const EditProject = async (datas) => {
     setLoading(true);
 
     const newData = {
@@ -94,11 +91,11 @@ const Education = () => {
       to: datas?.to ? datas?.to : current.to,
     };
     try {
-      const { data } = await axios.put(`${API}/edit-education`, newData);
+      const { data } = await axios.put(`${API}/edit-portfolio`, newData);
       // console.log(data);
       if (data.ok) {
         toast.success("Updated");
-        myEducation();
+        myPortfolio();
       } else if (data.error) {
         toast.error(data.error);
       }
@@ -112,36 +109,37 @@ const Education = () => {
 
   useEffect(() => {
     if (auth && auth?.token) {
-      myEducation();
+      myPortfolio();
     }
   }, [auth && auth?.token]);
 
+  
   return (
     <EditProfileLayout>
-      <Card title="Education">
+      <Card title={"Portfolio"}>
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
-              <label> School </label>
+              <label> Title </label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="School"
-                name="school"
-                value={formData.school}
+                placeholder="eg: Full Stack Developer"
+                name="title"
+                value={formData.title}
                 onChange={changesFormData}
               />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
-              <label> Degree </label>
+              <label> Link </label>
               <input
                 type="email"
                 className="form-control"
-                placeholder="Degree"
-                name="degree"
-                value={formData.degree}
+                placeholder="eg: hadiraza.com"
+                name="link"
+                value={formData.link}
                 onChange={changesFormData}
               />
             </div>
@@ -195,9 +193,8 @@ const Education = () => {
             <textarea
               type="text"
               className="form-control"
-              placeholder="Description"
               name="description"
-              checked={formData.description}
+              value={formData.description}
               onChange={changesFormData}
             />
           </div>
@@ -207,31 +204,30 @@ const Education = () => {
           <Button
             className="CardieBg text-light"
             loading={loading}
-            onClick={addEducation}
+            onClick={addProject}
           >
             Submit
           </Button>
         </div>
       </Card>
 
-      {/* list of educations */}
-      <EduList
-        from="editing-page"
-        eduList={eduList}
-        deleteEducation={deleteEducation}
+      <ProjectList
+        projectData={projectData}
+        from={"editing-page"}
+        deleteProject={deleteProject}
         setCurrent={setCurrent}
         setOpen={setOpen}
       />
 
-      <EducationEditModal
+      <ProjectEditModal
+        current={current}
+        loading={loading}
+        EditProject={EditProject}
         open={open}
         setOpen={setOpen}
-        current={current}
-        EditEdu={EditEdu}
-        loading={loading}
       />
     </EditProfileLayout>
   );
 };
 
-export default Education;
+export default Portfolio;

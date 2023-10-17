@@ -52,7 +52,22 @@ const Skills = () => {
   };
 
   const deleteSkill = async (x) => {
-    alert(x);
+    setLoading(true);
+    try {
+      const { data } = await axios.put(`${API}/delete-skills`, {
+        skillToDelete: x,
+      });
+      if (data.error) {
+        toast.error(data.error);
+      } else if (data.ok) {
+        toast.success("Removed");
+        setSkillsList(skillsList.filter((i) => i !== x));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -6,22 +6,9 @@ import BlogSingleItem from "./BlogSingleItem";
 // icons
 import { BiBookOpen } from "react-icons/bi";
 import moment from "moment/moment";
+import { toImageUrl } from "../../utils/ImageURL";
 
-const BlogArea = ({
-  allBlogs,
-  RecentBlogs,
-  Categories,
-  page,
-  setPage,
-  Router,
-  total,
-  loading,
-  handleSearch,
-  searchQuery,
-  setSearchQuery,
-  mostViewed,
-  whichPage,
-}) => {
+const BlogArea = ({ allBlogs, RecentBlogs, Categories, page, setPage, Router, total, loading, handleSearch, searchQuery, setSearchQuery, mostViewed, whichPage }) => {
   return (
     <>
       <section className="blog__area pt-120 pb-120">
@@ -33,30 +20,17 @@ const BlogArea = ({
 
                 {allBlogs?.map((x) => (
                   <div key={x._id} className="card">
-                    <Link
-                      className="postcard__img_link"
-                      href={`/blog/${x.slug}`}
-                    >
-                      <img
-                        role="button"
-                        src={x?.image?.url}
-                        className="card__image"
-                        alt="Blog Image"
-                      />
+                    <Link className="postcard__img_link" href={`/blog/${x.slug}`}>
+                      {x.image?.url?.includes("uploads") ? <img src={toImageUrl(x.image?.url)} alt="workshop_image" /> : <img src={x.image?.url} alt="workshop_image" />}
+                      {/* <img role="button" src={x?.image?.url} className="card__image" alt="Blog Image" /> */}
                     </Link>
                     <div className="card__content">
-                      <Link
-                        className="postcard__img_link"
-                        href={`/blog/${x.slug}`}
-                      >
+                      <Link className="postcard__img_link" href={`/blog/${x.slug}`}>
                         <h2 role="button" className="card__content-title">
                           {x?.title}
                         </h2>
                       </Link>
-                      <Link
-                        className="postcard__img_link"
-                        href={`/blog/${x.slug}`}
-                      >
+                      <Link className="postcard__img_link" href={`/blog/${x.slug}`}>
                         <p role="button" className="card__content-description">
                           {x.description.substring(0, 120)}...
                         </p>
@@ -70,11 +44,7 @@ const BlogArea = ({
                         </p>
                         <p className="card__content-meta-date">
                           <time datetime="2020-05-25 12:00:00">
-                            <i
-                              style={{ color: "#0f3f5d" }}
-                              className="fas fa-calendar-alt mr-2"
-                            ></i>{" "}
-                            {moment(x.createdAt).fromNow()}
+                            <i style={{ color: "#0f3f5d" }} className="fas fa-calendar-alt mr-2"></i> {moment(x.createdAt).fromNow()}
                           </time>
                         </p>
                       </div>

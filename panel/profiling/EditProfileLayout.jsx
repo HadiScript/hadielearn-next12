@@ -6,7 +6,7 @@ import { LuBrainCircuit } from "react-icons/lu";
 import Link from "next/link";
 import { FaUserGraduate } from "react-icons/fa";
 import { HiOutlineLightBulb } from "react-icons/hi";
-import { MdOutlineSettings } from "react-icons/md";
+import { MdOutlineSettings, MdWork } from "react-icons/md";
 import { useRouter } from "next/router";
 
 const navsData = [
@@ -29,6 +29,16 @@ const navsData = [
     title: "Experience",
     icon: <HiOutlineLightBulb size={22} color="#ff4f00" />,
     path: "/my-profile/experience",
+  },
+  {
+    title: "Certificates",
+    icon: <HiOutlineLightBulb size={22} color="#bb0100" />,
+    path: "/my-profile/certificate",
+  },
+  {
+    title: "Portfolio",
+    icon: <MdWork size={22} color="#409417" />,
+    path: "/my-profile/portfolio",
   },
   {
     title: "Settings",

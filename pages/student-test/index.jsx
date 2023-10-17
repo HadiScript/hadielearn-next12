@@ -46,7 +46,7 @@ const Studetn = () => {
           <FirstCol
             user={auth?.user}
             skills={profile?.skills}
-            socials={profile?.socials}
+            social={profile?.social}
             bio={profile?.bio}
           />
           <SecondCol profile={profile}/>

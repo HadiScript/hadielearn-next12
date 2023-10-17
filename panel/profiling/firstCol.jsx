@@ -1,14 +1,20 @@
 import { Button, Card, Tag } from "antd";
 import React from "react";
 import { BsYoutube } from "react-icons/bs";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  FaBehance,
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
 import { MdUploadFile } from "react-icons/md";
 
 export const CardieBg = {
   backgroundImage: `linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)`,
 };
 
-const FirstCol = ({ user, skills, socials, bio }) => {
+const FirstCol = ({ user, skills, social, bio }) => {
   return (
     <div class="col-lg-3 border-right ">
       <Card style={CardieBg}>
@@ -28,29 +34,58 @@ const FirstCol = ({ user, skills, socials, bio }) => {
           <span class="text-light mt-3">
             <b>{user?.name}</b>
           </span>
-          <span class="text-light">{bio}</span>
+          <span class="text-light">{bio?.slice(0, 50)}...</span>
         </div>
         {skills && (
           <>
             <hr />
             <div className="d-flex flex-wrap justify-content-center">
-              {[1, 2, 2, 3, 4, 5].map((x) => (
+              {skills?.map((x) => (
                 <Tag className="my-1" color="green">
-                  ReactJs
+                  {x}
                 </Tag>
               ))}
             </div>
           </>
         )}
 
-        {socials && (
+        {social && (
           <>
             <hr />
             <span className="d-flex justify-content-center align-items-center gap-3">
-              <FaInstagram size={25} color="white" />
-              <FaLinkedin size={25} color="white" />
-              <FaFacebook size={25} color="white" />
-              <BsYoutube size={25} color="white" />
+              {social?.youtube && (
+                <a href={social?.youtube} target="_blank">
+                  <BsYoutube size={25} color="white" />
+                </a>
+              )}
+              {social?.instagram && (
+                <a href={social?.instagram} target="_blank">
+                  <FaInstagram size={25} color="white" />
+                </a>
+              )}
+
+              {social?.facebook && (
+                <a href={social?.facebook} target="_blank">
+                  <FaFacebook size={25} color="white" />
+                </a>
+              )}
+
+              {social?.linkedin && (
+                <a href={social?.linkedin} target="_blank">
+                  <FaLinkedin size={25} color="white" />
+                </a>
+              )}
+
+              {social?.behance && (
+                <a href={social?.behance} target="_blank">
+                  <FaBehance size={25} color="white" />
+                </a>
+              )}
+              {social?.github && (
+                <a href={social?.github} target="_blank">
+                  <FaGithub size={25} color="white" />
+                </a>
+              )}
             </span>
           </>
         )}

@@ -1,29 +1,25 @@
-import React, { useState } from "react";
-import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
+import React, { useState, useEffect, useContext } from "react";
 import { Button, Card, List, Modal } from "antd";
-import toast from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../config/API";
-import { useEffect } from "react";
-import { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../context/auth";
-import { BsPen } from "react-icons/bs";
-import EducationEditModal from "../../panel/profiling/EducationEditModal";
-import EduList from "../../panel/profiling/EduList";
+import CertEditModal from "../../panel/profiling/CertEditModal";
+import CertLists from "../../panel/profiling/CertList";
+import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
 
-const Education = () => {
+const Certificate = () => {
   const [auth] = useContext(AuthContext);
   const [formData, setFormData] = useState({
-    school: "",
-    degree: "",
-    to: "",
+    title: "",
+    platform: "",
     from: "",
+    to: "",
     current: false,
-    description: "",
   });
 
   const [loading, setLoading] = useState(false);
-  const [eduList, setEduList] = useState([]);
+  const [certList, setCertList] = useState([]);
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
 
@@ -35,14 +31,14 @@ const Education = () => {
     }
   };
 
-  const addEducation = async () => {
+  const addCerticate = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.put(`${API}/add-education`, formData);
+      const { data } = await axios.put(`${API}/add-certificate`, formData);
       // console.log(data);
       if (data.ok) {
         toast.success("Added");
-        setEduList([...eduList, data.education]);
+        myCertificate();
       } else if (data.error) {
         toast.error(data.error);
       }
@@ -54,12 +50,12 @@ const Education = () => {
     }
   };
 
-  const myEducation = async () => {
+  const myCertificate = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`${API}/my-education`);
+      const { data } = await axios.get(`${API}/my-certificates`);
       if (data.ok) {
-        setEduList(data.education);
+        setCertList(data.certificates);
       }
     } catch (error) {
       console.log(error);
@@ -69,13 +65,13 @@ const Education = () => {
     }
   };
 
-  const deleteEducation = async (x) => {
+  const deleteCertificate = async (x) => {
     setLoading(true);
     try {
-      const { data } = await axios.put(`${API}/delete-education`, { _id: x });
+      const { data } = await axios.put(`${API}/delete-certificate`, { _id: x });
       if (data.ok) {
         toast.success("Removed");
-        setEduList(eduList.filter((i) => i._id !== x));
+        setCertList(certList.filter((i) => i._id !== x));
       }
     } catch (error) {
       console.log(error);
@@ -85,7 +81,7 @@ const Education = () => {
     }
   };
 
-  const EditEdu = async (datas) => {
+  const editCertificate = async (datas) => {
     setLoading(true);
 
     const newData = {
@@ -94,11 +90,11 @@ const Education = () => {
       to: datas?.to ? datas?.to : current.to,
     };
     try {
-      const { data } = await axios.put(`${API}/edit-education`, newData);
+      const { data } = await axios.put(`${API}/edit-certificate`, newData);
       // console.log(data);
       if (data.ok) {
         toast.success("Updated");
-        myEducation();
+        myCertificate();
       } else if (data.error) {
         toast.error(data.error);
       }
@@ -112,36 +108,36 @@ const Education = () => {
 
   useEffect(() => {
     if (auth && auth?.token) {
-      myEducation();
+      myCertificate();
     }
   }, [auth && auth?.token]);
 
   return (
     <EditProfileLayout>
-      <Card title="Education">
+      <Card title="Certificates">
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
-              <label> School </label>
+              <label> Title </label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="School"
-                name="school"
-                value={formData.school}
+                placeholder="eg: ReactJs Mastery Course"
+                name="title"
+                value={formData.title}
                 onChange={changesFormData}
               />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
-              <label> Degree </label>
+              <label> Platform </label>
               <input
                 type="email"
                 className="form-control"
-                placeholder="Degree"
-                name="degree"
-                value={formData.degree}
+                placeholder="eg: hadielearning"
+                name="platform"
+                value={formData.platform}
                 onChange={changesFormData}
               />
             </div>
@@ -189,49 +185,33 @@ const Education = () => {
           </div>
         </div>
 
-        <div className="col-md-12">
-          <div className="form-group py-2">
-            <label> Description </label>
-            <textarea
-              type="text"
-              className="form-control"
-              placeholder="Description"
-              name="description"
-              checked={formData.description}
-              onChange={changesFormData}
-            />
-          </div>
-        </div>
-
         <div className="text-end">
           <Button
             className="CardieBg text-light"
             loading={loading}
-            onClick={addEducation}
+            onClick={addCerticate}
           >
             Submit
           </Button>
         </div>
       </Card>
 
-      {/* list of educations */}
-      <EduList
-        from="editing-page"
-        eduList={eduList}
-        deleteEducation={deleteEducation}
+      <CertLists
+        certData={certList}
+        deleteCertificate={deleteCertificate}
         setCurrent={setCurrent}
         setOpen={setOpen}
       />
 
-      <EducationEditModal
+      <CertEditModal
         open={open}
         setOpen={setOpen}
         current={current}
-        EditEdu={EditEdu}
+        editCertificate={editCertificate}
         loading={loading}
       />
     </EditProfileLayout>
   );
 };
 
-export default Education;
+export default Certificate;

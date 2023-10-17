@@ -33,9 +33,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
     try {
       setLoading(true);
       console.log("running searching2");
-      const { data } = await axios.get(
-        `${API}/blogs/${page}?search=${searchQuery}`
-      );
+      const { data } = await axios.get(`${API}/blogs/${page}?search=${searchQuery}`);
       if (searchQuery) {
         setAllBlogs([...data.blogs, ...allBlogs]);
       } else {
@@ -71,9 +69,7 @@ const blogs = ({ blogs, recentBlogs, categories, mostView }) => {
     <>
       <Tops
         headTitle={"Some interesting blogs to know more about Hadi E-learning."}
-        headDesc={
-          "Meta description: Interesting blogs to explore more about Hadi E-learning and all the courses Hadi is offering to you. "
-        }
+        headDesc={"Meta description: Interesting blogs to explore more about Hadi E-learning and all the courses Hadi is offering to you. "}
         conLink={`https://hadielearning.com/blogs`}
         breadTitle={"Blogs"}
         breadSubTtile={

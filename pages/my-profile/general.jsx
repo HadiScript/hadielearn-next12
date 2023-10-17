@@ -6,8 +6,19 @@ import axios from "axios";
 import { API } from "../../config/API";
 import toast from "react-hot-toast";
 
+const socailsLinks = {
+  youtube: "",
+  twitter: "",
+  facebook: "",
+  linkedin: "",
+  instagram: "",
+  behance: "",
+  github: "",
+};
+
 const EditProfile = () => {
   const [auth, setAuth] = useContext(AuthContext);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
@@ -16,7 +27,13 @@ const EditProfile = () => {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const [profileLoading, setProfileLoading] = useState(false);
+  const [addSocials, setAddSocials] = useState(false);
+  const [social, setSocial] = useState(socailsLinks);
   // const [image, setImage] = React.useState()
+
+  const changeSocials = (e) => {
+    setSocial({ ...social, [e.target.name]: e.target.value });
+  };
 
   const gettingCurrentProfile = async () => {
     setProfileLoading(true);
@@ -27,6 +44,8 @@ const EditProfile = () => {
         setWebsite(data._profile.website);
         setStatus(data._profile.status);
         setLocation(data._profile.location);
+        setSocial(data._profile.social);
+        // console.log({ socails: data._profile.social });
       }
     } catch (error) {
       toast.error("Failed, try again");
@@ -53,6 +72,7 @@ const EditProfile = () => {
         status,
         location,
         bio,
+        social,
       });
 
       if (data?.error) {
@@ -181,6 +201,122 @@ const EditProfile = () => {
             />
           </div>
         </div>
+
+        <div className="col-md-6">
+          <div className="d-flex justify-content-start align-items-center  gap-2 form-group py-2">
+            <label> Show Social Links </label>
+            <input
+              type="checkbox"
+              checked={addSocials}
+              onChange={() => setAddSocials(!addSocials)}
+            />
+          </div>
+        </div>
+
+        {addSocials && (
+          <>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group py-2">
+                  <label> Facebook </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Facebook"
+                    name="facebook"
+                    value={social?.facebook}
+                    onChange={changeSocials}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group py-2">
+                  <label> Instagram </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Instagram"
+                    name="instagram"
+                    value={social?.instagram}
+                    onChange={changeSocials}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group py-2">
+                  <label> Twitter </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Twitter"
+                    name="twitter"
+                    value={social?.twitter}
+                    onChange={changeSocials}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group py-2">
+                  <label> Linkedin </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Linkedin"
+                    name="linkedin"
+                    value={social?.linkedin}
+                    onChange={changeSocials}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group py-2">
+                  <label> Youtube </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Youtube"
+                    name="youtube"
+                    value={social?.youtube}
+                    onChange={changeSocials}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group py-2">
+                  <label> Behance </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Behance"
+                    name="behance"
+                    value={social?.behance}
+                    onChange={changeSocials}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="form-group py-2">
+                <label> Github </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Github"
+                  name="github"
+                  value={social?.github}
+                  onChange={changeSocials}
+                />
+              </div>
+            </div>
+          </>
+        )}
 
         <div className="text-end">
           <Button

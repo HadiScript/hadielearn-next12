@@ -12,6 +12,10 @@ import {
   FaReact,
 } from "react-icons/fa";
 import { useRouter } from "next/router";
+import ExpLists from "./ExpLists";
+import EduList from "./EduList";
+import CertLists from "./CertList";
+import ProjectList from "./ProjectList";
 
 const data = [
   {
@@ -81,6 +85,7 @@ const SecondCol = ({ profile }) => {
               <div className="d-flex justify-content-between align-items-center">
                 <span>About</span>
                 <Button
+                  onClick={() => router.push("/my-profile/general")}
                   style={{ ...CardieBg, color: "white" }}
                   icon={<EditFilled />}
                 >
@@ -90,12 +95,7 @@ const SecondCol = ({ profile }) => {
             }
             className="mt-10"
           >
-            <p>
-              In publishing and graphic design, Lorem ipsum is a placeholder
-              text commonly used to demonstrate the visual form of a document or
-              a typeface without relying on meaningful content. Lorem ipsum may
-              be used as a placeholder before final copy is available.
-            </p>
+            <p>{profile?.bio}</p>
           </Card>
           <Card
             className="mt-10"
@@ -103,6 +103,7 @@ const SecondCol = ({ profile }) => {
               <div className="d-flex justify-content-between align-items-center">
                 <span>Skills</span>
                 <Button
+                  onClick={() => router.push("/my-profile/skills")}
                   style={{ ...CardieBg, color: "white" }}
                   icon={<EditFilled />}
                 >
@@ -112,109 +113,16 @@ const SecondCol = ({ profile }) => {
             }
           >
             <div className="d-flex flex-wrap justify-content-start align-items-center gap-3">
-              <Button icon={<FaReact />}>ReactJs</Button>
-              <Button icon={<FaNodeJs />}>NodeJs</Button>
-              <Button icon={<FaAndroid />}>Android</Button>
-              <Button icon={<FaAngular />}>Angular Js</Button>
-              <Button icon={<FaAngular />}>Angular Js</Button>
-              <Button icon={<FaAngular />}>Angular Js</Button>
+              {profile?.skills?.map((x, index) => (
+                <Button key={index}>{x}</Button>
+              ))}
             </div>
           </Card>
 
-          <Card
-            title={
-              <div className="d-flex justify-content-between align-items-center">
-                <span>Experience</span>
-                <Button
-                  style={{ ...CardieBg, color: "white" }}
-                  icon={<EditFilled />}
-                >
-                  Edit
-                </Button>
-              </div>
-            }
-            className="mt-10"
-          >
-            <List
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={(item, index) => (
-                <List.Item>
-                  <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={`http://localhost:3000/assets/images/primary.svg`}
-                      />
-                    }
-                    title={<a href="https://ant.design">{item.title}</a>}
-                    description={
-                      <div>
-                        <b>
-                          {item.at} | {item.type}
-                        </b>
-                        <br />
-                        <>
-                          {item.from} - {item.to}
-                        </>
-                        <br />
-                        <b>
-                          {" "}
-                          Skills:{" "}
-                          {item.skills.map((x) => (
-                            <>{x} - </>
-                          ))}{" "}
-                        </b>
-                      </div>
-                    }
-                  />
-                </List.Item>
-              )}
-            />
-          </Card>
-
-          <Card
-            title={
-              <div className="d-flex justify-content-between align-items-center">
-                <span>Certificates</span>
-                <Button
-                  style={{ ...CardieBg, color: "white" }}
-                  icon={<EditFilled />}
-                >
-                  Edit
-                </Button>
-              </div>
-            }
-            className="mt-10"
-          >
-            <List
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={(item, index) => (
-                <List.Item>
-                  <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={`http://localhost:3000/assets/images/primary.svg`}
-                      />
-                    }
-                    title={
-                      <a href="https://ant.design">
-                        {item.title} - Mastery Course
-                      </a>
-                    }
-                    description={
-                      <div>
-                        <b>
-                          {item.from} - {item.to}
-                        </b>
-                        <br />
-                      </div>
-                    }
-                  />
-                </List.Item>
-              )}
-            />
-          </Card>
+          <ExpLists from="main-page" expData={profile?.experience} />
+          <EduList from="main-page" eduList={profile?.education} />
+          <CertLists from="main-page" certData={profile?.certificates} />
+          <ProjectList from="main-page" projectData={profile?.portfolio} />
         </div>
       )}
     </>

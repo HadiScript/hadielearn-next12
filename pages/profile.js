@@ -66,7 +66,6 @@ const CardieBg = {
 };
 
 const Profile = () => {
-  return <>working on it:)</>;
   return (
     <>
       <TopHeader />

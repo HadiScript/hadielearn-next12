@@ -22,21 +22,14 @@ const BlogDetail = ({ blog, categories, recentBlogs, mostView }) => {
   return (
     <>
       <Tops
-        headTitle={"Read this blog to explore more about Hadi E-learning"}
-        headDesc={
-          "Here is a blog to have insightful knowledge of Hadi E-learning and the various courses it is offering to you."
-        }
+        headTitle={blog?.seoTitle ? blog?.seoTitle : "Read this blog to explore more about Hadi E-learning"}
+        headDesc={blog?.metaDescription ? blog?.metaDescription : "Here is a blog to have insightful knowledge of Hadi E-learning and the various courses it is offering to you."}
         conLink={`https://hadielearning.com/blogs`}
         breadTitle={blog?.title}
         breadSubTtile={blog?.title}
         image={"/assets/images/bread.jpg"}
       />
-      <BlogItemDetail
-        blog={blog}
-        categories={categories}
-        recentBlogs={recentBlogs}
-        mostView={mostView}
-      />
+      <BlogItemDetail blog={blog} categories={categories} recentBlogs={recentBlogs} mostView={mostView} />
 
       <Footer />
     </>
