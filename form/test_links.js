@@ -45,7 +45,7 @@ export const test_links = [
     _id: "648d8138f3a3283005bbf5b7",
     title: "Video Editing Mastery Course",
     slug: "video-editing-mastery-course",
-    test: "",
+    test: " https://www.proprofs.com/quiz-school/ugc/story.php?title=video-editing-mastery-course-evaluation-quiz",
   },
   {
     _id: "648d852ff3a3283005bbf62d",
