@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 import { AuthContext } from "../../../context/auth";
 import { AiOutlineCheck, AiOutlineLogout } from "react-icons/ai";
-import { BiSolidGraduation } from "react-icons/bi";
+import { FaGraduationCap } from "react-icons/fa";
 import ProfileModal from "../../profileModal/ProfileModal";
 
 const StuHeader = ({ page = "notFromContact" }) => {
@@ -35,14 +35,18 @@ const StuHeader = ({ page = "notFromContact" }) => {
       },
     },
     {
+      type: "divider",
+    },
+
+    {
       label: "Learning",
-      key: "0",
-      icon: <BiSolidGraduation size={17} />,
+      key: "1",
+      icon: <FaGraduationCap size={17} />,
       onClick: () => {
-        // setOpenProfile(true);
         router.push("/student-test/learning");
       },
     },
+
     {
       label: "Completed Batches",
       key: "2",
