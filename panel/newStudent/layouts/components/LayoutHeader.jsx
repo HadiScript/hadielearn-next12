@@ -10,17 +10,13 @@ import StuNavs from "../StuNavs";
 import BatchNotification from "../../modals/batchNotification";
 import ProfileModal from "../../../profileModal/ProfileModal";
 import { BsFillBellFill } from "react-icons/bs";
+import { useRouter } from "next/router";
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
 
-const LayoutHeader = ({
-  showDrawer,
-  batch,
-  notice,
-  closeDrawer,
-  drawerVisibility,
-}) => {
+const LayoutHeader = ({ showDrawer, batch, notice, closeDrawer, drawerVisibility }) => {
   const breakpoints = useBreakpoint();
+  const router = useRouter();
 
   const [auth, setAuth] = useContext(AuthContext);
 
@@ -32,16 +28,15 @@ const LayoutHeader = ({
       key: "1",
       label: <span>Profile</span>,
       icon: <AiOutlineUser />,
-      onClick: () => setOpenProfile(true),
+      onClick: () => {
+        router.push("/student-test");
+        // setOpenProfile(true)
+      },
     },
     {
       key: "2",
       label: (
-        <span
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
+        <span target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
           Logout
         </span>
       ),
@@ -71,30 +66,11 @@ const LayoutHeader = ({
           padding: "20px",
         }}
       >
-        {!breakpoints.md && (
-          <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />
-        )}
-        <h5 style={{ color: "#0f3f5d" }}>
-          {breakpoints.sm && (
-            <span className="text-capitalize">
-              Welcome {auth?.user?.name}
-            </span>
-          )}
-        </h5>
+        {!breakpoints.md && <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />}
+        <h5 style={{ color: "#0f3f5d" }}>{breakpoints.sm && <span className="text-capitalize">Welcome {auth?.user?.name}</span>}</h5>
         <div className="d-flex justify-content-center align-items-center">
-          {notice && (
-            <BsFillBellFill
-              role="button"
-              color="#0f3f5d"
-              className="mx-2"
-              onClick={() => setNotificationModal(true)}
-            />
-          )}
-          <Button
-            style={{ backgroundColor: "#0f3f5d", color: "white" }}
-            className="mx-2"
-            icon={<GoLinkExternal />}
-          >
+          {notice && <BsFillBellFill role="button" color="#0f3f5d" className="mx-2" onClick={() => setNotificationModal(true)} />}
+          <Button style={{ backgroundColor: "#0f3f5d", color: "white" }} className="mx-2" icon={<GoLinkExternal />}>
             Join Class
           </Button>
           <Dropdown menu={{ items }}>
@@ -105,9 +81,7 @@ const LayoutHeader = ({
                 color: "white",
                 justifySelf: "end",
               }}
-              src={
-                auth?.user?.image ? auth?.user?.image.url : auth?.user?.name[0]
-              }
+              src={auth?.user?.image ? auth?.user?.image.url : auth?.user?.name[0]}
             >
               i
             </Avatar>
@@ -132,11 +106,7 @@ const LayoutHeader = ({
         setOpen={setNotificationModal}
         batchName={batch?.title}
       /> */}
-      <ProfileModal
-        open={openProfile}
-        setOpen={setOpenProfile}
-        id={auth?.user?._id}
-      />
+      <ProfileModal open={openProfile} setOpen={setOpenProfile} id={auth?.user?._id} />
     </>
   );
 };
