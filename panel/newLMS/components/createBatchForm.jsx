@@ -31,7 +31,7 @@ const CreateBatchForm = () => {
   const [formData, setFormData] = useState(initVals);
   const [days, setDays] = useState(initDays);
   const [loading, setLoading] = useState(false);
-  const { courses } = useCourses();
+  const { courses } = useCourses({ want: "shorts" });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -69,15 +69,7 @@ const CreateBatchForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1"> Batch Title</h5>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="title"
-            placeholder="Batch Title "
-            value={formData.title}
-            onChange={handleChange}
-          />
+          <input type="text" className="form-control" id="exampleFormControlInput1" name="title" placeholder="Batch Title " value={formData.title} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
@@ -95,15 +87,7 @@ const CreateBatchForm = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Enollment Limits</h5>
-          <input
-            type="number"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="limit"
-            placeholder="Batch Limit "
-            value={formData.limit}
-            onChange={handleChange}
-          />
+          <input type="number" className="form-control" id="exampleFormControlInput1" name="limit" placeholder="Batch Limit " value={formData.limit} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
@@ -121,39 +105,17 @@ const CreateBatchForm = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Timing</h5>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="timming"
-            placeholder="Batch Timing "
-            value={formData.timming}
-            onChange={handleChange}
-          />
+          <input type="text" className="form-control" id="exampleFormControlInput1" name="timming" placeholder="Batch Timing " value={formData.timming} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Starting Date</h5>
-          <input
-            type="date"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="startDate"
-            value={formData.startDate}
-            onChange={handleChange}
-          />
+          <input type="date" className="form-control" id="exampleFormControlInput1" name="startDate" value={formData.startDate} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">End Date</h5>
-          <input
-            type="date"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="endDate"
-            value={formData.endDate}
-            onChange={handleChange}
-          />
+          <input type="date" className="form-control" id="exampleFormControlInput1" name="endDate" value={formData.endDate} onChange={handleChange} />
         </div>
 
         <div className="row pt-10">
@@ -278,12 +240,7 @@ const CreateBatchForm = () => {
 
         <div className="form-group py-2">
           <h5>Coruse</h5>
-          <select
-            value={formData.courseDetails}
-            onChange={handleChange}
-            className="form-control"
-            name="courseDetails"
-          >
+          <select value={formData.courseDetails} onChange={handleChange} className="form-control" name="courseDetails">
             <option>* Select Instructor</option>
             {courses.courses?.map((x, index) => (
               <option key={index} value={x._id}>
@@ -295,12 +252,7 @@ const CreateBatchForm = () => {
 
         {/* Rest of the form fields */}
 
-        <Button
-          loading={loading}
-          className="my-3"
-          style={{ backgroundColor: "#0f3f5d", color: "white" }}
-          onClick={handleSubmit}
-        >
+        <Button loading={loading} className="my-3" style={{ backgroundColor: "#0f3f5d", color: "white" }} onClick={handleSubmit}>
           Create Batch
         </Button>
       </form>

@@ -4,8 +4,7 @@ import axios from "axios";
 import { API } from "../../../config/API";
 import { AuthContext } from "../../../context/auth";
 
-
-const useCourses = () => {
+const useCourses = ({ want }) => {
   // state
   const [courses, setCourses] = useState([]);
   const [auth] = useContext(AuthContext);
@@ -16,7 +15,9 @@ const useCourses = () => {
 
   const getAllCourses = async () => {
     try {
-      const { data } = await axios.get(`${API}/courses`, {
+      let _api = want === "shorts" ? `${API}/courses-form` : `${API}/courses`;
+
+      const { data } = await axios.get(_api, {
         headers: {
           Authorization: `Bearer ${auth?.token}`,
         },
