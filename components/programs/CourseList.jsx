@@ -1,18 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { Card, Rate } from "antd";
-import { FaUser } from "react-icons/fa";
-import { IoMdTime } from "react-icons/io";
-import { HiOutlineDocumentText } from "react-icons/hi";
-import { BsCalendar } from "react-icons/bs";
-
-const checkStringTitle = (title) => {
-  if (title?.length > 23) {
-    return title.substring(0, 23) + "...";
-  } else {
-    return title;
-  }
-};
 
 const CourseList = ({ courses_data, searchQuery }) => {
   const filteredCourses = courses_data.filter((course) => {
@@ -37,11 +24,7 @@ const CourseList = ({ courses_data, searchQuery }) => {
               <div className="blog__item-2 mb-50 fix">
                 <div className={`blog__thumb-2 w-img fix `}>
                   <Link href={`/program/${x._doc.slug}`}>
-                    <img
-                      src={x._doc.image?.url}
-                      alt=""
-                      style={{ height: "250px" }}
-                    />
+                    <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
                   </Link>
                 </div>
 
@@ -54,7 +37,7 @@ const CourseList = ({ courses_data, searchQuery }) => {
                   >
                     <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
                   </span>
-                  <p className="mt-4">{x.plainOverview.substring(0,130)}...</p>
+                  <p className="mt-4">{x.plainOverview.substring(0, 130)}...</p>
                 </div>
               </div>
             </div>

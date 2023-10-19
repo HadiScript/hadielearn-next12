@@ -5,22 +5,11 @@ import Link from "next/link";
 import { FaRegComments } from "react-icons/fa";
 import { CgArrowLongRight, CgEye } from "react-icons/cg";
 
-const BlogSingleItem = ({
-  image,
-  user_image,
-  name,
-  title,
-  video_icon,
-  viewCount,
-  description,
-  slug,
-}) => {
+const BlogSingleItem = ({ image, user_image, name, title, video_icon, viewCount, description, slug }) => {
   return (
     <>
       <div className="blog__item-3 mb-50 fix">
-        <div
-          className={`blog__thumb-3 w-img fix ${video_icon && "p-relative"}`}
-        >
+        <div className={`blog__thumb-3 w-img fix ${video_icon && "p-relative"}`}>
           <Link role="button" href={`/blog/${slug}`}>
             <img src={image} alt="blog-image" />
           </Link>
@@ -31,12 +20,7 @@ const BlogSingleItem = ({
             <div className="blog__user pr-20 mr-20">
               <Link role="button" href={`/blog/${slug}`}>
                 <>
-                  <img
-                    src={user_image}
-                    alt="author image"
-                    height={"50px"}
-                    role="button"
-                  />
+                  <img src={user_image} alt="author image" height={"50px"} role="button" />
                   <h6>{name}</h6>
                 </>
               </Link>

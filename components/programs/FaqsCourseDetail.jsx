@@ -15,27 +15,14 @@ const FaqsCourseDetail = ({ details, page }) => {
                     <div className="accordion-cards accordion-item">
                       <div className="card-header accordion-header" id="acc_0">
                         <h5 className="mb-0">
-                          <button
-                            data-bs-target="#collapse_0"
-                            aria-controls="collapse_0"
-                            className="btn btn-link"
-                            data-bs-toggle="collapse"
-                            aria-expanded="true"
-                          >
+                          <button data-bs-target="#collapse_0" aria-controls="collapse_0" className="btn btn-link" data-bs-toggle="collapse" aria-expanded="true">
                             {details[0]?.title}
                           </button>
                         </h5>
                       </div>
 
-                      <div
-                        id={`collapse_0`}
-                        aria-labelledby={`acc_0`}
-                        className="collapse"
-                        data-bs-parent="#accordionExample"
-                      >
-                        <div className="d-flex gap-1 py-1 pb-3 px-4">
-                          {details[0]?.details}
-                        </div>
+                      <div id={`collapse_0`} aria-labelledby={`acc_0`} className="collapse" data-bs-parent="#accordionExample">
+                        <div className="d-flex gap-1 py-1 pb-3 px-4">{details[0]?.details}</div>
                       </div>
                     </div>
 
@@ -45,10 +32,7 @@ const FaqsCourseDetail = ({ details, page }) => {
                           <></>
                         ) : (
                           <div className="accordion-cards">
-                            <div
-                              className="card-header"
-                              id={`acc_${UperIndex}`}
-                            >
+                            <div className="card-header" id={`acc_${UperIndex}`}>
                               <h5 className="mb-0">
                                 <button
                                   data-bs-target={`#collapse_${UperIndex}`}
@@ -62,15 +46,8 @@ const FaqsCourseDetail = ({ details, page }) => {
                               </h5>
                             </div>
 
-                            <div
-                              id={`collapse_${UperIndex}`}
-                              aria-labelledby={`acc_${UperIndex}`}
-                              className="collapse"
-                              data-bs-parent="#accordionExample"
-                            >
-                              <div className="d-flex gap-1 py-1 pb-3 px-4">
-                                {x.details}
-                              </div>
+                            <div id={`collapse_${UperIndex}`} aria-labelledby={`acc_${UperIndex}`} className="collapse" data-bs-parent="#accordionExample">
+                              <div className="d-flex gap-1 py-1 pb-3 px-4">{x.details}</div>
                             </div>
                           </div>
                         )}
@@ -84,24 +61,13 @@ const FaqsCourseDetail = ({ details, page }) => {
                     <div className="accordion-cards accordion-item">
                       <div className="card-header accordion-header" id="acc_0">
                         <h5 className="mb-0">
-                          <button
-                            data-bs-target="#collapse_0"
-                            aria-controls="collapse_0"
-                            className="btn btn-link"
-                            data-bs-toggle="collapse"
-                            aria-expanded="true"
-                          >
+                          <button data-bs-target="#collapse_0" aria-controls="collapse_0" className="btn btn-link" data-bs-toggle="collapse" aria-expanded="true">
                             {details[0]?.question}
                           </button>
                         </h5>
                       </div>
 
-                      <div
-                        id={`collapse_0`}
-                        aria-labelledby={`acc_0`}
-                        className="collapse"
-                        data-bs-parent="#accordionExample"
-                      >
+                      <div id={`collapse_0`} aria-labelledby={`acc_0`} className="collapse" data-bs-parent="#accordionExample">
                         <div className="d-flex gap-1 py-1 pb-3 px-4">
                           <div className="">{details[0]?.answer}</div>
                         </div>
@@ -114,10 +80,7 @@ const FaqsCourseDetail = ({ details, page }) => {
                           <></>
                         ) : (
                           <div className="card">
-                            <div
-                              className="card-header"
-                              id={`acc_${UperIndex}`}
-                            >
+                            <div className="card-header" id={`acc_${UperIndex}`}>
                               <h5 className="mb-0">
                                 <button
                                   data-bs-target={`#collapse_${UperIndex}`}
@@ -131,12 +94,7 @@ const FaqsCourseDetail = ({ details, page }) => {
                               </h5>
                             </div>
 
-                            <div
-                              id={`collapse_${UperIndex}`}
-                              aria-labelledby={`acc_${UperIndex}`}
-                              className="collapse"
-                              data-bs-parent="#accordionExample"
-                            >
+                            <div id={`collapse_${UperIndex}`} aria-labelledby={`acc_${UperIndex}`} className="collapse" data-bs-parent="#accordionExample">
                               <div className="d-flex gap-1 py-1 pb-3 px-4">
                                 <div className="">{x.answer}</div>
                               </div>

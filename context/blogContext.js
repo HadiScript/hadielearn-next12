@@ -9,11 +9,7 @@ const BlogProvider = ({ children }) => {
     categories: [],
   });
 
-  return (
-    <BlogContext.Provider value={[blog, setBlog]}>
-      {children}
-    </BlogContext.Provider>
-  );
+  return <BlogContext.Provider value={[blog, setBlog]}>{children}</BlogContext.Provider>;
 };
 
 export { BlogContext, BlogProvider };

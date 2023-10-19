@@ -1,6 +1,5 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaVimeoV } from "react-icons/fa";
-import { BiReply } from "react-icons/bi";
 import renderHTML from "react-render-html";
 import BlogLeftSideBar from "./BlogLeftSideBar";
 import { toImageUrl } from "../../utils/ImageURL";

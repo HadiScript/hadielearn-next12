@@ -6,19 +6,7 @@ import { useState } from "react";
 import Certification_Model from "../../../panel/newLMS/modals/students/certificationModal";
 import PaymentModels from "../../../panel/newLMS/modals/students/paymentsModal";
 import CompletedBatchesModel from "../../../panel/newLMS/modals/students/completedBatchesModal";
-import {
-  Avatar,
-  Button,
-  Card,
-  Descriptions,
-  Divider,
-  Input,
-  List,
-  Modal,
-  Select,
-  Space,
-  Tag,
-} from "antd";
+import { Avatar, Button, Card, Descriptions, Divider, Input, List, Modal, Select, Space, Tag } from "antd";
 import { API } from "../../../config/API";
 import axios from "axios";
 import { useEffect } from "react";
@@ -55,8 +43,7 @@ const EnrolledStudents = () => {
           search: searchQuery,
         },
       });
-      const { users: loadedUsers, totalPages: loadedTotalPages } =
-        response.data;
+      const { users: loadedUsers, totalPages: loadedTotalPages } = response.data;
 
       setUsers(loadedUsers);
       setTotalPages(loadedTotalPages);
@@ -99,14 +86,7 @@ const EnrolledStudents = () => {
     <LMSLayout>
       <Card>
         <Space wrap>
-          <Search
-            addonBefore="Students"
-            placeholder="input search text"
-            allowClear
-            value={searchQuery}
-            onChange={handleSearch}
-            style={{ width: 304 }}
-          />
+          <Search addonBefore="Students" placeholder="input search text" allowClear value={searchQuery} onChange={handleSearch} style={{ width: 304 }} />
 
           <Select
             style={{
@@ -135,76 +115,62 @@ const EnrolledStudents = () => {
           />
         </Space>
 
-      
-         { users.length > 0 ? <> <List
-            className="mt-4"
-            itemLayout="horizontal"
-            dataSource={users}
-            loading={loading}
-            renderItem={(item, index) => (
-              <>
-                <List.Item
-                  actions={[
-                    <a
-                      key="list-loadmore-edit"
-                      onClick={() => {
-                        setCurrent(item);
-                        setOpen(true);
-                      }}
-                    >
-                      View Detail
-                    </a>,
-                  ]}
-                >
-                  <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                      />
-                    }
-                    title={<a href="https://ant.design">{item.name}</a>}
-                    description={
-                      <>
-                        <Tag color="blue" role="button">
-                          Assigned Batches : {item.enrolledBatches.length}
-                        </Tag>
-                      </>
-                    }
-                  />
-                </List.Item>
-              </>
+        {users.length > 0 ? (
+          <>
+            {" "}
+            <List
+              className="mt-4"
+              itemLayout="horizontal"
+              dataSource={users}
+              loading={loading}
+              renderItem={(item, index) => (
+                <>
+                  <List.Item
+                    actions={[
+                      <a
+                        key="list-loadmore-edit"
+                        onClick={() => {
+                          setCurrent(item);
+                          setOpen(true);
+                        }}
+                      >
+                        View Detail
+                      </a>,
+                    ]}
+                  >
+                    <List.Item.Meta
+                      avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
+                      title={<a href="https://ant.design">{item.name}</a>}
+                      description={
+                        <>
+                          <Tag color="blue" role="button">
+                            Assigned Batches : {item.enrolledBatches.length}
+                          </Tag>
+                        </>
+                      }
+                    />
+                  </List.Item>
+                </>
+              )}
+            />
+            {currentPage < totalPages && (
+              <div className="text-center">
+                <Button onClick={handleLoadMore}>Load More</Button>
+              </div>
             )}
-          />
-
-          {currentPage < totalPages && (
-            <div className="text-center">
-              <Button onClick={handleLoadMore}>Load More</Button>
-            </div>
-          )}</> : <h5 className="text-center" > No Users </h5> }
-       
+          </>
+        ) : (
+          <h5 className="text-center"> No Users </h5>
+        )}
       </Card>
 
-      <Modal
-        centered
-        open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-        width={1000}
-      >
-        <Descriptions
-          title={current.name}
-          bordered
-          column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
-        >
+      <Modal centered open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} width={1000}>
+        <Descriptions title={current.name} bordered column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}>
           <Descriptions.Item label="Email">{current.email}</Descriptions.Item>
-          <Descriptions.Item label="enrolledBatches">
-            {current.enrolledBatches?.length}
-          </Descriptions.Item>
+          <Descriptions.Item label="enrolledBatches">{current.enrolledBatches?.length}</Descriptions.Item>
 
           <br />
-          <Descriptions.Item
-            label={`Completed Batches - (${current.completedBatches?.length})`}
-          >
+          <Descriptions.Item label={`Completed Batches - (${current.completedBatches?.length})`}>
             <Tag
               color="blue"
               role="button"
@@ -216,29 +182,17 @@ const EnrolledStudents = () => {
             </Tag>
           </Descriptions.Item>
 
-          <Descriptions.Item label="Un Assigned Counts">
-            {current.unAssignedCount}
-          </Descriptions.Item>
+          <Descriptions.Item label="Un Assigned Counts">{current.unAssignedCount}</Descriptions.Item>
           <br />
 
           <Descriptions.Item label="Payments">
-            <Tag
-              color="blue"
-              role="button"
-              onClick={() => setPaymentModel(true)}
-            >
+            <Tag color="blue" role="button" onClick={() => setPaymentModel(true)}>
               {" "}
               Add & Update Payments{" "}
             </Tag>
           </Descriptions.Item>
-          <Descriptions.Item
-            label={`Certifications - (${current.certifications?.length})`}
-          >
-            <Tag
-              color="blue"
-              role="button"
-              onClick={() => setCertificationModel(true)}
-            >
+          <Descriptions.Item label={`Certifications - (${current.certifications?.length})`}>
+            <Tag color="blue" role="button" onClick={() => setCertificationModel(true)}>
               {" "}
               Certifications{" "}
             </Tag>
@@ -253,11 +207,7 @@ const EnrolledStudents = () => {
           renderItem={(item) => (
             <List.Item
               actions={[
-                <Tag
-                  role="button"
-                  color="red"
-                  onClick={() => UnAssigned(current._id, item._id)}
-                >
+                <Tag role="button" color="red" onClick={() => UnAssigned(current._id, item._id)}>
                   Un Assign
                 </Tag>,
               ]}
@@ -268,24 +218,11 @@ const EnrolledStudents = () => {
         />
       </Modal>
 
-      <CompletedBatchesModel
-        completedBatchesModel={completedBatchesModel}
-        setCompletedBatchesModel={setCompletedBatchesModel}
-        current={current}
-      />
+      <CompletedBatchesModel completedBatchesModel={completedBatchesModel} setCompletedBatchesModel={setCompletedBatchesModel} current={current} />
 
-      <PaymentModels
-        paymentModels={paymentModel}
-        setPaymentModel={setPaymentModel}
-        current={current}
-        setCurrent={setCurrent}
-      />
+      <PaymentModels paymentModels={paymentModel} setPaymentModel={setPaymentModel} current={current} setCurrent={setCurrent} />
 
-      <Certification_Model
-        certificationModel={certificationModel}
-        setCertificationModel={setCertificationModel}
-        current={current}
-      />
+      <Certification_Model certificationModel={certificationModel} setCertificationModel={setCertificationModel} current={current} />
     </LMSLayout>
   );
 };

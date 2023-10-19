@@ -113,7 +113,6 @@ const Portfolio = () => {
     }
   }, [auth && auth?.token]);
 
-  
   return (
     <EditProfileLayout>
       <Card title={"Portfolio"}>
@@ -121,27 +120,13 @@ const Portfolio = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Title </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="eg: Full Stack Developer"
-                name="title"
-                value={formData.title}
-                onChange={changesFormData}
-              />
+              <input type="text" className="form-control" placeholder="eg: Full Stack Developer" name="title" value={formData.title} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Link </label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="eg: hadiraza.com"
-                name="link"
-                value={formData.link}
-                onChange={changesFormData}
-              />
+              <input type="email" className="form-control" placeholder="eg: hadiraza.com" name="link" value={formData.link} onChange={changesFormData} />
             </div>
           </div>
         </div>
@@ -150,39 +135,19 @@ const Portfolio = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> From </label>
-              <input
-                type="date"
-                className="form-control"
-                placeholder="School"
-                name="from"
-                value={formData.from}
-                onChange={changesFormData}
-              />
+              <input type="date" className="form-control" placeholder="School" name="from" value={formData.from} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> To </label>
-              <input
-                type="date"
-                disabled={formData.current && true}
-                className="form-control"
-                placeholder="Degree"
-                name="to"
-                value={formData.to}
-                onChange={changesFormData}
-              />
+              <input type="date" disabled={formData.current && true} className="form-control" placeholder="Degree" name="to" value={formData.to} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="d-flex align-items-center gap-2 form-group py-2">
               <label> Current </label>
-              <input
-                type="checkbox"
-                name="current"
-                checked={formData.current}
-                onChange={changesFormData}
-              />
+              <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
             </div>
           </div>
         </div>
@@ -190,42 +155,20 @@ const Portfolio = () => {
         <div className="col-md-12">
           <div className="form-group py-2">
             <label> Description </label>
-            <textarea
-              type="text"
-              className="form-control"
-              name="description"
-              value={formData.description}
-              onChange={changesFormData}
-            />
+            <textarea type="text" className="form-control" name="description" value={formData.description} onChange={changesFormData} />
           </div>
         </div>
 
         <div className="text-end">
-          <Button
-            className="CardieBg text-light"
-            loading={loading}
-            onClick={addProject}
-          >
+          <Button className="CardieBg text-light" loading={loading} onClick={addProject}>
             Submit
           </Button>
         </div>
       </Card>
 
-      <ProjectList
-        projectData={projectData}
-        from={"editing-page"}
-        deleteProject={deleteProject}
-        setCurrent={setCurrent}
-        setOpen={setOpen}
-      />
+      <ProjectList projectData={projectData} from={"editing-page"} deleteProject={deleteProject} setCurrent={setCurrent} setOpen={setOpen} />
 
-      <ProjectEditModal
-        current={current}
-        loading={loading}
-        EditProject={EditProject}
-        open={open}
-        setOpen={setOpen}
-      />
+      <ProjectEditModal current={current} loading={loading} EditProject={EditProject} open={open} setOpen={setOpen} />
     </EditProfileLayout>
   );
 };

@@ -9,7 +9,7 @@ import axios from "axios";
 
 const EmployeeLayout = ({ children }) => {
   // context
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
   // hooks
   const router = useRouter();
 
@@ -58,9 +58,7 @@ const EmployeeLayout = ({ children }) => {
                       </li>
                       <hr />
                       <li>
-                        <Link href={`/admin/setting/${auth?.user?._id}`}>
-                          Setting
-                        </Link>
+                        <Link href={`/admin/setting/${auth?.user?._id}`}>Setting</Link>
                       </li>
                       <hr />
                       <li>
@@ -75,9 +73,7 @@ const EmployeeLayout = ({ children }) => {
                       </li>
                       <hr />
                       <li>
-                        <Link href="/admin/workshop/all-workshops">
-                          Workshops
-                        </Link>
+                        <Link href="/admin/workshop/all-workshops">Workshops</Link>
                       </li>
                       <li>
                         <Link href={`/admin/workshop/new`}>Add Workshop</Link>
@@ -101,11 +97,7 @@ const EmployeeLayout = ({ children }) => {
             </div>
           </div>
 
-          {loading ? (
-            <Redirecting />
-          ) : (
-            <div className="col-xl-8 col-lg-8 ">{children}</div>
-          )}
+          {loading ? <Redirecting /> : <div className="col-xl-8 col-lg-8 ">{children}</div>}
         </div>
       </div>
     </section>

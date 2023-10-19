@@ -2,16 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import axios from "axios";
-import { Card, Col, Row, Statistic, List } from "antd";
+import { Card, List } from "antd";
 
 import { toast } from "react-hot-toast";
 import { API } from "../../../../config/API";
 import { AuthContext } from "../../../../context/auth";
 import NewLayout from "../../../../panel/newStudent/layouts/NewLayout";
-import { MdOutlinePlayLesson } from "react-icons/md";
-import { BsFolderSymlink } from "react-icons/bs";
-import { AiOutlineDownload } from "react-icons/ai";
-import { FaComments } from "react-icons/fa";
 import StatsBatch from "../../../../panel/newStudent/components/StatsBatch";
 
 const StudentBatchLessons = () => {
@@ -60,28 +56,12 @@ const StudentBatchLessons = () => {
                   borderRadius: "10px",
                   marginBottom: "10px",
                 }}
-                actions={[
-                  <>
-                    {item.complete ? (
-                      <span className="text-light">completed</span>
-                    ) : (
-                      <></>
-                    )}
-                  </>,
-                ]}
+                actions={[<>{item.complete ? <span className="text-light">completed</span> : <></>}</>]}
                 key={index}
               >
                 <List.Item.Meta
-                  title={
-                    <span className={item.complete && "text-light"}>
-                      {item.title}
-                    </span>
-                  }
-                  description={
-                    <span className={item.complete && "text-light"}>
-                      {item.description}
-                    </span>
-                  }
+                  title={<span className={item.complete && "text-light"}>{item.title}</span>}
+                  description={<span className={item.complete && "text-light"}>{item.description}</span>}
                 />
               </List.Item>
             )}

@@ -1,14 +1,7 @@
 import { Button } from "antd";
 import React from "react";
 
-const Btn = ({
-  children,
-  onClick,
-  loading,
-  danger = false,
-  disable = false,
-  ...props
-}) => {
+const Btn = ({ children, onClick, loading, danger = false, disable = false, ...props }) => {
   return (
     <Button
       loading={loading}

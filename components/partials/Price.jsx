@@ -17,23 +17,8 @@ const Price = () => {
 
           <div className="row justify-content-center">
             {/* <div className="col-xl-7 col-lg-6"> */}
-            <SinglePrice
-              title="Registeration Fee"
-              price="0"
-              point1={""}
-              point2={""}
-              point={""}
-              linkTitle="Register Now"
-            />
-            <SinglePrice
-              title="Course Fee"
-              price="0"
-              active="active"
-              point1={""}
-              point2={""}
-              point={""}
-              linkTitle="Enroll Now"
-            />
+            <SinglePrice title="Registeration Fee" price="0" point1={""} point2={""} point={""} linkTitle="Register Now" />
+            <SinglePrice title="Course Fee" price="0" active="active" point1={""} point2={""} point={""} linkTitle="Enroll Now" />
           </div>
         </div>
       </section>

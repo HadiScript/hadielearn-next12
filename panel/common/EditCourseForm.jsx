@@ -1,6 +1,4 @@
 import React, { useMemo } from "react";
-// import Editor from "react-quill";
-// import "react-quill/dist/quill.snow.css";
 import { BiPlus } from "react-icons/bi";
 
 import dynamic from "next/dynamic";
@@ -59,10 +57,7 @@ const EditCourseForm = ({
   handleRemoveLecture,
   handleRemoveFAQs,
 }) => {
-  const Editor = useMemo(
-    () => dynamic(() => import("react-quill"), { ssr: false }),
-    []
-  );
+  const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
   return (
     <Card>
@@ -96,19 +91,14 @@ const EditCourseForm = ({
       {loadingImage && "loading..."}
       {image && image?.url && (
         <>
-          <span
-            className="text-danger"
-            onClick={() => removeImage(image?.public_id)}
-          >
+          <span className="text-danger" onClick={() => removeImage(image?.public_id)}>
             {" "}
             delete image{" "}
           </span>
           <br />
         </>
       )}
-      {image && image?.url && (
-        <img width="auto" height={300} src={image?.url} />
-      )}
+      {image && image?.url && <img width="auto" height={300} src={image?.url} />}
       <hr />
 
       {/* overview */}
@@ -125,12 +115,7 @@ const EditCourseForm = ({
 
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Why us</h5>
-        <Editor
-          name="whyUs"
-          placeholder="Why us"
-          value={whyUs}
-          onChange={(e) => setwhyUs(e)}
-        />
+        <Editor name="whyUs" placeholder="Why us" value={whyUs} onChange={(e) => setwhyUs(e)} />
       </div>
 
       <div className="form-group py-2">
@@ -149,23 +134,13 @@ const EditCourseForm = ({
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Benefits</h5>
 
-        <Editor
-          name="benefits"
-          placeholder="Benefits of the course"
-          value={benefits}
-          onChange={(e) => setBenefits(e)}
-        />
+        <Editor name="benefits" placeholder="Benefits of the course" value={benefits} onChange={(e) => setBenefits(e)} />
       </div>
 
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Market Value</h5>
 
-        <Editor
-          name="marketValue"
-          placeholder="Market Value of the course"
-          value={marketValue}
-          onChange={(e) => setMarketValue(e)}
-        />
+        <Editor name="marketValue" placeholder="Market Value of the course" value={marketValue} onChange={(e) => setMarketValue(e)} />
       </div>
 
       <div className="form-group py-2">
@@ -399,14 +374,7 @@ const EditCourseForm = ({
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Categories</h5>
         {/* {JSON.stringify(loadCategories)} */}
-        <Select
-          mode="multiple"
-          allowClear
-          style={{ width: "100%" }}
-          placeholder="Please select"
-          onChange={(v) => setCategories(v)}
-          value={[...categories]}
-        >
+        <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)} value={[...categories]}>
           {loadCategories.map((item) => (
             <Select.Option key={item?.name}>{item?.name}</Select.Option>
           ))}
@@ -414,12 +382,7 @@ const EditCourseForm = ({
       </div>
 
       <div className="form-group py-2">
-        <select
-          value={instructor}
-          onChange={(e) => setInstructor(e.target.value)}
-          className="form-control"
-          name="status"
-        >
+        <select value={instructor} onChange={(e) => setInstructor(e.target.value)} className="form-control" name="status">
           <option>* Select Instructor</option>
           {teachers?.map((x, index) => (
             <option key={index} value={x._id}>
@@ -465,10 +428,7 @@ const EditCourseForm = ({
                   />
                 </div>
               </div>
-              <span
-                className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
-                onClick={() => handleRemoveLecture(index)}
-              >
+              <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveLecture(index)}>
                 Remove
               </span>
             </div>
@@ -477,10 +437,7 @@ const EditCourseForm = ({
         ))}
 
         <div className="d-flex justify-content-end">
-          <button
-            onClick={handleAddLecture}
-            className="p-1 rounded d-flex justify-content-center align-items-center"
-          >
+          <button onClick={handleAddLecture} className="p-1 rounded d-flex justify-content-center align-items-center">
             Add <BiPlus />
           </button>
         </div>
@@ -523,10 +480,7 @@ const EditCourseForm = ({
                   />
                 </div>
               </div>
-              <span
-                className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
-                onClick={() => handleRemoveFAQs(index)}
-              >
+              <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveFAQs(index)}>
                 Remove
               </span>
             </div>
@@ -535,10 +489,7 @@ const EditCourseForm = ({
         ))}
 
         <div className="d-flex justify-content-end">
-          <button
-            onClick={handleAddFaqs}
-            className="p-1 rounded d-flex justify-content-center align-items-center"
-          >
+          <button onClick={handleAddFaqs} className="p-1 rounded d-flex justify-content-center align-items-center">
             Add <BiPlus />
           </button>
         </div>

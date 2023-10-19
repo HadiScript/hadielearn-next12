@@ -40,11 +40,7 @@ const DefaultLayout = ({ children }) => {
     {
       key: "2",
       label: (
-        <span
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
+        <span target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
           Logout
         </span>
       ),
@@ -104,9 +100,7 @@ const DefaultLayout = ({ children }) => {
             padding: "20px",
           }}
         >
-          {!breakpoints.md && (
-            <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />
-          )}
+          {!breakpoints.md && <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />}
           <h5 style={{ color: "#0f3f5d" }}> Welcome Hadi, </h5>
           <Dropdown menu={{ items }}>
             <Avatar

@@ -24,10 +24,7 @@ const initDays = {
 };
 
 const AddCourse = () => {
-  const Editor = useMemo(
-    () => dynamic(() => import("react-quill"), { ssr: false }),
-    []
-  );
+  const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
   const [auth] = useContext(AuthContext);
 
@@ -285,28 +282,18 @@ const AddCourse = () => {
               <br />
             </>
           )}
-          {image && image?.url && (
-            <img width="auto" height={300} src={image?.url} />
-          )}
+          {image && image?.url && <img width="auto" height={300} src={image?.url} />}
           <hr />
 
           {/* overview */}
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Overview</h5>
-            <Editor
-              placeholder="Overview of the coruse"
-              value={overview}
-              onChange={(e) => setOverview(e)}
-            />
+            <Editor placeholder="Overview of the coruse" value={overview} onChange={(e) => setOverview(e)} />
           </div>
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Why us</h5>
-            <Editor
-              placeholder=""
-              value={whyUs}
-              onChange={(e) => setwhyUs(e)}
-            />
+            <Editor placeholder="" value={whyUs} onChange={(e) => setwhyUs(e)} />
           </div>
 
           <div className="form-group py-2">
@@ -323,14 +310,7 @@ const AddCourse = () => {
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Benefits</h5>
-            <Editor
-              type="text"
-              id="exampleFormControlInput1"
-              name="benefits"
-              placeholder="Benefits of the course"
-              value={benefits}
-              onChange={(e) => setBenefits(e)}
-            />
+            <Editor type="text" id="exampleFormControlInput1" name="benefits" placeholder="Benefits of the course" value={benefits} onChange={(e) => setBenefits(e)} />
           </div>
 
           <div className="form-group py-2">
@@ -575,12 +555,7 @@ const AddCourse = () => {
 
           {teachersLoading && "loading..."}
           <div className="form-group py-2">
-            <select
-              value={instructor}
-              onChange={(e) => setInstructor(e.target.value)}
-              className="form-control"
-              name="status"
-            >
+            <select value={instructor} onChange={(e) => setInstructor(e.target.value)} className="form-control" name="status">
               <option>* Select Instructor</option>
               {teachers?.map((x, index) => (
                 <option key={index} value={x._id}>
@@ -592,13 +567,7 @@ const AddCourse = () => {
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Categories</h5>
-            <Select
-              mode="multiple"
-              allowClear
-              style={{ width: "100%" }}
-              placeholder="Please select"
-              onChange={(v) => setCategories(v)}
-            >
+            <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)}>
               {loadCategories.map((item) => (
                 <Select.Option key={item.name}>{item.name}</Select.Option>
               ))}
@@ -640,10 +609,7 @@ const AddCourse = () => {
                       />
                     </div>
                   </div>
-                  <span
-                    className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
-                    onClick={() => handleRemoveLecture(index)}
-                  >
+                  <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveLecture(index)}>
                     Remove
                   </span>
                 </div>
@@ -652,10 +618,7 @@ const AddCourse = () => {
             ))}
 
             <div className="d-flex justify-content-end">
-              <button
-                onClick={handleAddLecture}
-                className="p-1 rounded d-flex justify-content-center align-items-center"
-              >
+              <button onClick={handleAddLecture} className="p-1 rounded d-flex justify-content-center align-items-center">
                 Add <BiPlus />
               </button>
             </div>
@@ -697,10 +660,7 @@ const AddCourse = () => {
                       />
                     </div>
                   </div>
-                  <span
-                    className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
-                    onClick={() => handleRemoveFAQs(index)}
-                  >
+                  <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveFAQs(index)}>
                     Remove
                   </span>
                 </div>
@@ -709,10 +669,7 @@ const AddCourse = () => {
             ))}
 
             <div className="d-flex justify-content-end">
-              <button
-                onClick={handleAddFaqs}
-                className="p-1 rounded d-flex justify-content-center align-items-center"
-              >
+              <button onClick={handleAddFaqs} className="p-1 rounded d-flex justify-content-center align-items-center">
                 Add <BiPlus />
               </button>
             </div>

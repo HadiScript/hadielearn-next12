@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Button, Card, List } from "antd";
+import { Button, Card } from "antd";
 import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
 import { AuthContext } from "../../context/auth";
 import axios from "axios";
@@ -29,7 +29,6 @@ const EditProfile = () => {
   const [profileLoading, setProfileLoading] = useState(false);
   const [addSocials, setAddSocials] = useState(false);
   const [social, setSocial] = useState(socailsLinks);
-  // const [image, setImage] = React.useState()
 
   const changeSocials = (e) => {
     setSocial({ ...social, [e.target.name]: e.target.value });
@@ -120,27 +119,13 @@ const EditProfile = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Name </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Company"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+              <input type="text" className="form-control" placeholder="Company" name="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Email </label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                name="email"
-                value={email}
-                readOnly
-              />
+              <input type="email" className="form-control" placeholder="Email" name="email" value={email} readOnly />
             </div>
           </div>
         </div>
@@ -148,14 +133,7 @@ const EditProfile = () => {
         <div className="col-md-12">
           <div className="form-group py-2">
             <label> Bio </label>
-            <textarea
-              type="text"
-              className="form-control"
-              placeholder="About..."
-              name="bio"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-            />
+            <textarea type="text" className="form-control" placeholder="About..." name="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
           </div>
         </div>
 
@@ -163,27 +141,13 @@ const EditProfile = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Status </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Student or deveoper and etc..."
-                name="status"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              />
+              <input type="text" className="form-control" placeholder="Student or deveoper and etc..." name="status" value={status} onChange={(e) => setStatus(e.target.value)} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> location </label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Your location"
-                name="location"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
+              <input type="email" className="form-control" placeholder="Your location" name="location" value={location} onChange={(e) => setLocation(e.target.value)} />
             </div>
           </div>
         </div>
@@ -191,25 +155,14 @@ const EditProfile = () => {
         <div className="col-md-6">
           <div className="form-group py-2">
             <label> Website </label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Any website you have?"
-              name="website"
-              value={website}
-              onChange={(e) => setWebsite(e.target.value)}
-            />
+            <input type="email" className="form-control" placeholder="Any website you have?" name="website" value={website} onChange={(e) => setWebsite(e.target.value)} />
           </div>
         </div>
 
         <div className="col-md-6">
           <div className="d-flex justify-content-start align-items-center  gap-2 form-group py-2">
             <label> Show Social Links </label>
-            <input
-              type="checkbox"
-              checked={addSocials}
-              onChange={() => setAddSocials(!addSocials)}
-            />
+            <input type="checkbox" checked={addSocials} onChange={() => setAddSocials(!addSocials)} />
           </div>
         </div>
 
@@ -219,27 +172,13 @@ const EditProfile = () => {
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Facebook </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Facebook"
-                    name="facebook"
-                    value={social?.facebook}
-                    onChange={changeSocials}
-                  />
+                  <input type="text" className="form-control" placeholder="Facebook" name="facebook" value={social?.facebook} onChange={changeSocials} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Instagram </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Instagram"
-                    name="instagram"
-                    value={social?.instagram}
-                    onChange={changeSocials}
-                  />
+                  <input type="text" className="form-control" placeholder="Instagram" name="instagram" value={social?.instagram} onChange={changeSocials} />
                 </div>
               </div>
             </div>
@@ -248,27 +187,13 @@ const EditProfile = () => {
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Twitter </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Twitter"
-                    name="twitter"
-                    value={social?.twitter}
-                    onChange={changeSocials}
-                  />
+                  <input type="text" className="form-control" placeholder="Twitter" name="twitter" value={social?.twitter} onChange={changeSocials} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Linkedin </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Linkedin"
-                    name="linkedin"
-                    value={social?.linkedin}
-                    onChange={changeSocials}
-                  />
+                  <input type="text" className="form-control" placeholder="Linkedin" name="linkedin" value={social?.linkedin} onChange={changeSocials} />
                 </div>
               </div>
             </div>
@@ -277,27 +202,13 @@ const EditProfile = () => {
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Youtube </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Youtube"
-                    name="youtube"
-                    value={social?.youtube}
-                    onChange={changeSocials}
-                  />
+                  <input type="text" className="form-control" placeholder="Youtube" name="youtube" value={social?.youtube} onChange={changeSocials} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Behance </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Behance"
-                    name="behance"
-                    value={social?.behance}
-                    onChange={changeSocials}
-                  />
+                  <input type="text" className="form-control" placeholder="Behance" name="behance" value={social?.behance} onChange={changeSocials} />
                 </div>
               </div>
             </div>
@@ -305,25 +216,14 @@ const EditProfile = () => {
             <div className="col-md-6">
               <div className="form-group py-2">
                 <label> Github </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Github"
-                  name="github"
-                  value={social?.github}
-                  onChange={changeSocials}
-                />
+                <input type="text" className="form-control" placeholder="Github" name="github" value={social?.github} onChange={changeSocials} />
               </div>
             </div>
           </>
         )}
 
         <div className="text-end">
-          <Button
-            className="CardieBg text-light"
-            loading={loading}
-            onClick={handleSubmit}
-          >
+          <Button className="CardieBg text-light" loading={loading} onClick={handleSubmit}>
             Submit
           </Button>
         </div>

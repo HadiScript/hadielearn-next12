@@ -273,10 +273,7 @@ const EditCourse = () => {
     try {
       setloading(true);
 
-      const { data } = await axios.post(
-        `${API}/edit-course/${id}`,
-        payloadData
-      );
+      const { data } = await axios.post(`${API}/edit-course/${id}`, payloadData);
 
       console.log(data.error);
       if (data.error) {

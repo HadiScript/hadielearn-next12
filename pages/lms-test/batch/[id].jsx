@@ -8,7 +8,6 @@ import useCourses from "../../../panel/newLMS/hooks/useCourses";
 import EditBatchForm from "../../../panel/newLMS/components/editBtachForm";
 import axios from "axios";
 
-
 const initVals = {
   title: "",
 
@@ -33,11 +32,11 @@ const initDays = {
 
 const EditBatch = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = router?.query;
 
   //   hooks
   const { batch, loading } = useSingleBatchId({ id });
-  const { courses } = useCourses();
+  const { courses } = useCourses({ want: "nothing" });
 
   const [formData, setFormData] = useState(initVals);
   const [Days, setDays] = useState(initDays);
@@ -90,10 +89,7 @@ const EditBatch = () => {
 
     try {
       SetSubmitLoading(true);
-      const { data } = await axios.put(
-        `${API}/lms/update-batch/${id}`,
-        payloadData
-      );
+      const { data } = await axios.put(`${API}/lms/update-batch/${id}`, payloadData);
 
       if (data.ok) {
         SetSubmitLoading(false);

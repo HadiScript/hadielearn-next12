@@ -58,8 +58,7 @@ const Testimonials = () => {
       <section
         className="testimoinal__area "
         style={{
-          backgroundImage:
-            " linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)",
+          backgroundImage: " linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)",
         }}
       >
         <div className="container">
@@ -78,10 +77,7 @@ const Testimonials = () => {
                     {testimonialData.map((testimonial, index) => {
                       return (
                         <div key={index} className="testimonial__item">
-                          <p
-                            className="white-color"
-                            style={{ fontSize: "18px" }}
-                          >
+                          <p className="white-color" style={{ fontSize: "18px" }}>
                             {testimonial.content}
                           </p>
                           <div className="testimonial__content d-flex align-items-center">
@@ -89,9 +85,7 @@ const Testimonials = () => {
                               <img src="/assets/images/quote.png" alt="quote" />
                             </div>
                             <div className="testimonial__info">
-                              <h3 className="white-color">
-                                {testimonial.name}
-                              </h3>
+                              <h3 className="white-color">{testimonial.name}</h3>
                             </div>
                           </div>
                         </div>

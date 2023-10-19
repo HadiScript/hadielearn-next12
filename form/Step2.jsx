@@ -4,17 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { AiOutlineRollback } from "react-icons/ai";
 
-const Step2 = ({
-  previousButton,
-  nextButton,
-  handleChange,
-  currentStep,
-  city,
-  address,
-  idCard,
-  setIdCard,
-  MultiStepProgressBar,
-}) => {
+const Step2 = ({ previousButton, nextButton, handleChange, currentStep, city, address, idCard, setIdCard, MultiStepProgressBar }) => {
   const navigate = useRouter();
 
   const [show, setShow] = useState(false);
@@ -41,10 +31,7 @@ const Step2 = ({
   return (
     <>
       <div className="col-md-8  col-sm-12 mb-4 ">
-        <span
-          className="d-flex align-items-center gap-2"
-          onClick={() => navigate.back()}
-        >
+        <span className="d-flex align-items-center gap-2" onClick={() => navigate.back()}>
           <AiOutlineRollback /> <span>Back</span>
         </span>
       </div>
@@ -58,28 +45,14 @@ const Step2 = ({
         <label>
           City<span className="text-danger">*</span>{" "}
         </label>
-        <input
-          required
-          type="text"
-          className="form-control"
-          name="city"
-          value={city}
-          onChange={handleChange}
-        />
+        <input required type="text" className="form-control" name="city" value={city} onChange={handleChange} />
       </div>
 
       <div className="form-group py-3">
         <label>
           Address<span className="text-danger">*</span>{" "}
         </label>
-        <input
-          required
-          type="text"
-          className="form-control"
-          name="address"
-          value={address}
-          onChange={handleChange}
-        />
+        <input required type="text" className="form-control" name="address" value={address} onChange={handleChange} />
       </div>
 
       <div className="form-group py-3">
@@ -91,22 +64,11 @@ const Step2 = ({
             </span>
           )}
         </label>
-        <input
-          required
-          type="text"
-          className="form-control"
-          name="idCard"
-          value={idCard}
-          onChange={handleInputChange}
-        />
+        <input required type="text" className="form-control" name="idCard" value={idCard} onChange={handleInputChange} />
       </div>
       <div className="d-flex justify-content-between">
         <>{previousButton()}</>
-        {!city || !address || show !== false ? (
-          <button className="z-btn-disable mx-2">next</button>
-        ) : (
-          <>{nextButton()}</>
-        )}
+        {!city || !address || show !== false ? <button className="z-btn-disable mx-2">next</button> : <>{nextButton()}</>}
       </div>
     </>
   );

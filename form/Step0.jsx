@@ -73,10 +73,7 @@ const Step0 = ({
   return (
     <div>
       <div className="col-md-8  col-sm-12 mb-4  ">
-        <span
-          className="d-flex align-items-center gap-2"
-          onClick={() => navigate.back()}
-        >
+        <span className="d-flex align-items-center gap-2" onClick={() => navigate.back()}>
           <AiOutlineRollback /> <span>Back</span>
         </span>
       </div>
@@ -89,15 +86,7 @@ const Step0 = ({
           {show && <small className="text-danger mx-3"> Invalid Email</small>}
           {singleDataLoading && "Loading..."}
         </label>
-        <input
-          required
-          type="email"
-          className="form-control"
-          placeholder="example@gmail.com"
-          name="email"
-          value={email}
-          onChange={handleEmail}
-        />
+        <input required type="email" className="form-control" placeholder="example@gmail.com" name="email" value={email} onChange={handleEmail} />
       </div>
       {ok && singleData && (
         <div className="row">
@@ -121,9 +110,7 @@ const Step0 = ({
               value={whatsAppphoneNumber}
               onChange={(value) => setWhatsAppPhoneNumber(value)}
             />
-            <small style={{ fontSize: "12px" }}>
-              Could you please confirm your WhatsApp Number
-            </small>
+            <small style={{ fontSize: "12px" }}>Could you please confirm your WhatsApp Number</small>
           </div>
 
           <div className="col-md-6 col-sm-12 col-xs-12 py-3">
@@ -132,8 +119,7 @@ const Step0 = ({
             </label>
             <select required className="form-select" value={enrollTo}>
               <option value="enrollTo">
-                {enrollTo === "workshop" && "Workshop"}{" "}
-                {enrollTo === "program" && "Program"}
+                {enrollTo === "workshop" && "Workshop"} {enrollTo === "program" && "Program"}
               </option>
             </select>
           </div>
@@ -201,20 +187,10 @@ const Step0 = ({
       )}
       <br />
 
-      {!ok && show ? (
-        <button className="z-btn-disable">Next</button>
-      ) : (
-        !email && !ok && <button className="z-btn-disable">Next</button>
-      )}
+      {!ok && show ? <button className="z-btn-disable">Next</button> : !email && !ok && <button className="z-btn-disable">Next</button>}
 
       {singleData && ok && (
-        <div className="col-md-12">
-          {!(course || workshop) || !whatsAppphoneNumber || show !== false ? (
-            <button className="z-btn-disable">Submit</button>
-          ) : (
-            <>{submit()}</>
-          )}
-        </div>
+        <div className="col-md-12">{!(course || workshop) || !whatsAppphoneNumber || show !== false ? <button className="z-btn-disable">Submit</button> : <>{submit()}</>}</div>
       )}
 
       {!singleDataLoading && !singleData && !ok && (

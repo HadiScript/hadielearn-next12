@@ -15,23 +15,13 @@ const CourseSideBar = ({ course }) => {
             <h3>Instructor</h3>
             <br />
             <div className="d-flex align-items-start gap-3">
-              {course && !course.instructor?.image ? (
-                <FaUser size={50} color="gray" />
-              ) : (
-                <img src={course?.instructor?.image.url} alt="" height={100} />
-              )}
+              {course && !course.instructor?.image ? <FaUser size={50} color="gray" /> : <img src={course?.instructor?.image.url} alt="" height={100} />}
               <div>
-                <span style={{ fontWeight: "bold", fontSize: "18px" }}>
-                  {course?.instructor?.name}
-                </span>
+                <span style={{ fontWeight: "bold", fontSize: "18px" }}>{course?.instructor?.name}</span>
                 <br />
-                <small style={{ fontSize: "14px" }}>
-                  {course?.instructor?.status}
-                </small>
+                <small style={{ fontSize: "14px" }}>{course?.instructor?.status}</small>
                 <br />
-                <small style={{ fontSize: "14px" }}>
-                  {course?.instructor?.exp}
-                </small>
+                <small style={{ fontSize: "14px" }}>{course?.instructor?.exp}</small>
               </div>
             </div>
           </div>
@@ -74,9 +64,7 @@ const CourseSideBar = ({ course }) => {
               <h4>Schedule</h4>
               <ul className="list-group list-group-flush">
                 {course.monday && (
-                  <li
-                    className={`list-group-item d-flex justify-content-between align-items-center `}
-                  >
+                  <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
                       {" "}
                       <AiOutlineCheck /> Monday
@@ -85,9 +73,7 @@ const CourseSideBar = ({ course }) => {
                   </li>
                 )}
                 {course.tuesday && (
-                  <li
-                    className={`list-group-item d-flex justify-content-between align-items-center `}
-                  >
+                  <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
                       {" "}
                       <AiOutlineCheck /> Tuesday{" "}
@@ -97,9 +83,7 @@ const CourseSideBar = ({ course }) => {
                 )}
 
                 {course.wednesday && (
-                  <li
-                    className={`list-group-item d-flex justify-content-between align-items-center `}
-                  >
+                  <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
                       {" "}
                       <AiOutlineCheck /> Wednesday{" "}
@@ -109,9 +93,7 @@ const CourseSideBar = ({ course }) => {
                 )}
 
                 {course.thursday && (
-                  <li
-                    className={`list-group-item d-flex justify-content-between align-items-center `}
-                  >
+                  <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
                       {" "}
                       <AiOutlineCheck /> Thursday{" "}
@@ -121,9 +103,7 @@ const CourseSideBar = ({ course }) => {
                 )}
 
                 {course.friday && (
-                  <li
-                    className={`list-group-item d-flex justify-content-between align-items-center `}
-                  >
+                  <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
                       {" "}
                       <AiOutlineCheck /> Friday{" "}
@@ -132,9 +112,7 @@ const CourseSideBar = ({ course }) => {
                   </li>
                 )}
                 {course.saturday && (
-                  <li
-                    className={`list-group-item d-flex justify-content-between align-items-center `}
-                  >
+                  <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
                       {" "}
                       <AiOutlineCheck /> Saturday{" "}
@@ -191,9 +169,7 @@ const CourseSideBar = ({ course }) => {
               <button className="z-btn z-btn-3 w-50">Enroll now</button>
             </Link>
           )}
-          {course?.show === false && (
-            <button className="z-btn-disable w-50">Enroll now</button>
-          )}
+          {course?.show === false && <button className="z-btn-disable w-50">Enroll now</button>}
         </div>
       </div>
     </>

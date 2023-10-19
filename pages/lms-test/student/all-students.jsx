@@ -1,18 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import LMSLayout from "../../../panel/newLMS/layouts";
-import {
-  Avatar,
-  Button,
-  Card,
-  Descriptions,
-  Divider,
-  Input,
-  List,
-  Modal,
-  Select,
-  Space,
-  Tag,
-} from "antd";
+import { Avatar, Button, Card, Descriptions, Divider, Input, List, Modal, Select, Space, Tag } from "antd";
 import { API } from "../../../config/API";
 import { AuthContext } from "../../../context/auth";
 import axios from "axios";
@@ -51,8 +39,7 @@ const AllStudents = () => {
           search: searchQuery,
         },
       });
-      const { users: loadedUsers, totalPages: loadedTotalPages } =
-        response.data;
+      const { users: loadedUsers, totalPages: loadedTotalPages } = response.data;
 
       setUsers(loadedUsers);
       setTotalPages(loadedTotalPages);
@@ -96,14 +83,7 @@ const AllStudents = () => {
       <LMSLayout>
         <Card>
           <Space wrap>
-            <Search
-              addonBefore="Students"
-              placeholder="input search text"
-              allowClear
-              value={searchQuery}
-              onChange={handleSearch}
-              style={{ width: 304 }}
-            />
+            <Search addonBefore="Students" placeholder="input search text" allowClear value={searchQuery} onChange={handleSearch} style={{ width: 304 }} />
 
             <Select
               style={{
@@ -153,11 +133,7 @@ const AllStudents = () => {
                   ]}
                 >
                   <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                      />
-                    }
+                    avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
                     title={<a href="https://ant.design">{item.name}</a>}
                     description={
                       <>
@@ -178,27 +154,13 @@ const AllStudents = () => {
           )}
         </Card>
 
-        <Modal
-          centered
-          open={open}
-          onOk={() => setOpen(false)}
-          onCancel={() => setOpen(false)}
-          width={1000}
-        >
-          <Descriptions
-            title={current.name}
-            bordered
-            column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
-          >
+        <Modal centered open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} width={1000}>
+          <Descriptions title={current.name} bordered column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}>
             <Descriptions.Item label="Email">{current.email}</Descriptions.Item>
-            <Descriptions.Item label="enrolledBatches">
-              {current.enrolledBatches?.length}
-            </Descriptions.Item>
+            <Descriptions.Item label="enrolledBatches">{current.enrolledBatches?.length}</Descriptions.Item>
 
             <br />
-            <Descriptions.Item
-              label={`Completed Batches - (${current.completedBatches?.length})`}
-            >
+            <Descriptions.Item label={`Completed Batches - (${current.completedBatches?.length})`}>
               <Tag
                 color="blue"
                 role="button"
@@ -210,29 +172,17 @@ const AllStudents = () => {
               </Tag>
             </Descriptions.Item>
 
-            <Descriptions.Item label="Un Assigned Counts">
-              {current.unAssignedCount}
-            </Descriptions.Item>
+            <Descriptions.Item label="Un Assigned Counts">{current.unAssignedCount}</Descriptions.Item>
             <br />
 
             <Descriptions.Item label="Payments">
-              <Tag
-                color="blue"
-                role="button"
-                onClick={() => setPaymentModel(true)}
-              >
+              <Tag color="blue" role="button" onClick={() => setPaymentModel(true)}>
                 {" "}
                 Add & Update Payments{" "}
               </Tag>
             </Descriptions.Item>
-            <Descriptions.Item
-              label={`Certifications - (${current.certifications?.length})`}
-            >
-              <Tag
-                color="blue"
-                role="button"
-                onClick={() => setCertificationModel(true)}
-              >
+            <Descriptions.Item label={`Certifications - (${current.certifications?.length})`}>
+              <Tag color="blue" role="button" onClick={() => setCertificationModel(true)}>
                 {" "}
                 Certifications{" "}
               </Tag>
@@ -247,11 +197,7 @@ const AllStudents = () => {
             renderItem={(item) => (
               <List.Item
                 actions={[
-                  <Tag
-                    role="button"
-                    color="red"
-                    onClick={() => UnAssigned(current._id, item._id)}
-                  >
+                  <Tag role="button" color="red" onClick={() => UnAssigned(current._id, item._id)}>
                     Un Assign
                   </Tag>,
                 ]}
@@ -262,24 +208,11 @@ const AllStudents = () => {
           />
         </Modal>
 
-        <CompletedBatchesModel
-          completedBatchesModel={completedBatchesModel}
-          setCompletedBatchesModel={setCompletedBatchesModel}
-          current={current}
-        />
+        <CompletedBatchesModel completedBatchesModel={completedBatchesModel} setCompletedBatchesModel={setCompletedBatchesModel} current={current} />
 
-        <PaymentModels
-          paymentModels={paymentModel}
-          setPaymentModel={setPaymentModel}
-          current={current}
-          setCurrent={setCurrent}
-        />
+        <PaymentModels paymentModels={paymentModel} setPaymentModel={setPaymentModel} current={current} setCurrent={setCurrent} />
 
-        <Certification_Model
-          certificationModel={certificationModel}
-          setCertificationModel={setCertificationModel}
-          current={current}
-        />
+        <Certification_Model certificationModel={certificationModel} setCertificationModel={setCertificationModel} current={current} />
       </LMSLayout>
     </>
   );

@@ -17,9 +17,7 @@ const WriteComments = ({ selected }) => {
   const fetching = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        `https://hadielearning.com/api/get-comments/${selected.key}`
-      );
+      const { data } = await axios.get(`https://hadielearning.com/api/get-comments/${selected.key}`);
       setAllComments(data.allComments);
       setLoading(false);
     } catch (error) {
@@ -53,13 +51,8 @@ const WriteComments = ({ selected }) => {
 
   return (
     <>
-      {/* {JSON.stringify(allComments)} */}
-      <div
-        className="card p-5"
-        style={{ backgroundColor: "#0f3f5d", borderRadius: "20px" }}
-      >
+      <div className="card p-5" style={{ backgroundColor: "#0f3f5d", borderRadius: "20px" }}>
         <div className="card-tittle">
-          {/* <h5>Write Comment {selected.key}</h5> */}
           <form onSubmit={addComment}>
             <div className="row">
               <div className="col-md-6">
@@ -67,15 +60,7 @@ const WriteComments = ({ selected }) => {
                   <label>
                     <h5 className="text-light">Name</h5>
                   </label>
-                  <input
-                    style={{ outline: "none" }}
-                    type="text"
-                    className="form-control"
-                    placeholder="Name"
-                    value={name}
-                    name="name"
-                    onChange={(e) => setName(e.target.value)}
-                  />
+                  <input style={{ outline: "none" }} type="text" className="form-control" placeholder="Name" value={name} name="name" onChange={(e) => setName(e.target.value)} />
                 </div>
               </div>
 
@@ -138,18 +123,9 @@ const WriteComments = ({ selected }) => {
         ) : (
           allComments &&
           allComments.map((x, index) => (
-            <div
-              key={index}
-              className=" pb-4 d-flex justify-content-start align-items-start gap-3"
-            >
+            <div key={index} className=" pb-4 d-flex justify-content-start align-items-start gap-3">
               {/* <HiUserCircle size={80} style={{marginTop : "-10px"}} color="#0f3f5d"/> */}
-              <Avatar
-                name={x.name}
-                initials={1}
-                size={50}
-                round="50%"
-                color="#0f3f5d"
-              />
+              <Avatar name={x.name} initials={1} size={50} round="50%" color="#0f3f5d" />
               <div
                 className="  "
                 style={{

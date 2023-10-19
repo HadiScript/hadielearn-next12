@@ -3,17 +3,7 @@ import React, { useState } from "react";
 import { AiOutlineRollback } from "react-icons/ai";
 import PhoneInput from "react-phone-input-2";
 
-const Step3 = ({
-  currentStep,
-  handleChange,
-  nextButton,
-  previousButton,
-  parentName,
-  parentPhoneNumber,
-  parentOccupations,
-  setParentPhoneNumber,
-  MultiStepProgressBar,
-}) => {
+const Step3 = ({ currentStep, handleChange, nextButton, previousButton, parentName, parentPhoneNumber, parentOccupations, setParentPhoneNumber, MultiStepProgressBar }) => {
   const navigate = useRouter();
 
   const [show, setShow] = useState(false);
@@ -37,10 +27,7 @@ const Step3 = ({
   return (
     <>
       <div className="col-md-8  col-sm-12 mb-4 ">
-        <span
-          className="d-flex align-items-center gap-2"
-          onClick={() => navigate.back()}
-        >
+        <span className="d-flex align-items-center gap-2" onClick={() => navigate.back()}>
           <AiOutlineRollback /> <span>Back</span>
         </span>
       </div>
@@ -53,27 +40,13 @@ const Step3 = ({
         <label>
           Father's Name<span className="text-danger">*</span>{" "}
         </label>
-        <input
-          required
-          type="text"
-          className="form-control"
-          name="parentName"
-          value={parentName}
-          onChange={handleChange}
-        />
+        <input required type="text" className="form-control" name="parentName" value={parentName} onChange={handleChange} />
       </div>
       <div className="form-group py-3">
         <label>
           Occupation<span className="text-danger">*</span>{" "}
         </label>
-        <input
-          required
-          type="text"
-          className="form-control"
-          name="parentOccupations"
-          value={parentOccupations}
-          onChange={handleChange}
-        />
+        <input required type="text" className="form-control" name="parentOccupations" value={parentOccupations} onChange={handleChange} />
       </div>
       <div className="form-group py-3">
         <label>
@@ -103,11 +76,7 @@ const Step3 = ({
       </div>
       <div className="d-flex justify-content-between">
         <>{previousButton()}</>
-        {!(parentName.length >= 3) || !parentOccupations ? (
-          <button className="z-btn-disable mx-2">next</button>
-        ) : (
-          <>{nextButton()}</>
-        )}
+        {!(parentName.length >= 3) || !parentOccupations ? <button className="z-btn-disable mx-2">next</button> : <>{nextButton()}</>}
       </div>
     </>
   );

@@ -20,10 +20,7 @@ const MultiStepProgressBar = (props) => {
   }
 
   return (
-    <ProgressBar
-      percent={stepPercentage}
-      filledBackground="linear-gradient(to right, #0f3f5d4f, #0f3f5d)"
-    >
+    <ProgressBar percent={stepPercentage} filledBackground="linear-gradient(to right, #0f3f5d4f, #0f3f5d)">
       <Step>
         {({ accomplished, index }) => (
           <div

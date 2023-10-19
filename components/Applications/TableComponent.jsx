@@ -1,17 +1,7 @@
 import React from "react";
 import { Table, Space, Pagination, Tag } from "antd";
-import moment from "moment/moment";
 
-const TableComponent = ({
-  enrollments,
-  totalDataCount,
-  totalPages,
-  currentPage,
-  setCurrentPage,
-  setOpen,
-  setCurrentObj,
-  enrollToSelect,
-}) => {
+const TableComponent = ({ enrollments, totalDataCount, totalPages, currentPage, setCurrentPage, setOpen, setCurrentObj, enrollToSelect }) => {
   const pageSize = 10; // Number of items per page
   const pageRangeDisplayed = 5; // Number of page numbers to display in the pagination bar
 
@@ -58,7 +48,7 @@ const TableComponent = ({
       key: "createdAt",
       render: (_, record) => (
         // <span>{moment(`${record.createdAt}`).fromNow()}</span>
-        <span>{record.createdAt.slice(0,10)}</span>
+        <span>{record.createdAt.slice(0, 10)}</span>
       ),
     },
     {
@@ -92,22 +82,14 @@ const TableComponent = ({
   return (
     <>
       {enrollToSelect}
-      <Table
-        dataSource={enrollments}
-        columns={columns}
-        scroll={{ x: "max-content" }}
-      />
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "16px" }}
-      >
+      <Table dataSource={enrollments} columns={columns} scroll={{ x: "max-content" }} />
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "16px" }}>
         <Pagination
           current={currentPage}
           total={totalDataCount}
           pageSize={pageSize}
           responsive={true}
-          showTotal={(total, range) =>
-            `Showing ${range[0]}-${range[1]} of ${total} items`
-          }
+          showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total} items`}
           onChange={handlePaginationChange}
         />
       </div>

@@ -1,13 +1,6 @@
 import Link from "next/link";
 import React from "react";
-// import "./footer.css";
-import {
-  FaEnvelope,
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedin,
-  FaPhoneAlt,
-} from "react-icons/fa";
+import { FaEnvelope, FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 
 const Footer = () => {
@@ -19,27 +12,16 @@ const Footer = () => {
             <div className="row">
               {/* first col */}
               <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6 pr-0">
-                <div
-                  className="footer__widget mb-45 wow fadeInUp"
-                  data-wow-delay=".2s"
-                >
+                <div className="footer__widget mb-45 wow fadeInUp" data-wow-delay=".2s">
                   <div className="footer__widget-title mb-30">
                     <div id="big" className="logo text-center">
                       <a href="#">
-                        <img
-                          src="/assets/images/footer_logo.png"
-                          alt="footer"
-                          style={{ height: "250px", width: "60%" }}
-                        />
+                        <img src="/assets/images/footer_logo.png" alt="footer" style={{ height: "250px", width: "60%" }} />
                       </a>
                     </div>
                     <div id="small" className="logo ">
                       <a href="#">
-                        <img
-                          src="/assets/images/header.svg"
-                          alt="footer"
-                          style={{ height: "80px" }}
-                        />
+                        <img src="/assets/images/header.svg" alt="footer" style={{ height: "80px" }} />
                       </a>
                     </div>
                   </div>
@@ -49,10 +31,7 @@ const Footer = () => {
 
               {/* seconds col */}
               <div className="col-xl-2 offset-xl-1 col-lg-2 offset-lg-1 col-md-4 col-sm-6">
-                <div
-                  className="footer__widget footer__widget-3 mb-45 wow fadeInUp"
-                  data-wow-delay=".4s"
-                >
+                <div className="footer__widget footer__widget-3 mb-45 wow fadeInUp" data-wow-delay=".4s">
                   <div className="footer__widget-title">
                     <h3>MENU</h3>
                   </div>
@@ -88,10 +67,7 @@ const Footer = () => {
 
               {/* third col */}
               <div className="col-xl-2 offset-xl-1 col-lg-2 offset-lg-1 col-md-4 col-sm-6">
-                <div
-                  className="footer__widget mb-45 wow fadeInUp"
-                  data-wow-delay=".6s"
-                >
+                <div className="footer__widget mb-45 wow fadeInUp" data-wow-delay=".6s">
                   <div className="footer__widget-title">
                     <h3>Terms</h3>
                   </div>
@@ -99,9 +75,7 @@ const Footer = () => {
                     <div className="footer__links">
                       <ul>
                         <li>
-                          <Link href="/privacy-and-policy">
-                            Privacy & Policy
-                          </Link>
+                          <Link href="/privacy-and-policy">Privacy & Policy</Link>
                         </li>
                         <li>
                           <Link href="/disclaimer">Disclaimer</Link>
@@ -110,9 +84,7 @@ const Footer = () => {
                           <Link href="/dmca-policy">DMCA</Link>
                         </li>
                         <li>
-                          <Link href="/terms-and-conditions">
-                            Terms And Conditions
-                          </Link>
+                          <Link href="/terms-and-conditions">Terms And Conditions</Link>
                         </li>
                       </ul>
                     </div>
@@ -122,10 +94,7 @@ const Footer = () => {
 
               {/* fouth col */}
               <div className="col-xl-3  col-lg-3 col-md-4 col-sm-6">
-                <div
-                  className="footer__widget footer__widget-3 mb-10  ml-70 wow fadeInUp"
-                  data-wow-delay=".8s"
-                >
+                <div className="footer__widget footer__widget-3 mb-10  ml-70 wow fadeInUp" data-wow-delay=".8s">
                   <div className="footer__widget-title">
                     <h3>Contact</h3>
                   </div>
@@ -141,9 +110,7 @@ const Footer = () => {
                           </div>
                           <div className="text theme-color ">
                             <span>
-                              <a href="mailto:info@hadielearning.com">
-                                info@hadielearning.com
-                              </a>
+                              <a href="mailto:info@hadielearning.com">info@hadielearning.com</a>
                             </span>
                           </div>
                         </li>
@@ -168,9 +135,7 @@ const Footer = () => {
                             </i>
                           </div>
                           <div className="text theme-color">
-                            <span>
-                              Hadi E-Learning, Civic Center, Faisal Town Lahore.
-                            </span>
+                            <span>Hadi E-Learning, Civic Center, Faisal Town Lahore.</span>
                           </div>
                         </li>
                       </ul>
@@ -178,10 +143,7 @@ const Footer = () => {
                     <div className="footer__social theme-social">
                       <ul>
                         <li>
-                          <a
-                            href="https://www.facebook.com/Hadielearningofficial "
-                            target="_"
-                          >
+                          <a href="https://www.facebook.com/Hadielearningofficial " target="_">
                             <i>
                               <FaFacebookF />
                             </i>
@@ -191,10 +153,7 @@ const Footer = () => {
                           </a>
                         </li>
                         <li>
-                          <a
-                            href="https://instagram.com/hadielearningofficial"
-                            target="_"
-                          >
+                          <a href="https://instagram.com/hadielearningofficial" target="_">
                             <i>
                               <FaInstagram />{" "}
                             </i>
@@ -205,10 +164,7 @@ const Footer = () => {
                         </li>
 
                         <li>
-                          <a
-                            href="https://www.linkedin.com/company/hadi-e-learning/ "
-                            target="_"
-                          >
+                          <a href="https://www.linkedin.com/company/hadi-e-learning/ " target="_">
                             <i>
                               <FaLinkedin />
                             </i>
@@ -233,9 +189,7 @@ const Footer = () => {
                 <div className="col-xl-12">
                   <div className="footer__copyright-text text-center">
                     <p>
-                      Copyright ©{" "}
-                      <Link href={"/auth/login"}>Hadi eLearning</Link> |
-                      Developed by{" "}
+                      Copyright © <Link href={"/auth/login"}>Hadi eLearning</Link> | Developed by{" "}
                       <a href="https://cycarts.com" target="#">
                         Cycarts
                       </a>

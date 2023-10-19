@@ -13,11 +13,7 @@ export const courses_data = [
       "Unlock your creative potential and enhance your skills in 3Ds Max and AutoCAD with our comprehensive mastery course. This course is designed for individuals who are eager to take their proficiency in 3Ds modeling and architectural design to the next level. ",
     Overview2:
       "Throughout this intensive program, you will receive expert guidance from experienced instructors who have a deep understanding of 3Ds Max and AutoCAD. With a total of 36 classes conducted, you will have the opportunity to delve into the intricacies of these powerful software tools, gaining hands-on experience and valuable insights",
-    Prerequisites: [
-      "Minimum Intermediate",
-      "Basic Computer Skills",
-      "Interest in 3D Designing",
-    ],
+    Prerequisites: ["Minimum Intermediate", "Basic Computer Skills", "Interest in 3D Designing"],
     outlines: [
       {
         heading: "Course curriculum for 3Ds Max",
@@ -68,8 +64,7 @@ export const courses_data = [
 
     whyChoose: [
       {
-        heading2:
-          "You must be wondering why you should opt for Hadi E-learning to take your 3Ds Max and AutoCAD course. Well, here are some of the many reasons to convince you:",
+        heading2: "You must be wondering why you should opt for Hadi E-learning to take your 3Ds Max and AutoCAD course. Well, here are some of the many reasons to convince you:",
         points: [
           "Hadi E-learning offers structured programs that are developed by industry experts. These programs not only provide you with comprehensive knowledge of a particular digital niche but will also guide you to implement your skill set most effectively.",
           "Our programs provide you with comprehensive knowledge of the market and the demographics of particular digital niches, opening doors to many bright prospects for your career.",
@@ -97,8 +92,7 @@ export const courses_data = [
     classes: "36",
     timming: "6 PM to 7:30 PM",
     days: ["Monday", "Wednesday", "Friday"],
-    thisCourseIsFor:
-      "Who are interested in learning and mastering their skills in 3Ds Max and AutoCAD.",
+    thisCourseIsFor: "Who are interested in learning and mastering their skills in 3Ds Max and AutoCAD.",
     author: {
       name: "Ali Raza",
       userImg: "raza",
@@ -263,20 +257,11 @@ export const courses_data = [
       },
       {
         heading: "Lecture 12",
-        Lectures: [
-          " Freelancing Marketplace Policies",
-          " Reasons for Profile Suspension or Blocking",
-          " Appealing to Unblock a Suspended Profile",
-        ],
+        Lectures: [" Freelancing Marketplace Policies", " Reasons for Profile Suspension or Blocking", " Appealing to Unblock a Suspended Profile"],
       },
       {
         heading: "Lecture 13",
-        Lectures: [
-          " Prompt Customer Response Time",
-          " Using Mobile Apps for Freelancing",
-          " Effective Bidding Techniques",
-          " Examples of Successful Bids",
-        ],
+        Lectures: [" Prompt Customer Response Time", " Using Mobile Apps for Freelancing", " Effective Bidding Techniques", " Examples of Successful Bids"],
       },
       {
         heading: "Lecture 14",
@@ -292,19 +277,11 @@ export const courses_data = [
       },
       {
         heading: "Lecture 15",
-        Lectures: [
-          " Understanding and Preventing Disputes",
-          " Strategies for Avoiding Disputes in Freelancing",
-          " Effective Dispute Management",
-        ],
+        Lectures: [" Understanding and Preventing Disputes", " Strategies for Avoiding Disputes in Freelancing", " Effective Dispute Management"],
       },
       {
         heading: "Lecture 16 (Bonus Tips)",
-        Lectures: [
-          " Registering a UK-Based Company",
-          " Creating a Business-Wise Account",
-          " Tips and Tricks for Growing Your Freelancing Profiles",
-        ],
+        Lectures: [" Registering a UK-Based Company", " Creating a Business-Wise Account", " Tips and Tricks for Growing Your Freelancing Profiles"],
       },
     ],
     objectives: [
@@ -346,13 +323,11 @@ export const courses_data = [
     timming: "6 PM to 7:30 PM",
     days: ["Tuesday", "Thursday", "Saturday"],
 
-    thisCourseIsFor:
-      "Who are interested in mastering their skills in Freelancing.",
+    thisCourseIsFor: "Who are interested in mastering their skills in Freelancing.",
     author: {
       userImg: "usama",
       name: "Usama Younas",
-      userExp:
-        "7 years of freelancing experience on Fiverr, Upwork, and PeoplePerHour.",
+      userExp: "7 years of freelancing experience on Fiverr, Upwork, and PeoplePerHour.",
       working: "Freelancer",
       slug: "ali-raza",
       description: "",
@@ -550,12 +525,7 @@ export const courses_data = [
 
       {
         heading: "Lecture 1: Introduction to Shopify and Setting Up Your Store",
-        Lectures: [
-          "Overview of Shopify and its features",
-          "Signing up for a Shopify account",
-          "Setting up your initial store settings",
-          "Exploring the Shopify admin panel",
-        ],
+        Lectures: ["Overview of Shopify and its features", "Signing up for a Shopify account", "Setting up your initial store settings", "Exploring the Shopify admin panel"],
       },
       {
         heading: "Lecture 2: Choosing and Customizing a Theme",
@@ -567,8 +537,7 @@ export const courses_data = [
         ],
       },
       {
-        heading:
-          "Lecture 3: Adding Products to Your Store & Optimizing Product Pages",
+        heading: "Lecture 3: Adding Products to Your Store & Optimizing Product Pages",
         Lectures: [
           "Understanding product types and attributes",
           "Creating product categories and collections",
@@ -582,12 +551,7 @@ export const courses_data = [
       },
       {
         heading: "Lecture 4: Managing Orders and Payments",
-        Lectures: [
-          "Configuring payment gateways",
-          "Handling orders and fulfillment",
-          "Managing customer communication",
-          "Setting up shipping options and rates",
-        ],
+        Lectures: ["Configuring payment gateways", "Handling orders and fulfillment", "Managing customer communication", "Setting up shipping options and rates"],
       },
       {
         heading: "Lecture 5: Enhancing Your Store with Apps",
@@ -608,8 +572,7 @@ export const courses_data = [
         ],
       },
       {
-        heading:
-          "Lecture 7: Implementing Effective Navigation, Menus & Best SEO Practices",
+        heading: "Lecture 7: Implementing Effective Navigation, Menus & Best SEO Practices",
         Lectures: [
           "Structuring your store's navigation for easy exploration",
           "Creating drop-down menus and subcategories",
@@ -631,8 +594,7 @@ export const courses_data = [
         ],
       },
       {
-        heading:
-          "Lecture 9: Analyzing Store Performance with Shopify Analytics",
+        heading: "Lecture 9: Analyzing Store Performance with Shopify Analytics",
         Lectures: [
           "Utilizing the Shopify Analytics dashboard",
           "Understanding key metrics and performance indicators",
@@ -641,8 +603,7 @@ export const courses_data = [
         ],
       },
       {
-        heading:
-          "Lecture 10: Implementing Conversion Rate Optimization (CRO) Techniques",
+        heading: "Lecture 10: Implementing Conversion Rate Optimization (CRO) Techniques",
         Lectures: [
           "Understanding the principles of CRO",
           "Conducting A/B testing with Shopify's built-in features",
@@ -651,8 +612,7 @@ export const courses_data = [
         ],
       },
       {
-        heading:
-          "Lecture 11: Managing Inventory and Fulfillment & Setting Up and Optimizing Shopify Payments",
+        heading: "Lecture 11: Managing Inventory and Fulfillment & Setting Up and Optimizing Shopify Payments",
         Lectures: [
           "Implementing inventory tracking and management",
           "Setting up low-stock notifications and reordering",
@@ -702,8 +662,7 @@ export const courses_data = [
         ],
       },
       {
-        heading:
-          "Lecture 16: Shopify Store Optimization for Speed and Performance",
+        heading: "Lecture 16: Shopify Store Optimization for Speed and Performance",
         Lectures: [
           "Evaluating and optimizing your store's loading speed",
           "Utilizing caching and compression techniques",
@@ -722,8 +681,7 @@ export const courses_data = [
         ],
       },
       {
-        heading:
-          "Lecture 18: Shopify Internationalization and Multilingual Stores",
+        heading: "Lecture 18: Shopify Internationalization and Multilingual Stores",
         Lectures: [
           "Expanding your store to international markets",
           "Configuring multiple languages and currencies",
@@ -810,8 +768,7 @@ export const courses_data = [
     timming: "4 PM to 5:30 PM",
     days: ["Monday", "Tuesday", "Wednesday", "Thursday"],
 
-    thisCourseIsFor:
-      "Who are interested in mastering their skills in WordPress and Shopify.",
+    thisCourseIsFor: "Who are interested in mastering their skills in WordPress and Shopify.",
     author: {
       userImg: "hunzala",
       name: "Hunzala Baloch",
@@ -840,91 +797,47 @@ export const courses_data = [
       "This course provides a comprehensive understanding of digital marketing and equips you with the necessary skills and strategies to excel in the digital marketing industry. You'll learn about various digital marketing channels, such as search engine optimization (SEO), social media marketing, email marketing, content marketing, and pay-per-click advertising. We'll cover topics like creating effective digital marketing campaigns, analyzing data and metrics, optimizing websites for better visibility, and leveraging social media platforms for brand promotion. ",
     Overview2:
       "Throughout the course, practical examples and case studies will be used to illustrate concepts and techniques, making it easier for you to apply your learning in real-world scenarios. By the end of the course, you'll have the knowledge and confidence to implement successful digital marketing strategies, attract and engage target audiences, and drive measurable results for businesses. Whether you're a beginner or looking to enhance your digital marketing skills, this course will provide you with the tools and know-how to thrive in the dynamic field of digital marketing.",
-    Prerequisites: [
-      "Minimum Intermediate",
-      "Basic Computer Skills",
-      "Interest in Digital Marketing",
-    ],
+    Prerequisites: ["Minimum Intermediate", "Basic Computer Skills", "Interest in Digital Marketing"],
     outlines: [
       {
         heading: "Module 1: Introduction to Digital Marketing",
-        Lectures: [
-          "Importance of digital marketing",
-          "Key concepts and terminology",
-          "Overview of digital marketing channels",
-        ],
+        Lectures: ["Importance of digital marketing", "Key concepts and terminology", "Overview of digital marketing channels"],
       },
       {
         heading: "Module 2: Search Engine Optimization (SEO)",
-        Lectures: [
-          "Fundamentals of SEO",
-          "Keyword research and optimization",
-          "On-page and off-page optimization",
-        ],
+        Lectures: ["Fundamentals of SEO", "Keyword research and optimization", "On-page and off-page optimization"],
       },
       {
         heading: "Module 3: Social Media Marketing",
-        Lectures: [
-          "Introduction to social media platforms",
-          "Creating engaging social media content",
-          "Social media advertising",
-        ],
+        Lectures: ["Introduction to social media platforms", "Creating engaging social media content", "Social media advertising"],
       },
       {
         heading: "Module 4: Email Marketing",
-        Lectures: [
-          "Building an email list",
-          "Crafting effective email campaigns",
-          "Email automation and analytics",
-        ],
+        Lectures: ["Building an email list", "Crafting effective email campaigns", "Email automation and analytics"],
       },
       {
         heading: "Module 5: Content Marketing",
-        Lectures: [
-          "Understanding content marketing",
-          "Creating valuable and engaging content",
-          "Content distribution and promotion",
-        ],
+        Lectures: ["Understanding content marketing", "Creating valuable and engaging content", "Content distribution and promotion"],
       },
       {
         heading: "Module 6: Pay-Per-Click (PPC) Advertising",
-        Lectures: [
-          "Basics of PPC advertising",
-          "Campaign setup and optimization",
-          "Ad tracking and performance measurement",
-        ],
+        Lectures: ["Basics of PPC advertising", "Campaign setup and optimization", "Ad tracking and performance measurement"],
       },
       {
         heading: "Module 7: Web Analytics and Data Analysis",
-        Lectures: [
-          "Introduction to web analytics tools",
-          "Analyzing and interpreting data",
-          "Making data-driven decisions",
-        ],
+        Lectures: ["Introduction to web analytics tools", "Analyzing and interpreting data", "Making data-driven decisions"],
       },
       {
         heading: "Module 8: Website Optimization",
-        Lectures: [
-          "User experience and website design principles",
-          "Conversion rate optimization",
-          "Mobile optimization and responsive design",
-        ],
+        Lectures: ["User experience and website design principles", "Conversion rate optimization", "Mobile optimization and responsive design"],
       },
       {
         heading: "Module 9: Digital Marketing Campaign Planning",
-        Lectures: [
-          "Setting goals and objectives",
-          "Target audience identification",
-          "Creating a comprehensive campaign strategy",
-        ],
+        Lectures: ["Setting goals and objectives", "Target audience identification", "Creating a comprehensive campaign strategy"],
       },
       {
         heading: "Module 10: Emerging Trends in Digital Marketing",
-        Lectures: [
-          "Artificial intelligence and machine learning in marketing",
-          "Voice search and chatbots",
-          "Influencer marketing and social media trends",
-        ],
+        Lectures: ["Artificial intelligence and machine learning in marketing", "Voice search and chatbots", "Influencer marketing and social media trends"],
       },
     ],
 
@@ -966,13 +879,11 @@ export const courses_data = [
     classes: "24",
     timming: "6 PM to 7:30 PM",
     days: ["Monday", "Wednesday", "Friday"],
-    thisCourseIsFor:
-      "Who are interested in learning and mastering their skills in Digital Marketing.",
+    thisCourseIsFor: "Who are interested in learning and mastering their skills in Digital Marketing.",
     author: {
       userImg: "talha",
       name: "Talha Bin Saleem",
-      userExp:
-        " 6+ years of experience in Social Media Management, Content Marketing Management and Digital Content Strategy.",
+      userExp: " 6+ years of experience in Social Media Management, Content Marketing Management and Digital Content Strategy.",
       working: "Digital Marketing Executive IPPBX",
       slug: "talha-bin-saleem",
       description: "",
@@ -996,15 +907,10 @@ export const courses_data = [
       "Unlock your full potential in MEAN Stack development with our comprehensive course. This program is designed for individuals who are eager to enhance their skills in building dynamic web applications using the MEAN Stack (MongoDB, Express.js, Angular, and Node.js).",
     Overview2:
       "Throughout this course, you will receive expert guidance from experienced instructors who have a deep understanding of MEAN Stack development. The course is divided into two parts: backend and database development in the first two months, and frontend development in the last two months. This structure allows you to gain a solid foundation in backend technologies before diving into frontend frameworks and libraries.",
-    Prerequisites: [
-      "Basic understanding of HTML, CSS, and JavaScript",
-      "Familiarity with web development concepts",
-      "Interest in building dynamic web applications",
-    ],
+    Prerequisites: ["Basic understanding of HTML, CSS, and JavaScript", "Familiarity with web development concepts", "Interest in building dynamic web applications"],
     outlines: [
       {
-        heading:
-          "Course curriculum for Backend and Database Development (First Two Months)",
+        heading: "Course curriculum for Backend and Database Development (First Two Months)",
         Lectures: [
           "Introduction to MEAN Stack",
           "Setting up the development environment",
@@ -1040,8 +946,7 @@ export const courses_data = [
     ],
     whyChoose: [
       {
-        heading2:
-          "You may be wondering why you should choose our MEAN Stack Development course. Here are some reasons to convince you:",
+        heading2: "You may be wondering why you should choose our MEAN Stack Development course. Here are some reasons to convince you:",
         points: [
           "Our course is developed by industry experts with extensive experience in MEAN Stack development",
           "We provide a structured program that covers all the essential concepts and techniques in MEAN Stack development",
@@ -1071,8 +976,7 @@ export const courses_data = [
     classes: "48",
     timming: "6 pm to 7:30 pm",
     days: ["Monday", "Wednesday", "Friday"],
-    thisCourseIsFor:
-      "Individuals interested in learning and mastering MEAN Stack development",
+    thisCourseIsFor: "Individuals interested in learning and mastering MEAN Stack development",
     author: {
       userImg: "naqee",
       name: "Naqee Haider",

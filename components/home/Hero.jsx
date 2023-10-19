@@ -25,19 +25,10 @@ const Hero = () => {
           <div className="hero__item hero__height d-flex ">
             <div className="container">
               <div className="row">
-                <div
-                  className="col-xl-6 col-lg-5 col-0 order-last"
-                  id="imagesBox"
-                >
+                <div className="col-xl-6 col-lg-5 col-0 order-last" id="imagesBox">
                   <div className="hero__thumb-wrapper ml-70 scene p-relative w ">
                     <Zoom cascade>
-                      <img
-                        id="mascot"
-                        className="layer"
-                        data-depth="0.2"
-                        src="/assets/images/check/checks.svg"
-                        alt=""
-                      />
+                      <img id="mascot" className="layer" data-depth="0.2" src="/assets/images/check/checks.svg" alt="" />
 
                       {/* <div className="hero__thumb two d-none d-md-block d-lg-none d-xl-block">
                         <img
@@ -81,10 +72,7 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <div
-                  className="col-xl-6 col-lg-7 d-flex align-items-center"
-                  style={{ marginTop: "250px" }}
-                >
+                <div className="col-xl-6 col-lg-7 d-flex align-items-center" style={{ marginTop: "250px" }}>
                   <Fade bottom cascade>
                     <div className="about__content">
                       <h1 style={{ fontSize: "60px", maxWidth: "450px" }}>
@@ -99,9 +87,7 @@ const Hero = () => {
                           />
                         </span>
                       </h1>
-                      <p className="text-justify">
-                        Transform your future with free IT training.
-                      </p>
+                      <p className="text-justify">Transform your future with free IT training.</p>
                       <Link href="/about-us">
                         <span className="z-btn-outline">About us </span>
                       </Link>
@@ -126,19 +112,10 @@ const Hero = () => {
           <div className="hero__item hero__height d-flex ">
             <div className="container">
               <div className="row">
-                <div
-                  className="col-xl-6 col-lg-5 col-0 order-last"
-                  id="imagesBox"
-                >
+                <div className="col-xl-6 col-lg-5 col-0 order-last" id="imagesBox">
                   <div className="hero__thumb-wrapper ml-70 scene p-relative w ">
                     <Zoom cascade>
-                      <img
-                        id="mascot"
-                        className="layer"
-                        data-depth="0.2"
-                        src="/assets/images/check/skills.png"
-                        alt=""
-                      />
+                      <img id="mascot" className="layer" data-depth="0.2" src="/assets/images/check/skills.png" alt="" />
 
                       {/* <div className="hero__thumb two d-none d-md-block d-lg-none d-xl-block">
                         <img
@@ -182,10 +159,7 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <div
-                  className="col-xl-6 col-lg-7 d-flex align-items-center"
-                  style={{ marginTop: "250px" }}
-                >
+                <div className="col-xl-6 col-lg-7 d-flex align-items-center" style={{ marginTop: "250px" }}>
                   <Fade bottom cascade>
                     <div className="about__content">
                       <h1 style={{ fontSize: "60px", maxWidth: "450px" }}>
@@ -200,10 +174,7 @@ const Hero = () => {
                           />
                         </span>
                       </h1>
-                      <p className="text-justify">
-                        Elevate your skill set with training in futuristic
-                        fields.
-                      </p>
+                      <p className="text-justify">Elevate your skill set with training in futuristic fields.</p>
                       <Link href="/about-us">
                         <span className="z-btn-outline">About us </span>
                       </Link>
@@ -228,19 +199,10 @@ const Hero = () => {
           <div className="hero__item hero__height d-flex ">
             <div className="container">
               <div className="row">
-                <div
-                  className="col-xl-6 col-lg-5 col-0 order-last"
-                  id="imagesBox"
-                >
+                <div className="col-xl-6 col-lg-5 col-0 order-last" id="imagesBox">
                   <div className="hero__thumb-wrapper ml-70 scene p-relative w ">
                     <Zoom cascade>
-                      <img
-                        id="mascot"
-                        className="layer"
-                        data-depth="0.2"
-                        src="/assets/images/check/finance.png"
-                        alt=""
-                      />
+                      <img id="mascot" className="layer" data-depth="0.2" src="/assets/images/check/finance.png" alt="" />
 
                       {/* <div className="hero__thumb two d-none d-md-block d-lg-none d-xl-block">
                         <img
@@ -284,10 +246,7 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <div
-                  className="col-xl-6 col-lg-7 d-flex align-items-center"
-                  style={{ marginTop: "250px" }}
-                >
+                <div className="col-xl-6 col-lg-7 d-flex align-items-center" style={{ marginTop: "250px" }}>
                   <Fade bottom cascade>
                     <div className="about__content">
                       <h1 style={{ fontSize: "60px", maxWidth: "450px" }}>
@@ -295,22 +254,14 @@ const Hero = () => {
                         <span style={{ color: "#0f3f5d" }}>
                           <Typewriter
                             options={{
-                              strings: [
-                                "Making",
-                                "you",
-                                "financially",
-                                "independent",
-                              ],
+                              strings: ["Making", "you", "financially", "independent"],
                               autoStart: true,
                               loop: true,
                             }}
                           />
                         </span>
                       </h1>
-                      <p className="text-justify">
-                        Kick start your career and become financially
-                        independent.
-                      </p>
+                      <p className="text-justify">Kick start your career and become financially independent.</p>
                       <Link href="/about-us">
                         <span className="z-btn-outline">About us </span>
                       </Link>

@@ -5,8 +5,7 @@ export const workshop_data = [
     slug: "introduction-to-ux-design",
     breadcrumb: "UX Design",
     featuredImage: "",
-    heading1:
-      "",
+    heading1: "",
     content1:
       "The objective of this workshop is to provide participants with a comprehensive understanding of UX (User Experience) design principles and practices. Participants will gain practical knowledge and skills to create user-centered designs that enhance the overall user experience.",
     outline: [
@@ -20,8 +19,7 @@ export const workshop_data = [
       "UX Design in Practice",
       "Q&A and Wrap-up",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/84573821185?pwd=SGZkamhjbDUzVU8zZ0xOc0tvb0tXdz09",
+    zoomLink: "https://us06web.zoom.us/j/84573821185?pwd=SGZkamhjbDUzVU8zZ0xOc0tvb0tXdz09",
     meetingId: "845 7382 1185",
     pascodeId: "883307",
     meetingTiming: "29TH MAY, 2023 | 6:00 PM ",
@@ -42,8 +40,7 @@ export const workshop_data = [
     slug: "techniques-and-requirements-of-3d-visualization",
     breadcrumb: "AutoCAD",
     featuredImage: "",
-    heading1:
-      "Unlock the Secrets of Creating Stunning 3D Visualizations with Ease",
+    heading1: "Unlock the Secrets of Creating Stunning 3D Visualizations with Ease",
     content1:
       "Welcome to the Techniques and Requirements of 3D Visualization workshop! This workshop is designed to introduce beginners to the world of 3D visualization and provide them with the essential techniques and requirements to create captivating visualizations. Whether you're an aspiring artist, an architect, or simply someone curious about the magic of 3D, this workshop will equip you with the knowledge and skills to bring your ideas to life.",
     outline: [
@@ -59,8 +56,7 @@ export const workshop_data = [
       "Reference Material",
       "Practice and Patience",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/81100625907?pwd=RnJqeXNwUlp0THF4a1FpUjVZdW1udz09",
+    zoomLink: "https://us06web.zoom.us/j/81100625907?pwd=RnJqeXNwUlp0THF4a1FpUjVZdW1udz09",
     meetingId: "811 0062 5907",
     pascodeId: "370571",
     meetingTiming: "May 25th, 2023 | 6:00 PM",
@@ -70,16 +66,7 @@ export const workshop_data = [
     userImage: "raza",
     userName: "Ali Raza",
     userExp: "Architect Engineer, Experienced Visualizer",
-    tags: [
-      "#3D_Modeling",
-      "#Rendering",
-      "#Texturing",
-      "#3D",
-      "#Architectural_Visualization",
-      "#Design",
-      "#Product",
-      "#CAD",
-    ],
+    tags: ["#3D_Modeling", "#Rendering", "#Texturing", "#3D", "#Architectural_Visualization", "#Design", "#Product", "#CAD"],
     conclusion:
       "By completing the workshop, participants will acquire valuable skills in 3D modeling, animation, and visual effects, along with project management and creative problem-solving abilities applicable to diverse industries.",
   },
@@ -90,8 +77,7 @@ export const workshop_data = [
     slug: "mastering-the-art-of-search-engine-optimization",
     breadcrumb: "SEO",
     featuredImage: "",
-    heading1:
-      "Unleash the Power of SEO: A Hands-on Workshop for Digital Marketers",
+    heading1: "Unleash the Power of SEO: A Hands-on Workshop for Digital Marketers",
     content1:
       "Join our hands-on workshop, Unleash the Power of SEO, designed specifically for digital marketers. Learn the latest SEO strategies and techniques to enhance your website's visibility, drive organic traffic, and increase conversions. Through practical exercises and real-world case studies, you'll gain the skills and knowledge needed to optimize your online presence and stay ahead in the competitive digital landscape. Don't miss this opportunity to unlock the full potential of SEO and propel your digital marketing efforts to new heights.",
     outline: [
@@ -105,8 +91,7 @@ export const workshop_data = [
       "SEO Analytics and Reporting",
       "Emerging Trends and Future of SEO",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/86872839601?pwd=NGUxUTQvNklmWmhTRHpVVlMxVmpiQT09",
+    zoomLink: "https://us06web.zoom.us/j/86872839601?pwd=NGUxUTQvNklmWmhTRHpVVlMxVmpiQT09",
     meetingId: "868 7283 9601",
     pascodeId: "733999",
     meetingTiming: "May 22nd, 2023 | 7:00 PM",
@@ -115,16 +100,8 @@ export const workshop_data = [
     image: "workshop9",
     userImage: "ali",
     userName: "Ali Shahid",
-    userExp:
-      "6+ years of experience in search engine optimization and digital media marketing.",
-    tags: [
-      "#keywords",
-      "#marketing",
-      "#searching",
-      "#trends",
-      "#Predicting ",
-      "#tactics",
-    ],
+    userExp: "6+ years of experience in search engine optimization and digital media marketing.",
+    tags: ["#keywords", "#marketing", "#searching", "#trends", "#Predicting ", "#tactics"],
     conclusion:
       "In conclusion, Unleash the Power of SEO: A Hands-on Workshop for Digital Marketers equips participants with the knowledge and practical skills needed to excel in the field of search engine optimization. Throughout the workshop, attendees dive into the intricacies of SEO, learning strategies and techniques to boost website visibility, attract organic traffic, and drive conversions.",
   },
@@ -150,8 +127,7 @@ export const workshop_data = [
       "Benefits to learn MEAN Stack?",
       "Why should not you learn MEAN Stack?",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/89764410722?pwd=T0k1SFlyVDRONmF2MHo2azByV01WUT09",
+    zoomLink: "https://us06web.zoom.us/j/89764410722?pwd=T0k1SFlyVDRONmF2MHo2azByV01WUT09",
     meetingId: "897 6441 0722",
     pascodeId: "575697",
     meetingTiming: "May 19th, 2023 | 05:00 PM",
@@ -161,19 +137,7 @@ export const workshop_data = [
     userImage: "naqee",
     userName: "Naqee Haider",
     userExp: "5+ years of experience in different stacks of JavaScript.",
-    tags: [
-      "#Development",
-      "#MEAN",
-      "#MongoDB",
-      "#Database",
-      "#JWT",
-      "#Deployments",
-      "#Express.Js",
-      "#ReactJs",
-      "#NodeJs",
-      "#Angular",
-      "#Javascript",
-    ],
+    tags: ["#Development", "#MEAN", "#MongoDB", "#Database", "#JWT", "#Deployments", "#Express.Js", "#ReactJs", "#NodeJs", "#Angular", "#Javascript"],
     conclusion:
       "In conclusion, the MEAN Stack Workshop: Building Scalable and Responsive Web Apps offers a comprehensive and hands-on learning experience for individuals seeking to master the art of developing modern web applications. Throughout the workshop, participants will gain a solid understanding of the MEAN Stack components - MongoDB, Express.js, Angular, and Node.js - and how they work together to create powerful and responsive web solutions.",
   },
@@ -197,8 +161,7 @@ export const workshop_data = [
       "Email Marketing",
       "Analytics and Performance Measurement",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/84424405508?pwd=MmVMWmw3TDlFb0RBK05Dckp2ZVhLdz09",
+    zoomLink: "https://us06web.zoom.us/j/84424405508?pwd=MmVMWmw3TDlFb0RBK05Dckp2ZVhLdz09",
     meetingId: "844 2440 5508",
     pascodeId: "010044",
     meetingTiming: "May 17th, 2023 | 05:00 PM",
@@ -207,8 +170,7 @@ export const workshop_data = [
     image: "workshop7",
     userImage: "akram",
     userName: "Saad Akram",
-    userExp:
-      " 6+ years of experience in Digital Media Marketing and Data Analysis.",
+    userExp: " 6+ years of experience in Digital Media Marketing and Data Analysis.",
     tags: [
       "#DigitalMarketing",
       "#SocialMediaMarketing",
@@ -243,8 +205,7 @@ export const workshop_data = [
       "Customizing the appearance and functionality ",
       "Tips and best practices ",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/81091146550?pwd=SW8vQ2Q0Rkl1Sk9OYkRvbE9abTdiZz09",
+    zoomLink: "https://us06web.zoom.us/j/81091146550?pwd=SW8vQ2Q0Rkl1Sk9OYkRvbE9abTdiZz09",
     meetingId: "810 9114 6550",
     pascodeId: "812944",
     meetingTiming: "May 15th, 2023 | 04:00 PM",
@@ -254,15 +215,7 @@ export const workshop_data = [
     userImage: "hunzala",
     userName: "Hunzala Baloch",
     userExp: "6+ years of experience in Wordpress and Shopify.",
-    tags: [
-      "#wordpress",
-      "#shopify",
-      "#development",
-      "#creations",
-      "#bugs",
-      "#themes",
-      "#plugin",
-    ],
+    tags: ["#wordpress", "#shopify", "#development", "#creations", "#bugs", "#themes", "#plugin"],
     conclusion:
       "Break free from the ordinary and explore the world of website creation with our WordPress and Shopify workshops. Unlock endless possibilities as you gain knowledge, skills, and confidence to master these powerful platforms. With expert guidance and hands-on learning, build stunning websites and online stores. Shape your digital future, break away from the ordinary, and embark on a fulfilling journey of website creation. Enroll today and unleash your creativity with WordPress and Shopify.",
   },
@@ -285,8 +238,7 @@ export const workshop_data = [
       "Algorithms of different freelance platforms?",
       "Communication skills in freelancing?",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/85112572016?pwd=ZkxsTkE4c0xhUVNtNE0vcmppMXMrdz09",
+    zoomLink: "https://us06web.zoom.us/j/85112572016?pwd=ZkxsTkE4c0xhUVNtNE0vcmppMXMrdz09",
     meetingId: "851 1257 2016",
     pascodeId: "859070",
     meetingTiming: "May 12th, 2023 | 04:00 PM",
@@ -295,16 +247,8 @@ export const workshop_data = [
     image: "workshop5",
     userImage: "usama",
     userName: "Usama Younas",
-    userExp:
-      "7 years of freelancing experience on Fiverr, Upwork, and PeoplePerHour.",
-    tags: [
-      "#FreelancingOpportunities",
-      "#BeYourOwnBoss",
-      "#WorkFromAnywhere",
-      "#FreelanceLife",
-      "#EntrepreneurshipJourney",
-      "#FlexibleWorking",
-    ],
+    userExp: "7 years of freelancing experience on Fiverr, Upwork, and PeoplePerHour.",
+    tags: ["#FreelancingOpportunities", "#BeYourOwnBoss", "#WorkFromAnywhere", "#FreelanceLife", "#EntrepreneurshipJourney", "#FlexibleWorking"],
     conclusion:
       "If you find yourself yearning for a change from the monotonous 9-5 routine and are curious about exploring new possibilities, freelancing could be the perfect avenue for you. Our introductory workshop on freelancing offers a golden opportunity to take that first step towards building a successful independent enterprise. By joining this workshop, you will gain valuable insights, knowledge, and practical skills that will equip you for a thriving freelance career. Embrace this chance to break free from the traditional work structure and unlock the potential to shape your own professional destiny. Don't miss out on this transformative experience—sign up today and embark on a journey towards a fulfilling and rewarding freelancing career.",
   },
@@ -329,8 +273,7 @@ export const workshop_data = [
       "The growing demand for DevOps professionals",
       "Industry trends and job prospects",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/87588258229?pwd=YVJYNXl5cmlicForYy8vbVIvenIyQT09",
+    zoomLink: "https://us06web.zoom.us/j/87588258229?pwd=YVJYNXl5cmlicForYy8vbVIvenIyQT09",
     meetingId: "875 8825 8229",
     pascodeId: "237760",
     meetingTiming: "May 10th, 2023 | 04:00 PM",
@@ -339,16 +282,8 @@ export const workshop_data = [
     image: "workshop4",
     userImage: "zaka",
     userName: "Zaka ur Rehman",
-    userExp:
-      "6+ year DevOps industry experience currently serving at a leading 10Pearls software house",
-    tags: [
-      "#Microservices",
-      "#CloudComputing",
-      "#Automation",
-      "#ContinuousDelivery",
-      "#ContinuousIntegration",
-      "#DevOps",
-    ],
+    userExp: "6+ year DevOps industry experience currently serving at a leading 10Pearls software house",
+    tags: ["#Microservices", "#CloudComputing", "#Automation", "#ContinuousDelivery", "#ContinuousIntegration", "#DevOps"],
     conclusion:
       "By actively participating in the DevOps Introduction workshop, participants will acquire a holistic understanding of the core principles and practices of DevOps. This will empower them to effectively leverage cloud computing, foster collaboration, and explore promising career opportunities in the field. Through comprehensive discussions and hands-on exercises, participants will grasp the importance of continuous integration, version control, and request lifecycles in the context of DevOps. Completing this workshop will equip participants with invaluable skills and knowledge that are highly sought after in the industry, paving the way for a successful journey towards a rewarding career in DevOps.",
   },
@@ -358,8 +293,7 @@ export const workshop_data = [
     key: "php-and-laravel",
     slug: "unlocking-the-power-of-php-and-laravel",
     featuredImage: "",
-    heading1:
-      "Get ahead of the game with our PHP and Laravel workshop - your ticket to web development success!",
+    heading1: "Get ahead of the game with our PHP and Laravel workshop - your ticket to web development success!",
     content1:
       "Our PHP and Laravel workshop is the perfect opportunity to get ahead in the world of web development. With expert instructors and a comprehensive curriculum, this workshop will equip you with the skills you need to succeed. Don't miss your chance to join us and take your first step towards a successful career in web development.",
     outline: [
@@ -374,8 +308,7 @@ export const workshop_data = [
       "Why should one use it?",
       "Request lifecycles in Laravel",
     ],
-    zoomLink:
-      "https://us06web.zoom.us/j/85910093042?pwd=SzQxMmo5ZldUcEw1MTNKekJ5U3l4Zz09",
+    zoomLink: "https://us06web.zoom.us/j/85910093042?pwd=SzQxMmo5ZldUcEw1MTNKekJ5U3l4Zz09",
     meetingId: "859 1009 3042",
     pascodeId: "197961",
     meetingTiming: "May 8, 2023 | 6:00:00 PM",
@@ -383,8 +316,7 @@ export const workshop_data = [
     image: "workshop3",
     userImage: "hassan",
     userName: "Hassan Cheema",
-    userExp:
-      "7 years of experience in both PHP programming and the Laravel web framework",
+    userExp: "7 years of experience in both PHP programming and the Laravel web framework",
     dateAndTime: "2023-05-08T18:00:00",
     breadcrumb: "Unlocking the power of PHP & Laravel",
     tags: ["PHP", "Laravel", "Web_Development", "OOP", "MVC", "Routing"],
@@ -397,17 +329,10 @@ export const workshop_data = [
     key: "3dD Max",
     slug: "bring-your-ideas-to-life-with-3ds-Max",
     featuredImage: "",
-    heading1:
-      "Discover the magic of 3Ds Max for stunning photo realistic renders.",
+    heading1: "Discover the magic of 3Ds Max for stunning photo realistic renders.",
     content1:
       "The purpose of a 3Ds Max workshop is to teach participants how to use 3Ds Max software effectively and efficiently to create 3D models. These workshops are designed for people who are interested in learning how to use 3Ds Max, from beginners to more experienced users.",
-    outline: [
-      "Introduction to 3Ds Max",
-      "Modeling basics",
-      "Material creation",
-      "Lighting and camera setup",
-      "Rendering",
-    ],
+    outline: ["Introduction to 3Ds Max", "Modeling basics", "Material creation", "Lighting and camera setup", "Rendering"],
     zoomLink: "-",
     meetingId: "859 1009 3042",
     pascodeId: "197961",
@@ -420,16 +345,7 @@ export const workshop_data = [
     userExp: "Architect Engineer, Experienced Visualizer",
     dateAndTime: "2023-05-04T18:00:00",
     breadcrumb: "Bring your ideas to life with 3Ds Max",
-    tags: [
-      "3D Modeling",
-      "Rendering",
-      "Texturing",
-      "3D Printing",
-      "Architectural Visualization",
-      "Character Design",
-      "Product Design",
-      "CAD",
-    ],
+    tags: ["3D Modeling", "Rendering", "Texturing", "3D Printing", "Architectural Visualization", "Character Design", "Product Design", "CAD"],
     conclusion:
       "Participants will gain valuable experience in 3D modeling, animation, and visual effects, as well as project management and creative problem-solving skills that can be applied to various industries.",
   },
@@ -442,13 +358,7 @@ export const workshop_data = [
     heading1: "How to make a career out of content writing?",
     content1:
       "This workshop aims to provide you with the basic knowledge of content writing, its significance in marketing, and how you can kick-start your content writing career.",
-    outline: [
-      "Introduction ",
-      "Types of content",
-      "How content marketing is essential",
-      "Content and SEO",
-      "Basic things you need to know about writing quality content. ",
-    ],
+    outline: ["Introduction ", "Types of content", "How content marketing is essential", "Content and SEO", "Basic things you need to know about writing quality content. "],
     zoomLink: "-",
     meetingId: "859 1009 3042",
     pascodeId: "197961",
@@ -461,15 +371,7 @@ export const workshop_data = [
     userExp: " 5+ years of experience in content writing",
     dateAndTime: "2023-05-02T18:00:00",
     breadcrumb: "Words that lead to a Career",
-    tags: [
-      "ContentMarketing",
-      "Copywriting",
-      "Blogging",
-      "ContentCreation",
-      "SEOContent",
-      "FreelanceWriting",
-    ],
-    conclusion:
-      "By following these tips, you can create content that engages and resonates with your audience and helps you achieve your content marketing goals. Happy writing!",
+    tags: ["ContentMarketing", "Copywriting", "Blogging", "ContentCreation", "SEOContent", "FreelanceWriting"],
+    conclusion: "By following these tips, you can create content that engages and resonates with your audience and helps you achieve your content marketing goals. Happy writing!",
   },
 ];

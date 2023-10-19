@@ -14,23 +14,13 @@ const CourseSidebarTest = ({ course }) => {
             <h3>Instructor</h3>
             <br />
             <div className="d-flex align-items-start gap-3">
-              {course && !course.instructor?.image ? (
-                <FaUser size={50} color="gray" />
-              ) : (
-                <img src={course?.instructor?.image.url} alt="" height={100} />
-              )}
+              {course && !course.instructor?.image ? <FaUser size={50} color="gray" /> : <img src={course?.instructor?.image.url} alt="" height={100} />}
               <div>
-                <span style={{ fontWeight: "bold", fontSize: "18px" }}>
-                  {course?.instructor?.name}
-                </span>
+                <span style={{ fontWeight: "bold", fontSize: "18px" }}>{course?.instructor?.name}</span>
                 <br />
-                <small style={{ fontSize: "14px" }}>
-                  {course?.instructor?.status}
-                </small>
+                <small style={{ fontSize: "14px" }}>{course?.instructor?.status}</small>
                 <br />
-                <small style={{ fontSize: "14px" }}>
-                  {course?.instructor?.exp}
-                </small>
+                <small style={{ fontSize: "14px" }}>{course?.instructor?.exp}</small>
               </div>
             </div>
           </div>
@@ -74,10 +64,7 @@ const CourseSidebarTest = ({ course }) => {
 
               <ul class="list-group list-group-flush">
                 {course?.days?.map((x, index) => (
-                  <li
-                    class="list-group-item d-flex align-items-center gap-1"
-                    key={index}
-                  >
+                  <li class="list-group-item d-flex align-items-center gap-1" key={index}>
                     <BiCheck size={25} />{" "}
                     <div
                       style={{

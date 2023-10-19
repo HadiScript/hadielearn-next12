@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import Tops from "../../components/functions/Tops";
 import { useRouter } from "next/router";
-import { workshop_data } from "../../data/workshop_data";
 import Link from "next/link";
 import WriteComments from "../../components/workshops/WriteComments";
-import { BiCheck } from "react-icons/bi";
 import axios from "axios";
 import Footer from "../../components/partials/Footer";
 import { API } from "../../config/API";
-import { tempData } from "../../data/tempData";
-import { useEffect } from "react";
 import { toImageUrl } from "../../utils/ImageURL";
 
 const WorkshopDetails = ({ workshop }) => {

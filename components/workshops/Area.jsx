@@ -16,11 +16,7 @@ const Area = () => {
                 <div className="section__title section__title-3 ">
                   <h2>Free Workshops</h2>
                 </div>
-                <p>
-                  Join one of our workshops to explore various digital niches
-                  and endless career options you can pursue for a prosperous
-                  future.
-                </p>
+                <p>Join one of our workshops to explore various digital niches and endless career options you can pursue for a prosperous future.</p>
                 <br />
                 <br />
                 {workshop_data.map((x, index) => (

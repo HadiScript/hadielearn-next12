@@ -33,97 +33,48 @@ const CMSNavs = () => {
         <h4 className="text-light">Hadi E-Learning</h4>
       </div>
       {/* {JSON.stringify(router)} */}
-      <Menu.Item
-        className=""
-        onClick={() => router.push("/")}
-        icon={<HomeOutlined />}
-      >
+      <Menu.Item className="" onClick={() => router.push("/")} icon={<HomeOutlined />}>
         Home
       </Menu.Item>
       <Menu.Item className="mt-1" icon={<MdOutlineDashboardCustomize />}>
         Dashboard
       </Menu.Item>
 
-      <Menu.Item
-        className="mt-3"
-        onClick={() => router.push("/cms-test/users/all-instructors")}
-        icon={<FaChalkboardTeacher />}
-      >
+      <Menu.Item className="mt-3" onClick={() => router.push("/cms-test/users/all-instructors")} icon={<FaChalkboardTeacher />}>
         Instructors
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/cms-test/users/create-acounts")}
-        className="mt-1"
-        icon={<MdOutlineCreateNewFolder />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/users/create-acounts")} className="mt-1" icon={<MdOutlineCreateNewFolder />}>
         Create Acounts
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/cms-test/category")}
-        className="mt-3"
-        icon={<MdCategory />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/category")} className="mt-3" icon={<MdCategory />}>
         Categories
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/cms-test/courses/all-courses")}
-        className="mt-3"
-        icon={<MdLibraryBooks />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/courses/all-courses")} className="mt-3" icon={<MdLibraryBooks />}>
         Courses
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/cms-test/courses/add-courses")}
-        className="mt-1"
-        icon={<FaPlus />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/courses/add-courses")} className="mt-1" icon={<FaPlus />}>
         Add Courses
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/cms-test/workshops/all-workshops")}
-        className="mt-3"
-        icon={<MdOutlineLibraryBooks />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/workshops/all-workshops")} className="mt-3" icon={<MdOutlineLibraryBooks />}>
         Workshops
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/cms-test/workshops/add-workshops")}
-        className="mt-1"
-        icon={<FaPlus />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/workshops/add-workshops")} className="mt-1" icon={<FaPlus />}>
         Add Workshops
       </Menu.Item>
 
       {/* blogs */}
-      <Menu.Item
-        onClick={() => router.push("/cms-test/blog/add-blogs")}
-        className="mt-3"
-        icon={<MdAdd />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/blog/add-blogs")} className="mt-3" icon={<MdAdd />}>
         Add Blog
       </Menu.Item>
 
-      <Menu.Item
-        onClick={() => router.push("/cms-test/blog/all-blogs")}
-        className="mt-1"
-        icon={<MdOutlineDensitySmall />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/blog/all-blogs")} className="mt-1" icon={<MdOutlineDensitySmall />}>
         All Blogs
       </Menu.Item>
 
-
-      <Menu.Item
-        onClick={() => router.push("/cms-test/library")}
-        className="mt-3"
-        icon={<MdImageSearch />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test/library")} className="mt-3" icon={<MdImageSearch />}>
         Media
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/admin-test")}
-        className="mt-3"
-        icon={<BackwardFilled />}
-      >
+      <Menu.Item onClick={() => router.push("/admin-test")} className="mt-3" icon={<BackwardFilled />}>
         Back
       </Menu.Item>
     </Menu>

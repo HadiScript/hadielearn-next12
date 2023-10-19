@@ -14,22 +14,14 @@ const TestCourseList = ({ courses_data }) => {
                   <h2>Available Programs</h2>
                 </div>
                 <p>
-                  With the help of industry experts, we have crafted an online
-                  learning platform that offers various specially designed
-                  courses that can transform your career. We are sure that these
-                  programs can open doors to new prospects for you.
+                  With the help of industry experts, we have crafted an online learning platform that offers various specially designed courses that can transform your career. We
+                  are sure that these programs can open doors to new prospects for you.
                 </p>
                 <br />
                 <br />
                 {courses_data.map((x, index) => (
                   <React.Fragment key={index}>
-                    <TestCourseItem
-                      title={x.title}
-                      overview={x.overview}
-                      slug={x.slug}
-                      image={x.image}
-                      author={x.instructor}
-                    />
+                    <TestCourseItem title={x.title} overview={x.overview} slug={x.slug} image={x.image} author={x.instructor} />
                   </React.Fragment>
                 ))}
               </div>

@@ -55,17 +55,7 @@ const Applications = () => {
   };
   useEffect(() => {
     if (auth && auth.token) fetchingData();
-  }, [
-    auth && auth.token,
-    searchInput,
-    fromDate,
-    endDate,
-    enrollToSelect,
-    currentPage,
-    courseSelect,
-    workshopSelect,
-    limit,
-  ]);
+  }, [auth && auth.token, searchInput, fromDate, endDate, enrollToSelect, currentPage, courseSelect, workshopSelect, limit]);
 
   const fetchingCourses = async () => {
     try {
@@ -140,25 +130,9 @@ const Applications = () => {
     <>
       <LMSLayout>
         <Space wrap>
-          <input
-            className="form-control"
-            type="text"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Search..."
-          />
-          <input
-            className="form-control"
-            type="date"
-            value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
-          />
-          <input
-            className="form-control"
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
+          <input className="form-control" type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search..." />
+          <input className="form-control" type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
+          <input className="form-control" type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
           <select
             className="form-control"
             value={enrollToSelect}
@@ -248,61 +222,25 @@ const Applications = () => {
         </Card>
       </LMSLayout>
 
-      <Modal
-        title={currentObj.firstName + " " + currentObj.lastName}
-        centered
-        open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-        width={1000}
-      >
+      <Modal title={currentObj.firstName + " " + currentObj.lastName} centered open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} width={1000}>
         {/* {JSON.stringify(currentObj)} */}
-        <Descriptions
-          bordered
-          column={{ xxl: 3, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
-        >
-          <Descriptions.Item label="Email">
-            {currentObj.email}
-          </Descriptions.Item>
-          <Descriptions.Item label="ID Card">
-            {currentObj.idCard}
-          </Descriptions.Item>
-          <Descriptions.Item label="Date of birth">
-            {currentObj.dateOfBirth}
-          </Descriptions.Item>
-          <Descriptions.Item label="Phone Number">
-            {currentObj.phoneNumber}
-          </Descriptions.Item>
-          <Descriptions.Item label="WhatsApp Number">
-            {currentObj.whatsAppphoneNumber}
-          </Descriptions.Item>
+        <Descriptions bordered column={{ xxl: 3, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}>
+          <Descriptions.Item label="Email">{currentObj.email}</Descriptions.Item>
+          <Descriptions.Item label="ID Card">{currentObj.idCard}</Descriptions.Item>
+          <Descriptions.Item label="Date of birth">{currentObj.dateOfBirth}</Descriptions.Item>
+          <Descriptions.Item label="Phone Number">{currentObj.phoneNumber}</Descriptions.Item>
+          <Descriptions.Item label="WhatsApp Number">{currentObj.whatsAppphoneNumber}</Descriptions.Item>
 
-          <Descriptions.Item label="Parent name">
-            {currentObj.parentName}
-          </Descriptions.Item>
-          <Descriptions.Item label="Parent Occupation">
-            {currentObj.parentOccupations}
-          </Descriptions.Item>
-          <Descriptions.Item label="Parent Phone">
-            {currentObj.parentPhoneNumber}
-          </Descriptions.Item>
+          <Descriptions.Item label="Parent name">{currentObj.parentName}</Descriptions.Item>
+          <Descriptions.Item label="Parent Occupation">{currentObj.parentOccupations}</Descriptions.Item>
+          <Descriptions.Item label="Parent Phone">{currentObj.parentPhoneNumber}</Descriptions.Item>
           {/* <br /> */}
-          <Descriptions.Item label="Interest">
-            {currentObj.interest}
-          </Descriptions.Item>
-          <Descriptions.Item label="Want to achieve">
-            {currentObj.wantToAchieve}
-          </Descriptions.Item>
-          <Descriptions.Item label="Enroll Into">
-            {currentObj.enrollTo === "program"
-              ? currentObj?.course
-              : currentObj.workshop}
-          </Descriptions.Item>
+          <Descriptions.Item label="Interest">{currentObj.interest}</Descriptions.Item>
+          <Descriptions.Item label="Want to achieve">{currentObj.wantToAchieve}</Descriptions.Item>
+          <Descriptions.Item label="Enroll Into">{currentObj.enrollTo === "program" ? currentObj?.course : currentObj.workshop}</Descriptions.Item>
           <br />
           <Descriptions.Item label="City">{currentObj.city}</Descriptions.Item>
-          <Descriptions.Item label="Address">
-            {currentObj.address}
-          </Descriptions.Item>
+          <Descriptions.Item label="Address">{currentObj.address}</Descriptions.Item>
         </Descriptions>
       </Modal>
     </>

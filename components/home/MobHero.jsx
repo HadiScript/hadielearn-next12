@@ -25,26 +25,11 @@ const MobHero = () => {
         <Slider className="testimonial__slider" {...settings}>
           <div className={`single-slider `}>
             <div style={{ height: "62px" }} />
-            <div
-              className={`d-flex align-items-center home_slider_2`}
-              style={{ height: "100%" }}
-            >
+            <div className={`d-flex align-items-center home_slider_2`} style={{ height: "100%" }}>
               <div className="slider__shape">
-                <img
-                  className="shape triangle"
-                  src="/assets/images/slider/triangle.png"
-                  alt="triangle"
-                />
-                <img
-                  className="shape dotted-square"
-                  src="/assets/images/slider/dotted-square.png"
-                  alt="dotted-square"
-                />
-                <img
-                  className="shape solid-square"
-                  src="/assets/images/slider/solid-square.png"
-                  alt="solid-square"
-                />
+                <img className="shape triangle" src="/assets/images/slider/triangle.png" alt="triangle" />
+                <img className="shape dotted-square" src="/assets/images/slider/dotted-square.png" alt="dotted-square" />
+                <img className="shape solid-square" src="/assets/images/slider/solid-square.png" alt="solid-square" />
               </div>
               <div className="container h1_slider_wrapper">
                 <div className="row">
@@ -54,10 +39,7 @@ const MobHero = () => {
                       <h2>
                         Hadi <br /> E-learning
                       </h2>
-                      <p className="text-light">
-                        Hadi E-Learning: Quality IT training in Pakistan.
-                        Subsidized courses for accessibility.
-                      </p>
+                      <p className="text-light">Hadi E-Learning: Quality IT training in Pakistan. Subsidized courses for accessibility.</p>
                       <a href="#sectionArea" className="z-btn">
                         Explore <BsCaretDown size={25} />
                       </a>
@@ -70,26 +52,11 @@ const MobHero = () => {
 
           <div className={`single-slider `}>
             <div style={{ height: "62px" }} />
-            <div
-              className={`d-flex align-items-center home_slider_2`}
-              style={{ height: "100%" }}
-            >
+            <div className={`d-flex align-items-center home_slider_2`} style={{ height: "100%" }}>
               <div className="slider__shape">
-                <img
-                  className="shape triangle"
-                  src="/assets/images/slider/triangle.png"
-                  alt="triangle"
-                />
-                <img
-                  className="shape dotted-square"
-                  src="/assets/images/slider/dotted-square.png"
-                  alt="dotted-square"
-                />
-                <img
-                  className="shape solid-square"
-                  src="/assets/images/slider/solid-square.png"
-                  alt="solid-square"
-                />
+                <img className="shape triangle" src="/assets/images/slider/triangle.png" alt="triangle" />
+                <img className="shape dotted-square" src="/assets/images/slider/dotted-square.png" alt="dotted-square" />
+                <img className="shape solid-square" src="/assets/images/slider/solid-square.png" alt="solid-square" />
               </div>
               <div className="container h1_slider_wrapper">
                 <div className="row">
@@ -99,10 +66,7 @@ const MobHero = () => {
                       <h2>
                         Hadi <br /> E-learning
                       </h2>
-                      <p className="text-light">
-                        Hadi E-Learning: Quality IT training in Pakistan.
-                        Subsidized courses for accessibility.
-                      </p>
+                      <p className="text-light">Hadi E-Learning: Quality IT training in Pakistan. Subsidized courses for accessibility.</p>
                       <Link href="/programs">
                         <button className="z-btn">Programs</button>
                       </Link>

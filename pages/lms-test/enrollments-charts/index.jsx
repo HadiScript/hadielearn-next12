@@ -1,35 +1,13 @@
 import React, { useState } from "react";
 import { Card, Col, Row } from "antd";
 import LMSLayout from "../../../panel/newLMS/layouts";
-import {
-  PieChart,
-  Pie,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-  LineChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Line,
-  BarChart,
-  Bar,
-  Cell,
-  ScatterChart,
-  Scatter,
-} from "recharts";
+import { PieChart, Pie, Tooltip, ResponsiveContainer, Legend, LineChart, XAxis, YAxis, CartesianGrid, Line, BarChart, Bar, Cell } from "recharts";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../../config/API";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/auth";
 import { useEffect } from "react";
-import {
-  Document,
-  Page,
-  PDFViewer,
-  PDFDownloadLink,
-} from "@react-pdf/renderer";
 
 const EnrollmentsCharts = () => {
   const [auth] = useContext(AuthContext);
@@ -70,9 +48,7 @@ const EnrollmentsCharts = () => {
     count: entry.count,
   }));
 
-  const sortedEnrollmentByEachDay = transformingEnrollmentOfEachDay.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
+  const sortedEnrollmentByEachDay = transformingEnrollmentOfEachDay.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const genderData = enrollmentsData?.reduce((acc, enrollment) => {
     const { gender } = enrollment;
@@ -105,9 +81,7 @@ const EnrollmentsCharts = () => {
   }, {});
 
   // Format data for Recharts
-  const transformedDataForGroupedDataForCourses = Object.keys(
-    groupedDataForCourses
-  ).map((course) => ({
+  const transformedDataForGroupedDataForCourses = Object.keys(groupedDataForCourses).map((course) => ({
     course,
     count: groupedDataForCourses[course],
   }));
@@ -120,28 +94,16 @@ const EnrollmentsCharts = () => {
   }, {});
 
   // Format data for Recharts
-  const transformedData_groupedDataForCity = Object.keys(
-    groupedDataForCity
-  ).map((city) => ({
+  const transformedData_groupedDataForCity = Object.keys(groupedDataForCity).map((city) => ({
     city,
     count: groupedDataForCity[city],
   }));
 
-  const sortedDataOfCities = transformedData_groupedDataForCity.sort(function (
-    a,
-    b
-  ) {
+  const sortedDataOfCities = transformedData_groupedDataForCity.sort(function (a, b) {
     return b.count - a.count;
   });
 
-  const COLORS = [
-    "#0f3f5d",
-    "#FF8042",
-    "#0088FE",
-    "#FFBB28",
-    "#00C49F",
-    "#FF5555",
-  ];
+  const COLORS = ["#0f3f5d", "#FF8042", "#0088FE", "#FFBB28", "#00C49F", "#FF5555"];
 
   return (
     <LMSLayout>
@@ -175,29 +137,13 @@ const EnrollmentsCharts = () => {
             {/* {JSON.stringify(enrollmentsData)} */}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
-                <Pie
-                  dataKey="count"
-                  nameKey="gender"
-                  data={transformedData}
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  fill="#0f3f5d"
-                  label
-                >
+                <Pie dataKey="count" nameKey="gender" data={transformedData} cx="50%" cy="50%" outerRadius={80} fill="#0f3f5d" label>
                   {transformedData.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
                 <Tooltip />
-                <Legend
-                  formatter={(value, entry, index) => (
-                    <span style={{ textTransform: "capitalize" }}>{value}</span>
-                  )}
-                />
+                <Legend formatter={(value, entry, index) => <span style={{ textTransform: "capitalize" }}>{value}</span>} />
               </PieChart>
             </ResponsiveContainer>
           </Card>
@@ -272,9 +218,7 @@ const EnrollmentsCharts = () => {
                 <YAxis
                   dataKey="city"
                   type="category"
-                  tickFormatter={(value) =>
-                    value.charAt(0).toUpperCase() + value.slice(1)
-                  } // Capitalize the first letter of each city name
+                  tickFormatter={(value) => value.charAt(0).toUpperCase() + value.slice(1)} // Capitalize the first letter of each city name
                 />
                 <XAxis dataKey="count" type="number" /> {/* Y-axis for count */}
                 <Tooltip cursor={{ strokeDasharray: "3 3" }} />

@@ -8,8 +8,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { TbTrash } from "react-icons/tb";
-import { BiEdit, BiPlus } from "react-icons/bi";
-import { AP, API, APII } from "../../../config/API";
+import { BiEdit } from "react-icons/bi";
+import { API } from "../../../config/API";
 
 const AllUsers = () => {
   const router = useRouter();
@@ -25,6 +25,7 @@ const AllUsers = () => {
           Authorization: `Bearer ${auth?.token}`,
         },
       });
+
       setAllEmployee(data.users);
       setLoading(false);
     } catch (error) {
@@ -58,10 +59,7 @@ const AllUsers = () => {
       <PanelHeader />
       <AdminLayout>
         <div className="table-responsive">
-          <table
-            class="table table-striped  text-light"
-            style={{ backgroundColor: "#0f3f5d", borderRadius: "10px" }}
-          >
+          <table class="table table-striped  text-light" style={{ backgroundColor: "#0f3f5d", borderRadius: "10px" }}>
             <thead>
               <tr>
                 <th scope="col">{loading ? "loading..." : "#"}</th>
@@ -86,21 +84,13 @@ const AllUsers = () => {
 
                     {auth?.user?._id !== x._id && (
                       <td className="text-light">
-                        <BiEdit
-                          style={{ cursor: "pointer" }}
-                          onClick={() =>
-                            router.push(`/admin/edit-user/${x._id}`)
-                          }
-                        />
+                        <BiEdit style={{ cursor: "pointer" }} onClick={() => router.push(`/admin/edit-user/${x._id}`)} />
                       </td>
                     )}
 
                     {auth?.user?._id !== x._id && (
                       <td className="text-light">
-                        <TbTrash
-                          style={{ cursor: "pointer" }}
-                          onClick={() => deleteCourse(x._id)}
-                        />
+                        <TbTrash style={{ cursor: "pointer" }} onClick={() => deleteCourse(x._id)} />
                       </td>
                     )}
                   </tr>

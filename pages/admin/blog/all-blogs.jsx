@@ -57,10 +57,7 @@ const AllBlogs = () => {
 
       <AdminLayout>
         <div className="table-responsive">
-          <table
-            class="table table-striped  text-light"
-            style={{ backgroundColor: "#0f3f5d", borderRadius: "10px" }}
-          >
+          <table class="table table-striped  text-light" style={{ backgroundColor: "#0f3f5d", borderRadius: "10px" }}>
             <thead>
               <tr>
                 <th scope="col">{loading ? "loading..." : "#"}</th>

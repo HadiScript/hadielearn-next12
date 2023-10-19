@@ -18,10 +18,7 @@ const CompletedBatches = () => {
       <Card>
         <div className="table-responsive">
           <h4 className="mb-3">Completed Batches</h4>
-          <table
-            class="table table-striped  text-dark"
-            style={{ backgroundColor: "", borderRadius: "10px" }}
-          >
+          <table class="table table-striped  text-dark" style={{ backgroundColor: "", borderRadius: "10px" }}>
             <thead>
               <tr>
                 <th scope="col">{loading ? "loading..." : "#"}</th>
@@ -52,9 +49,7 @@ const CompletedBatches = () => {
                     </td>
                     <td className="text-dark">{x.enrolledStudents?.length}</td>
                     <td className="text-dark">{x.teachers?.length}</td>
-                    <td className="text-dark">
-                      {x.startDate.substring(0, 10)}
-                    </td>
+                    <td className="text-dark">{x.startDate.substring(0, 10)}</td>
                     <td className="text-dark">{x.endDate.substring(0, 10)}</td>
                     <td className="text-dark">
                       <BsFolder2Open

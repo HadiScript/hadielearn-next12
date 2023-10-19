@@ -11,18 +11,11 @@ export const tempData = {
     exp: "4 years of experience in Cyber Security",
   },
   tags: [],
-  outlines: [
-    "Introduction to Cyber Security Careers",
-    "Building a Strong Foundation",
-    "Getting Hands-On Experience",
-    "Cybersecurity Education",
-    "Cyber Security Job Search",
-  ],
+  outlines: ["Introduction to Cyber Security Careers", "Building a Strong Foundation", "Getting Hands-On Experience", "Cybersecurity Education", "Cyber Security Job Search"],
   meetingId: "856 6890 6486",
   pascodeId: "177487",
   meetingTiming: "Sep 30th, 2023 | 3:00 PM",
-  zoomLink:
-    "https://us06web.zoom.us/j/85668906486?pwd=deUo0jT5weFLZYb88X30VRuR5YEFfF.1",
+  zoomLink: "https://us06web.zoom.us/j/85668906486?pwd=deUo0jT5weFLZYb88X30VRuR5YEFfF.1",
 
   tags: ["cyberattack", "cybersecurity", "attack", "hashed"],
   image: {

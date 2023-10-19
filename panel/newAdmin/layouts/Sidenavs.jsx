@@ -1,10 +1,7 @@
 import { Menu } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import { BsClipboard2Check } from "react-icons/bs";
-import {
-  MdCastForEducation,
-  MdOutlineDashboardCustomize,
-} from "react-icons/md";
+import { MdCastForEducation, MdOutlineDashboardCustomize } from "react-icons/md";
 import { RxActivityLog } from "react-icons/rx";
 import { useRouter } from "next/router";
 import { FaWordpress } from "react-icons/fa";
@@ -40,18 +37,10 @@ const Sidenavs = () => {
         Activity Logs
       </Menu.Item>
 
-      <Menu.Item
-        onClick={() => router.push("/cms-test")}
-        className="mt-3"
-        icon={<FaWordpress />}
-      >
+      <Menu.Item onClick={() => router.push("/cms-test")} className="mt-3" icon={<FaWordpress />}>
         CMS
       </Menu.Item>
-      <Menu.Item
-        onClick={() => router.push("/lms-test")}
-        className="mt-1"
-        icon={<MdCastForEducation />}
-      >
+      <Menu.Item onClick={() => router.push("/lms-test")} className="mt-1" icon={<MdCastForEducation />}>
         LMS
       </Menu.Item>
     </Menu>

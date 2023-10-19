@@ -9,20 +9,11 @@ const Sidebar = ({ show, handleClose }) => {
   return (
     <>
       <div>
-        <Offcanvas
-          show={show}
-          onHide={handleClose}
-          placement="end"
-          className="side__bar"
-        >
+        <Offcanvas show={show} onHide={handleClose} placement="end" className="side__bar">
           <Offcanvas.Header closeButton>
             <div className="logo">
               <Link href="/">
-                <img
-                  src="/assets/images/headerLight.svg"
-                  alt="logo"
-                  style={{ height: "70px" }}
-                />
+                <img src="/assets/images/headerLight.svg" alt="logo" style={{ height: "70px" }} />
               </Link>
             </div>
           </Offcanvas.Header>
@@ -32,16 +23,9 @@ const Sidebar = ({ show, handleClose }) => {
               <div className="p-0">
                 <div className="sidebar__content">
                   <div className="tab-content" id="sidebar-tab-content">
-                    <div
-                      className="tab-pane fade show active"
-                      id="menu"
-                      role="tabpanel"
-                      aria-labelledby="menu-tab"
-                    >
+                    <div className="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab">
                       <div className="side_navBar">
-                        <div className="home  ">
-                          {/* <Link href="/">Home </Link> */}
-                        </div>
+                        <div className="home  ">{/* <Link href="/">Home </Link> */}</div>
                         <div className="about iconAdd">
                           <Link href="/">Home </Link>
                         </div>

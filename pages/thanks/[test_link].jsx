@@ -29,10 +29,7 @@ const Thanks = () => {
       <Head>
         <title>Thank You - Hadi E-learning </title>
         <meta name="robots" content="NOINDEX, follow" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="author" content="Cycarts Team" />
         <link rel="canonical" href="https://hadielearning.com/" />
         <meta
@@ -48,33 +45,23 @@ const Thanks = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundImage:
-            "linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)",
+          backgroundImage: "linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)",
         }}
       >
         <div className="text-center">
-          <span style={{ fontSize: "30px", fontWeight: "bold" }}>
-            Thank you for your interest :)
-          </span>
+          <span style={{ fontSize: "30px", fontWeight: "bold" }}>Thank you for your interest :)</span>
           <br />
           <br />
           <span style={{ fontSize: "25px", fontWeight: "bold" }}>
             {finddedTest?.title} Quiz Link:
-            <a
-              style={{ color: "#6da1ed" }}
-              className="mx-4"
-              href={finddedTest?.test}
-              target="_blank"
-            >
+            <a style={{ color: "#6da1ed" }} className="mx-4" href={finddedTest?.test} target="_blank">
               Go for quiz <BiLinkExternal />
             </a>
           </span>
           <br />
           <br />
           <br />
-          <span className="text-center">
-            We have sent you the confirmation email
-          </span>
+          <span className="text-center">We have sent you the confirmation email</span>
           <br />
           <br />
           <span

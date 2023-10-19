@@ -74,10 +74,7 @@ const Step1 = ({
   return (
     <>
       <div className="col-md-8  col-sm-12 mb-4 ">
-        <span
-          className="d-flex align-items-center gap-2"
-          onClick={() => navigate.back()}
-        >
+        <span className="d-flex align-items-center gap-2" onClick={() => navigate.back()}>
           <AiOutlineRollback /> <span>Back</span>
         </span>
       </div>
@@ -91,28 +88,14 @@ const Step1 = ({
           <label>
             First Name<span className="text-danger">*</span>{" "}
           </label>
-          <input
-            required
-            type="text"
-            className="form-control"
-            name="firstName"
-            value={firstName}
-            onChange={handleChange}
-          />
+          <input required type="text" className="form-control" name="firstName" value={firstName} onChange={handleChange} />
         </div>
 
         <div className="col-md-6 col-sm-12 col-xs-12 py-3">
           <label>
             Last Name<span className="text-danger">*</span>{" "}
           </label>
-          <input
-            required
-            type="text"
-            className="form-control"
-            name="lastName"
-            value={lastName}
-            onChange={handleChange}
-          />
+          <input required type="text" className="form-control" name="lastName" value={lastName} onChange={handleChange} />
         </div>
       </div>
 
@@ -133,41 +116,20 @@ const Step1 = ({
 
       <div className="d-flex form-group py-3">
         <div className="form-check " style={{ marginRight: "20px" }}>
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="flexCheckDefault"
-            value="female"
-            checked={gender === "female"}
-            onChange={handleCheckboxChange}
-          />
+          <input className="form-check-input" type="checkbox" id="flexCheckDefault" value="female" checked={gender === "female"} onChange={handleCheckboxChange} />
           <label className="form-check-label" for="flexCheckDefault">
             Female
           </label>
         </div>
 
         <div className="form-check " style={{ marginRight: "20px" }}>
-          <input
-            className="form-check-input"
-            type="checkbox"
-            value="male"
-            checked={gender === "male"}
-            onChange={handleCheckboxChange}
-            id="flexCheckDefault"
-          />
+          <input className="form-check-input" type="checkbox" value="male" checked={gender === "male"} onChange={handleCheckboxChange} id="flexCheckDefault" />
           <label className="form-check-label" for="flexCheckDefault">
             Male
           </label>
         </div>
         <div className="form-check " style={{ marginRight: "20px" }}>
-          <input
-            className="form-check-input"
-            type="checkbox"
-            value="other"
-            checked={gender === "other"}
-            onChange={handleCheckboxChange}
-            id="flexCheckDefault"
-          />
+          <input className="form-check-input" type="checkbox" value="other" checked={gender === "other"} onChange={handleCheckboxChange} id="flexCheckDefault" />
           <label className="form-check-label" for="flexCheckDefault">
             Other
           </label>
@@ -213,7 +175,9 @@ const Step1 = ({
         </div> */}
 
         <div className="col-md-6 col-sm-12 col-xs-12 py-3">
-          <label>WhatsApp<span className="text-danger">*</span></label>
+          <label>
+            WhatsApp<span className="text-danger">*</span>
+          </label>
           <PhoneInput
             country={"pk"} // Set a default country
             inputClass="form-control"
@@ -258,18 +222,11 @@ const Step1 = ({
             onChange={(value) => setPhoneNumber(value)}
           />
         </div>
-      </div>  
-
-     
+      </div>
 
       <div className="d-flex justify-content-between">
         <>{previousButton()}</>
-        {!(firstName.length >= 3) ||
-        !(lastName.length >= 3) ||
-        !gender ||
-        !phoneNumber ||
-        !whatsAppphoneNumber ||
-        !dateOfBirth ? (
+        {!(firstName.length >= 3) || !(lastName.length >= 3) || !gender || !phoneNumber || !whatsAppphoneNumber || !dateOfBirth ? (
           <button className="z-btn-disable">next</button>
         ) : (
           <>{nextButton()}</>

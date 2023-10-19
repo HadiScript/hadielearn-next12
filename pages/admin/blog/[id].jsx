@@ -21,10 +21,7 @@ const initialState = {
 };
 
 const EditBlog = () => {
-  const Editor = useMemo(
-    () => dynamic(() => import("react-quill"), { ssr: false }),
-    []
-  );
+  const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
   const router = useRouter();
   const { id } = router.query;
@@ -106,8 +103,7 @@ const EditBlog = () => {
     }
   };
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   useEffect(() => {
     if (auth && auth.token && id) fetchSingleBlog();
@@ -129,10 +125,7 @@ const EditBlog = () => {
 
     reader.onload = () => {
       const imageUrl = reader.result;
-      setcontent(
-        (prevContent) =>
-          prevContent + `<img src="${data?.url}" alt="uploaded image" />`
-      );
+      setcontent((prevContent) => prevContent + `<img src="${data?.url}" alt="uploaded image" />`);
     };
 
     reader.readAsDataURL(file);
@@ -251,15 +244,7 @@ const EditBlog = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1"> Seo Title</h5>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="seoTitle"
-            placeholder="SEO Title"
-            value={formData.seoTitle}
-            onChange={onChange}
-          />
+          <input type="text" className="form-control" id="exampleFormControlInput1" name="seoTitle" placeholder="SEO Title" value={formData.seoTitle} onChange={onChange} />
         </div>
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Meta Description</h5>
@@ -278,15 +263,7 @@ const EditBlog = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Title</h5>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="title"
-            placeholder="Title"
-            value={formData.title}
-            onChange={onChange}
-          />
+          <input type="text" className="form-control" id="exampleFormControlInput1" name="title" placeholder="Title" value={formData.title} onChange={onChange} />
         </div>
 
         <div className="form-group py-2">
@@ -318,10 +295,7 @@ const EditBlog = () => {
 
         {image && image?.url && (
           <>
-            <span
-              className="text-danger"
-              onClick={() => removeImage(image?.public_id)}
-            >
+            <span className="text-danger" onClick={() => removeImage(image?.public_id)}>
               {" "}
               delete image{" "}
             </span>
@@ -338,26 +312,14 @@ const EditBlog = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Content</h5>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImage}
-            className="form-control"
-          />
+          <input type="file" accept="image/*" onChange={handleImage} className="form-control" />
           <br />
           <Editor theme="snow" value={content} onChange={setcontent} />
         </div>
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Categories</h5>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: "100%" }}
-            placeholder="Please select"
-            onChange={(v) => setCategories(v)}
-            value={[...categories]}
-          >
+          <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)} value={[...categories]}>
             {loadCategories.map((item) => (
               <Select.Option key={item.name}>{item.name}</Select.Option>
             ))}
@@ -366,18 +328,8 @@ const EditBlog = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Poplar Tags</h5>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Tags"
-            name="tags"
-            value={formData.tags}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Please use comma separated values (eg.
-            #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)
-          </small>
+          <input type="text" className="form-control" placeholder="Tags" name="tags" value={formData.tags} onChange={onChange} />
+          <small className="form-text">Please use comma separated values (eg. #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)</small>
         </div>
 
         <br />

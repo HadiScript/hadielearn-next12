@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 
-import StuHeader from "../../panel/newStudent/components/StuHeader";
 import FirstCol from "../../panel/profiling/firstCol";
 import ProfileLayout from "../../panel/profiling/ProfileLayout";
 import SecondCol from "../../panel/profiling/secondCol";

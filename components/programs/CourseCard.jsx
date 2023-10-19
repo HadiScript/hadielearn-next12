@@ -27,11 +27,7 @@ const CourseCard = ({ x }) => {
               marginLeft: "20px",
             }}
           >
-            {x._doc.instructor && !x._doc.instructor?.image ? (
-              <FaUser size={25} color="gray" />
-            ) : (
-              <img src={x._doc.instructor?.image.url} alt="" height={30} />
-            )}
+            {x._doc.instructor && !x._doc.instructor?.image ? <FaUser size={25} color="gray" /> : <img src={x._doc.instructor?.image.url} alt="" height={30} />}
             <span
               style={{
                 color: "#0f3f5d",
@@ -54,9 +50,7 @@ const CourseCard = ({ x }) => {
             {checkStringTitle(x._doc.title)}
           </h3>
         </Link>
-        <div
-          className={`mt-3  d-flex align-items-center justify-content-between `}
-        >
+        <div className={`mt-3  d-flex align-items-center justify-content-between `}>
           <div className="d-flex align-items-center gap-1">
             <BsCalendar size={15} />
             <small style={{ fontSize: "15px" }}>{x._doc.duration}</small>
@@ -67,9 +61,7 @@ const CourseCard = ({ x }) => {
           </div>
           <div className="d-flex align-items-center gap-1">
             <IoMdTime size={18} />
-            <small style={{ fontSize: "15px" }}>
-              {DurationsTOHrs(x._doc)} hrs
-            </small>
+            <small style={{ fontSize: "15px" }}>{DurationsTOHrs(x._doc)} hrs</small>
           </div>
         </div>
       </Card>

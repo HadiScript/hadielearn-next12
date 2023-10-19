@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
-import { Button, Card, List, Modal } from "antd";
+import { Button, Card } from "antd";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../config/API";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
-import { BsPen } from "react-icons/bs";
 import EducationEditModal from "../../panel/profiling/EducationEditModal";
 import EduList from "../../panel/profiling/EduList";
 
@@ -123,27 +122,13 @@ const Education = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> School </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="School"
-                name="school"
-                value={formData.school}
-                onChange={changesFormData}
-              />
+              <input type="text" className="form-control" placeholder="School" name="school" value={formData.school} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Degree </label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Degree"
-                name="degree"
-                value={formData.degree}
-                onChange={changesFormData}
-              />
+              <input type="email" className="form-control" placeholder="Degree" name="degree" value={formData.degree} onChange={changesFormData} />
             </div>
           </div>
         </div>
@@ -152,39 +137,19 @@ const Education = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> From </label>
-              <input
-                type="date"
-                className="form-control"
-                placeholder="School"
-                name="from"
-                value={formData.from}
-                onChange={changesFormData}
-              />
+              <input type="date" className="form-control" placeholder="School" name="from" value={formData.from} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> To </label>
-              <input
-                type="date"
-                disabled={formData.current && true}
-                className="form-control"
-                placeholder="Degree"
-                name="to"
-                value={formData.to}
-                onChange={changesFormData}
-              />
+              <input type="date" disabled={formData.current && true} className="form-control" placeholder="Degree" name="to" value={formData.to} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="d-flex align-items-center gap-2 form-group py-2">
               <label> Current </label>
-              <input
-                type="checkbox"
-                name="current"
-                checked={formData.current}
-                onChange={changesFormData}
-              />
+              <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
             </div>
           </div>
         </div>
@@ -192,44 +157,21 @@ const Education = () => {
         <div className="col-md-12">
           <div className="form-group py-2">
             <label> Description </label>
-            <textarea
-              type="text"
-              className="form-control"
-              placeholder="Description"
-              name="description"
-              checked={formData.description}
-              onChange={changesFormData}
-            />
+            <textarea type="text" className="form-control" placeholder="Description" name="description" checked={formData.description} onChange={changesFormData} />
           </div>
         </div>
 
         <div className="text-end">
-          <Button
-            className="CardieBg text-light"
-            loading={loading}
-            onClick={addEducation}
-          >
+          <Button className="CardieBg text-light" loading={loading} onClick={addEducation}>
             Submit
           </Button>
         </div>
       </Card>
 
       {/* list of educations */}
-      <EduList
-        from="editing-page"
-        eduList={eduList}
-        deleteEducation={deleteEducation}
-        setCurrent={setCurrent}
-        setOpen={setOpen}
-      />
+      <EduList from="editing-page" eduList={eduList} deleteEducation={deleteEducation} setCurrent={setCurrent} setOpen={setOpen} />
 
-      <EducationEditModal
-        open={open}
-        setOpen={setOpen}
-        current={current}
-        EditEdu={EditEdu}
-        loading={loading}
-      />
+      <EducationEditModal open={open} setOpen={setOpen} current={current} EditEdu={EditEdu} loading={loading} />
     </EditProfileLayout>
   );
 };

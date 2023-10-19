@@ -14,16 +14,11 @@ const PaymentsEnrolledStudents = () => {
 
   const gettingPaymentsData = async () => {
     try {
-      // const { data } = await axios.get(`${API}/lms/all-payments`, {
-      const { data } = await axios.get(
-        // `http://localhost:5000/api/lms/all-payments`,
-        `${API}/lms/all-payments`,
-        {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        }
-      );
+      const { data } = await axios.get(`${API}/lms/all-payments`, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      });
       setPaymentsData(data);
     } catch (error) {
       console.log(error);
@@ -33,10 +28,7 @@ const PaymentsEnrolledStudents = () => {
 
   const gettingStudentsPerStudents = async () => {
     try {
-      const { data } = await axios.get(
-        // "http://localhost:5000/api/lms/enrollments-batch"
-        `${API}/lms/enrollments-batch`
-      );
+      const { data } = await axios.get(`${API}/lms/enrollments-batch`);
       setEnrlByStu(data);
     } catch (error) {
       console.log(error);

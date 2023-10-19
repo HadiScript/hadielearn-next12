@@ -5,16 +5,7 @@ import ReactLoading from "react-loading";
 // icons
 import { FaRegComment, FaSearch } from "react-icons/fa";
 
-const BlogLeftSideBar = ({
-  RecentBlogs,
-  Categories,
-  handleSearch,
-  searchQuery,
-  setSearchQuery,
-  mostViewed,
-  loading,
-  page,
-}) => {
+const BlogLeftSideBar = ({ RecentBlogs, Categories, handleSearch, searchQuery, setSearchQuery, mostViewed, loading, page }) => {
   return (
     <>
       <div className="col-xl-4 col-lg-4">
@@ -24,19 +15,10 @@ const BlogLeftSideBar = ({
               <div className="sidebar__widget-content">
                 <div className="search">
                   <form onSubmit={handleSearch}>
-                    <input
-                      type="text"
-                      placeholder="Search..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                    />
+                    <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                     <button type="button">
                       {loading ? (
-                        <ReactLoading
-                          type={"spokes"}
-                          color={"#0f3f5d"}
-                          width={"35%"}
-                        />
+                        <ReactLoading type={"spokes"} color={"#0f3f5d"} width={"35%"} />
                       ) : (
                         <i>
                           <FaSearch />
@@ -59,11 +41,7 @@ const BlogLeftSideBar = ({
                     <li key={x._id} className="d-flex mb-20">
                       <div className="rc-thumb mr-15">
                         <Link href={`/blog/${x?.slug}`}>
-                          <img
-                            src={x?.image?.url}
-                            alt="rc-blog"
-                            height={"80px"}
-                          />
+                          <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
                         </Link>
                       </div>
                       <div className="rc-text">
@@ -92,11 +70,7 @@ const BlogLeftSideBar = ({
                     <li key={x._id} className="d-flex mb-20">
                       <div className="rc-thumb mr-15">
                         <Link href={`/blog/${x.slug}`}>
-                          <img
-                            src={x?.image?.url}
-                            alt="rc-blog"
-                            height={"80px"}
-                          />
+                          <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
                         </Link>
                       </div>
                       <div className="rc-text">

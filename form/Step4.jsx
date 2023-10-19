@@ -31,10 +31,7 @@ const Step4 = ({
   return (
     <>
       <div className="col-md-8  col-sm-12 mb-4 pt-5 ">
-        <span
-          className="d-flex align-items-center gap-2"
-          onClick={() => navigate.back()}
-        >
+        <span className="d-flex align-items-center gap-2" onClick={() => navigate.back()}>
           <AiOutlineRollback /> <span>Back</span>
         </span>
       </div>
@@ -69,8 +66,7 @@ const Step4 = ({
           </label>
           <select required className="form-select" value={enrollTo}>
             <option value="enrollTo">
-              {enrollTo === "workshop" && "Workshop"}{" "}
-              {enrollTo === "program" && "Program"}
+              {enrollTo === "workshop" && "Workshop"} {enrollTo === "program" && "Program"}
             </option>
           </select>
         </div>
@@ -145,31 +141,15 @@ const Step4 = ({
       </div>
       <div className="form-group py-3">
         <label>Your Interests</label>
-        <textarea
-          type="text"
-          className="form-control"
-          name="interest"
-          value={interest}
-          onChange={handleChange}
-        />
+        <textarea type="text" className="form-control" name="interest" value={interest} onChange={handleChange} />
       </div>
       <div className="form-group py-3">
         <label>What do you want to achieve?</label>
-        <textarea
-          type="text"
-          className="form-control"
-          name="wantToAchieve"
-          value={wantToAchieve}
-          onChange={handleChange}
-        />
+        <textarea type="text" className="form-control" name="wantToAchieve" value={wantToAchieve} onChange={handleChange} />
       </div>
       <div className="d-flex justify-content-between">
         <>{previousButton()}</>
-        {!education || !enrollTo || !(course || workshop) ? (
-          <button className="z-btn-disable mx-2">submit</button>
-        ) : (
-          <>{submit()}</>
-        )}
+        {!education || !enrollTo || !(course || workshop) ? <button className="z-btn-disable mx-2">submit</button> : <>{submit()}</>}
       </div>
     </>
   );

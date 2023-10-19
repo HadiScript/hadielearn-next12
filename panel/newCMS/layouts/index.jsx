@@ -44,11 +44,7 @@ const CMSLayout = ({ children }) => {
     {
       key: "2",
       label: (
-        <span
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
+        <span target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
           Logout
         </span>
       ),
@@ -115,14 +111,10 @@ const CMSLayout = ({ children }) => {
             padding: "20px",
           }}
         >
-          {!breakpoints.md && (
-            <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />
-          )}
+          {!breakpoints.md && <MenuOutlined style={{ fontSize: 20 }} onClick={showDrawer} />}
           <h5 style={{ color: "#0f3f5d" }}>
             {" "}
-            Welcome <span className="text-capitalize">
-              {auth?.user?.name}
-            </span>,{" "}
+            Welcome <span className="text-capitalize">{auth?.user?.name}</span>,{" "}
           </h5>
           <Dropdown menu={{ items }}>
             <Avatar
@@ -131,12 +123,7 @@ const CMSLayout = ({ children }) => {
                 color: "white",
                 justifySelf: "end",
               }}
-              src={
-                auth?.user?.image &&
-                auth?.user?.image?.url.includes("profileImages")
-                  ? toImageUrl(auth?.user?.image?.url)
-                  : auth?.user?.image?.url
-              }
+              src={auth?.user?.image && auth?.user?.image?.url.includes("profileImages") ? toImageUrl(auth?.user?.image?.url) : auth?.user?.image?.url}
             >
               {!auth?.user?.image && auth?.user?.name[0]}
             </Avatar>

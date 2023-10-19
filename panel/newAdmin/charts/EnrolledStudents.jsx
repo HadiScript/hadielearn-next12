@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-
-import { Divider, List } from "antd";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const EnrolledStudents = ({ data }) => {
   return (
@@ -31,11 +20,7 @@ const EnrolledStudents = ({ data }) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar
-            dataKey="enrolledStudentsCount"
-            fill="#0f3f5d"
-            background={{ fill: "#eee" }}
-          />
+          <Bar dataKey="enrolledStudentsCount" fill="#0f3f5d" background={{ fill: "#eee" }} />
         </BarChart>
       </ResponsiveContainer>
       {/* <Divider orientation="left">Recent Activites</Divider> */}

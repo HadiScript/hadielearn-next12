@@ -17,10 +17,7 @@ const BatchDetails = () => {
 
   const courseByBatch = async () => {
     try {
-      const { data } = await axios.get(
-        // "http://localhost:5000/api/lms/course-by-batch"
-        `${API}/lms/course-by-batch`
-      );
+      const { data } = await axios.get(`${API}/lms/course-by-batch`);
       setBatchCount(data);
     } catch (error) {
       toast.error(error);
@@ -29,10 +26,7 @@ const BatchDetails = () => {
 
   const gettingFoldersCount = async () => {
     try {
-      const { data } = await axios.get(
-        // "http://localhost:5000/api/lms/folders-by-batch"
-        `${API}/lms/folders-by-batch`
-      );
+      const { data } = await axios.get(`${API}/lms/folders-by-batch`);
       setFoldersCount(data);
     } catch (error) {
       console.log(error);
@@ -50,12 +44,7 @@ const BatchDetails = () => {
     <Row gutter={[16, 16]}>
       <Col xs={24} sm={24} md={8} lg={8}>
         <Card bordered={false} title="Batch Count By Courses">
-          {batchCount && (
-            <BatchByCourse
-              _data={batchCount}
-              COLORS={["#0f3f5d", "#00C49F", "#FFBB28", "#FF8042"]}
-            />
-          )}
+          {batchCount && <BatchByCourse _data={batchCount} COLORS={["#0f3f5d", "#00C49F", "#FFBB28", "#FF8042"]} />}
         </Card>
       </Col>
       <Col xs={24} sm={24} md={8} lg={8}>

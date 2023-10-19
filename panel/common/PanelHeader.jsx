@@ -30,33 +30,21 @@ const PanelHeader = ({ page = "notFromContact" }) => {
         <div
           className={`header__area p-relative `}
           style={{
-            backgroundImage:
-              " linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)",
+            backgroundImage: " linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)",
           }}
         >
-          <div
-            id="header__sticky"
-            className={stickyMenu ? "sticky header__bottom" : "header__bottom"}
-          >
+          <div id="header__sticky" className={stickyMenu ? "sticky header__bottom" : "header__bottom"}>
             <div className="container">
               <div className="row align-items-center py-1">
                 <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
                   <div className="logo">
                     <Link href="/">
-                      <img
-                        src="/assets/images/secondary.svg"
-                        alt="logo"
-                        style={{ height: "60px" }}
-                      />
+                      <img src="/assets/images/secondary.svg" alt="logo" style={{ height: "60px" }} />
                     </Link>
                   </div>
                   <div className="logo-gradient">
                     <Link href="/">
-                      <img
-                        src="/assets/images/primary.svg"
-                        alt="logo"
-                        style={{ height: "60px" }}
-                      />
+                      <img src="/assets/images/primary.svg" alt="logo" style={{ height: "60px" }} />
                     </Link>
                   </div>
                 </div>
@@ -71,34 +59,22 @@ const PanelHeader = ({ page = "notFromContact" }) => {
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="/about-us"
-                              style={{ fontSize: "17px" }}
-                            >
+                            <Link href="/about-us" style={{ fontSize: "17px" }}>
                               Workshops
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="/programs"
-                              style={{ fontSize: "17px" }}
-                            >
+                            <Link href="/programs" style={{ fontSize: "17px" }}>
                               Courses
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="/workshops"
-                              style={{ fontSize: "17px" }}
-                            >
+                            <Link href="/workshops" style={{ fontSize: "17px" }}>
                               Profile
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="/admin/dashboard"
-                              style={{ fontSize: "17px" }}
-                            >
+                            <Link href="/admin/dashboard" style={{ fontSize: "17px" }}>
                               Dashboard
                             </Link>
                           </li>
@@ -110,10 +86,7 @@ const PanelHeader = ({ page = "notFromContact" }) => {
                         Logout
                       </span>
                     </div>
-                    <div
-                      onClick={handleShow}
-                      className="sidebar__menu d-lg-none"
-                    >
+                    <div onClick={handleShow} className="sidebar__menu d-lg-none">
                       <div className="sidebar-toggle-btn" id="sidebar-toggle">
                         <span className="line"></span>
                         <span className="line"></span>

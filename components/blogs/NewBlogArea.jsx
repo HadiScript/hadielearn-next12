@@ -7,11 +7,7 @@ const NewBlogArea = ({ blogs_data }) => {
         {blogs_data?.map((x, index) => (
           <article key={index} className="postcard light green">
             <a className="postcard__img_link" href="#">
-              <img
-                className="postcard__img"
-                src="https://picsum.photos/500/501"
-                alt="Image Title"
-              />
+              <img className="postcard__img" src="https://picsum.photos/500/501" alt="Image Title" />
             </a>
             <div className="postcard__text t-dark">
               <h1 className="postcard__title green">
@@ -24,13 +20,9 @@ const NewBlogArea = ({ blogs_data }) => {
               </div>
               <div className="postcard__bar"></div>
               <div className="postcard__preview-txt">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi, fugiat asperiores inventore beatae accusamus odit
-                minima enim, commodi quia, doloribus eius! Ducimus nemo
-                accusantium maiores velit corrupti tempora reiciendis molestiae
-                repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt
-                neque nulla unde ipsum dolores nobis enim quidem excepturi,
-                illum quos!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius!
+                Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum
+                dolores nobis enim quidem excepturi, illum quos!
               </div>
               <ul className="postcard__tagbox">
                 <li className="tag__item">

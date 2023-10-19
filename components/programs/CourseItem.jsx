@@ -14,16 +14,9 @@ const CourseItem = ({ title, overview, slug, image, author }) => {
         <div className="blog__content-2">
           <div className="blog__meta-2 mb-15 d-sm-flex align-items-center">
             <div className="d-flex align-items-center  pr-20 mr-20">
-              <img
-                src={`${author?.image?.url}`}
-                alt=""
-                height={80}
-                className="pr-10"
-              />
+              <img src={`${author?.image?.url}`} alt="" height={80} className="pr-10" />
               <div>
-                <span style={{ fontWeight: "bold", fontSize: "18px" }}>
-                  {author.name}
-                </span>
+                <span style={{ fontWeight: "bold", fontSize: "18px" }}>{author.name}</span>
                 <br />
                 <small style={{ fontSize: "14px" }}>{author.status}</small>
                 <br />

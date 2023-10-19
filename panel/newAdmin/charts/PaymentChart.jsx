@@ -1,25 +1,13 @@
 import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import moment from "moment";
-import { Divider, List } from "antd";
 
 const PaymentChart = ({ data }) => {
   const renderTooltip = (props) => {
     const { active, payload } = props;
     if (active && payload && payload.length) {
       const dataPoint = payload[0].payload;
-      const formattedDate = moment(dataPoint.createdAt).format(
-        "MMMM Do YYYY, h:mm:ss a"
-      );
+      const formattedDate = moment(dataPoint.createdAt).format("MMMM Do YYYY, h:mm:ss a");
       return (
         <div className="custom-tooltip">
           <p>
@@ -50,12 +38,7 @@ const PaymentChart = ({ data }) => {
           <YAxis dataKey="amount" />
           <Tooltip content={renderTooltip} />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="amount"
-            stroke="#0f3f5d"
-            activeDot={{ r: 8 }}
-          />
+          <Line type="monotone" dataKey="amount" stroke="#0f3f5d" activeDot={{ r: 8 }} />
         </LineChart>
       </ResponsiveContainer>
       {/* <Divider orientation="left">Recent Payments</Divider>

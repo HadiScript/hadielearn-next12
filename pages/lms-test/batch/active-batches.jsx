@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import LMSLayout from "../../../panel/newLMS/layouts";
 import useActiveBatches from "../../../panel/newLMS/hooks/useActiveBatches";
 import ActiveBatchModels from "../../../panel/newLMS/modals/activeBatchModal";
-import { BsCheck, BsFolder2Open } from "react-icons/bs";
+import { BsFolder2Open } from "react-icons/bs";
 
 import { Card, Tag } from "antd";
 import Link from "next/link";
@@ -30,10 +30,7 @@ const ActiveBatches = () => {
               <> loading...</>
             </>
           )}
-          <table
-            class="table table-striped  text-dark"
-            style={{ backgroundColor: "", borderRadius: "10px" }}
-          >
+          <table class="table table-striped  text-dark" style={{ backgroundColor: "", borderRadius: "10px" }}>
             <thead>
               <tr>
                 <th scope="col">{loading ? "loading..." : "#"}</th>
@@ -66,9 +63,7 @@ const ActiveBatches = () => {
                     </td>
                     <td className="text-dark">{x.enrolledStudents?.length}</td>
                     <td className="text-dark">{x.teachers?.length}</td>
-                    <td className="text-dark">
-                      {x.startDate.substring(0, 10)}
-                    </td>
+                    <td className="text-dark">{x.startDate.substring(0, 10)}</td>
                     <td className="text-dark">{x.endDate.substring(0, 10)}</td>
                     <td className="text-dark">
                       <BsFolder2Open
@@ -99,16 +94,16 @@ const ActiveBatches = () => {
           </table>
         </div>
       </Card>
-        <ActiveBatchModels
-          current={current}
-          setCurrent={setCurrent}
-          open={open}
-          setOpen={setOpen}
-          openStudentModal={openStudentModal}
-          setOpenStudentModal={setOpenStudentModal}
-          openInstructorModels={openInstructorModels}
-          setOpenInstructorModels={setOpenInstructorModels}
-        />
+      <ActiveBatchModels
+        current={current}
+        setCurrent={setCurrent}
+        open={open}
+        setOpen={setOpen}
+        openStudentModal={openStudentModal}
+        setOpenStudentModal={setOpenStudentModal}
+        openInstructorModels={openInstructorModels}
+        setOpenInstructorModels={setOpenInstructorModels}
+      />
     </LMSLayout>
   );
 };

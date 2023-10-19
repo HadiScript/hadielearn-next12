@@ -2,18 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { CgArrowLongRight } from "react-icons/cg";
 
-const Item = ({
-  image,
-  title,
-  heading,
-  content,
-  outlines,
-  slug,
-  user_image,
-  name,
-  dateAndTime,
-  userExp,
-}) => {
+const Item = ({ image, title, heading, content, outlines, slug, user_image, name, dateAndTime, userExp }) => {
   const givenDateAndTime = new Date(dateAndTime);
 
   const formattedDate = givenDateAndTime.toLocaleDateString("en-US", {
@@ -41,17 +30,10 @@ const Item = ({
           <div className="blog__meta-2 mb-15 d-sm-flex align-items-center">
             <div className="d-flex align-items-center  pr-20 mr-20">
               <Link href={`/workshop-detail/${slug} `}>
-                <img
-                  className="pr-10"
-                  src={`/assets/images/profile_workshop/${user_image}.jpg`}
-                  alt=""
-                  height={80}
-                />
+                <img className="pr-10" src={`/assets/images/profile_workshop/${user_image}.jpg`} alt="" height={80} />
               </Link>
               <div>
-                <span style={{ fontWeight: "bold", fontSize: "18px" }}>
-                  {name}
-                </span>
+                <span style={{ fontWeight: "bold", fontSize: "18px" }}>{name}</span>
                 <br />
                 <small style={{ fontSize: "14px" }}>{userExp}</small>
                 <br />

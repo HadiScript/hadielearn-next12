@@ -6,11 +6,7 @@ const SinglePrice = ({ title, price, active, linkTitle }) => {
   return (
     <>
       <div className="col-xl-4 col-lg-4 col-md-6 ">
-        <div
-          className={`price__item ${
-            active && active
-          } p-relative transition-3 text-center fix mb-30`}
-        >
+        <div className={`price__item ${active && active} p-relative transition-3 text-center fix mb-30`}>
           <div className="price__inner p-relative">
             <p>{title}</p>
             <div className="price__tag mb-45">

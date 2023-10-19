@@ -10,11 +10,7 @@ import { Avatar } from "antd";
 import { LoginOutlined } from "@ant-design/icons";
 import { MdOutlineOnlinePrediction } from "react-icons/md";
 
-const TopHeader = ({
-  h4class,
-  btn_text = "Get a Quote",
-  btn_class = "z-btn-3",
-}) => {
+const TopHeader = ({ h4class, btn_text = "Get a Quote", btn_class = "z-btn-3" }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,22 +23,14 @@ const TopHeader = ({
         <div className="header__area p-relative header__transparent">
           <div
             id="header__sticky"
-            className={
-              stickyMenu
-                ? `sticky header__bottom header__bottom-2 ${h4class && h4class}`
-                : `header__bottom header__bottom-2 ${h4class && h4class}`
-            }
+            className={stickyMenu ? `sticky header__bottom header__bottom-2 ${h4class && h4class}` : `header__bottom header__bottom-2 ${h4class && h4class}`}
           >
             <div className="container">
               <div className="row align-items-center py-1">
                 <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
                   <div className="logo-3">
                     <Link href="/">
-                      <img
-                        src="/assets/images/primary.svg"
-                        alt="logo"
-                        style={{ height: "60px" }}
-                      />
+                      <img src="/assets/images/primary.svg" alt="logo" style={{ height: "60px" }} />
                     </Link>
                   </div>
                 </div>
@@ -67,18 +55,12 @@ const TopHeader = ({
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="/workshops"
-                              style={{ fontSize: "17px" }}
-                            >
+                            <Link href="/workshops" style={{ fontSize: "17px" }}>
                               Workshops
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              href="/how-it-works"
-                              style={{ fontSize: "17px" }}
-                            >
+                            <Link href="/how-it-works" style={{ fontSize: "17px" }}>
                               How it works?
                             </Link>
                           </li>
@@ -111,11 +93,7 @@ const TopHeader = ({
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/student-test">
                           <span role="button" className={`z-btn ${btn_class}`}>
-                            My Learning{" "}
-                            <MdOutlineOnlinePrediction
-                              size={25}
-                              className="mx-2"
-                            />
+                            My Learning <MdOutlineOnlinePrediction size={25} className="mx-2" />
                           </span>
                         </Link>
                       </div>
@@ -164,14 +142,8 @@ const TopHeader = ({
                       </div>
                     )} */}
 
-                    <div
-                      onClick={handleShow}
-                      className="sidebar__menu d-lg-none"
-                    >
-                      <div
-                        className="sidebar-toggle-btn sidebar-toggle-btn-3"
-                        id="sidebar-toggle"
-                      >
+                    <div onClick={handleShow} className="sidebar__menu d-lg-none">
+                      <div className="sidebar-toggle-btn sidebar-toggle-btn-3" id="sidebar-toggle">
                         <span className="line"></span>
                         <span className="line"></span>
                         <span className="line"></span>

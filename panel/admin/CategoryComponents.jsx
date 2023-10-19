@@ -90,11 +90,7 @@ const CategoryComponents = () => {
             </div>
             <div className="col-md-1">
               <div className="form-group ">
-                <input
-                  type="submit"
-                  name="Add"
-                  className="bg-dark  text-light btn"
-                />
+                <input type="submit" name="Add" className="bg-dark  text-light btn" />
               </div>
             </div>
           </div>
@@ -110,16 +106,9 @@ const CategoryComponents = () => {
         <div className="container">
           <ul className="list-group list-group-flush">
             {categories?.map((x) => (
-              <li
-                key={x._id}
-                className="list-group-item d-flex justify-content-between align-items-center "
-              >
+              <li key={x._id} className="list-group-item d-flex justify-content-between align-items-center ">
                 <h5>{x.name}</h5>
-                <BsTrash
-                  onClick={() => handleDelete(x)}
-                  color="red"
-                  style={{ cursor: "pointer" }}
-                />
+                <BsTrash onClick={() => handleDelete(x)} color="red" style={{ cursor: "pointer" }} />
               </li>
             ))}
           </ul>

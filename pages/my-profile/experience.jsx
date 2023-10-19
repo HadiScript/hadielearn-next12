@@ -126,27 +126,13 @@ const Experience = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Title </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="eg: Full Stack Developer"
-                name="title"
-                value={formData.title}
-                onChange={changesFormData}
-              />
+              <input type="text" className="form-control" placeholder="eg: Full Stack Developer" name="title" value={formData.title} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Company </label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Company"
-                name="company"
-                value={formData.company}
-                onChange={changesFormData}
-              />
+              <input type="email" className="form-control" placeholder="Company" name="company" value={formData.company} onChange={changesFormData} />
             </div>
           </div>
         </div>
@@ -155,39 +141,19 @@ const Experience = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> From </label>
-              <input
-                type="date"
-                className="form-control"
-                placeholder="School"
-                name="from"
-                value={formData.from}
-                onChange={changesFormData}
-              />
+              <input type="date" className="form-control" placeholder="School" name="from" value={formData.from} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> To </label>
-              <input
-                type="date"
-                disabled={formData.current && true}
-                className="form-control"
-                placeholder="Degree"
-                name="to"
-                value={formData.to}
-                onChange={changesFormData}
-              />
+              <input type="date" disabled={formData.current && true} className="form-control" placeholder="Degree" name="to" value={formData.to} onChange={changesFormData} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="d-flex align-items-center gap-2 form-group py-2">
               <label> Current </label>
-              <input
-                type="checkbox"
-                name="current"
-                checked={formData.current}
-                onChange={changesFormData}
-              />
+              <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
             </div>
           </div>
         </div>
@@ -195,25 +161,14 @@ const Experience = () => {
         <div className="col-md-12">
           <div className="form-group py-2">
             <label> Skills </label>
-            <input
-              type="text"
-              className="form-control"
-              name="skills"
-              value={formData.skills}
-              onChange={changesFormData}
-            />
+            <input type="text" className="form-control" name="skills" value={formData.skills} onChange={changesFormData} />
             <small>eg: ReactJs, AngularJs, VueJs</small>
           </div>
         </div>
 
         <div className="col-md-12">
           <div className="form-group py-2">
-            <select
-              className="form-select"
-              name="typeOfJob"
-              value={formData.typeOfJob}
-              onChange={changesFormData}
-            >
+            <select className="form-select" name="typeOfJob" value={formData.typeOfJob} onChange={changesFormData}>
               <option value={""} defaultValue={""}>
                 Choose type of job
               </option>
@@ -229,43 +184,21 @@ const Experience = () => {
           <div className="col-md-12">
             <div className="form-group py-2">
               <label> Location </label>
-              <input
-                type="text"
-                className="form-control"
-                name="location"
-                value={formData.location}
-                onChange={changesFormData}
-              />
+              <input type="text" className="form-control" name="location" value={formData.location} onChange={changesFormData} />
             </div>
           </div>
         )}
 
         <div className="text-end">
-          <Button
-            className="CardieBg text-light"
-            loading={loading}
-            onClick={addExperience}
-          >
+          <Button className="CardieBg text-light" loading={loading} onClick={addExperience}>
             Submit
           </Button>
         </div>
       </Card>
 
-      <ExpLists
-        from="editing-page"
-        expData={expList}
-        deleteExperience={deleteExperience}
-        setCurrent={setCurrent}
-        setOpen={setOpen}
-      />
+      <ExpLists from="editing-page" expData={expList} deleteExperience={deleteExperience} setCurrent={setCurrent} setOpen={setOpen} />
 
-      <ExpEditModal
-        open={open}
-        setOpen={setOpen}
-        current={current}
-        EditExp={EditExp}
-        loading={loading}
-      />
+      <ExpEditModal open={open} setOpen={setOpen} current={current} EditExp={EditExp} loading={loading} />
     </EditProfileLayout>
   );
 };

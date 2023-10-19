@@ -10,11 +10,7 @@ const GallaryProvider = ({ children }) => {
     showGallaryModal: false,
   });
 
-  return (
-    <GallaryContext.Provider value={[gallary, setGallary]}>
-      {children}
-    </GallaryContext.Provider>
-  );
+  return <GallaryContext.Provider value={[gallary, setGallary]}>{children}</GallaryContext.Provider>;
 };
 
 export { GallaryContext, GallaryProvider };

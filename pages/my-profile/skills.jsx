@@ -76,14 +76,7 @@ const Skills = () => {
         <form onSubmit={submitHandler}>
           <div className="col-md-12">
             <div className="form-group py-2">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="eg ReactJs"
-                name="skill"
-                value={skill}
-                onChange={(e) => setSkill(e.target.value)}
-              />
+              <input type="text" className="form-control" placeholder="eg ReactJs" name="skill" value={skill} onChange={(e) => setSkill(e.target.value)} />
             </div>
           </div>
         </form>
@@ -95,10 +88,7 @@ const Skills = () => {
             <Button
               key={index}
               icon={
-                <span
-                  className="bg-danger px-1 rounded text-white"
-                  onClick={() => deleteSkill(x)}
-                >
+                <span className="bg-danger px-1 rounded text-white" onClick={() => deleteSkill(x)}>
                   X
                 </span>
               }
