@@ -29,10 +29,10 @@ const Stats = () => {
       <section className="counter__area pt-140 pb-20">
         <div className="container">
           <div className="row">
-            <SingleCount counter={300} title="Live classes" color="primary" />
-            <SingleCount counter={1500} title="Enrolled Students" color="secondary" />
-            <SingleCount counter={1000} title="Students on waitlist" color="primary" />
-            <SingleCount counter={5000} title="career counseling queries answered" color="secondary" />
+            <SingleCount counter={500} title="Live classes" color="primary" />
+            <SingleCount counter={10000} title="Enrolled Students" color="secondary" />
+            <SingleCount counter={800} title="Students on waitlist" color="primary" />
+            <SingleCount counter={11000} title="Queries answered" color="secondary" />
           </div>
         </div>
       </section>

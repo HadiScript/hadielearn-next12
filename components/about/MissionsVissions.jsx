@@ -19,7 +19,7 @@ const MissionsVissions = () => {
                     </li>
                     <li className="nav-item text-center">
                       <a className="nav-link" id="work-tab" data-bs-toggle="pill" href="#work" role="tab" aria-controls="work" aria-selected="false">
-                        Vission
+                        Vision
                       </a>
                     </li>
                   </ul>

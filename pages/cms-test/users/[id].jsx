@@ -118,6 +118,7 @@ const EditUser = () => {
     formData.append("id", id);
     formData.append("name", name);
     formData.append("password", password);
+    formData.append("role", role);
     formData.append("status", status);
     formData.append("image", image); // Assuming `image` is the File object from an input type="file"
     formData.append("exp", exp);

@@ -3,6 +3,7 @@ import React from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { TbPointFilled } from "react-icons/tb";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const CourseSideBar = ({ course }) => {
   // console.log(course, "here is the course");
@@ -14,8 +15,15 @@ const CourseSideBar = ({ course }) => {
           <div className="blog__author mb-50">
             <h3>Instructor</h3>
             <br />
+
             <div className="d-flex align-items-start gap-3">
-              {course && !course.instructor?.image ? <FaUser size={50} color="gray" /> : <img src={course?.instructor?.image.url} alt="" height={100} />}
+              {course && !course.instructor?.image ? (
+                <FaUser size={50} color="gray" />
+              ) : course.instructor?.image?.url?.includes("profileImages") ? (
+                <img src={toImageUrl(course?.instructor?.image.url)} alt="" height={100} />
+              ) : (
+                <img src={course?.instructor?.image.url} alt="" height={100} />
+              )}
               <div>
                 <span style={{ fontWeight: "bold", fontSize: "18px" }}>{course?.instructor?.name}</span>
                 <br />

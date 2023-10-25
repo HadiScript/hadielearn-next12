@@ -2,15 +2,7 @@ import { Avatar, Button, Card, List, Tag } from "antd";
 import React from "react";
 import TopHeader from "../components/partials/TopHeader";
 import PagesNavbar from "../components/partials/PageNavbar";
-import {
-  FaAndroid,
-  FaAngular,
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaNodeJs,
-  FaReact,
-} from "react-icons/fa";
+import { FaAndroid, FaAngular, FaFacebook, FaInstagram, FaLinkedin, FaNodeJs, FaReact } from "react-icons/fa";
 import { BsPen, BsPersonDash, BsYoutube } from "react-icons/bs";
 import { BiDownload, BiEdit } from "react-icons/bi";
 import Footer from "../components/partials/Footer";
@@ -23,13 +15,7 @@ const data = [
     type: "full time",
     from: "Feb 2023",
     to: "Present",
-    skills: [
-      "ReactJs",
-      "NodeJS",
-      "Html/css",
-      "Agile Development",
-      "Mean Stack",
-    ],
+    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
   },
   {
     title: "Frontend Developer",
@@ -37,13 +23,7 @@ const data = [
     type: "full time",
     from: "Feb 2021",
     to: "Feb 2023",
-    skills: [
-      "ReactJs",
-      "NodeJS",
-      "Html/css",
-      "Agile Development",
-      "Mean Stack",
-    ],
+    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
   },
   {
     title: "Blockchain Developer",
@@ -51,13 +31,7 @@ const data = [
     type: "full time",
     from: "Feb 2020",
     to: "Feb 2021",
-    skills: [
-      "ReactJs",
-      "NodeJS",
-      "Html/css",
-      "Agile Development",
-      "Mean Stack",
-    ],
+    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
   },
 ];
 
@@ -66,30 +40,21 @@ const CardieBg = {
 };
 
 const Profile = () => {
+  return <> Working on it; </>;
   return (
     <>
       <TopHeader />
-      <div
-        class="container rounded bg-white mb-5"
-        style={{ paddingTop: "100px" }}
-      >
+      <div class="container rounded bg-white mb-5" style={{ paddingTop: "100px" }}>
         <div class="row">
           {/* first col  */}
           <div class="col-lg-3 border-right ">
             <Card style={CardieBg}>
               <div class="d-flex flex-column align-items-center text-center p-3 pt-5">
-                <img
-                  class="rounded-circle mt-5"
-                  width="150px"
-                  src="https://res.cloudinary.com/ddwj52jk1/image/upload/v1686835722/sv3gvpbid5b6sshmi2hs.jpg"
-                />
+                <img class="rounded-circle mt-5" width="150px" src="https://res.cloudinary.com/ddwj52jk1/image/upload/v1686835722/sv3gvpbid5b6sshmi2hs.jpg" />
                 <span class="text-light ">
                   <b>Hadi Raza</b>
                 </span>
-                <span class="text-light">
-                  MERN Stack Developer - Working on Solidity with Truffle and
-                  Hardhat
-                </span>
+                <span class="text-light">MERN Stack Developer - Working on Solidity with Truffle and Hardhat</span>
               </div>
               <hr />
               <div className="d-flex flex-wrap justify-content-center">
@@ -112,25 +77,11 @@ const Profile = () => {
 
           {/* middle col */}
           <div class="col-lg-5" style={{ paddingTop: "0px" }}>
-            {/* <div className="d-flex justify-content-end align-items-center gap-2 ">
-              <Button style={{ ...CardieBg, color: "white" }} icon={<BsPen />}>
-                Edit Profile
-              </Button>
-              <Button
-                style={{ ...CardieBg, color: "white" }}
-                icon={<BiDownload />}
-              >
-                Resume
-              </Button>
-            </div> */}
             <Card
               title={
                 <div className="d-flex justify-content-between align-items-center">
                   <span>About</span>
-                  <Button
-                    style={{ ...CardieBg, color: "white" }}
-                    icon={<EditFilled />}
-                  >
+                  <Button style={{ ...CardieBg, color: "white" }} icon={<EditFilled />}>
                     Edit Profile
                   </Button>
                 </div>
@@ -138,10 +89,8 @@ const Profile = () => {
               className="mt-10"
             >
               <p>
-                In publishing and graphic design, Lorem ipsum is a placeholder
-                text commonly used to demonstrate the visual form of a document
-                or a typeface without relying on meaningful content. Lorem ipsum
-                may be used as a placeholder before final copy is available.
+                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on
+                meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
               </p>
             </Card>
             <Card className="mt-10">
@@ -162,11 +111,7 @@ const Profile = () => {
                 renderItem={(item, index) => (
                   <List.Item>
                     <List.Item.Meta
-                      avatar={
-                        <Avatar
-                          src={`http://localhost:3000/assets/images/primary.svg`}
-                        />
-                      }
+                      avatar={<Avatar src={`http://localhost:3000/assets/images/primary.svg`} />}
                       title={<a href="https://ant.design">{item.title}</a>}
                       description={
                         <div>
@@ -200,16 +145,8 @@ const Profile = () => {
                 renderItem={(item, index) => (
                   <List.Item>
                     <List.Item.Meta
-                      avatar={
-                        <Avatar
-                          src={`http://localhost:3000/assets/images/primary.svg`}
-                        />
-                      }
-                      title={
-                        <a href="https://ant.design">
-                          {item.title} - Mastery Course
-                        </a>
-                      }
+                      avatar={<Avatar src={`http://localhost:3000/assets/images/primary.svg`} />}
+                      title={<a href="https://ant.design">{item.title} - Mastery Course</a>}
                       description={
                         <div>
                           <b>

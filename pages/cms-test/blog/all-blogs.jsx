@@ -82,7 +82,7 @@ const AllBlogs = () => {
                       </th>
                       <td className="text-dark">{x?.categories[0]?.name}</td>
                       <td className="text-dark">{x?.title}</td>
-                      <td className="text-dark">{x?.postedBy.name}</td>
+                      <td className="text-dark">{x?.postedBy?.name}</td>
                       <td className="text-dark">
                         <BiEdit
                           onClick={() => {

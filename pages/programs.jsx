@@ -27,44 +27,30 @@ const Programs = ({ courses }) => {
   //   return doc.body.textContent || "";
   // };
 
-  console.log(courses, "hree is courses");
-
   return (
     <>
       <SEOHead
-        title={
-          "Hadi, providing you with one of the best online course platforms"
-        }
+        title={"Hadi, providing you with one of the best online course platforms"}
         desc={
           "With the help of industry experts, we have developed various computer short courses for hadi e-learning that can help you learn the tips and tricks of the digital world."
         }
         conLink={"https://hadielearning.com/programs"}
       />
-      <img
-        src="/assets/image/bg-gird1.jpg"
-        alt="background"
-        className="position-absolute "
-        style={{ color: "transparent", zIndex: "-1", top: 0, width: "100%" }}
-      />
+      <img src="/assets/image/bg-gird1.jpg" alt="background" className="position-absolute " style={{ color: "transparent", zIndex: "-1", top: 0, width: "100%" }} />
       <TopHeader />
 
       <div className="position-relative">
         <div className="container d-flex flex-column justify-content-center align-items-center mt-150">
           <Fade bottom cascade>
             <div className="page__title-content">
-              <h1
-                className="pragrams-h1 text-center"
-                style={{ fontSize: "40px", color: "#0f3f5d" }}
-              >
+              <h1 className="pragrams-h1 text-center" style={{ fontSize: "40px", color: "#0f3f5d" }}>
                 Programs to level up your digital skills
               </h1>
             </div>
             <p className="text-center mb-4 mt-3" style={{ maxWidth: "800px" }}>
               <em>
-                We have got all your digital skill training needs covered with
-                our extensive offered program list. All you have to do is to
-                explore our program list, choose the program of your choice, and
-                take your first step toward financial independence.
+                We have got all your digital skill training needs covered with our extensive offered program list. All you have to do is to explore our program list, choose the
+                program of your choice, and take your first step toward financial independence.
               </em>
             </p>
           </Fade>
@@ -75,11 +61,7 @@ const Programs = ({ courses }) => {
             <Row className="justify-content-center align-items-center">
               <Col xs="auto" className="mb-2">
                 <Link href={"/enroll/program"}>
-                  <Button
-                    style={{ backgroundColor: "#0f3f5d", border: "none" }}
-                  >
-                    Enroll Now
-                  </Button>
+                  <Button style={{ backgroundColor: "#0f3f5d", border: "none" }}>Enroll Now</Button>
                 </Link>
               </Col>
 

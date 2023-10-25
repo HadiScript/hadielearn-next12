@@ -1,22 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopHeader from "../components/partials/TopHeader";
-import { Button, Card, Col, Row, Tag } from "antd";
+import { Card, Col, Row, Tag } from "antd";
 import Footer from "../components/partials/Footer";
-import { FaSearch } from "react-icons/fa";
-import Link from "next/link";
+import { FaSearch, FaUser } from "react-icons/fa";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { API } from "../config/API";
+import toast from "react-hot-toast";
+import SEOHead from "../components/functions/SEOHead";
+import { BsShieldCheck } from "react-icons/bs";
+import { toImageUrl } from "../utils/ImageURL";
 
-const CardieBg = {
-  backgroundImage: `linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)`,
-};
+const Profiles = ({ profiles, error }) => {
+  // const router = useRouter();
+  // const [profileList, setProfileList] = useState(profiles);
+  // if (error) {
+  //   return toast.error(error);
+  // }
 
-const Profiles = () => {
-  const router = useRouter();
-  return <>working on it :)</>;
+  // const [searchQuery, setSearchQuery] = useState("");
+
+  // const gettingSearchedProfiles = async () => {
+  //   try {
+  //     const { data } = await axios.get(`${API}/profiles?term=${searchQuery}`);
+  //     setProfileList(data.profiles);
+  //   } catch (error) {
+  //     console.error("Failed to fetch profiles:", error);
+  //     toast.error("Failed, try again.");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   gettingSearchedProfiles();
+  // }, [searchQuery]);
+  return <>Working on it;</>;
   return (
     <>
+      <SEOHead title={"Hadi Elearning Profiles"} desc={`Hadi Elearning `} conLink={`https://hadielearning.com/profiles`} />
+
       <img src="/assets/image/bg-gird1.jpg" alt="background" className="position-absolute " style={{ color: "transparent", zIndex: "-1", top: 0, width: "100%" }} />
       <TopHeader />
+
+      {/* {JSON.stringify(profileList)} */}
 
       <div className="position-relative">
         <div className="container d-flex flex-column justify-content-center align-items-center mt-150">
@@ -39,10 +64,7 @@ const Profiles = () => {
         <div className="container">
           <Row className="justify-content-center align-items-center">
             <Col md="5" xs="12" className="mb-2">
-              <form action="">
-                <label className="sr-only" for="inlineFormInputGroupUsername">
-                  Username
-                </label>
+              <form>
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <div
@@ -60,52 +82,45 @@ const Profiles = () => {
                     </div>
                   </div>
                   <input
-                    style={{ border: "1px solid #0f3f5d" }}
+                    style={{ border: "1px solid #0f3f5d", outline: "none" }}
                     type="text"
                     className="form-control"
                     id="inlineFormInputGroupUsername"
-                    placeholder="Search course here"
-                    // value={searchQuery}
-                    // onChange={handleSearchChange}
+                    placeholder="Search user by name and skills"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </div>
               </form>
             </Col>
           </Row>
         </div>
-        {/* </Fade> */}
       </div>
 
-      <div class="container">
-        <div class="container rounded mb-5" style={{ paddingTop: "150px" }}>
-          <div class="row">
+      <div className="container">
+        <div className="container rounded mb-5 " style={{ paddingTop: "80px" }}>
+          <div className="row">
             {/* first col  */}
-            {[1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((x) => (
-              <div class="col-lg-3 border-right mb-30 ">
-                <Card className="profiles-card" onClick={() => router.push("/profile")} role="button" style={{ border: "1px solid rgba(15, 63, 93, 1)" }}>
-                  <div class="d-flex flex-column align-items-center text-center p-3 pt-5">
-                    <img class="rounded-circle mt-5" width="150px" src="https://res.cloudinary.com/ddwj52jk1/image/upload/v1686835722/sv3gvpbid5b6sshmi2hs.jpg" />
-                    <span class="text-dark ">
-                      <b>Hadi Raza</b>
-                    </span>
-                    <span class="text-muted">MERN Stack Developer - Working on Solidity with Truffle and Hardhat</span>
-                  </div>
-                  {/* <hr />
-                  <div className="d-flex flex-wrap justify-content-center">
-                    {[1, 2, 2, 3, 4, 5].map((x) => (
-                      <Tag className="my-1" color="green">
-                        ReactJs
-                      </Tag>
-                    ))}
-                  </div> */}
+            {profileList?.map((x, index) => (
+              <div className="col-lg-3 border-right mb-30 " key={index}>
+                <Card className="profiles-card" onClick={() => router.push(`/profile/${x?._id}`)} role="button" style={{ border: "1px solid rgba(15, 63, 93, 1)" }}>
+                  <div className="d-flex flex-column align-items-center text-center p-3 pt-5">
+                    {x?.user?.image?.url ? (
+                      <img className="rounded-circle mt-5" height={150} width={150} src={toImageUrl(x?.user?.image?.url)} />
+                    ) : (
+                      <FaUser size={150} color="gray" />
+                    )}
 
-                  {/* <hr /> */}
-                  {/* <span className="d-flex justify-content-center align-items-center gap-3">
-                  <FaInstagram size={25} color="white" />
-                  <FaLinkedin size={25} color="white" />
-                  <FaFacebook size={25} color="white" />
-                  <BsYoutube size={25} color="white" />
-                </span> */}
+                    <span className="d-flex align-items-center gap-2 text-dark mt-2">
+                      <b>{x?.user?.name} </b> {x?.user?.role === "instructor" && <BsShieldCheck color="blue" />}
+                    </span>
+                    <span className="text-muted">{x?.bio.slice(0, 80)}...</span>
+                    <span className="text-muted mt-3">
+                      {x?.skills?.slice(0, 3).map((x, index) => (
+                        <Tag key={index}>{x}</Tag>
+                      ))}
+                    </span>
+                  </div>
                 </Card>
               </div>
             ))}
@@ -117,4 +132,22 @@ const Profiles = () => {
   );
 };
 
+export async function getServerSideProps() {
+  try {
+    const { data } = await axios.get(`${API}/profiles`);
+    return {
+      props: {
+        profiles: data.profiles,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch profiles:", error);
+    return {
+      props: {
+        profiles: [],
+        error: "Failed to fetch profiles.",
+      },
+    };
+  }
+}
 export default Profiles;

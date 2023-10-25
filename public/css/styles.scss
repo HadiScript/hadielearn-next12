@@ -55,9 +55,40 @@
 }
 
 .CardieBg {
-  background-image: linear-gradient(
-    329deg,
-    rgba(49, 175, 152, 1) 0%,
-    rgba(15, 63, 93, 1) 100%
-  );
+  background-image: linear-gradient(329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%);
+}
+
+.profile-small-card {
+  width: 400px;
+  border: none;
+  border-radius: 10px;
+
+  background-color: #fff;
+}
+
+.stats {
+  background: #f2f5f8 !important;
+
+  color: #000 !important;
+}
+.articles {
+  font-size: 10px;
+  color: #a1aab9;
+}
+.number1 {
+  font-weight: 500;
+}
+.followers {
+  font-size: 10px;
+  color: #a1aab9;
+}
+.number2 {
+  font-weight: 500;
+}
+.rating {
+  font-size: 10px;
+  color: #a1aab9;
+}
+.number3 {
+  font-weight: 500;
 }

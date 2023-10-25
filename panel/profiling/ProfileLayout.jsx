@@ -5,10 +5,14 @@ import { API } from "../../config/API";
 import { AuthContext } from "../../context/auth";
 import Redirecting from "../common/Redrecting";
 import StuHeader from "../newStudent/components/StuHeader";
+import { useRouter } from "next/router";
+import InstHeader from "../newInstructor/components/InstHeader";
+import Footer from "../../components/partials/Footer";
 
 const ProfileLayout = ({ children }) => {
   const [auth] = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (auth?.token) {
@@ -18,7 +22,7 @@ const ProfileLayout = ({ children }) => {
 
   const getCurrentStudent = async () => {
     try {
-      const { data } = await axios.get(`${API}/current-student`);
+      const { data } = await axios.get(`${API}/current-student-or-instructor`);
       if (data.ok) {
         setLoading(false);
       }
@@ -33,7 +37,13 @@ const ProfileLayout = ({ children }) => {
     <Redirecting />
   ) : (
     <>
-      <StuHeader page="contactPage" /> {children}
+      {auth?.user?.role === "student" && <StuHeader page="contactPage" />}
+      {auth?.user?.role === "instructor" && <InstHeader page="contactPage" />}
+      {children}
+
+      <div className="pt-5">
+        <Footer />
+      </div>
     </>
   );
 };

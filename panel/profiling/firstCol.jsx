@@ -1,14 +1,9 @@
 import { Button, Card, Tag } from "antd";
 import React from "react";
 import { BsYoutube } from "react-icons/bs";
-import {
-  FaBehance,
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaBehance, FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { MdUploadFile } from "react-icons/md";
+import { toImageUrl } from "../../utils/ImageURL";
 
 export const CardieBg = {
   backgroundImage: `linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)`,
@@ -22,15 +17,8 @@ const FirstCol = ({ user, skills, social, bio }) => {
           <Button icon={<MdUploadFile />}>Upload Image</Button>
         </div>
         <div class="d-flex flex-column align-items-center text-center p-3 pt-5">
-          <img
-            class="rounded-circle mt-5"
-            width="150px"
-            src={
-              user?.image?.url
-                ? user?.image?.url
-                : "https://i2.wp.com/johnothecoder.uk/wp-content/uploads/sites/11/2018/12/Mafia-Online-Avatar-600x600.jpg?ssl=1"
-            }
-          />
+          {user?.image?.url && <img class="rounded-circle mt-5" width="150px" src={toImageUrl(user?.image?.url)} />}
+
           <span class="text-light mt-3">
             <b>{user?.name}</b>
           </span>

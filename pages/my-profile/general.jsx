@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/auth";
 import axios from "axios";
 import { API } from "../../config/API";
 import toast from "react-hot-toast";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const socailsLinks = {
   youtube: "",
@@ -29,6 +30,8 @@ const EditProfile = () => {
   const [profileLoading, setProfileLoading] = useState(false);
   const [addSocials, setAddSocials] = useState(false);
   const [social, setSocial] = useState(socailsLinks);
+  const [image, setImage] = useState();
+  const [preImage, setPreImage] = useState();
 
   const changeSocials = (e) => {
     setSocial({ ...social, [e.target.name]: e.target.value });
@@ -44,7 +47,7 @@ const EditProfile = () => {
         setStatus(data._profile.status);
         setLocation(data._profile.location);
         setSocial(data._profile.social);
-        // console.log({ socails: data._profile.social });
+        setPreImage(data?._profile?.user?.image?.url);
       }
     } catch (error) {
       toast.error("Failed, try again");
@@ -63,23 +66,33 @@ const EditProfile = () => {
       toast.error("Name is important");
     }
 
+    const _formData = new FormData();
+    _formData.append("name", name);
+    _formData.append("id", auth?.user?._id);
+    _formData.append("bio", bio);
+    _formData.append("website", website);
+    _formData.append("location", location);
+    _formData.append("image", image);
+    _formData.append("status", status);
+    // _formData.append(`social[${key}]`, value);
+
+    if (social) {
+      for (const [key, value] of Object.entries(social)) {
+        _formData.append(`social[${key}]`, value);
+        console.log(`social[${key}]`, value);
+      }
+    }
+
+    // return;
     try {
-      const { data } = await axios.post(`${API}/_profile`, {
-        id: auth?.user?._id,
-        name,
-        website,
-        status,
-        location,
-        bio,
-        social,
-      });
+      const { data } = await axios.post(`${API}/_profile`, _formData);
 
       if (data?.error) {
         toast.error(data.error);
       } else {
         setAuth({ ...auth, user: { ...auth?.user, name: data.name } });
         let fromLocalStorage = JSON.parse(localStorage.getItem("auth"));
-        fromLocalStorage.user = { ...fromLocalStorage.user, name: data.name };
+        fromLocalStorage.user = { ...fromLocalStorage.user, name: data.name, image: data.image };
         localStorage.setItem("auth", JSON.stringify(fromLocalStorage));
 
         setLoading(false);
@@ -104,22 +117,43 @@ const EditProfile = () => {
   return (
     <EditProfileLayout>
       <Card title={`General Info ${profileLoading ? "loading..." : ""}`}>
-        <div className="form-group py-2">
-          <label> Your Image </label>
-          <input
-            // onChange={handleImage}
-            type="file"
-            accept="images/*"
-            className="form-control"
-            id="exampleFormControlInput1"
-          />
-        </div>
+        {image && !preImage && (
+          <div className="form-group text-center py-2">
+            <img width="auto" height={50} src={window?.URL.createObjectURL(image)} onClick={() => setImage()} />
+            <br />
+            <small>Just click on image to remove.</small>
+          </div>
+        )}
+        {!preImage && !image && (
+          <div className="form-group py-2">
+            <label> Your Image </label>
+            <input onChange={(e) => setImage(e.target.files[0])} type="file" accept="images/*" className="form-control" id="exampleFormControlInput1" />
+            <small className="form-text">Please upload image within 1mb, formet jpg,jpeg,webp</small>
+          </div>
+        )}
+
+        {preImage && (
+          <div className="form-group text-center py-2">
+            <img
+              width="auto"
+              style={{ borderRadius: "50%" }}
+              height={50}
+              src={toImageUrl(preImage)}
+              onClick={() => {
+                setImage();
+                setPreImage();
+              }}
+            />
+            <br />
+            <small>Just click on image to remove.</small>
+          </div>
+        )}
 
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Name </label>
-              <input type="text" className="form-control" placeholder="Company" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+              <input maxLength={40} type="text" className="form-control" placeholder="Company" name="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
           </div>
           <div className="col-md-6">
@@ -133,7 +167,7 @@ const EditProfile = () => {
         <div className="col-md-12">
           <div className="form-group py-2">
             <label> Bio </label>
-            <textarea type="text" className="form-control" placeholder="About..." name="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
+            <textarea maxLength={500} type="text" className="form-control" placeholder="About..." name="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
           </div>
         </div>
 
@@ -141,13 +175,29 @@ const EditProfile = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Status </label>
-              <input type="text" className="form-control" placeholder="Student or deveoper and etc..." name="status" value={status} onChange={(e) => setStatus(e.target.value)} />
+              <input
+                maxLength={20}
+                type="text"
+                className="form-control"
+                placeholder="Student or deveoper and etc..."
+                name="status"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> location </label>
-              <input type="email" className="form-control" placeholder="Your location" name="location" value={location} onChange={(e) => setLocation(e.target.value)} />
+              <input
+                maxLength={50}
+                type="email"
+                className="form-control"
+                placeholder="Your location"
+                name="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
             </div>
           </div>
         </div>
@@ -155,7 +205,15 @@ const EditProfile = () => {
         <div className="col-md-6">
           <div className="form-group py-2">
             <label> Website </label>
-            <input type="email" className="form-control" placeholder="Any website you have?" name="website" value={website} onChange={(e) => setWebsite(e.target.value)} />
+            <input
+              maxLength={50}
+              type="email"
+              className="form-control"
+              placeholder="Any website you have?"
+              name="website"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
           </div>
         </div>
 
@@ -172,13 +230,13 @@ const EditProfile = () => {
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Facebook </label>
-                  <input type="text" className="form-control" placeholder="Facebook" name="facebook" value={social?.facebook} onChange={changeSocials} />
+                  <input maxLength={60} type="text" className="form-control" placeholder="Facebook" name="facebook" value={social?.facebook} onChange={changeSocials} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Instagram </label>
-                  <input type="text" className="form-control" placeholder="Instagram" name="instagram" value={social?.instagram} onChange={changeSocials} />
+                  <input maxLength={60} type="text" className="form-control" placeholder="Instagram" name="instagram" value={social?.instagram} onChange={changeSocials} />
                 </div>
               </div>
             </div>
@@ -187,13 +245,13 @@ const EditProfile = () => {
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Twitter </label>
-                  <input type="text" className="form-control" placeholder="Twitter" name="twitter" value={social?.twitter} onChange={changeSocials} />
+                  <input maxLength={60} type="text" className="form-control" placeholder="Twitter" name="twitter" value={social?.twitter} onChange={changeSocials} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Linkedin </label>
-                  <input type="text" className="form-control" placeholder="Linkedin" name="linkedin" value={social?.linkedin} onChange={changeSocials} />
+                  <input maxLength={60} type="text" className="form-control" placeholder="Linkedin" name="linkedin" value={social?.linkedin} onChange={changeSocials} />
                 </div>
               </div>
             </div>
@@ -202,13 +260,13 @@ const EditProfile = () => {
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Youtube </label>
-                  <input type="text" className="form-control" placeholder="Youtube" name="youtube" value={social?.youtube} onChange={changeSocials} />
+                  <input maxLength={60} type="text" className="form-control" placeholder="Youtube" name="youtube" value={social?.youtube} onChange={changeSocials} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group py-2">
                   <label> Behance </label>
-                  <input type="text" className="form-control" placeholder="Behance" name="behance" value={social?.behance} onChange={changeSocials} />
+                  <input maxLength={60} type="text" className="form-control" placeholder="Behance" name="behance" value={social?.behance} onChange={changeSocials} />
                 </div>
               </div>
             </div>

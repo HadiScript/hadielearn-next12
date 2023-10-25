@@ -21,7 +21,7 @@ const BlogArea = ({ allBlogs, RecentBlogs, Categories, page, setPage, Router, to
                 {allBlogs?.map((x) => (
                   <div key={x._id} className="card">
                     <Link className="postcard__img_link" href={`/blog/${x.slug}`}>
-                      {x.image?.url?.includes("uploads") ? (
+                      {x.image?.url?.includes("blogImages") ? (
                         <img className="card__image" src={toImageUrl(x.image?.url)} alt="workshop_image" />
                       ) : (
                         <img className="card__image" src={x.image?.url} alt="workshop_image" />

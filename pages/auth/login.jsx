@@ -50,19 +50,20 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         toast.success("Successfully logged in");
         setLoading(false);
-        if (data.user?.role === "admin") {
-          router.push("/");
-        } else if (data.user?.role === "author") {
-          router.push("/");
-        } else if (data.user?.role === "cord") {
-          router.push("/");
-        } else if (data.user?.role === "instructor") {
-          router.push("/inst-test");
-        } else if (data.user?.role === "student") {
-          router.push("/student-test");
-        } else {
-          router.push("/");
-        }
+        router.push("/");
+        // if (data.user?.role === "admin") {
+        //   router.push("/");
+        // } else if (data.user?.role === "author") {
+        //   router.push("/");
+        // } else if (data.user?.role === "cord") {
+        //   router.push("/");
+        // } else if (data.user?.role === "instructor") {
+        //   router.push("/");
+        // } else if (data.user?.role === "student") {
+        //   router.push("/");
+        // } else {
+        //   router.push("/");
+        // }
       }
     } catch (err) {
       toast.error("SignIn failed. Try again.");
@@ -85,17 +86,11 @@ const Login = () => {
           <div className="col-lg-4 col-md-4 bg-danger" id="forImage" />
           <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="rightCol">
             <div className="form ">
-              <div
-                className="row d-flex justify-content-center align-items-center"
-                style={{ height: "90vh" }}
-              >
+              <div className="row d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
                 <div className="col-md-8  col-sm-12 " id="startForm">
                   <div>
                     <div className="col-md-8  col-sm-12 mb-4  ">
-                      <span
-                        className="d-flex align-items-center gap-2"
-                        onClick={() => router.push("/")}
-                      >
+                      <span className="d-flex align-items-center gap-2" onClick={() => router.push("/")}>
                         <AiOutlineRollback /> <span>Home</span>
                       </span>
                     </div>
@@ -104,35 +99,16 @@ const Login = () => {
                     <div className="form-group py-3">
                       <label>
                         Email<span className="text-danger">*</span>
-                        {show && (
-                          <small className="text-danger mx-3">
-                            Invalid Email
-                          </small>
-                        )}
+                        {show && <small className="text-danger mx-3">Invalid Email</small>}
                       </label>
-                      <input
-                        required
-                        type="email"
-                        className="form-control"
-                        placeholder="example@gmail.com"
-                        name="email"
-                        value={email}
-                        onChange={handleEmail}
-                      />
+                      <input required type="email" className="form-control" placeholder="example@gmail.com" name="email" value={email} onChange={handleEmail} />
                     </div>
 
                     <div className="form-group py-3">
                       <label>
                         Password<span className="text-danger">*</span>
                       </label>
-                      <input
-                        required
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
+                      <input required type="password" className="form-control" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <br />
                   </div>
@@ -143,20 +119,11 @@ const Login = () => {
                         <button className="z-btn-disable">Login</button>
                         <br />
                         <br />
-                        <span
-                          role="button"
-                          className="m-2"
-                          onClick={() =>
-                            router.push("/auth/request-forget-password")
-                          }
-                        >
+                        <span role="button" className="m-2" onClick={() => router.push("/auth/request-forget-password")}>
                           Forgotten password?
                         </span>
                       </div>
-                      <button
-                        className="z-btn-register"
-                        onClick={() => router.push("/auth/register")}
-                      >
+                      <button className="z-btn-register" onClick={() => router.push("/auth/register")}>
                         Register
                       </button>
                     </div>
@@ -168,20 +135,11 @@ const Login = () => {
                         </button>
                         <br />
                         <br />
-                        <span
-                          role="button"
-                          className="m-2"
-                          onClick={() =>
-                            router.push("/auth/request-forget-password")
-                          }
-                        >
+                        <span role="button" className="m-2" onClick={() => router.push("/auth/request-forget-password")}>
                           Forgotten password?
                         </span>
                       </div>
-                      <button
-                        className="z-btn-register"
-                        onClick={() => router.push("/auth/register")}
-                      >
+                      <button className="z-btn-register" onClick={() => router.push("/auth/register")}>
                         Register
                       </button>
                     </div>
