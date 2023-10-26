@@ -54,19 +54,19 @@ const Register = () => {
         toast.success("Successfully Regisger");
         router.push("/auth/login");
         setLoading(false);
-        if (data.user?.role === "admin") {
-          router.push("/admin");
-        } else if (data.user?.role === "author") {
-          router.push("/employee");
-        } else if (data.user?.role === "cord") {
-          router.push("/lms-test");
-        } else if (data.user?.role === "instructor") {
-          router.push("/inst-test");
-        } else if (data.user?.role === "student") {
-          router.push("/student-test");
-        } else {
-          router.push("/");
-        }
+        // if (data.user?.role === "admin") {
+        //   router.push("/admin");
+        // } else if (data.user?.role === "author") {
+        //   router.push("/employee");
+        // } else if (data.user?.role === "cord") {
+        //   router.push("/lms-test");
+        // } else if (data.user?.role === "instructor") {
+        //   router.push("/inst-test");
+        // } else if (data.user?.role === "student") {
+        //   router.push("/student-test");
+        // } else {
+        //   router.push("/");
+        // }
       }
     } catch (err) {
       toast.error("SignIn failed. Try again.");

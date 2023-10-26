@@ -29,17 +29,7 @@ const SingleBatchFolders = () => {
   // get all folders
   const itemsURL = `${API}/lms/all-folders/${id}`;
 
-  const {
-    singleBatch,
-    items,
-    itemsLoading,
-    loading,
-    updateItem,
-    updatesLoading,
-    deleteItem,
-    addItem,
-    assignments,
-  } = useSingleBatch({
+  const { singleBatch, items, itemsLoading, loading, updateItem, updatesLoading, deleteItem, addItem, assignments } = useSingleBatch({
     id,
     itemsURL,
   });
@@ -71,48 +61,21 @@ const SingleBatchFolders = () => {
     let fileSize;
     fileSize = files[0].size / 1024 / 1024;
     if (fileSize > 5) {
-      toast.error(
-        "The file size greater than 5 MB. Make sure less than 5 MB.",
-        {
-          style: {
-            border: "1px solid #ff0033",
-            padding: "16px",
-            color: "#ff0033",
-          },
-          iconTheme: {
-            primary: "#ff0033",
-            secondary: "#FFFAEE",
-          },
-        }
-      );
+      toast.error("The file size greater than 5 MB. Make sure less than 5 MB.", {
+        style: {
+          border: "1px solid #ff0033",
+          padding: "16px",
+          color: "#ff0033",
+        },
+        iconTheme: {
+          primary: "#ff0033",
+          secondary: "#FFFAEE",
+        },
+      });
       e.target.value = null;
       return;
     }
     setFile(files[0]);
-  };
-
-  const handleAssetUpload = async () => {
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", process.env.UPLOAD_PRESETS);
-    let assetUrl;
-    let response;
-    if (file) {
-      try {
-        response = await fetch(process.env.CLOUDINARY_ZIP_URL, {
-          method: "POST",
-          body: data,
-        });
-
-        const { secure_url, public_id } = await response.json();
-        setPublic_id(public_id);
-        assetUrl = secure_url;
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
-    }
-
-    return assetUrl;
   };
 
   const addAssignments = async (file, file_name, x) => {
@@ -121,14 +84,17 @@ const SingleBatchFolders = () => {
     }
 
     setUploading(true);
-    let assetUrl = "";
-    if (file) {
-      const assetUpload = await handleAssetUpload();
-      assetUrl = assetUpload.replace(/^http:\/\//i, "https://");
-    }
+    // let assetUrl = "";
+    // if (file) {
+    //   const assetUpload = await handleAssetUpload();
+    //   assetUrl = assetUpload.replace(/^http:\/\//i, "https://");
+    // }
+    const _formData = new FormData();
+    _formData.append("file_name", file_name);
+    _formData.append("file", file);
 
     const addAssignmentsURL = `${API}/lms/add-assignments/${x}`;
-    assignments({ file: assetUrl, file_name, public_id }, addAssignmentsURL);
+    assignments(_formData, addAssignmentsURL);
     setUploading(false);
   };
 
@@ -155,13 +121,7 @@ const SingleBatchFolders = () => {
               <h4>Add Folders</h4>
               <form onSubmit={addFolder}>
                 <label>Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <input type="text" className="form-control" name="name" value={name} onChange={(e) => setName(e.target.value)} />
                 <br />
               </form>
               <br />
@@ -193,14 +153,7 @@ const SingleBatchFolders = () => {
                             />
                           }
                         />,
-                        <IconText
-                          icon={
-                            <BiTrash
-                              role="button"
-                              onClick={() => deleteFolder(item._id)}
-                            />
-                          }
-                        />,
+                        <IconText icon={<BiTrash role="button" onClick={() => deleteFolder(item._id)} />} />,
                         <IconText
                           icon={
                             <BiFolder
@@ -244,12 +197,7 @@ const SingleBatchFolders = () => {
         {updatesLoading && <p>Loading...</p>}
         <form onSubmit={() => updateFolder(newName, current._id)}>
           <label>Name</label>
-          <input
-            type="text"
-            className="form-control"
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
-          />
+          <input type="text" className="form-control" value={newName} onChange={(e) => setNewName(e.target.value)} />
         </form>
       </Modal>
 

@@ -32,6 +32,7 @@ const EditProfile = () => {
   const [social, setSocial] = useState(socailsLinks);
   const [image, setImage] = useState();
   const [preImage, setPreImage] = useState();
+  const [removeImage, setRemoveImage] = useState(false);
 
   const changeSocials = (e) => {
     setSocial({ ...social, [e.target.name]: e.target.value });
@@ -75,6 +76,9 @@ const EditProfile = () => {
     _formData.append("image", image);
     _formData.append("status", status);
     // _formData.append(`social[${key}]`, value);
+    if (!preImage && !image) {
+      _formData.append("removeImage", removeImage);
+    }
 
     if (social) {
       for (const [key, value] of Object.entries(social)) {
@@ -137,7 +141,7 @@ const EditProfile = () => {
             <img
               width="auto"
               style={{ borderRadius: "50%" }}
-              height={50}
+              height={100}
               src={toImageUrl(preImage)}
               onClick={() => {
                 setImage();

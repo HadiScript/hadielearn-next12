@@ -42,17 +42,14 @@ const data = [
 const CardieBg = {
   backgroundImage: `linear-gradient( 329deg, rgba(49, 175, 152, 1) 0%, rgba(15, 63, 93, 1) 100%)`,
 };
-
-const PublicProfileDetails = () => {
-  // const PublicProfileDetails = ({ profile, error }) => {
+const PublicProfileDetails = ({ profile, error }) => {
   const router = useRouter();
   const { id } = router.query;
 
-  // const {
-  //   courses: { courses },
-  // } = useCourses({ want: "shorts" });
+  const {
+    courses: { courses },
+  } = useCourses({ want: "shorts" });
 
-  return <>Working on it;</>;
   return (
     <>
       <SEOHead title={profile?.user?.name?.toUpperCase()} desc={`Hadi Elearning | ${profile?.bio}`} conLink={`https://hadielearning.com/profile/${id}`} />
@@ -299,22 +296,22 @@ const PublicProfileDetails = () => {
 };
 
 export async function getServerSideProps({ params }) {
-  // try {
-  //   const { data } = await axios.get(`${API}/profile/${params.id}`);
-  //   return {
-  //     props: {
-  //       profile: data.profile,
-  //     },
-  //   };
-  // } catch (error) {
-  //   console.error("Failed to fetch profiles:", error);
-  //   return {
-  //     props: {
-  //       profile: {},
-  //       error: "Failed to fetch profiles.",
-  //     },
-  //   };
-  // }
+  try {
+    const { data } = await axios.get(`${API}/profile/${params.id}`);
+    return {
+      props: {
+        profile: data.profile,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch profiles:", error);
+    return {
+      props: {
+        profile: {},
+        error: "Failed to fetch profiles.",
+      },
+    };
+  }
 }
 
 export default PublicProfileDetails;

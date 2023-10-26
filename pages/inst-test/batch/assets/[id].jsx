@@ -26,9 +26,8 @@ const SingleBatchFolders = () => {
   const [assetsLoading, setAssetsLoading] = useState(false);
   const [current, setCurrent] = useState({});
 
-  const [file, setFile] = useState("");
+  const [uploadingFile, setUploadingFile] = useState();
   const [title, setTitle] = useState("");
-  const [public_id, setPublic_id] = useState("");
 
   const [openModel, setOpenModel] = useState(false);
   const [updatesLoading, setUpdatesLoading] = useState(false);
@@ -82,75 +81,42 @@ const SingleBatchFolders = () => {
     let fileSize;
     fileSize = files[0].size / 1024 / 1024;
     if (fileSize > 5) {
-      toast.error(
-        "The file size greater than 5 MB. Make sure less than 5 MB.",
-        {
-          style: {
-            border: "1px solid #ff0033",
-            padding: "16px",
-            color: "#ff0033",
-          },
-          iconTheme: {
-            primary: "#ff0033",
-            secondary: "#FFFAEE",
-          },
-        }
-      );
+      toast.error("The file size greater than 5 MB. Make sure less than 5 MB.", {
+        style: {
+          border: "1px solid #ff0033",
+          padding: "16px",
+          color: "#ff0033",
+        },
+        iconTheme: {
+          primary: "#ff0033",
+          secondary: "#FFFAEE",
+        },
+      });
       e.target.value = null;
       return;
     }
-    setFile(files[0]);
-  };
-
-  const handleAssetUpload = async () => {
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", process.env.UPLOAD_PRESETS);
-    let assetUrl;
-    let response;
-    if (file) {
-      try {
-        response = await fetch(process.env.CLOUDINARY_ZIP_URL, {
-          method: "POST",
-          body: data,
-        });
-
-        const { secure_url, public_id } = await response.json();
-        setPublic_id(public_id);
-        assetUrl = secure_url;
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
-    }
-
-    return assetUrl;
+    setUploadingFile(files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      let assetUrl = "";
-      if (file) {
-        const assetUpload = await handleAssetUpload();
-        assetUrl = assetUpload.replace(/^http:\/\//i, "https://");
-      }
-      console.log("  handle submit 3");
+      const _formData = new FormData();
 
-      const { data } = await axios.post(
-        `${API}/lms/new-asset/${id}`,
-        { title, file: assetUrl, public_id },
-        {
-          headers: {
-            Authorization: `Bearer ${auth?.token}`,
-          },
-        }
-      );
+      _formData.append("title", title);
+      _formData.append("file", uploadingFile);
+
+      const { data } = await axios.post(`${API}/lms/new-asset/${id}`, _formData, {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      });
 
       if (data.ok) {
         console.log("handle submit 4");
         setTitle("");
-        setFile("");
+        setUploadingFile("");
         fetchingBatchAssets();
         setLoading(false);
         toast.success("Done");
@@ -226,30 +192,13 @@ const SingleBatchFolders = () => {
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label className="form-label fw-semibold">File Title</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Lecture Title"
-                    name="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
+                  <input type="text" className="form-control" placeholder="Lecture Title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label fw-semibold">
-                    Select Asset/File
-                  </label>
-                  <input
-                    type="file"
-                    className="form-control file-control"
-                    name="file"
-                    onChange={handleChange}
-                    required={true}
-                  />
-                  <div className="form-text">
-                    Upload file size less than or equal 5MB!
-                  </div>
+                  <label className="form-label fw-semibold">Select Asset/File</label>
+                  <input type="file" className="form-control file-control" name="file" onChange={handleChange} required={true} />
+                  <div className="form-text">Upload file size less than or equal 5MB!</div>
                 </div>
 
                 <Btn loading={loading} className="my-3" onClick={handleSubmit}>
@@ -279,24 +228,10 @@ const SingleBatchFolders = () => {
                             />
                           }
                         />,
-                        <IconText
-                          icon={
-                            <BiTrash
-                              role="button"
-                              onClick={() => deleteAssets(item._id)}
-                            />
-                          }
-                        />,
+                        <IconText icon={<BiTrash role="button" onClick={() => deleteAssets(item._id)} />} />,
                       ]}
                     >
-                      <List.Item.Meta
-                        title={
-                          <a onClick={() => window.open(item.file)}>
-                            {item.title}
-                          </a>
-                        }
-                        description={item.description}
-                      />
+                      <List.Item.Meta title={<a onClick={() => window.open(item.file)}>{item.title}</a>} description={item.description} />
                     </List.Item>
                   )}
                 />
@@ -306,23 +241,10 @@ const SingleBatchFolders = () => {
         </Row>
       </BatchLayout>
 
-      <Modal
-        title={`Rename`}
-        centered
-        open={openModel}
-        onOk={() => updateAssets(title, current._id)}
-        onCancel={() => setOpenModel(false)}
-        width={500}
-      >
+      <Modal title={`Rename`} centered open={openModel} onOk={() => updateAssets(title, current._id)} onCancel={() => setOpenModel(false)} width={500}>
         <form onSubmit={() => updateAssets(title, current._id)}>
           {updatesLoading && <>loading...</>}
-          <input
-            type="text"
-            className="form-control"
-            value={title}
-            name="title"
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <input type="text" className="form-control" value={title} name="title" onChange={(e) => setTitle(e.target.value)} />
         </form>
       </Modal>
     </>

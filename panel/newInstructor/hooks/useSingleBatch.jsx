@@ -138,7 +138,7 @@ const useSingleBatch = ({ id, itemsURL }) => {
         fetchingBatchItems(id);
       }
     } catch (error) {
-      toast.error(error);
+      // toast.error(error);
       console.log(error);
     }
   };

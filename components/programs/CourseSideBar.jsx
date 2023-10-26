@@ -153,7 +153,7 @@ const CourseSideBar = ({ course }) => {
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>{course.regFee}</li>
+                  <li>{course.regFee === 0 ? "Free" : course.regFee}</li>
                 </ul>
               </div>
             </div>
@@ -166,18 +166,18 @@ const CourseSideBar = ({ course }) => {
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>{course.courseFee}</li>
+                  <li>{course.courseFee === 0 ? "Free" : course.courseFee}</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {course?.show && (
-            <Link href={"/enroll/program"}>
-              <button className="z-btn z-btn-3 w-50">Enroll now</button>
-            </Link>
-          )}
-          {course?.show === false && <button className="z-btn-disable w-50">Enroll now</button>}
+          {/* {course?.show && (
+              )} */}
+          <Link href={"/enroll/program"}>
+            <button className="z-btn z-btn-3 w-50">Enroll now</button>
+          </Link>
+          {/* {course?.show === false && <button className="z-btn-disable w-50">Enroll now</button>} */}
         </div>
       </div>
     </>

@@ -12,28 +12,29 @@ import { BsShieldCheck } from "react-icons/bs";
 import { toImageUrl } from "../utils/ImageURL";
 
 const Profiles = ({ profiles, error }) => {
-  // const router = useRouter();
-  // const [profileList, setProfileList] = useState(profiles);
-  // if (error) {
-  //   return toast.error(error);
-  // }
+  const router = useRouter();
+  const [profileList, setProfileList] = useState(profiles);
+  if (error) {
+    return toast.error(error);
+  }
 
-  // const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // const gettingSearchedProfiles = async () => {
-  //   try {
-  //     const { data } = await axios.get(`${API}/profiles?term=${searchQuery}`);
-  //     setProfileList(data.profiles);
-  //   } catch (error) {
-  //     console.error("Failed to fetch profiles:", error);
-  //     toast.error("Failed, try again.");
-  //   }
-  // };
+  const gettingSearchedProfiles = async () => {
+    try {
+      const { data } = await axios.get(`${API}/profiles?term=${searchQuery}`);
+      setProfileList(data.profiles);
+    } catch (error) {
+      console.error("Failed to fetch profiles:", error);
+      toast.error("Failed, try again.");
+    }
+  };
 
-  // useEffect(() => {
-  //   gettingSearchedProfiles();
-  // }, [searchQuery]);
-  return <>Working on it;</>;
+  useEffect(() => {
+    gettingSearchedProfiles();
+  }, [searchQuery]);
+
+  return <>Working on it</>;
   return (
     <>
       <SEOHead title={"Hadi Elearning Profiles"} desc={`Hadi Elearning `} conLink={`https://hadielearning.com/profiles`} />
