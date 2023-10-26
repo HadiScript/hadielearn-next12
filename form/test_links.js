@@ -71,4 +71,11 @@ export const test_links = [
     slug: "shopify-mastery-course",
     test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=shopify-mastery-course-evaluation-quiz",
   },
+
+  {
+    _id: "653a83da36a6f797d8e52156",
+    title: "SEO with AI Mastery Course",
+    slug: "seo-with-ai-mastery-course",
+    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=mzgwmjg5nw9afp",
+  },
 ];

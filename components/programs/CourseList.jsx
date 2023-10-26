@@ -14,9 +14,11 @@ const CourseList = ({ courses_data, searchQuery }) => {
     return totalCourseHours;
   };
 
+
   return (
     <>
       <div className="container">
+        {/* {JSON.stringify(filteredCourses)} */}
         {/* <Fade bottom cascade> */}
         <div className="row mt-100">
           {filteredCourses?.map((x) => (

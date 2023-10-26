@@ -186,9 +186,7 @@ const EnrollmentsForm = () => {
   const fetchingSingleData = async (req, res) => {
     try {
       setSingleDataLoading(true);
-      const { data } = await axios.get(
-        `https://api.hadielearning.com/api/user/${email}`
-      );
+      const { data } = await axios.get(`https://api.hadielearning.com/api/user/${email}`);
       // console.log("single data", data.user, data.finded);
       setSingleData(data.user);
       setOk(data.finded);
@@ -232,7 +230,7 @@ const EnrollmentsForm = () => {
   useEffect(() => {
     if (enroll_to === "program") fetchingCourses();
   }, [enroll_to]);
-  
+
   useEffect(() => {
     if (enroll_to === "workshop") fetchingWorkshops();
   }, [enroll_to]);
@@ -243,21 +241,14 @@ const EnrollmentsForm = () => {
 
   return (
     <>
-      <SEOHead
-        title={"Enrollment Application - Hadi E-learning"}
-        desc={""}
-        conLink={"https://hadielearning.com/enroll/program"}
-      />
+      <SEOHead title={"Enrollment Application - Hadi E-learning"} desc={""} conLink={"https://hadielearning.com/enroll/program"} />
 
       <div id="enrollScreen" className="container-fluid ">
         <div className="row">
           <div className="col-lg-4 col-md-4 bg-danger" id="forImage" />
           <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="rightCol">
             <div className="form " onSubmit={handleSubmit}>
-              <div
-                className="row d-flex justify-content-center align-items-center"
-                style={{ height: "90vh" }}
-              >
+              <div className="row d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
                 <div className="col-md-8  col-sm-12 " id="startForm">
                   <Step0
                     setEmail={setEmail}

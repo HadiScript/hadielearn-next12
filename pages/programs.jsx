@@ -67,9 +67,6 @@ const Programs = ({ courses }) => {
 
               <Col md="5" xs="12" className="mb-2">
                 <form action="">
-                  <label className="sr-only" for="inlineFormInputGroupUsername">
-                    Username
-                  </label>
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <div
