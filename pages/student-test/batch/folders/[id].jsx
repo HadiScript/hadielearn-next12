@@ -46,6 +46,10 @@ const StudentBatchFolders = () => {
     }
   }, [auth && auth.token, id]);
 
+  const CallAgain = () => {
+    fetchingOnlyBatchFolders(id);
+  };
+
   return (
     <>
       <NewLayout batchID={id}>
@@ -54,11 +58,7 @@ const StudentBatchFolders = () => {
           {loading && <>loading..</>}
           <Space wrap>
             {BatchFolders.map((x) => (
-              <Tooltip
-                key={x._id}
-                title={x?.name}
-                className="d-flex align-items-center flex-column justify-content-center mx-2"
-              >
+              <Tooltip key={x._id} title={x?.name} className="d-flex align-items-center flex-column justify-content-center mx-2">
                 <FaFolder
                   color="#0f3f5d"
                   size={40}
@@ -75,14 +75,7 @@ const StudentBatchFolders = () => {
         </Card>
       </NewLayout>
 
-      <InFolders
-        open={open}
-        setOpen={setOpen}
-        current={current}
-        setCurrent={setCurrent}
-        auth={auth}
-        BatchFolders={BatchFolders}
-      />
+      <InFolders CallAgain={CallAgain} open={open} setOpen={setOpen} current={current} setCurrent={setCurrent} auth={auth} BatchFolders={BatchFolders} />
     </>
   );
 };

@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { API } from "../../../config/API";
 import { BiTrash } from "react-icons/bi";
 
-const InFolders = ({ open, setOpen, current, auth, setCurrent }) => {
+const InFolders = ({ open, setOpen, current, auth, setCurrent, CallAgain }) => {
   const [file_name, setFile_name] = useState("");
   const [file, setFile] = useState("");
   // const [public_id, setPublic_id] = useState("");
@@ -56,6 +56,7 @@ const InFolders = ({ open, setOpen, current, auth, setCurrent }) => {
       if (data.ok) {
         setUploading(false);
         toast.success("added", { position: "bottom-center" });
+        CallAgain();
         setCurrent({
           ...current,
           data: [...current.data, data.singleData],
@@ -84,6 +85,7 @@ const InFolders = ({ open, setOpen, current, auth, setCurrent }) => {
       );
       if (data.ok) {
         toast.success("Removed");
+        CallAgain();
         setCurrent({
           ...current,
           data: current.data.filter((x) => x._id !== y),
