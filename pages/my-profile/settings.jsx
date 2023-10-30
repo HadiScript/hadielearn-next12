@@ -38,7 +38,7 @@ const Settings = () => {
   const PrivacySubmit = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.put("/update-privacy", { public: enable });
+      const { data } = await axios.put(`${API}/update-privacy`, { public: enable });
       if (data.ok) {
         toast.success("Updated");
       }
