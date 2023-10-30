@@ -7,6 +7,7 @@ import axios from "axios";
 import { API } from "../../config/API";
 import { AuthContext } from "../../context/auth";
 import ProjectEditModal from "../../panel/profiling/ProjectEditModal";
+import { validateDates } from "../../utils/DatesValidations";
 
 const Portfolio = () => {
   const [auth] = useContext(AuthContext);
@@ -34,6 +35,19 @@ const Portfolio = () => {
 
   const addProject = async () => {
     setLoading(true);
+
+    if (!formData.title) {
+      setLoading(false);
+      toast.error("Title is requried");
+      return;
+    }
+
+    const errorMsg = validateDates(formData.from, formData.to, formData.current);
+    if (errorMsg) {
+      toast.error(errorMsg);
+      setLoading(false);
+      return;
+    }
     try {
       const { data } = await axios.put(`${API}/add-project`, formData);
       // console.log(data);

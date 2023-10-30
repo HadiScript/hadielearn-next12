@@ -7,6 +7,7 @@ import { AuthContext } from "../../context/auth";
 import CertEditModal from "../../panel/profiling/CertEditModal";
 import CertLists from "../../panel/profiling/CertList";
 import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
+import { validateDates } from "../../utils/DatesValidations";
 
 const Certificate = () => {
   const [auth] = useContext(AuthContext);
@@ -33,6 +34,18 @@ const Certificate = () => {
 
   const addCerticate = async () => {
     setLoading(true);
+    if (!formData.title || !formData.platform) {
+      setLoading(false);
+      toast.error("Title and platform is requried");
+      return;
+    }
+    const errorMsg = validateDates(formData.from, formData.to, formData.current);
+    if (errorMsg) {
+      toast.error(errorMsg);
+      setLoading(false);
+      return;
+    }
+
     try {
       const { data } = await axios.put(`${API}/add-certificate`, formData);
       // console.log(data);

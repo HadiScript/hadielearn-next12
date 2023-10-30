@@ -12,6 +12,7 @@ import { AiOutlineCheck, AiOutlineLogout } from "react-icons/ai";
 import { FaGraduationCap } from "react-icons/fa";
 import ProfileModal from "../../profileModal/ProfileModal";
 import { toImageUrl } from "../../../utils/ImageURL";
+import { BsCardList } from "react-icons/bs";
 
 const StuHeader = ({ page = "notFromContact" }) => {
   const [auth, setAuth] = useContext(AuthContext);
@@ -32,7 +33,16 @@ const StuHeader = ({ page = "notFromContact" }) => {
       icon: <RxAvatar size={17} />,
       onClick: () => {
         // setOpenProfile(true);
-        router.push("/my-profile/general");
+        router.push("/student-test");
+      },
+    },
+    {
+      label: "Enrollments",
+      key: "4",
+      icon: <BsCardList size={17} />,
+      onClick: () => {
+        // setOpenProfile(true);
+        router.push("/student-test/enrollments");
       },
     },
     {
@@ -40,7 +50,7 @@ const StuHeader = ({ page = "notFromContact" }) => {
     },
     {
       label: "Learning",
-      key: "0",
+      key: "1",
       icon: <FaGraduationCap size={17} />,
       onClick: () => {
         // setOpenProfile(true);
@@ -99,7 +109,7 @@ const StuHeader = ({ page = "notFromContact" }) => {
                 </div>
                 <div className="col-xl-9 col-lg-9 col-md-6 col-sm-6 col-6">
                   <div className="header__bottom-right d-flex justify-content-end align-items-center">
-                    <div className="header__btn d-none d-sm-block d-xl-block ml-50">
+                    <div className="header__btn d-none d-md-block ml-50">
                       <Dropdown menu={{ items }} className="mx-3">
                         {auth?.user?.image?.url?.includes("profileImage") ? (
                           <Avatar src={toImageUrl(auth?.user?.image?.url)}>{auth?.user?.name[0]}</Avatar>
@@ -108,11 +118,15 @@ const StuHeader = ({ page = "notFromContact" }) => {
                         )}
                       </Dropdown>
                     </div>
-                    {/* <div className="sidebar__menu d-lg-none">
+                    <div className="sidebar__menu  d-block d-md-none">
                       <Dropdown menu={{ items }} className="mx-3">
-                        <Avatar />
+                        {auth?.user?.image?.url?.includes("profileImage") ? (
+                          <Avatar src={toImageUrl(auth?.user?.image?.url)}>{auth?.user?.name[0]}</Avatar>
+                        ) : (
+                          <Avatar src={auth?.user?.image?.url}>{auth?.user?.name[0]}</Avatar>
+                        )}
                       </Dropdown>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>

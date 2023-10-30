@@ -7,38 +7,19 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../config/API";
 import { AuthContext } from "../../context/auth";
+import { useState } from "react";
+import useMyProfile from "../../panel/profiling/hooks/useMyProfile";
 
 const Studetn = () => {
   const [auth] = React.useContext(AuthContext);
 
-  const [loading, setLoading] = React.useState(false);
-  const [profile, setProfile] = React.useState({});
-
-  const gettingMyProfile = async () => {
-    setLoading(true);
-    try {
-      const { data } = await axios.get(`${API}/my-profile`);
-      console.log({ data });
-      setProfile(data._profile);
-    } catch (error) {
-      console.log(error);
-      toast.error("Failed, try again");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (auth && auth.token) {
-      gettingMyProfile();
-    }
-  }, [auth && auth.token]);
+  const { profile, loading } = useMyProfile(auth);
 
   return (
     <ProfileLayout>
       <div class="container rounded bg-white mb-5" style={{ paddingTop: "50px" }}>
         <div class="row">
-          <FirstCol user={auth?.user} skills={profile?.skills} social={profile?.social} bio={profile?.bio} />
+          {profile && <FirstCol user={auth?.user} skills={profile?.skills} social={profile?.social} bio={profile?.bio} />}
           <SecondCol profile={profile} />
         </div>
       </div>

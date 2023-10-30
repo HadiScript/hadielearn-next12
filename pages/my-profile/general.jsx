@@ -6,6 +6,7 @@ import axios from "axios";
 import { API } from "../../config/API";
 import toast from "react-hot-toast";
 import { toImageUrl } from "../../utils/ImageURL";
+import useMyProfile from "../../panel/profiling/hooks/useMyProfile";
 
 const socailsLinks = {
   youtube: "",
@@ -19,6 +20,7 @@ const socailsLinks = {
 
 const EditProfile = () => {
   const [auth, setAuth] = useContext(AuthContext);
+  const { profile, refetch } = useMyProfile(auth);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -60,6 +62,12 @@ const EditProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let _API;
+    if (!profile) {
+      _API = `${API}/_profile`;
+    } else if (profile) {
+      _API = `${API}/update/_profile`;
+    }
 
     setLoading(true);
 
@@ -89,7 +97,8 @@ const EditProfile = () => {
 
     // return;
     try {
-      const { data } = await axios.post(`${API}/_profile`, _formData);
+      const { data } = await axios.post(_API, _formData);
+      refetch();
 
       if (data?.error) {
         toast.error(data.error);
@@ -180,7 +189,7 @@ const EditProfile = () => {
             <div className="form-group py-2">
               <label> Status </label>
               <input
-                maxLength={20}
+                maxLength={100}
                 type="text"
                 className="form-control"
                 placeholder="Student or deveoper and etc..."

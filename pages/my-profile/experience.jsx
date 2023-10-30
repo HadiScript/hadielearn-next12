@@ -11,6 +11,7 @@ import { AuthContext } from "../../context/auth";
 import { BsPen } from "react-icons/bs";
 import ExpEditModal from "../../panel/profiling/ExpEditModal";
 import ExpLists from "../../panel/profiling/ExpLists";
+import { validateDates } from "../../utils/DatesValidations";
 
 const Experience = () => {
   const [auth] = useContext(AuthContext);
@@ -40,6 +41,20 @@ const Experience = () => {
 
   const addExperience = async () => {
     setLoading(true);
+
+    if (!formData.title || !formData.company || !formData.typeOfJob) {
+      setLoading(false);
+      toast.error("Title, company and type of job is requried");
+      return;
+    }
+
+    const errorMsg = validateDates(formData.from, formData.to, formData.current);
+    if (errorMsg) {
+      toast.error(errorMsg);
+      setLoading(false);
+      return;
+    }
+
     try {
       const { data } = await axios.put(`${API}/add-exp`, formData);
       // console.log(data);

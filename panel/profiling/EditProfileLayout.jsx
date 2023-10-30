@@ -49,14 +49,29 @@ const navsData = [
 
 const EditProfileLayout = ({ children }) => {
   const pathname = useRouter().pathname;
+  const router = useRouter();
   return (
     <ProfileLayout>
-      <div
-        class="container rounded bg-white mb-5"
-        style={{ paddingTop: "50px" }}
-      >
-        <div className="row">
-          <div className="col-md-3">
+      <div className="container rounded bg-white mb-5" style={{ paddingTop: "50px" }}>
+        <div className="d-flex gap-3 d-block d-md-none pb-3 mb-1 overflow-auto">
+          {navsData?.map((x) => (
+            <b
+              className="text-dark"
+              style={{
+                padding: "10px",
+                borderRadius: "10px",
+                backgroundColor: `${x.path === pathname && "rgba(0,0,0,0.2)"}`,
+              }}
+              onClick={() => router.push(x.path)}
+              key={x.title}
+            >
+              {x.title}
+            </b>
+          ))}
+        </div>
+
+        <div className="row ">
+          <div className="col-md-3 d-none d-md-block">
             <List
               itemLayout="horizontal"
               dataSource={navsData}
@@ -69,9 +84,7 @@ const EditProfileLayout = ({ children }) => {
                           style={{
                             padding: "10px",
                             borderRadius: "10px",
-                            backgroundColor: `${
-                              item.path === pathname && "rgba(0,0,0,0.2)"
-                            }`,
+                            backgroundColor: `${item.path === pathname && "rgba(0,0,0,0.2)"}`,
                           }}
                           role="button"
                           className="d-flex justify-content-start align-items-center gap-3"
@@ -85,6 +98,7 @@ const EditProfileLayout = ({ children }) => {
               )}
             />
           </div>
+
           <div className="col-md-8">{children}</div>
         </div>
       </div>

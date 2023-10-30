@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import EducationEditModal from "../../panel/profiling/EducationEditModal";
 import EduList from "../../panel/profiling/EduList";
+import { validateDates } from "../../utils/DatesValidations";
 
 const Education = () => {
   const [auth] = useContext(AuthContext);
@@ -36,12 +37,26 @@ const Education = () => {
 
   const addEducation = async () => {
     setLoading(true);
+
+    if (!formData.school || !formData.degree) {
+      setLoading(false);
+      toast.error("School and degree is requried");
+      return;
+    }
+
+    const errorMsg = validateDates(formData.from, formData.to, formData.current);
+    if (errorMsg) {
+      toast.error(errorMsg);
+      setLoading(false);
+      return;
+    }
     try {
       const { data } = await axios.put(`${API}/add-education`, formData);
       // console.log(data);
       if (data.ok) {
         toast.success("Added");
-        setEduList([...eduList, data.education]);
+        myEducation();
+        // setEduList([...eduList, data.education]);
       } else if (data.error) {
         toast.error(data.error);
       }

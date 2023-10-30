@@ -1,5 +1,5 @@
 import { Button, Card, List, Tag } from "antd";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaBehance, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaUser, FaYoutube } from "react-icons/fa";
 import TopHeader from "../../components/partials/TopHeader";
 import Footer from "../../components/partials/Footer";
@@ -8,9 +8,13 @@ import axios from "axios";
 import { API } from "../../config/API";
 import moment from "moment";
 import SEOHead from "../../components/functions/SEOHead";
+
+import { toImageUrl } from "../../utils/ImageURL";
+import { BsShieldCheck } from "react-icons/bs";
+import { MdLocationOn } from "react-icons/md";
+import { AuthContext } from "../../context/auth";
 import useCourses from "../../panel/newLMS/hooks/useCourses";
 import Link from "next/link";
-import { toImageUrl } from "../../utils/ImageURL";
 
 const data = [
   {
@@ -46,30 +50,36 @@ const PublicProfileDetails = ({ profile, error }) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const {
-    courses: { courses },
-  } = useCourses({ want: "shorts" });
+  const { courses } = useCourses({ want: "shorts" });
 
   return (
     <>
       <SEOHead title={profile?.user?.name?.toUpperCase()} desc={`Hadi Elearning | ${profile?.bio}`} conLink={`https://hadielearning.com/profile/${id}`} />
       <TopHeader />
 
-      <div class="container rounded bg-white mb-5" style={{ paddingTop: "100px" }}>
-        <div class="row">
+      <div className="container rounded bg-white mb-5" style={{ paddingTop: "100px" }}>
+        <div className="row">
           {/* first col */}
-          <div class="col-lg-3 border-right ">
+          <div className="col-lg-3 border-right ">
             <Card className="CardieBg">
-              <div class="d-flex flex-column align-items-center text-center p-3 pt-5">
+              <div className="d-flex flex-column align-items-center text-center p-2 pt-5">
                 {profile?.user?.image?.url ? (
-                  <img class="rounded-circle mt-5" height={150} width={150} src={toImageUrl(profile?.user?.image?.url)} />
+                  <img className="rounded-circle mt-5" height={150} width={150} src={toImageUrl(profile?.user?.image?.url)} />
                 ) : (
                   <FaUser size={150} color="gray" />
                 )}
-                <span class="text-light mt-2">
-                  <b>{profile?.user?.name}</b> - {profile?.user?.role}
+                <span className="text-light mt-2">
+                  <b>
+                    {profile?.user?.name} {profile?.user?.role === "instructor" && <BsShieldCheck />}{" "}
+                  </b>
                 </span>
-                <span class="text-light">{profile?.bio?.slice(0, 80)}...</span>
+                {/* <span className="text-light">{profile?.bio?.slice(0, 80)}...</span> */}
+                <span className="text-light">{profile?.status}</span>
+                {profile?.location && (
+                  <span className="d-flex align-items-center gap-1 text-light">
+                    {profile?.location} <MdLocationOn />
+                  </span>
+                )}
               </div>
               {profile.skills.length > 0 && (
                 <>
@@ -130,7 +140,7 @@ const PublicProfileDetails = ({ profile, error }) => {
           </div>
 
           {/* second col */}
-          <div class="col-lg-5" style={{ paddingTop: "0px" }}>
+          <div id="color" className="col-lg-5" style={{ paddingTop: "0px" }}>
             <Card title="Bio" className="mt-10">
               <p>{profile?.bio}</p>
             </Card>
@@ -264,11 +274,11 @@ const PublicProfileDetails = ({ profile, error }) => {
           </div>
 
           {/* third col */}
-          <div class="col-lg-4 mt-5">
-            <h4 class="text-right">Relavent Courses</h4>
+          <div className="col-lg-4 mt-5">
+            <h4 className="text-right">Relavent Courses</h4>
             {courses?.map((x) => (
               <Card className="mb-3">
-                <div class="d-flex justify-content-start align-items-center gap-2">
+                <div className="d-flex justify-content-start align-items-center gap-2">
                   <img
                     src={x?.image?.url}
                     width={80}
@@ -277,11 +287,11 @@ const PublicProfileDetails = ({ profile, error }) => {
                       border: "1px solid rgba(15, 63, 93, 1)",
                     }}
                   />
-                  <span class="d-flex flex-column justify-content-start align-items-start ">
+                  <span className="d-flex flex-column justify-content-start align-items-start ">
                     <Link href={`/program/${x?.slug}`}>
                       <h6 role="button">{x?.title}</h6>
                     </Link>
-                    {/* <Tag color="rgba(15, 63, 93, 1)">Enroll</Tag> */}
+                    <Tag color="rgba(15, 63, 93, 1)">Enroll</Tag>
                   </span>
                 </div>
               </Card>

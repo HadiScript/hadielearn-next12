@@ -67,14 +67,14 @@ const SecondCol = ({ profile }) => {
   return (
     <>
       {profile === null ? (
-        <div class="col-lg-8" style={{ paddingTop: "0px" }}>
+        <div class="col-lg-12" style={{ paddingTop: "0px" }}>
           <Card className="text-center" title="Please update your profile">
             <Button
               onClick={() => router.push("/my-profile/general")}
               style={{ ...CardieBg, color: "white" }}
               icon={<EditFilled />}
             >
-              Edit Profile
+              Create Profile
             </Button>
           </Card>
         </div>
