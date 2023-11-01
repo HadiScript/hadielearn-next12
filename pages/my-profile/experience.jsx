@@ -12,6 +12,7 @@ import { BsPen } from "react-icons/bs";
 import ExpEditModal from "../../panel/profiling/ExpEditModal";
 import ExpLists from "../../panel/profiling/ExpLists";
 import { validateDates } from "../../utils/DatesValidations";
+import ProfileForm from "../../panel/profiling/ProfileForm";
 
 const Experience = () => {
   const [auth] = useContext(AuthContext);
@@ -25,6 +26,11 @@ const Experience = () => {
     location: "",
     company: "",
   });
+  const [formErrors, setFormErrors] = useState({
+    from: "",
+    to: "",
+    current: "",
+  });
 
   const [loading, setLoading] = useState(false);
   const [expList, setExpList] = useState([]);
@@ -34,26 +40,29 @@ const Experience = () => {
   const changesFormData = (e) => {
     if (e.target.name !== "current") {
       setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     } else {
       setFormData({ ...formData, current: !formData.current });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     }
   };
 
   const addExperience = async () => {
-    setLoading(true);
+    if (formErrors.from) {
+      return;
+    }
 
     if (!formData.title || !formData.company || !formData.typeOfJob) {
-      setLoading(false);
       toast.error("Title, company and type of job is requried");
       return;
     }
-
-    const errorMsg = validateDates(formData.from, formData.to, formData.current);
-    if (errorMsg) {
-      toast.error(errorMsg);
-      setLoading(false);
-      return;
-    }
+    setLoading(true);
 
     try {
       const { data } = await axios.put(`${API}/add-exp`, formData);
@@ -134,9 +143,17 @@ const Experience = () => {
     }
   }, [auth && auth?.token]);
 
+  useEffect(() => {
+    const errorMsgs = validateDates(formData.from, formData.to, formData.current);
+    if (Object.keys(errorMsgs).length > 0) {
+      setFormErrors(errorMsgs);
+      return;
+    }
+  }, [formData.from, formData.to, formData.current]);
+
   return (
     <EditProfileLayout>
-      <Card title="Experience">
+      {/* <Card title="Experience">
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
@@ -171,6 +188,7 @@ const Experience = () => {
               <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
             </div>
           </div>
+          {formErrors.from && <div className="text-danger">{formErrors.from}</div>}
         </div>
 
         <div className="col-md-12">
@@ -209,7 +227,9 @@ const Experience = () => {
             Submit
           </Button>
         </div>
-      </Card>
+      </Card> */}
+
+      <ProfileForm formData={formData} which={"exp"} changesFormData={changesFormData} addFunc={addExperience} loading={loading} formErrors={formErrors} />
 
       <ExpLists from="editing-page" expData={expList} deleteExperience={deleteExperience} setCurrent={setCurrent} setOpen={setOpen} />
 

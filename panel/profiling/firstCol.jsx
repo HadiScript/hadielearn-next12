@@ -1,4 +1,4 @@
-import { Button, Card, Tag } from "antd";
+import { Avatar, Button, Card, Tag } from "antd";
 import React from "react";
 import { BsYoutube } from "react-icons/bs";
 import { FaBehance, FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -13,11 +13,8 @@ const FirstCol = ({ user, skills, social, bio }) => {
   return (
     <div class="col-lg-3 border-right ">
       <Card style={CardieBg}>
-        <div className="d-flex justify-content-end">
-          <Button icon={<MdUploadFile />}>Upload Image</Button>
-        </div>
         <div class="d-flex flex-column align-items-center text-center p-3 pt-5">
-          {user?.image?.url && <img class="rounded-circle mt-5" width="150px" src={toImageUrl(user?.image?.url)} />}
+          {user?.image?.url && <Avatar class="mt-5" src={toImageUrl(user?.image?.url)} style={{ height: "150px", width: "150px" }} />}
 
           <span class="text-light mt-3">
             <b>{user?.name}</b>

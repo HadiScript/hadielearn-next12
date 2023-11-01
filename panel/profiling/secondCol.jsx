@@ -2,15 +2,7 @@ import React from "react";
 import { CardieBg } from "./firstCol";
 import { EditFilled } from "@ant-design/icons";
 import { Avatar, Button, Card, List } from "antd";
-import {
-  FaAndroid,
-  FaAngular,
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaNodeJs,
-  FaReact,
-} from "react-icons/fa";
+import { FaAndroid, FaAngular, FaFacebook, FaInstagram, FaLinkedin, FaNodeJs, FaReact } from "react-icons/fa";
 import { useRouter } from "next/router";
 import ExpLists from "./ExpLists";
 import EduList from "./EduList";
@@ -24,13 +16,7 @@ const data = [
     type: "full time",
     from: "Feb 2023",
     to: "Present",
-    skills: [
-      "ReactJs",
-      "NodeJS",
-      "Html/css",
-      "Agile Development",
-      "Mean Stack",
-    ],
+    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
   },
   {
     title: "Frontend Developer",
@@ -38,13 +24,7 @@ const data = [
     type: "full time",
     from: "Feb 2021",
     to: "Feb 2023",
-    skills: [
-      "ReactJs",
-      "NodeJS",
-      "Html/css",
-      "Agile Development",
-      "Mean Stack",
-    ],
+    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
   },
   {
     title: "Blockchain Developer",
@@ -52,28 +32,20 @@ const data = [
     type: "full time",
     from: "Feb 2020",
     to: "Feb 2021",
-    skills: [
-      "ReactJs",
-      "NodeJS",
-      "Html/css",
-      "Agile Development",
-      "Mean Stack",
-    ],
+    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
   },
 ];
 
-const SecondCol = ({ profile }) => {
+const SecondCol = ({ profile, loading }) => {
   const router = useRouter();
   return (
     <>
-      {profile === null ? (
+      {loading ? (
+        "loading..."
+      ) : profile === null ? (
         <div class="col-lg-12" style={{ paddingTop: "0px" }}>
           <Card className="text-center" title="Please update your profile">
-            <Button
-              onClick={() => router.push("/my-profile/general")}
-              style={{ ...CardieBg, color: "white" }}
-              icon={<EditFilled />}
-            >
+            <Button onClick={() => router.push("/my-profile/general")} style={{ ...CardieBg, color: "white" }} icon={<EditFilled />}>
               Create Profile
             </Button>
           </Card>
@@ -84,11 +56,7 @@ const SecondCol = ({ profile }) => {
             title={
               <div className="d-flex justify-content-between align-items-center">
                 <span>About</span>
-                <Button
-                  onClick={() => router.push("/my-profile/general")}
-                  style={{ ...CardieBg, color: "white" }}
-                  icon={<EditFilled />}
-                >
+                <Button onClick={() => router.push("/my-profile/general")} style={{ ...CardieBg, color: "white" }} icon={<EditFilled />}>
                   Edit
                 </Button>
               </div>
@@ -102,11 +70,7 @@ const SecondCol = ({ profile }) => {
             title={
               <div className="d-flex justify-content-between align-items-center">
                 <span>Skills</span>
-                <Button
-                  onClick={() => router.push("/my-profile/skills")}
-                  style={{ ...CardieBg, color: "white" }}
-                  icon={<EditFilled />}
-                >
+                <Button onClick={() => router.push("/my-profile/skills")} style={{ ...CardieBg, color: "white" }} icon={<EditFilled />}>
                   Edit
                 </Button>
               </div>

@@ -7,7 +7,7 @@ import { API } from "../../../config/API";
 import { useState } from "react";
 import { AuthContext } from "../../../context/auth";
 import { useContext } from "react";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row, Skeleton } from "antd";
 import CTA from "../../../components/partials/CTA";
 import Footer from "../../../components/partials/Footer";
 import { FiExternalLink } from "react-icons/fi";
@@ -29,7 +29,7 @@ const MyAllBatches = () => {
         },
       });
       setLoading(false);
-      // console.log(data, ".from getll batches");
+      console.log(data, ".from getll batches");
       setMyBatches(data.enrolledBatches);
     } catch (error) {
       toast.error("Failed, try again");
@@ -45,35 +45,54 @@ const MyAllBatches = () => {
 
   return (
     <>
-      <div className="container  pt-100 pb-80">
-        <div className="row">
-          <div className="col-xl-7">
-            <div className="section-title section__title-3 mb-70">
-              <h2>
-                Welcome
-                <span className="text-capitalize"> {auth?.user?.name} </span>
-              </h2>
-              {loading && <div className="my-5">loading...</div>}
-            </div>
-          </div>
+      <div className="container d-flex flex-column justify-content-center align-items-center mt-100">
+        {/* <Fade bottom cascade> */}
+        <div className="page__title-content">
+          <h1 className="pragrams-h1 text-center" style={{ fontSize: "40px", color: "#0f3f5d" }}>
+            My enrollments
+          </h1>
         </div>
-
+        <p className="text-center mb-4 mt-3" style={{ maxWidth: "800px" }}>
+          <em>
+            We have got all your digital skill training needs covered with our extensive offered program list. All you have to do is to explore our program list, choose the program
+            of your choice, and take your first step toward financial independence.
+          </em>
+        </p>
+      </div>
+      <div className="container pt-40 pb-80">
         <Row>
-          {myBatches.length > 0 ? (
+          {loading ? (
+            <Col sm={24} md={6} lg={6} className="mx-3">
+              <Skeleton />
+            </Col>
+          ) : myBatches.length > 0 ? (
             myBatches?.map((x) => (
               <Col sm={24} md={6} lg={6} key={x._id}>
                 <Card
+                  onClick={() => router.push(`/student-test/batch/description/${x._id}`)}
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src={x.courseDetails?.image?.url} />}
+                >
+                  <Meta
+                    title={x.courseDetails?.title}
+                    description={
+                      <>
+                        <b>{x.title}</b>
+                        <div className="d-flex justify-content-start align-items-center gap-2">
+                          Batch <FiExternalLink />
+                        </div>
+                      </>
+                    }
+                  />
+                </Card>
+                {/* <Card
                   style={{
                     width: 300,
                     borderRight: "2px solid #0f3f5d",
                   }}
                   actions={[
-                    <span
-                      onClick={() =>
-                        router.push(`/student-test/batch/description/${x._id}`)
-                      }
-                      className="d-flex justify-content-center align-items-center gap-2"
-                    >
+                    <span onClick={() => router.push(`/student-test/batch/description/${x._id}`)} className="d-flex justify-content-center align-items-center gap-2">
                       Batch <FiExternalLink />
                     </span>,
                   ]}
@@ -81,17 +100,14 @@ const MyAllBatches = () => {
                   <Meta
                     title={
                       <Link href={`/student-test/batch/description/${x._id}`}>
-                        <span
-                          role="button"
-                          style={{ fontWeight: "bold", color: "#0f3f5d" }}
-                        >
+                        <span role="button" style={{ fontWeight: "bold", color: "#0f3f5d" }}>
                           {x.title}
                         </span>
                       </Link>
                     }
                     description={x._id}
                   />
-                </Card>
+                </Card> */}
               </Col>
             ))
           ) : (

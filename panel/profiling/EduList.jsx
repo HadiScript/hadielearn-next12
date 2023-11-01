@@ -61,7 +61,7 @@ const EduList = ({
                   <b>{item.school}</b>
                   <br />
                   <>
-                    {item?.from?.slice(0, 10)} -{" "}
+                    {item?.from?.slice(0, 10)} - {" "}
                     {item?.current ? "current" : item?.to?.slice(0, 10)}
                   </>
                   <br />

@@ -48,7 +48,7 @@ const StudentEnrollments = ({ auth }) => {
         <Fade bottom cascade>
           <div className="page__title-content">
             <h1 className="pragrams-h1 text-center" style={{ fontSize: "40px", color: "#0f3f5d" }}>
-              Your all enrollments
+              My enrollments
             </h1>
           </div>
           <p className="text-center mb-4 mt-3" style={{ maxWidth: "800px" }}>

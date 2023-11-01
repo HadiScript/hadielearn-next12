@@ -8,6 +8,7 @@ import CertEditModal from "../../panel/profiling/CertEditModal";
 import CertLists from "../../panel/profiling/CertList";
 import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
 import { validateDates } from "../../utils/DatesValidations";
+import ProfileForm from "../../panel/profiling/ProfileForm";
 
 const Certificate = () => {
   const [auth] = useContext(AuthContext);
@@ -23,28 +24,37 @@ const Certificate = () => {
   const [certList, setCertList] = useState([]);
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
+  const [formErrors, setFormErrors] = useState({
+    from: "",
+    to: "",
+    current: "",
+  });
 
   const changesFormData = (e) => {
     if (e.target.name !== "current") {
       setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     } else {
       setFormData({ ...formData, current: !formData.current });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     }
   };
 
   const addCerticate = async () => {
-    setLoading(true);
     if (!formData.title || !formData.platform) {
-      setLoading(false);
       toast.error("Title and platform is requried");
       return;
     }
-    const errorMsg = validateDates(formData.from, formData.to, formData.current);
-    if (errorMsg) {
-      toast.error(errorMsg);
-      setLoading(false);
+    if (formErrors.from) {
       return;
     }
+    setLoading(true);
 
     try {
       const { data } = await axios.put(`${API}/add-certificate`, formData);
@@ -125,9 +135,17 @@ const Certificate = () => {
     }
   }, [auth && auth?.token]);
 
+  useEffect(() => {
+    const errorMsgs = validateDates(formData.from, formData.to, formData.current);
+    if (Object.keys(errorMsgs).length > 0) {
+      setFormErrors(errorMsgs);
+      return;
+    }
+  }, [formData.from, formData.to, formData.current]);
+
   return (
     <EditProfileLayout>
-      <Card title="Certificates">
+      {/* <Card title="Certificates">
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
@@ -169,7 +187,9 @@ const Certificate = () => {
             Submit
           </Button>
         </div>
-      </Card>
+      </Card> */}
+
+      <ProfileForm loading={loading} addFunc={addCerticate} formErrors={formErrors} which={"cert"} formData={formData} changesFormData={changesFormData} />
 
       <CertLists certData={certList} deleteCertificate={deleteCertificate} setCurrent={setCurrent} setOpen={setOpen} />
 

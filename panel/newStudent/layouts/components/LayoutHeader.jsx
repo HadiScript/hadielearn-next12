@@ -1,16 +1,17 @@
 import React, { useState, useContext } from "react";
 
-import { CloseOutlined, LogoutOutlined, MenuOutlined } from "@ant-design/icons";
-import { AiOutlineUser } from "react-icons/ai";
+import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
+import { AiOutlineCheck, AiOutlineLogout } from "react-icons/ai";
 import { AuthContext } from "../../../../context/auth";
 
 import { Avatar, Button, Drawer, Dropdown, Grid, Layout } from "antd";
 import { GoLinkExternal } from "react-icons/go";
 import StuNavs from "../StuNavs";
-import BatchNotification from "../../modals/batchNotification";
 import ProfileModal from "../../../profileModal/ProfileModal";
-import { BsFillBellFill } from "react-icons/bs";
+import { BsCardList, BsFillBellFill } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { RxAvatar } from "react-icons/rx";
+import { FaGraduationCap } from "react-icons/fa";
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
 
@@ -25,30 +26,57 @@ const LayoutHeader = ({ showDrawer, batch, notice, closeDrawer, drawerVisibility
 
   const items = [
     {
-      key: "1",
-      label: <span>Profile</span>,
-      icon: <AiOutlineUser />,
+      label: auth?.user?.name,
+      key: "0",
+      icon: <RxAvatar size={17} />,
       onClick: () => {
+        // setOpenProfile(true);
         router.push("/student-test");
-        // setOpenProfile(true)
       },
     },
     {
+      label: "Enrollments",
+      key: "4",
+      icon: <BsCardList size={17} />,
+      onClick: () => {
+        // setOpenProfile(true);
+        router.push("/student-test/enrollments");
+      },
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: "Learning",
+      key: "1",
+      icon: <FaGraduationCap size={17} />,
+      onClick: () => {
+        // setOpenProfile(true);
+        router.push("/student-test/learning");
+      },
+    },
+    {
+      label: "Completed Batches",
       key: "2",
-      label: (
-        <span target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-          Logout
-        </span>
-      ),
-      icon: <LogoutOutlined />,
+      disabled: true,
+      icon: <AiOutlineCheck size={17} />,
+      onClick: () => {},
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: "Logout",
       onClick: (e) => {
         localStorage.removeItem("auth");
         setAuth({
           user: null,
           token: "",
         });
-        router.push("/auth/login");
+        router.push("/");
       },
+      key: "3",
+      icon: <AiOutlineLogout size={17} />,
     },
   ];
 

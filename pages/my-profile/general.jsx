@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Button, Card } from "antd";
+import { Avatar, Button, Card } from "antd";
 import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
 import { AuthContext } from "../../context/auth";
 import axios from "axios";
@@ -132,7 +132,7 @@ const EditProfile = () => {
       <Card title={`General Info ${profileLoading ? "loading..." : ""}`}>
         {image && !preImage && (
           <div className="form-group text-center py-2">
-            <img width="auto" height={50} src={window?.URL.createObjectURL(image)} onClick={() => setImage()} />
+            <Avatar width="auto" style={{ height: "150px", width: "150px" }} src={window?.URL.createObjectURL(image)} onClick={() => setImage()} />
             <br />
             <small>Just click on image to remove.</small>
           </div>
@@ -147,10 +147,8 @@ const EditProfile = () => {
 
         {preImage && (
           <div className="form-group text-center py-2">
-            <img
-              width="auto"
-              style={{ borderRadius: "50%" }}
-              height={100}
+            <Avatar
+              style={{ height: "150px", width: "150px" }}
               src={toImageUrl(preImage)}
               onClick={() => {
                 setImage();

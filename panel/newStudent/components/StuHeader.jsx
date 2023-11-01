@@ -85,7 +85,6 @@ const StuHeader = ({ page = "notFromContact" }) => {
   return (
     <>
       <header>
-        {/* {JSON.stringify(auth)} */}
         <div
           className={`header__area p-relative ${page === "notFromContact" && "header__transparent"}`}
           style={{
@@ -109,8 +108,8 @@ const StuHeader = ({ page = "notFromContact" }) => {
                 </div>
                 <div className="col-xl-9 col-lg-9 col-md-6 col-sm-6 col-6">
                   <div className="header__bottom-right d-flex justify-content-end align-items-center">
-                    <div className="header__btn d-none d-md-block ml-50">
-                      <Dropdown menu={{ items }} className="mx-3">
+                    <div className="header__btn d-none d-md-block ml-50 ">
+                      <Dropdown menu={{ items }} className="custom-dropdown">
                         {auth?.user?.image?.url?.includes("profileImage") ? (
                           <Avatar src={toImageUrl(auth?.user?.image?.url)}>{auth?.user?.name[0]}</Avatar>
                         ) : (

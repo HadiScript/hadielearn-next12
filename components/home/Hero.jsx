@@ -8,7 +8,7 @@ import Typewriter from "typewriter-effect";
 const Hero = () => {
   const settings = {
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 7000,
     speed: 500,
     infinite: true,
     dots: true,
@@ -76,11 +76,11 @@ const Hero = () => {
                   <Fade bottom cascade>
                     <div className="about__content">
                       <h1 style={{ fontSize: "60px", maxWidth: "450px" }}>
-                        Hadi E-learning providing
+                        Hadi E-learning providing you
                         <span style={{ color: "#0f3f5d" }}>
                           <Typewriter
                             options={{
-                              strings: ["you", "with free", "IT training"],
+                              strings: ["Free IT", "training"],
                               autoStart: true,
                               loop: true,
                             }}
@@ -167,7 +167,7 @@ const Hero = () => {
                         <span style={{ color: "#0f3f5d" }}>
                           <Typewriter
                             options={{
-                              strings: ["Enhancing", "your", "skills"],
+                              strings: ["Quality", "skills"],
                               autoStart: true,
                               loop: true,
                             }}
@@ -254,7 +254,7 @@ const Hero = () => {
                         <span style={{ color: "#0f3f5d" }}>
                           <Typewriter
                             options={{
-                              strings: ["Making", "you", "financially", "independent"],
+                              strings: ["Opportunities"],
                               autoStart: true,
                               loop: true,
                             }}

@@ -10,6 +10,7 @@ import { AuthContext } from "../../context/auth";
 import EducationEditModal from "../../panel/profiling/EducationEditModal";
 import EduList from "../../panel/profiling/EduList";
 import { validateDates } from "../../utils/DatesValidations";
+import ProfileForm from "../../panel/profiling/ProfileForm";
 
 const Education = () => {
   const [auth] = useContext(AuthContext);
@@ -22,6 +23,12 @@ const Education = () => {
     description: "",
   });
 
+  const [formErrors, setFormErrors] = useState({
+    from: "",
+    to: "",
+    current: "",
+  });
+
   const [loading, setLoading] = useState(false);
   const [eduList, setEduList] = useState([]);
   const [current, setCurrent] = useState({});
@@ -30,26 +37,30 @@ const Education = () => {
   const changesFormData = (e) => {
     if (e.target.name !== "current") {
       setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     } else {
       setFormData({ ...formData, current: !formData.current });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     }
   };
 
   const addEducation = async () => {
-    setLoading(true);
-
+    if (formErrors.from) {
+      return;
+    }
     if (!formData.school || !formData.degree) {
-      setLoading(false);
       toast.error("School and degree is requried");
       return;
     }
 
-    const errorMsg = validateDates(formData.from, formData.to, formData.current);
-    if (errorMsg) {
-      toast.error(errorMsg);
-      setLoading(false);
-      return;
-    }
+    setLoading(true);
+
     try {
       const { data } = await axios.put(`${API}/add-education`, formData);
       // console.log(data);
@@ -125,6 +136,14 @@ const Education = () => {
   };
 
   useEffect(() => {
+    const errorMsgs = validateDates(formData.from, formData.to, formData.current);
+    if (Object.keys(errorMsgs).length > 0) {
+      setFormErrors(errorMsgs);
+      return;
+    }
+  }, [formData.from, formData.to, formData.current]);
+
+  useEffect(() => {
     if (auth && auth?.token) {
       myEducation();
     }
@@ -132,7 +151,7 @@ const Education = () => {
 
   return (
     <EditProfileLayout>
-      <Card title="Education">
+      {/* <Card title="Education">
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
@@ -181,7 +200,9 @@ const Education = () => {
             Submit
           </Button>
         </div>
-      </Card>
+      </Card> */}
+
+      <ProfileForm which={"edu"} formData={formData} changesFormData={changesFormData} addFunc={addEducation} loading={loading} formErrors={formErrors} />
 
       {/* list of educations */}
       <EduList from="editing-page" eduList={eduList} deleteEducation={deleteEducation} setCurrent={setCurrent} setOpen={setOpen} />

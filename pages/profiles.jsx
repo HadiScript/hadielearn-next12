@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TopHeader from "../components/partials/TopHeader";
-import { Card, Col, Row, Tag } from "antd";
+import { Avatar, Card, Col, Row, Tag } from "antd";
 import Footer from "../components/partials/Footer";
 import { FaSearch, FaUser } from "react-icons/fa";
 import { useRouter } from "next/router";
@@ -107,7 +107,7 @@ const Profiles = ({ profiles, error }) => {
                 <Card className="profiles-card" onClick={() => router.push(`/profile/${x?._id}`)} role="button" style={{ border: "1px solid rgba(15, 63, 93, 1)" }}>
                   <div className="d-flex flex-column align-items-center text-center p-3 pt-5">
                     {x?.user?.image?.url ? (
-                      <img className="rounded-circle mt-5" height={150} width={150} src={toImageUrl(x?.user?.image?.url)} />
+                      <Avatar className="mt-5" style={{ height: "100px", width: "100px" }} src={toImageUrl(x?.user?.image?.url)} />
                     ) : (
                       <FaUser size={150} color="gray" />
                     )}
@@ -115,7 +115,7 @@ const Profiles = ({ profiles, error }) => {
                     <span className="d-flex align-items-center gap-2 text-dark mt-2">
                       <b>{x?.user?.name} </b> {x?.user?.role === "instructor" && <BsShieldCheck color="blue" />}
                     </span>
-                    <span className="text-muted">{x?.bio.slice(0, 80)}...</span>
+                    <span className="text-muted">{x?.status.slice(0, 20)}...</span>
                     <span className="text-muted mt-3">
                       {x?.skills?.slice(0, 3).map((x, index) => (
                         <Tag key={index}>{x}</Tag>

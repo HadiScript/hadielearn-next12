@@ -8,6 +8,7 @@ import { API } from "../../config/API";
 import { AuthContext } from "../../context/auth";
 import ProjectEditModal from "../../panel/profiling/ProjectEditModal";
 import { validateDates } from "../../utils/DatesValidations";
+import ProfileForm from "../../panel/profiling/ProfileForm";
 
 const Portfolio = () => {
   const [auth] = useContext(AuthContext);
@@ -25,29 +26,38 @@ const Portfolio = () => {
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
 
+  const [formErrors, setFormErrors] = useState({
+    from: "",
+    to: "",
+    current: "",
+  });
+
   const changesFormData = (e) => {
     if (e.target.name !== "current") {
       setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     } else {
       setFormData({ ...formData, current: !formData.current });
+      setFormErrors((prevState) => ({
+        ...prevState,
+        [e.target.name]: "",
+      }));
     }
   };
 
   const addProject = async () => {
-    setLoading(true);
-
     if (!formData.title) {
-      setLoading(false);
       toast.error("Title is requried");
       return;
     }
-
-    const errorMsg = validateDates(formData.from, formData.to, formData.current);
-    if (errorMsg) {
-      toast.error(errorMsg);
-      setLoading(false);
+    if (formErrors.from) {
       return;
     }
+    setLoading(true);
+
     try {
       const { data } = await axios.put(`${API}/add-project`, formData);
       // console.log(data);
@@ -127,9 +137,17 @@ const Portfolio = () => {
     }
   }, [auth && auth?.token]);
 
+  useEffect(() => {
+    const errorMsgs = validateDates(formData.from, formData.to, formData.current);
+    if (Object.keys(errorMsgs).length > 0) {
+      setFormErrors(errorMsgs);
+      return;
+    }
+  }, [formData.from, formData.to, formData.current]);
+
   return (
     <EditProfileLayout>
-      <Card title={"Portfolio"}>
+      {/* <Card title={"Portfolio"}>
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
@@ -178,7 +196,9 @@ const Portfolio = () => {
             Submit
           </Button>
         </div>
-      </Card>
+      </Card> */}
+
+      <ProfileForm loading={loading} formData={formData} changesFormData={changesFormData} addFunc={addProject} formErrors={formErrors} which={"port"} />
 
       <ProjectList projectData={projectData} from={"editing-page"} deleteProject={deleteProject} setCurrent={setCurrent} setOpen={setOpen} />
 

@@ -60,7 +60,7 @@ const CertLists = ({
                 <>
                   <b>{item.platform}</b>
                   <br />
-                  {item.from} - {item.to || "Present"}
+                  {item.from?.slice(0,10)} - {item.to?.slice(0,10) || "Present"}
                 </>
               }
             />

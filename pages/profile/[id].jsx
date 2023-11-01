@@ -1,4 +1,4 @@
-import { Button, Card, List, Tag } from "antd";
+import { Avatar, Button, Card, List, Tag } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { FaBehance, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaUser, FaYoutube } from "react-icons/fa";
 import TopHeader from "../../components/partials/TopHeader";
@@ -57,14 +57,14 @@ const PublicProfileDetails = ({ profile, error }) => {
       <SEOHead title={profile?.user?.name?.toUpperCase()} desc={`Hadi Elearning | ${profile?.bio}`} conLink={`https://hadielearning.com/profile/${id}`} />
       <TopHeader />
 
-      <div className="container rounded bg-white mb-5" style={{ paddingTop: "100px" }}>
+      <div className="container rounded bg-white mb-5" style={{ paddingTop: "100px", paddingBottom : "100px" }}>
         <div className="row">
           {/* first col */}
           <div className="col-lg-3 border-right ">
             <Card className="CardieBg">
               <div className="d-flex flex-column align-items-center text-center p-2 pt-5">
                 {profile?.user?.image?.url ? (
-                  <img className="rounded-circle mt-5" height={150} width={150} src={toImageUrl(profile?.user?.image?.url)} />
+                  <Avatar className="mt-5" style={{ height: "150px", width: "150px" }} src={toImageUrl(profile?.user?.image?.url)} />
                 ) : (
                   <FaUser size={150} color="gray" />
                 )}
