@@ -7,6 +7,7 @@ import { API } from "../../config/API";
 import toast from "react-hot-toast";
 import { toImageUrl } from "../../utils/ImageURL";
 import useMyProfile from "../../panel/profiling/hooks/useMyProfile";
+import { FaEdit } from "react-icons/fa";
 
 const socailsLinks = {
   youtube: "",

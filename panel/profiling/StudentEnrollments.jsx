@@ -48,14 +48,11 @@ const StudentEnrollments = ({ auth }) => {
         <Fade bottom cascade>
           <div className="page__title-content">
             <h1 className="pragrams-h1 text-center" style={{ fontSize: "40px", color: "#0f3f5d" }}>
-              My enrollments
+              My Enrollments
             </h1>
           </div>
           <p className="text-center mb-4 mt-3" style={{ maxWidth: "800px" }}>
-            <em>
-              We have got all your digital skill training needs covered with our extensive offered program list. All you have to do is to explore our program list, choose the
-              program of your choice, and take your first step toward financial independence.
-            </em>
+            <em>Checkout the amazing programs you have enrolled in so you can map out your future proactively and take your next career step brimming with confidence to excel.</em>
           </p>
         </Fade>
       </div>

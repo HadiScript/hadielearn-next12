@@ -34,7 +34,7 @@ const Profiles = ({ profiles, error }) => {
     gettingSearchedProfiles();
   }, [searchQuery]);
 
-  return <>Working on it</>;
+  // return <>Working on it</>;
   return (
     <>
       <SEOHead title={"Hadi Elearning Profiles"} desc={`Hadi Elearning `} conLink={`https://hadielearning.com/profiles`} />
@@ -99,7 +99,7 @@ const Profiles = ({ profiles, error }) => {
       </div>
 
       <div className="container">
-        <div className="container rounded mb-5 " style={{ paddingTop: "80px" }}>
+        <div className="container rounded mb-5 " style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           <div className="row">
             {/* first col  */}
             {profileList?.map((x, index) => (
@@ -109,18 +109,18 @@ const Profiles = ({ profiles, error }) => {
                     {x?.user?.image?.url ? (
                       <Avatar className="mt-5" style={{ height: "100px", width: "100px" }} src={toImageUrl(x?.user?.image?.url)} />
                     ) : (
-                      <FaUser size={150} color="gray" />
+                      <FaUser size={105} color="gray" />
                     )}
 
                     <span className="d-flex align-items-center gap-2 text-dark mt-2">
                       <b>{x?.user?.name} </b> {x?.user?.role === "instructor" && <BsShieldCheck color="blue" />}
                     </span>
                     <span className="text-muted">{x?.status.slice(0, 20)}...</span>
-                    <span className="text-muted mt-3">
+                    {/* <span className="text-muted mt-3">
                       {x?.skills?.slice(0, 3).map((x, index) => (
                         <Tag key={index}>{x}</Tag>
                       ))}
-                    </span>
+                    </span> */}
                   </div>
                 </Card>
               </div>

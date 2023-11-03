@@ -198,7 +198,7 @@ const Portfolio = () => {
         </div>
       </Card> */}
 
-      <ProfileForm loading={loading} formData={formData} changesFormData={changesFormData} addFunc={addProject} formErrors={formErrors} which={"port"} />
+      <ProfileForm title={"Portfolio"} loading={loading} formData={formData} changesFormData={changesFormData} addFunc={addProject} formErrors={formErrors} which={"port"} />
 
       <ProjectList projectData={projectData} from={"editing-page"} deleteProject={deleteProject} setCurrent={setCurrent} setOpen={setOpen} />
 

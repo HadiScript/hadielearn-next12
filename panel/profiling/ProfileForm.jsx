@@ -1,9 +1,9 @@
 import { Button, Card } from "antd";
 import React from "react";
 
-const ProfileForm = ({ formData, changesFormData, addFunc, loading, which, formErrors }) => {
+const ProfileForm = ({ formData, changesFormData, addFunc, loading, which, formErrors, title }) => {
   return (
-    <Card title="Experience">
+    <Card title={title}>
       <div className="row">
         {which === "edu" && (
           <>
@@ -115,7 +115,7 @@ const ProfileForm = ({ formData, changesFormData, addFunc, loading, which, formE
         </div>
       )}
 
-      {which === "edu" || which === "port" && (
+      {(which === "edu" || which === "port") && (
         <div className="col-md-12">
           <div className="form-group py-2">
             <label> Description </label>

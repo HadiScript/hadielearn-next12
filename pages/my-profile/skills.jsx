@@ -43,6 +43,7 @@ const Skills = () => {
       } else if (data.ok) {
         toast.success("Added");
         gettingSkills();
+        setSkill("");
       }
     } catch (error) {
       console.log(error);

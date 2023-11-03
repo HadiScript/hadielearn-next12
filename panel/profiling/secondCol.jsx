@@ -1,40 +1,12 @@
 import React from "react";
 import { CardieBg } from "./firstCol";
-import { EditFilled } from "@ant-design/icons";
-import { Avatar, Button, Card, List } from "antd";
-import { FaAndroid, FaAngular, FaFacebook, FaInstagram, FaLinkedin, FaNodeJs, FaReact } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { Button, Card } from "antd";
 import { useRouter } from "next/router";
 import ExpLists from "./ExpLists";
 import EduList from "./EduList";
 import CertLists from "./CertList";
 import ProjectList from "./ProjectList";
-
-const data = [
-  {
-    title: "Full Stack Developer",
-    at: "Turing",
-    type: "full time",
-    from: "Feb 2023",
-    to: "Present",
-    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
-  },
-  {
-    title: "Frontend Developer",
-    at: "Pure Logics",
-    type: "full time",
-    from: "Feb 2021",
-    to: "Feb 2023",
-    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
-  },
-  {
-    title: "Blockchain Developer",
-    at: "10Pearls",
-    type: "full time",
-    from: "Feb 2020",
-    to: "Feb 2021",
-    skills: ["ReactJs", "NodeJS", "Html/css", "Agile Development", "Mean Stack"],
-  },
-];
 
 const SecondCol = ({ profile, loading }) => {
   const router = useRouter();
@@ -45,7 +17,7 @@ const SecondCol = ({ profile, loading }) => {
       ) : profile === null ? (
         <div class="col-lg-12" style={{ paddingTop: "0px" }}>
           <Card className="text-center" title="Please update your profile">
-            <Button onClick={() => router.push("/my-profile/general")} style={{ ...CardieBg, color: "white" }} icon={<EditFilled />}>
+            <Button onClick={() => router.push("/my-profile/general")} style={{ ...CardieBg, color: "white" }} icon={<FaEdit />}>
               Create Profile
             </Button>
           </Card>
@@ -56,7 +28,7 @@ const SecondCol = ({ profile, loading }) => {
             title={
               <div className="d-flex justify-content-between align-items-center">
                 <span>About</span>
-                <Button onClick={() => router.push("/my-profile/general")} style={{ ...CardieBg, color: "white" }} icon={<EditFilled />}>
+                <Button onClick={() => router.push("/my-profile/general")} style={{ ...CardieBg, color: "white" }} icon={<FaEdit />}>
                   Edit
                 </Button>
               </div>
@@ -70,7 +42,7 @@ const SecondCol = ({ profile, loading }) => {
             title={
               <div className="d-flex justify-content-between align-items-center">
                 <span>Skills</span>
-                <Button onClick={() => router.push("/my-profile/skills")} style={{ ...CardieBg, color: "white" }} icon={<EditFilled />}>
+                <Button onClick={() => router.push("/my-profile/skills")} style={{ ...CardieBg, color: "white" }} icon={<FaEdit />}>
                   Edit
                 </Button>
               </div>

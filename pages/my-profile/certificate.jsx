@@ -189,7 +189,7 @@ const Certificate = () => {
         </div>
       </Card> */}
 
-      <ProfileForm loading={loading} addFunc={addCerticate} formErrors={formErrors} which={"cert"} formData={formData} changesFormData={changesFormData} />
+      <ProfileForm title="Certificates" loading={loading} addFunc={addCerticate} formErrors={formErrors} which={"cert"} formData={formData} changesFormData={changesFormData} />
 
       <CertLists certData={certList} deleteCertificate={deleteCertificate} setCurrent={setCurrent} setOpen={setOpen} />
 

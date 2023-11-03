@@ -229,7 +229,7 @@ const Experience = () => {
         </div>
       </Card> */}
 
-      <ProfileForm formData={formData} which={"exp"} changesFormData={changesFormData} addFunc={addExperience} loading={loading} formErrors={formErrors} />
+      <ProfileForm title={"Experience"} formData={formData} which={"exp"} changesFormData={changesFormData} addFunc={addExperience} loading={loading} formErrors={formErrors} />
 
       <ExpLists from="editing-page" expData={expList} deleteExperience={deleteExperience} setCurrent={setCurrent} setOpen={setOpen} />
 

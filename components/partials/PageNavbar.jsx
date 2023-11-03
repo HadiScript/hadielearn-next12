@@ -98,7 +98,7 @@ const PagesNavbar = ({ page = "notFromContact", btn_class = "z-btn-3" }) => {
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/student-test">
                           <span role="button" className={`z-btn ${btn_class}`}>
-                            My Learning <MdOutlineOnlinePrediction size={25} className="mx-2" />
+                            Profile <MdOutlineOnlinePrediction size={30} className="mx-1" />
                           </span>
                         </Link>
                       </div>
