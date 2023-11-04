@@ -31,30 +31,22 @@ const BlogLeftSideBar = ({ RecentBlogs, Categories, handleSearch, searchQuery, s
             </div>
           )}
           <div className="sidebar__widget mb-75 ">
-            <div className="sidebar__widget-title mb-50">
-              <h4>Recent Blogs</h4>
-            </div>
             <div className="sidebar__widget-content">
-              <div className="rc-post">
-                <ul>
-                  {RecentBlogs?.map((x) => (
-                    <li key={x._id} className="d-flex mb-20">
-                      <div className="rc-thumb mr-15">
-                        <Link href={`/blog/${x?.slug}`}>
-                          <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
-                        </Link>
-                      </div>
-                      <div className="rc-text">
-                        <h6>
-                          <Link href={`/blog/${x?.slug}`}>{x?.title}</Link>
-                        </h6>
-                        <div className="rc-meta">
-                          <span>{x.createdAt.substring(0, 10)}</span>{" "}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+              <div className="sidebar__widget mb-75 ">
+                <div className="sidebar__widget-title mb-50">
+                  <h4>Categories</h4>
+                </div>
+                <div className="sidebar__widget-content">
+                  <div className="cat-link">
+                    <ul>
+                      {Categories?.map((x) => (
+                        <li>
+                          <Link href={`/blog/category/${x?.slug}`}>{x?.name}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -86,22 +78,30 @@ const BlogLeftSideBar = ({ RecentBlogs, Categories, handleSearch, searchQuery, s
                 </ul>
               </div>
             </div>
-          </div>
 
-          <div className="sidebar__widget mb-75 ">
             <div className="sidebar__widget-title mb-50">
-              <h4>Categories</h4>
+              <h4>Recent Blogs</h4>
             </div>
-            <div className="sidebar__widget-content">
-              <div className="cat-link">
-                <ul>
-                  {Categories?.map((x) => (
-                    <li>
-                      <Link href={`/blog/category/${x?.slug}`}>{x?.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="rc-post">
+              <ul>
+                {RecentBlogs?.map((x) => (
+                  <li key={x._id} className="d-flex mb-20">
+                    <div className="rc-thumb mr-15">
+                      <Link href={`/blog/${x?.slug}`}>
+                        <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
+                      </Link>
+                    </div>
+                    <div className="rc-text">
+                      <h6>
+                        <Link href={`/blog/${x?.slug}`}>{x?.title}</Link>
+                      </h6>
+                      <div className="rc-meta">
+                        <span>{x.createdAt.substring(0, 10)}</span>{" "}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

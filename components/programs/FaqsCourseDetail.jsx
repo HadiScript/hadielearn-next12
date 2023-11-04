@@ -68,9 +68,7 @@ const FaqsCourseDetail = ({ details, page }) => {
                       </div>
 
                       <div id={`collapse_0`} aria-labelledby={`acc_0`} className="collapse" data-bs-parent="#accordionExample">
-                        <div className="d-flex gap-1 py-1 pb-3 px-4">
-                          <div className="">{details[0]?.answer}</div>
-                        </div>
+                        <div className="d-flex gap-1 py-1 pb-3 px-4">{details[0]?.answer}</div>
                       </div>
                     </div>
 
@@ -79,7 +77,7 @@ const FaqsCourseDetail = ({ details, page }) => {
                         {UperIndex === 0 ? (
                           <></>
                         ) : (
-                          <div className="card">
+                          <div className="accordion-cards">
                             <div className="card-header" id={`acc_${UperIndex}`}>
                               <h5 className="mb-0">
                                 <button
@@ -95,9 +93,7 @@ const FaqsCourseDetail = ({ details, page }) => {
                             </div>
 
                             <div id={`collapse_${UperIndex}`} aria-labelledby={`acc_${UperIndex}`} className="collapse" data-bs-parent="#accordionExample">
-                              <div className="d-flex gap-1 py-1 pb-3 px-4">
-                                <div className="">{x.answer}</div>
-                              </div>
+                              <div className="d-flex gap-1 py-1 pb-3 px-4">{x.answer}</div>
                             </div>
                           </div>
                         )}

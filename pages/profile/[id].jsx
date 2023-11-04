@@ -57,7 +57,7 @@ const PublicProfileDetails = ({ profile, error }) => {
       <SEOHead title={profile?.user?.name?.toUpperCase()} desc={`Hadi Elearning | ${profile?.bio}`} conLink={`https://hadielearning.com/profile/${id}`} />
       <TopHeader />
 
-      <div className="container rounded bg-white mb-5" style={{ paddingTop: "100px", paddingBottom : "100px" }}>
+      <div className="container rounded bg-white mb-5" style={{ paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="row">
           {/* first col */}
           <div className="col-lg-3 border-right ">
@@ -97,40 +97,40 @@ const PublicProfileDetails = ({ profile, error }) => {
               {profile.social && (
                 <>
                   <hr />
-                  <span className="d-flex justify-content-center align-items-center gap-3">
+                  <span className="d-flex flex-wrap justify-content-center align-items-center gap-3">
                     {profile?.social?.instagram && (
                       <a href={profile?.social?.instagram} target="_blank">
-                        <FaInstagram size={25} color="white" />
+                        <FaInstagram size={20} color="white" />
                       </a>
                     )}
                     {profile?.social?.facebook && (
                       <a href={profile?.social?.facebook} target="_blank">
-                        <FaFacebook size={25} color="white" />
+                        <FaFacebook size={20} color="white" />
                       </a>
                     )}
                     {profile?.social?.linkedin && (
                       <a href={profile?.social?.linkedin} target="_blank">
-                        <FaLinkedin size={25} color="white" />
+                        <FaLinkedin size={20} color="white" />
                       </a>
                     )}
                     {profile?.social?.behance && (
                       <a href={profile?.social?.behance} target="_blank">
-                        <FaBehance size={25} color="white" />
+                        <FaBehance size={20} color="white" />
                       </a>
                     )}
                     {profile?.social?.github && (
                       <a href={profile?.social?.github} target="_blank">
-                        <FaGithub size={25} color="white" />
+                        <FaGithub size={20} color="white" />
                       </a>
                     )}
                     {profile?.social?.twitter && (
                       <a href={profile?.social?.twitter} target="_blank">
-                        <FaTwitter size={25} color="white" />
+                        <FaTwitter size={20} color="white" />
                       </a>
                     )}
                     {profile?.social?.youtube && (
                       <a href={profile?.social?.youtube} target="_blank">
-                        <FaYoutube size={25} color="white" />
+                        <FaYoutube size={20} color="white" />
                       </a>
                     )}
                   </span>

@@ -12,13 +12,7 @@ import { toImageUrl } from "../utils/ImageURL";
 const VideoPopup = ({ videoId, isVideoOpen, setIsVideoOpen }) => {
   return (
     <>
-      <ModalVideo
-        channel="youtube"
-        autoplay
-        isOpen={isVideoOpen}
-        videoId={videoId}
-        onClose={() => setIsVideoOpen(false)}
-      />
+      <ModalVideo channel="youtube" autoplay isOpen={isVideoOpen} videoId={videoId} onClose={() => setIsVideoOpen(false)} />
     </>
   );
 };
@@ -31,9 +25,7 @@ const Workshops = ({ workshops }) => {
   return (
     <>
       <Tops
-        headTitle={
-          "Join our workshops to get the most out of web based learning"
-        }
+        headTitle={"Join our workshops to get the most out of web based learning"}
         headDesc={
           "Register for one of our workshops and unlock your potential to conquer the digital world with the power of one of the best online education platforms, Hadi e-learning."
         }
@@ -57,11 +49,7 @@ const Workshops = ({ workshops }) => {
                 <div className="section__title section__title-3 ">
                   <h2>Free Workshops</h2>
                 </div>
-                <p>
-                  Join one of our workshops to explore various digital niches
-                  and endless career options you can pursue for a prosperous
-                  future.
-                </p>
+                <p>Join one of our workshops to explore various digital niches and endless career options you can pursue for a prosperous future.</p>
                 <br />
                 <br />
 
@@ -72,14 +60,7 @@ const Workshops = ({ workshops }) => {
                   <div key={index} className="blog__item-2 mb-50 fix">
                     <div className={`blog__thumb-2  w-img fix p-relative`}>
                       <Link href={`/workshop-detail/${x.slug} `}>
-                        {x.image.url.includes("uploads") ? (
-                          <img
-                            src={toImageUrl(x.image?.url)}
-                            alt="workshop_image"
-                          />
-                        ) : (
-                          <img src={x.image?.url} alt="workshop_image" />
-                        )}
+                        {x.image.url.includes("uploads") ? <img src={toImageUrl(x.image?.url)} alt="workshop_image" /> : <img src={x.image?.url} alt="workshop_image" />}
                       </Link>
 
                       {/* <div className="blog__play p-absolute">
@@ -99,44 +80,24 @@ const Workshops = ({ workshops }) => {
                         <div className="d-flex align-items-center  pr-20 mr-20">
                           <Link href={`/workshop-detail/${x.slug} `}>
                             {x.instructor?.image?.url.includes("profileImages") ? (
-                              <img
-                                src={toImageUrl(x.instructor?.image?.url)}
-                                className="pr-10"
-                                alt="istructor image"
-                                height={80}
-                              />
+                              <img src={toImageUrl(x.instructor?.image?.url)} className="pr-10" alt="istructor image" height={80} />
                             ) : (
-                              <img
-                                className="pr-10"
-                                src={x.instructor?.image?.url}
-                                alt="istructor image"
-                                height={80}
-                              />
+                              <img className="pr-10" src={x.instructor?.image?.url} alt="istructor image" height={80} />
                             )}
                           </Link>
                           <div>
-                            <span
-                              style={{ fontWeight: "bold", fontSize: "18px" }}
-                            >
-                              {x.instructor?.name}
-                            </span>
+                            <span style={{ fontWeight: "bold", fontSize: "18px" }}>{x.instructor?.name}</span>
                             <br />
-                            <small style={{ fontSize: "14px" }}>
-                              {x.instructor?.exp}
-                            </small>
+                            <small style={{ fontSize: "14px" }}>{x.instructor?.exp}</small>
                             <br />
-                            <small style={{ fontSize: "14px" }}>
-                              {x.meetingTiming}
-                            </small>
+                            <small style={{ fontSize: "14px" }}>{x.meetingTiming}</small>
                           </div>
                         </div>
                       </div>
                       <br />
 
                       <h3>
-                        <Link href={`/workshop-detail/${x.slug} `}>
-                          {x.title}
-                        </Link>
+                        <Link href={`/workshop-detail/${x.slug} `}>{x.title}</Link>
                       </h3>
 
                       <p>

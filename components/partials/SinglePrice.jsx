@@ -11,7 +11,7 @@ const SinglePrice = ({ title, price, active, linkTitle }) => {
             <p>{title}</p>
             <div className="price__tag mb-45">
               <h2 id="card_price">{`${price === 0 ? "Free" : price}`}</h2>
-              <span>PKR</span>
+              {/* <span>PKR</span> */}
             </div>
             {/* <div className="price__features text-start mb-55">
               <ul>

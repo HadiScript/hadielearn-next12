@@ -13,9 +13,11 @@ const BlogItemDetail = ({ blog, categories, recentBlogs, mostView }) => {
             <div className="col-xl-8 col-lg-8">
               <div className="blog__details-wrapper mr-50">
                 <h2 className="mb-4">{blog?.title}</h2>
+
                 <div className="blog__details-thumb w-img mb-45">
                   {/* <img src={blog?.image?.url} alt="blog-image" /> */}
-                  {blog?.image?.url?.includes("uploads") ? <img src={toImageUrl(blog?.image?.url)} alt="workshop_image" /> : <img src={blog?.image?.url} alt="workshop_image" />}
+
+                  {blog?.image?.url?.includes("blogImages") ? <img src={toImageUrl(blog?.image?.url)} alt="workshop_image" /> : <img src={blog?.image?.url} alt="workshop_image" />}
                 </div>
                 <div className="blog__text mb-25">
                   <p>{blog?.description}</p>

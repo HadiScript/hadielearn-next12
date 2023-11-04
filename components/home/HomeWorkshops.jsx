@@ -9,9 +9,10 @@ const HomeWorkshops = () => {
         <div
           className="faq__thumb"
           style={{
-            background: `url(/assets/images/workshop.png)`,
+            background: `url(/assets/images/check/new_home_page.jpg)`,
             backgroundPosition: "center",
             backgroundSize: "cover",
+            backgroundRepeat : "no-repeat"
           }}
         ></div>
         <div className="container">

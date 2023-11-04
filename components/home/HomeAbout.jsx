@@ -22,7 +22,7 @@ const HomeAbout = () => {
             <div className="col-xl-7 col-lg-6">
               <Fade left>
                 <div className="about__thumb-2 p-relative m-img text-center">
-                  <img src="assets/images/mascot.png" alt="" id="about_mascot" />
+                  <img src="assets/images/check/new_get_know2.png" alt="" id="about_mascot" />
                 </div>
               </Fade>
             </div>
