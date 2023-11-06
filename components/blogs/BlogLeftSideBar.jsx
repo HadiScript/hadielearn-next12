@@ -3,7 +3,8 @@ import React from "react";
 import ReactLoading from "react-loading";
 
 // icons
-import { FaRegComment, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const BlogLeftSideBar = ({ RecentBlogs, Categories, handleSearch, searchQuery, setSearchQuery, mostViewed, loading, page }) => {
   return (
@@ -62,7 +63,11 @@ const BlogLeftSideBar = ({ RecentBlogs, Categories, handleSearch, searchQuery, s
                     <li key={x._id} className="d-flex mb-20">
                       <div className="rc-thumb mr-15">
                         <Link href={`/blog/${x.slug}`}>
-                          <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
+                          {x.image?.url?.includes("blogImages") ? (
+                            <img src={toImageUrl(x.image?.url)} alt="rc-blog" height={"80px"} />
+                          ) : (
+                            <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
+                          )}
                         </Link>
                       </div>
                       <div className="rc-text">
@@ -88,7 +93,11 @@ const BlogLeftSideBar = ({ RecentBlogs, Categories, handleSearch, searchQuery, s
                   <li key={x._id} className="d-flex mb-20">
                     <div className="rc-thumb mr-15">
                       <Link href={`/blog/${x?.slug}`}>
-                        <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
+                        {x.image?.url?.includes("blogImages") ? (
+                          <img src={toImageUrl(x.image?.url)} alt="rc-blog" height={"80px"} />
+                        ) : (
+                          <img src={x?.image?.url} alt="rc-blog" height={"80px"} />
+                        )}
                       </Link>
                     </div>
                     <div className="rc-text">
