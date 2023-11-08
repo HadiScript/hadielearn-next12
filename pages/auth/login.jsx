@@ -96,6 +96,7 @@ const Login = () => {
                     </div>
                     <h2> Login </h2>
                     <br />
+
                     <div className="form-group py-3">
                       <label>
                         Email<span className="text-danger">*</span>
@@ -133,6 +134,7 @@ const Login = () => {
                         <button className="z-btn mx-2 " onClick={onFinish}>
                           {loading ? "loading..." : "Login"}
                         </button>
+
                         <br />
                         <br />
                         <span role="button" className="m-2" onClick={() => router.push("/auth/request-forget-password")}>
