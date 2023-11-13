@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileLayout from "../../panel/profiling/ProfileLayout";
-import { Button, Card, List } from "antd";
+import { List } from "antd";
 import { FiEdit } from "react-icons/fi";
 import { LuBrainCircuit } from "react-icons/lu";
 import Link from "next/link";
@@ -8,12 +8,18 @@ import { FaUserGraduate } from "react-icons/fa";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { MdOutlineSettings, MdWork } from "react-icons/md";
 import { useRouter } from "next/router";
+import { CgFileDocument } from "react-icons/cg";
 
 const navsData = [
   {
     title: "General",
     icon: <FiEdit size={22} color="#634ee3" />,
     path: "/my-profile/general",
+  },
+  {
+    title: "Enrollment Info",
+    icon: <CgFileDocument size={22} color="#828213" />,
+    path: "/my-profile/enrollmentInfo",
   },
   {
     title: "Skills",

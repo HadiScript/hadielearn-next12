@@ -57,14 +57,7 @@ const Step3 = ({ currentStep, handleChange, nextButton, previousButton, parentNa
             </span>
           )}
         </label>
-        {/* <input
-          type="text"
-          className="form-control"
-          placeholder=""
-          name="parentPhoneNumber"
-          value={parentPhoneNumber}
-          onChange={(e) => handleInputChange(e)}
-        /> */}
+
         <PhoneInput
           country={"pk"} // Set a default country
           inputClass="form-control"

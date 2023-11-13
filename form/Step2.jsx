@@ -19,13 +19,6 @@ const Step2 = ({ previousButton, nextButton, handleChange, currentStep, city, ad
     if (/^\d{0,13}$/.test(cnicNumber)) {
       setIdCard(cnicNumber);
     }
-    // if (/^(?:\d{5}-\d{7}-\d{1}|\d{13})$/.test(formattedPhoneNumber)) {
-    //   setIdCard(formattedPhoneNumber);
-    //   setShow(false); // Hide the alert if the number is correct
-    // } else {
-    //   setIdCard(formattedPhoneNumber);
-    //   setShow(true); // Show the alert if the number is incorrect
-    // }
   };
 
   return (

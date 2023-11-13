@@ -119,6 +119,7 @@ const Portfolio = () => {
       // console.log(data);
       if (data.ok) {
         toast.success("Updated");
+        setOpen(false);
         myPortfolio();
       } else if (data.error) {
         toast.error(data.error);
@@ -147,57 +148,6 @@ const Portfolio = () => {
 
   return (
     <EditProfileLayout>
-      {/* <Card title={"Portfolio"}>
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> Title </label>
-              <input type="text" className="form-control" placeholder="eg: Full Stack Developer" name="title" value={formData.title} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> Link </label>
-              <input type="email" className="form-control" placeholder="eg: hadiraza.com" name="link" value={formData.link} onChange={changesFormData} />
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> From </label>
-              <input type="date" className="form-control" placeholder="School" name="from" value={formData.from} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> To </label>
-              <input type="date" disabled={formData.current && true} className="form-control" placeholder="Degree" name="to" value={formData.to} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="d-flex align-items-center gap-2 form-group py-2">
-              <label> Current </label>
-              <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-12">
-          <div className="form-group py-2">
-            <label> Description </label>
-            <textarea type="text" className="form-control" name="description" value={formData.description} onChange={changesFormData} />
-          </div>
-        </div>
-
-        <div className="text-end">
-          <Button className="CardieBg text-light" loading={loading} onClick={addProject}>
-            Submit
-          </Button>
-        </div>
-      </Card> */}
-
       <ProfileForm title={"Portfolio"} loading={loading} formData={formData} changesFormData={changesFormData} addFunc={addProject} formErrors={formErrors} which={"port"} />
 
       <ProjectList projectData={projectData} from={"editing-page"} deleteProject={deleteProject} setCurrent={setCurrent} setOpen={setOpen} />

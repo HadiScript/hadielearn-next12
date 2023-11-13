@@ -24,6 +24,7 @@ const Certificate = () => {
   const [certList, setCertList] = useState([]);
   const [current, setCurrent] = useState({});
   const [open, setOpen] = useState(false);
+
   const [formErrors, setFormErrors] = useState({
     from: "",
     to: "",
@@ -112,11 +113,13 @@ const Certificate = () => {
       from: datas?.from ? datas?.from : current.from,
       to: datas?.to ? datas?.to : current.to,
     };
+
     try {
-      const { data } = await axios.put(`${API}/edit-certificate`, newData);
+      const { data } = await axios.put(`http://localhost:5000/api/edit-certificate`, newData);
       // console.log(data);
       if (data.ok) {
         toast.success("Updated");
+        setOpen(false);
         myCertificate();
       } else if (data.error) {
         toast.error(data.error);
@@ -145,53 +148,9 @@ const Certificate = () => {
 
   return (
     <EditProfileLayout>
-      {/* <Card title="Certificates">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> Title </label>
-              <input type="text" className="form-control" placeholder="eg: ReactJs Mastery Course" name="title" value={formData.title} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> Platform </label>
-              <input type="email" className="form-control" placeholder="eg: hadielearning" name="platform" value={formData.platform} onChange={changesFormData} />
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> From </label>
-              <input type="date" className="form-control" placeholder="School" name="from" value={formData.from} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> To </label>
-              <input type="date" disabled={formData.current && true} className="form-control" placeholder="Degree" name="to" value={formData.to} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="d-flex align-items-center gap-2 form-group py-2">
-              <label> Current </label>
-              <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
-            </div>
-          </div>
-        </div>
-
-        <div className="text-end">
-          <Button className="CardieBg text-light" loading={loading} onClick={addCerticate}>
-            Submit
-          </Button>
-        </div>
-      </Card> */}
-
       <ProfileForm title="Certificates" loading={loading} addFunc={addCerticate} formErrors={formErrors} which={"cert"} formData={formData} changesFormData={changesFormData} />
 
-      <CertLists certData={certList} deleteCertificate={deleteCertificate} setCurrent={setCurrent} setOpen={setOpen} />
+      <CertLists from="editing-page" certData={certList} deleteCertificate={deleteCertificate} setCurrent={setCurrent} setOpen={setOpen} />
 
       <CertEditModal open={open} setOpen={setOpen} current={current} editCertificate={editCertificate} loading={loading} />
     </EditProfileLayout>

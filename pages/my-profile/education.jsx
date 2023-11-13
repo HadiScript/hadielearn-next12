@@ -123,6 +123,7 @@ const Education = () => {
       // console.log(data);
       if (data.ok) {
         toast.success("Updated");
+        setOpen(false);
         myEducation();
       } else if (data.error) {
         toast.error(data.error);
@@ -151,57 +152,6 @@ const Education = () => {
 
   return (
     <EditProfileLayout>
-      {/* <Card title="Education">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> School </label>
-              <input type="text" className="form-control" placeholder="School" name="school" value={formData.school} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> Degree </label>
-              <input type="email" className="form-control" placeholder="Degree" name="degree" value={formData.degree} onChange={changesFormData} />
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> From </label>
-              <input type="date" className="form-control" placeholder="School" name="from" value={formData.from} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group py-2">
-              <label> To </label>
-              <input type="date" disabled={formData.current && true} className="form-control" placeholder="Degree" name="to" value={formData.to} onChange={changesFormData} />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="d-flex align-items-center gap-2 form-group py-2">
-              <label> Current </label>
-              <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-12">
-          <div className="form-group py-2">
-            <label> Description </label>
-            <textarea type="text" className="form-control" placeholder="Description" name="description" checked={formData.description} onChange={changesFormData} />
-          </div>
-        </div>
-
-        <div className="text-end">
-          <Button className="CardieBg text-light" loading={loading} onClick={addEducation}>
-            Submit
-          </Button>
-        </div>
-      </Card> */}
-
       <ProfileForm title="Education" which={"edu"} formData={formData} changesFormData={changesFormData} addFunc={addEducation} loading={loading} formErrors={formErrors} />
 
       {/* list of educations */}
