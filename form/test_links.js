@@ -78,4 +78,10 @@ export const test_links = [
     slug: "seo-with-ai-mastery-course",
     test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=mzgwmjg5nw9afp",
   },
+  {
+    _id: "6553850943df6481a77d1e3f",
+    title: "Learn Content Creation Using Mobile Phone",
+    slug: "learn-content-creation-using-mobile-phone",
+    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=mzg2mdkznwr01y",
+  },
 ];
