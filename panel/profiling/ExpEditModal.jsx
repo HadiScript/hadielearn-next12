@@ -79,7 +79,7 @@ const ExpEditModal = ({ open, setOpen, current, EditExp, loading }) => {
 
   return (
     <Modal Modal title={formData.title} centered open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} footer={null} width={1000}>
-      {JSON.stringify(formData)}
+      {/* {JSON.stringify(formData)} */}
 
       <div className="row">
         <div className="col-md-6">
@@ -119,7 +119,7 @@ const ExpEditModal = ({ open, setOpen, current, EditExp, loading }) => {
         </div>
         <div className="col-md-6">
           <div className="d-flex align-items-center gap-2 form-group py-2">
-            <label> Current </label>
+            <label> Present </label>
             <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
           </div>
         </div>

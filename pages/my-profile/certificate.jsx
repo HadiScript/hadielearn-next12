@@ -148,7 +148,16 @@ const Certificate = () => {
 
   return (
     <EditProfileLayout>
-      <ProfileForm title="Certificates" loading={loading} addFunc={addCerticate} formErrors={formErrors} which={"cert"} formData={formData} changesFormData={changesFormData} />
+      <ProfileForm
+        setFormData={setFormData}
+        title="Certificates"
+        loading={loading}
+        addFunc={addCerticate}
+        formErrors={formErrors}
+        which={"cert"}
+        formData={formData}
+        changesFormData={changesFormData}
+      />
 
       <CertLists from="editing-page" certData={certList} deleteCertificate={deleteCertificate} setCurrent={setCurrent} setOpen={setOpen} />
 

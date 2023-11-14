@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import Fade from "react-reveal/Fade";
 import Link from "next/link";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const Courses = ({ courses_data }) => {
   function SampleNextArrow(props) {
@@ -78,7 +79,11 @@ const Courses = ({ courses_data }) => {
             <div className="blog__item-2 mb-50 fix">
               <div className={`blog__thumb-2 w-img fix `}>
                 <Link href={`/program/${x._doc.slug}`}>
-                  <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
+                  {x._doc.image?.url?.includes("courseImages") ? (
+                    <img src={toImageUrl(x._doc.image?.url)} alt="" style={{ height: "250px" }} />
+                  ) : (
+                    <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
+                  )}
                 </Link>
               </div>
 

@@ -69,7 +69,6 @@ const CMSLayout = ({ children }) => {
   const getCurrentAdmin = async () => {
     try {
       const { data } = await axios.get(`${API}/current-cms-user`);
-      console.log(data, "From admin");
       if (data.ok) {
         setLoading(false);
       }
@@ -149,7 +148,8 @@ const CMSLayout = ({ children }) => {
             // background: "white",
           }}
         >
-          {loading ? <Redirecting /> : children}
+          {/* {loading ? <Redirecting /> : children} */}
+          {children}
         </Content>
       </Layout>
     </Layout>

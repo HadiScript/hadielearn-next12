@@ -33,7 +33,8 @@ const ProjectList = ({ from = "main-page", projectData, deleteProject, setCurren
               title={<a>{item.title}</a>}
               description={
                 <div>
-                  <p>{item.description}</p>
+                  <b>{item.description}</b>
+                  <br />
                   <>
                     {item.from?.slice(0, 10)} - {item.to?.slice(0, 10) || "Present"}
                   </>

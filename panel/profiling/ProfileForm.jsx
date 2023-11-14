@@ -1,7 +1,13 @@
 import { Button, Card } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 
-const ProfileForm = ({ formData, changesFormData, addFunc, loading, which, formErrors, title }) => {
+const ProfileForm = ({ formData, setFormData, changesFormData, addFunc, loading, which, formErrors, title }) => {
+  useEffect(() => {
+    if (formData.current) {
+      setFormData({ ...formData, to: "" });
+    }
+  }, [formData.current]);
+
   return (
     <Card title={title}>
       <div className="row">
@@ -73,7 +79,7 @@ const ProfileForm = ({ formData, changesFormData, addFunc, loading, which, formE
         </div>
         <div className="col-md-6">
           <div className="d-flex align-items-center gap-2 form-group py-2">
-            <label> Current </label>
+            <label> Present </label>
             <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
           </div>
         </div>

@@ -152,7 +152,16 @@ const Education = () => {
 
   return (
     <EditProfileLayout>
-      <ProfileForm title="Education" which={"edu"} formData={formData} changesFormData={changesFormData} addFunc={addEducation} loading={loading} formErrors={formErrors} />
+      <ProfileForm
+        setFormData={setFormData}
+        title="Education"
+        which={"edu"}
+        formData={formData}
+        changesFormData={changesFormData}
+        addFunc={addEducation}
+        loading={loading}
+        formErrors={formErrors}
+      />
 
       {/* list of educations */}
       <EduList from="editing-page" eduList={eduList} deleteEducation={deleteEducation} setCurrent={setCurrent} setOpen={setOpen} />

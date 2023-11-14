@@ -38,7 +38,7 @@ const EditCourse = () => {
   const [regFee, setRegFee] = useState(0);
   const [courseFee, setcourseFee] = useState(0);
   const [days, setDays] = useState(initDays);
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState();
   const [loadingImage, setLoadingImage] = useState(false);
   const [categories, setCategories] = useState([]);
   const [loadCategories, setLoadCategories] = useState([]);
@@ -47,6 +47,7 @@ const EditCourse = () => {
   const [instructor, setInstructor] = useState("");
   const [teachers, setTeachers] = useState([]);
   const [teachersLoading, setTeachersLoading] = useState(false);
+  const [preImage, setPreImage] = useState();
 
   useEffect(() => {
     const fetchingTeachers = async () => {
@@ -101,7 +102,8 @@ const EditCourse = () => {
       setCourseFor(data?.courseFor);
       setRegFee(data?.regFee);
       setcourseFee(data?.courseFee);
-      setImage(data?.image);
+      setPreImage(data?.image);
+      console.log(data, "from edit course");
       setInstructor(data?.instructor);
 
       setDays({
@@ -168,61 +170,6 @@ const EditCourse = () => {
     setFaqs(updatedFaqs);
   };
 
-  // upload image
-  const handleImage = async (e) => {
-    const file = e.target.files[0];
-    let formData = new FormData();
-
-    formData.append("image", file);
-    setLoadingImage(true);
-
-    try {
-      const { data } = await axios.post(`${API}/upload-image`, formData, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      });
-      // console.log('uploaded image data', data)
-      setImage({
-        url: data.url,
-        public_id: data.public_id,
-      });
-
-      setLoadingImage(false);
-    } catch (error) {
-      console.log(error);
-      setLoadingImage(false);
-    }
-  };
-
-  // remove image
-  const removeImage = async (public_id) => {
-    setLoadingImage(true);
-
-    try {
-      const { data } = await axios.post(
-        `${API}/delete-image/${id}`,
-        {
-          filepath: public_id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        }
-      );
-
-      if (data) {
-        toast.success("Removed");
-        fetchSingleCourse();
-        setLoadingImage(false);
-      }
-    } catch (error) {
-      console.log(error);
-      setLoadingImage(false);
-    }
-  };
-
   const payloadData = {
     title,
     overview,
@@ -271,13 +218,39 @@ const EditCourse = () => {
       return;
     }
 
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("overview", overview);
+    formData.append("whyUs", whyUs);
+    formData.append("prerequisites", prerequisites); // Assuming `image` is the File object from an input type="file"
+    formData.append("benefits", benefits);
+    formData.append("marketValue", marketValue);
+    formData.append("courseFor", courseFor);
+    formData.append("duration", duration);
+    formData.append("classes", classes);
+    formData.append("timming", timming);
+    formData.append("startingFrom", startingFrom);
+    formData.append("regFee", regFee);
+    formData.append("courseFee", courseFee);
+    formData.append("instructor", instructor);
+    formData.append("lectures", lectures);
+    formData.append("faqs", faqs);
+
+    if (preImage) {
+      formData.append("image", preImage); // Assuming `image` is the File object from an input type="file"
+    } else if (image) {
+      formData.append("image", image);
+    }
+
+    categories.forEach((category) => {
+      formData.append("categories", category);
+    });
+
     try {
       setloading(true);
 
-      const { data } = await axios.post(
-        `${API}/edit-course/${id}`,
-        payloadData
-      );
+      const { data } = await axios.post(`${API}/edit-course/${id}`, formData);
 
       console.log(data.error);
       if (data.error) {
@@ -333,14 +306,14 @@ const EditCourse = () => {
           setRegFee={setRegFee}
           setcourseFee={setcourseFee}
           setDays={setDays}
-          setImage={setImage}
           handleAddLecture={handleAddLecture}
           handleAddFaqs={handleAddFaqs}
           handleFaqsChange={handleFaqsChange}
           handleLectureChange={handleLectureChange}
-          handleImage={handleImage}
-          removeImage={removeImage}
           // courseId={id}
+          setImage={setImage}
+          preImage={preImage}
+          setPreImage={setPreImage}
           submitHandler={submitHandler}
           loading={loading}
           loadingImage={loadingImage}

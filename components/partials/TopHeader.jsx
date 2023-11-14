@@ -9,6 +9,8 @@ import { AuthContext } from "../../context/auth";
 import { Avatar } from "antd";
 import { LoginOutlined } from "@ant-design/icons";
 import { MdOutlineOnlinePrediction } from "react-icons/md";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const TopHeader = ({ h4class, btn_text = "Get a Quote", btn_class = "z-btn-3" }) => {
   const [show, setShow] = useState(false);
@@ -16,6 +18,7 @@ const TopHeader = ({ h4class, btn_text = "Get a Quote", btn_class = "z-btn-3" })
   const handleShow = () => setShow(true);
   const { stickyMenu } = useGlobalContext();
   const [auth] = useContext(AuthContext);
+  const [buttonShow, setButtonShow] = useState(false);
 
   return (
     <>
@@ -117,30 +120,11 @@ const TopHeader = ({ h4class, btn_text = "Get a Quote", btn_class = "z-btn-3" })
                       <div className="header__btn d-none d-sm-block d-xl-block ml-50">
                         <Link href="/enroll/program">
                           <span className={`z-btn ${btn_class}`} role="button">
-                            Enroll Program
+                            Enroll
                           </span>
                         </Link>
                       </div>
                     )}
-
-                    {/* for the lms */}
-                    {/* {auth && auth?.user && auth?.user?.role === "cord" ? (
-                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
-                        <Link href="/lms-test">
-                          <span role="button" className={`z-btn ${btn_class}`}>
-                            LMS
-                          </span>
-                        </Link>
-                      </div>
-                    ) : (
-                      <div className="header__btn d-none d-sm-block d-xl-block ml-50">
-                        <Link href="/enroll/program">
-                          <span className={`z-btn ${btn_class}`} role="button">
-                            Enroll Program
-                          </span>
-                        </Link>
-                      </div>
-                    )} */}
 
                     <div onClick={handleShow} className="sidebar__menu d-lg-none">
                       <div className="sidebar-toggle-btn sidebar-toggle-btn-3" id="sidebar-toggle">

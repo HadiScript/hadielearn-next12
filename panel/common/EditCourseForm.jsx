@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { Card, Select } from "antd";
 import Btn from "../../components/ui/Btn";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const EditCourseForm = ({
   title,
@@ -40,8 +41,7 @@ const EditCourseForm = ({
   setDays,
   handleAddLecture,
   handleLectureChange,
-  handleImage,
-  removeImage,
+  setImage,
   submitHandler,
   loading,
   loadingImage,
@@ -56,6 +56,8 @@ const EditCourseForm = ({
   teachers,
   handleRemoveLecture,
   handleRemoveFAQs,
+  setPreImage,
+  preImage,
 }) => {
   const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
@@ -64,7 +66,7 @@ const EditCourseForm = ({
       {/* {JSON.stringify(singleData)} */}
       {singleLoading && <p>loading...</p>}
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1"> Course Title</h5>
+        <h5 htmlFor="exampleFormControlInput1"> Course Title</h5>
         <input
           type="text"
           className="form-control"
@@ -78,9 +80,9 @@ const EditCourseForm = ({
       </div>
 
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1"> Course Image</h5>
+        <h5 htmlFor="exampleFormControlInput1"> Course Image</h5>
         <input
-          onChange={handleImage}
+          onChange={(e) => setImage(e.target.files[0])}
           type="file"
           accept="images/*"
           // hidden
@@ -88,22 +90,35 @@ const EditCourseForm = ({
           id="exampleFormControlInput1"
         />
       </div>
-      {loadingImage && "loading..."}
-      {image && image?.url && (
-        <>
-          <span className="text-danger" onClick={() => removeImage(image?.public_id)}>
-            {" "}
-            delete image{" "}
-          </span>
+
+      <small className="form-text">Please upload image within 1mb, formet jpg,jpeg,webp</small>
+      {preImage && (
+        <div className="form-group py-2">
+          {preImage?.url.includes("courseImages") ? (
+            preImage?.url && <img width="auto" height={300} src={toImageUrl(preImage?.url)} onClick={() => setPreImage()} />
+          ) : (
+            <img width="auto" height={300} src={preImage?.url} onClick={() => setPreImage()} />
+          )}
+
           <br />
-        </>
+          <small>Just click on image to remove.</small>
+        </div>
       )}
-      {image && image?.url && <img width="auto" height={300} src={image?.url} />}
+      {image && (
+        <div className="form-group py-2">
+          <img width="auto" height={300} src={window?.URL.createObjectURL(image)} onClick={() => setImage()} />
+          <br />
+          <small>Just click on image to remove.</small>
+        </div>
+      )}
+
+      {preImage?.url && <>{JSON.stringify(toImageUrl(preImage?.url))}</>}
+
       <hr />
 
       {/* overview */}
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1">Overview</h5>
+        <h5 htmlFor="exampleFormControlInput1">Overview</h5>
         <Editor
           // className="form-control"
           name="overview"
@@ -114,12 +129,12 @@ const EditCourseForm = ({
       </div>
 
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1">Why us</h5>
+        <h5 htmlFor="exampleFormControlInput1">Why us</h5>
         <Editor name="whyUs" placeholder="Why us" value={whyUs} onChange={(e) => setwhyUs(e)} />
       </div>
 
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1">Prerequisites</h5>
+        <h5 htmlFor="exampleFormControlInput1">Prerequisites</h5>
         <Editor
           type="text"
           // className="form-control"
@@ -132,19 +147,19 @@ const EditCourseForm = ({
       </div>
 
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1">Benefits</h5>
+        <h5 htmlFor="exampleFormControlInput1">Benefits</h5>
 
         <Editor name="benefits" placeholder="Benefits of the course" value={benefits} onChange={(e) => setBenefits(e)} />
       </div>
 
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1">Market Value</h5>
+        <h5 htmlFor="exampleFormControlInput1">Market Value</h5>
 
         <Editor name="marketValue" placeholder="Market Value of the course" value={marketValue} onChange={(e) => setMarketValue(e)} />
       </div>
 
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1">Who this course is for:</h5>
+        <h5 htmlFor="exampleFormControlInput1">Who this course is for:</h5>
         <textarea
           // controls={controls}
           type="text"
@@ -160,7 +175,7 @@ const EditCourseForm = ({
       <div className="row py-3">
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Durations</h5>
+            <h5 htmlFor="exampleFormControlInput1"> Durations</h5>
             <input
               type="text"
               className="form-control"
@@ -174,7 +189,7 @@ const EditCourseForm = ({
         </div>
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Classes</h5>
+            <h5 htmlFor="exampleFormControlInput1"> Classes</h5>
             <input
               type="number"
               className="form-control"
@@ -191,7 +206,7 @@ const EditCourseForm = ({
       <div className="row py-3">
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Timing</h5>
+            <h5 htmlFor="exampleFormControlInput1"> Timing</h5>
             <input
               type="text"
               className="form-control"
@@ -205,7 +220,7 @@ const EditCourseForm = ({
         </div>
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Starting From</h5>
+            <h5 htmlFor="exampleFormControlInput1"> Starting From</h5>
             <input
               type="text"
               className="form-control"
@@ -226,7 +241,7 @@ const EditCourseForm = ({
         <div className="col-lg-6 col-md-6">
           <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="monday"
@@ -238,13 +253,13 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Monday
             </label>
           </div>
           <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="tuesday"
@@ -256,14 +271,14 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Tuesday
             </label>
           </div>
 
           <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="wednesday"
@@ -275,7 +290,7 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Wednesday
             </label>
           </div>
@@ -284,7 +299,7 @@ const EditCourseForm = ({
         <div className="col-lg-6 col-md-6">
           <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="thursday"
@@ -296,13 +311,13 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Thursday
             </label>
           </div>
           <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="friday"
@@ -314,14 +329,14 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Friday
             </label>
           </div>
 
           <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="saturday"
@@ -333,7 +348,7 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Saturday
             </label>
           </div>
@@ -343,7 +358,7 @@ const EditCourseForm = ({
       <div className="row py-3">
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Course Fee</h5>
+            <h5 htmlFor="exampleFormControlInput1"> Course Fee</h5>
             <input
               type="number"
               className="form-control"
@@ -357,7 +372,7 @@ const EditCourseForm = ({
         </div>
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Registeration Fee</h5>
+            <h5 htmlFor="exampleFormControlInput1"> Registeration Fee</h5>
             <input
               type="number"
               className="form-control"
@@ -372,7 +387,7 @@ const EditCourseForm = ({
       </div>
 
       <div className="form-group py-2">
-        <h5 for="exampleFormControlInput1">Categories</h5>
+        <h5 htmlFor="exampleFormControlInput1">Categories</h5>
         {/* {JSON.stringify(loadCategories)} */}
         <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)} value={[...categories]}>
           {loadCategories.map((item) => (
@@ -392,46 +407,42 @@ const EditCourseForm = ({
         </select>
       </div>
 
-      {/* lectures */}
-      {/* {JSON.stringify(lectures)} */}
       <div className="row py-5">
         <h5>Outlines</h5>
         {lectures.map((lecture, index) => (
           <React.Fragment key={index}>
-            {/* {JSON.stringify(lecture)} */}
-            <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
-              <div className="col-12">
-                <div className="form-group py-2">
-                  <label for="exampleFormControlInput1"> Heading</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    name="title"
-                    placeholder="Lecture Title"
-                    value={lecture.title}
-                    onChange={(e) => handleLectureChange(index, e)}
-                  />
-                </div>
+            <div className="col-12">
+              <div className="form-group py-2">
+                <label htmlFor="exampleFormControlInput1"> Heading</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  name="title"
+                  placeholder="Lecture Title"
+                  value={lecture.title}
+                  onChange={(e) => handleLectureChange(index, e)}
+                />
               </div>
-              <div className="col-12">
-                <div className="form-group py-2">
-                  <label for="exampleFormControlSelect1">Description</label>
-                  <textarea
-                    type="text"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    name="details"
-                    placeholder="Lecture Details"
-                    value={lecture.details}
-                    onChange={(e) => handleLectureChange(index, e)}
-                  />
-                </div>
-              </div>
-              <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveLecture(index)}>
-                Remove
-              </span>
             </div>
+
+            <div className="col-12">
+              <div className="form-group py-2">
+                <label htmlFor="exampleFormControlSelect1">Description</label>
+                <textarea
+                  type="text"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  name="details"
+                  placeholder="Lecture Details"
+                  value={lecture.details}
+                  onChange={(e) => handleLectureChange(index, e)}
+                />
+              </div>
+            </div>
+            <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveLecture(index)}>
+              Remove
+            </span>
             <hr />
           </React.Fragment>
         ))}
@@ -447,39 +458,37 @@ const EditCourseForm = ({
       {/* faqs */}
 
       <div className="row py-5">
-        <h5>Outlines</h5>
+        <h5>Faqs</h5>
         {faqs.map((x, index) => (
           <React.Fragment key={index}>
-            {/* className="card " style={{ backgroundColor: "#f0f0f0" }} */}
-            <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
-              <div className="col-12">
-                <div className="form-group py-2">
-                  <label for="exampleFormControlInput1">Heading</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    name="question"
-                    placeholder="Question"
-                    value={x.question}
-                    onChange={(e) => handleFaqsChange(index, e)}
-                  />
-                </div>
+            <div className="col-12">
+              <div className="form-group py-2">
+                <label htmlFor="exampleFormControlInput1">Heading</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  name="question"
+                  placeholder="Question"
+                  value={x.question}
+                  onChange={(e) => handleFaqsChange(index, e)}
+                />
               </div>
-              <div className="col-12">
-                <div className="form-group py-2">
-                  <label for="exampleFormControlSelect1">Description</label>
-                  <textarea
-                    type="text"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    name="answer"
-                    placeholder="Answer"
-                    value={x.answer}
-                    onChange={(e) => handleFaqsChange(index, e)}
-                  />
-                </div>
+            </div>
+            <div className="col-12">
+              <div className="form-group py-2">
+                <label htmlFor="exampleFormControlSelect1">Description</label>
+                <textarea
+                  type="text"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  name="answer"
+                  placeholder="Answer"
+                  value={x.answer}
+                  onChange={(e) => handleFaqsChange(index, e)}
+                />
               </div>
+
               <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveFAQs(index)}>
                 Remove
               </span>

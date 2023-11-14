@@ -109,3 +109,7 @@
 .header__btn {
   z-index: 1000 !important; /* Ensure it's lower than the dropdown */
 }
+
+.disable-pointer {
+  cursor: no-drop !important;
+}

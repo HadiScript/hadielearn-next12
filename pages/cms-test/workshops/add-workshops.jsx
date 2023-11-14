@@ -14,10 +14,7 @@ import { AuthContext } from "../../../context/auth";
 import CMSLayout from "../../../panel/newCMS/layouts";
 import Btn from "../../../components/ui/Btn";
 const AddWorkshops = () => {
-  const Editor = useMemo(
-    () => dynamic(() => import("react-quill"), { ssr: false }),
-    []
-  );
+  const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
   const [auth] = useContext(AuthContext);
 
@@ -180,19 +177,12 @@ const AddWorkshops = () => {
             id="exampleFormControlInput1"
           />
         </div>
-        <small className="form-text">
-          Please upload image within 1mb, formet jpg,jpeg,webp
-        </small>
+        <small className="form-text">Please upload image within 1mb, formet jpg,jpeg,webp</small>
         {loadingImage && "loading..."}
 
         {image && (
           <div className="form-group py-2">
-            <img
-              width="auto"
-              height={300}
-              src={URL.createObjectURL(image)}
-              onClick={() => setImage()}
-            />
+            <img width="auto" height={300} src={URL.createObjectURL(image)} onClick={() => setImage()} />
             <br />
             <small>Just click on image to remove.</small>
           </div>
@@ -202,32 +192,17 @@ const AddWorkshops = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Overview</h5>
-          <Editor
-            placeholder="Overview"
-            value={content}
-            onChange={(e) => setContent(e)}
-          />
+          <Editor placeholder="Overview" value={content} onChange={(e) => setContent(e)} />
         </div>
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Outlines</h5>
-          <Editor
-            placeholder="Overview"
-            value={outlines}
-            onChange={(e) => setOutlines(e)}
-          />
+          <Editor placeholder="Overview" value={outlines} onChange={(e) => setOutlines(e)} />
         </div>
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Conclusion</h5>
-          <textarea
-            className="form-control"
-            type="text"
-            id="exampleFormControlInput1"
-            name="conclusion"
-            value={conclusion}
-            onChange={(e) => setConclusion(e.target.value)}
-          />
+          <textarea className="form-control" type="text" id="exampleFormControlInput1" name="conclusion" value={conclusion} onChange={(e) => setConclusion(e.target.value)} />
         </div>
 
         <div className="form-group py-2">
@@ -246,12 +221,7 @@ const AddWorkshops = () => {
         {teachersLoading && "loading..."}
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Select Instructor</h5>
-          <select
-            value={instructor}
-            onChange={(e) => setInstructor(e.target.value)}
-            className="form-control"
-            name="status"
-          >
+          <select value={instructor} onChange={(e) => setInstructor(e.target.value)} className="form-control" name="status">
             <option>* Select Instructor</option>
             {teachers?.map((x, index) => (
               <option key={index} value={x._id}>
@@ -263,60 +233,29 @@ const AddWorkshops = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Poplar Tags</h5>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Tags"
-            name="tags"
-            value={tags}
-            onChange={(e) => setTags(e.target.value)}
-          />
-          <small className="form-text">
-            Please use comma separated values (eg.
-            #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)
-          </small>
+          <input type="text" className="form-control" placeholder="Tags" name="tags" value={tags} onChange={(e) => setTags(e.target.value)} />
+          <small className="form-text">Please use comma separated values (eg. #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)</small>
         </div>
 
         <hr />
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Zoom Link</h5>
-          <input
-            className="form-control"
-            type="text"
-            id="exampleFormControlInput1"
-            name="zoomLink"
-            value={zoomLink}
-            onChange={(e) => setZoomLink(e.target.value)}
-          />
+          <input className="form-control" type="text" id="exampleFormControlInput1" name="zoomLink" value={zoomLink} onChange={(e) => setZoomLink(e.target.value)} />
         </div>
 
         <div className="row">
           <div className="col-md-6">
             <div className="form-group py-2">
               <h5 for="exampleFormControlInput1">Meeting Id</h5>
-              <input
-                className="form-control"
-                type="text"
-                id="exampleFormControlInput1"
-                name="meetingId"
-                value={meetingId}
-                onChange={(e) => setMeetingId(e.target.value)}
-              />
+              <input className="form-control" type="text" id="exampleFormControlInput1" name="meetingId" value={meetingId} onChange={(e) => setMeetingId(e.target.value)} />
             </div>
           </div>
 
           <div className="col-md-6">
             <div className="form-group py-2">
               <h5 for="exampleFormControlInput1">Pascode Id</h5>
-              <input
-                className="form-control"
-                type="text"
-                id="exampleFormControlInput1"
-                name="pascodeId"
-                value={pascodeId}
-                onChange={(e) => setPascodeId(e.target.value)}
-              />
+              <input className="form-control" type="text" id="exampleFormControlInput1" name="pascodeId" value={pascodeId} onChange={(e) => setPascodeId(e.target.value)} />
             </div>
           </div>
         </div>
@@ -336,13 +275,7 @@ const AddWorkshops = () => {
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Categories</h5>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: "100%" }}
-            placeholder="Please select"
-            onChange={(v) => setCategories(v)}
-          >
+          <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)}>
             {loadCategories.map((item) => (
               <Select.Option key={item.name}>{item.name}</Select.Option>
             ))}

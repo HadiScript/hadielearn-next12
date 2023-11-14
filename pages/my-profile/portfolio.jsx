@@ -148,7 +148,16 @@ const Portfolio = () => {
 
   return (
     <EditProfileLayout>
-      <ProfileForm title={"Portfolio"} loading={loading} formData={formData} changesFormData={changesFormData} addFunc={addProject} formErrors={formErrors} which={"port"} />
+      <ProfileForm
+        setFormData={setFormData}
+        title={"Portfolio"}
+        loading={loading}
+        formData={formData}
+        changesFormData={changesFormData}
+        addFunc={addProject}
+        formErrors={formErrors}
+        which={"port"}
+      />
 
       <ProjectList projectData={projectData} from={"editing-page"} deleteProject={deleteProject} setCurrent={setCurrent} setOpen={setOpen} />
 

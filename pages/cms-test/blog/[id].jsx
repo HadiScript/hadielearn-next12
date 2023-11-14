@@ -35,7 +35,6 @@ const EditBlog = () => {
   const [formData, setFormData] = useState(initialState);
   const [image, setImage] = useState();
   const [preImage, setPreImage] = useState();
-  const [imageLoading, setImageLoading] = useState(false);
   const [content, setcontent] = useState("");
   const [categories, setCategories] = useState([]);
   const [loadCategories, setLoadCategories] = useState([]);
@@ -97,53 +96,6 @@ const EditBlog = () => {
     if (auth && auth.token && id) fetchSingleBlog();
   }, [auth && auth.token && id]);
 
-  // const handleImage = async (e) => {
-  //   const file = e.target.files[0];
-  //   let formData = new FormData();
-
-  //   formData.append("image", file);
-
-  //   const reader = new FileReader();
-
-  //   const { data } = await axios.post(`${API}/upload-image`, formData, {
-  //     headers: {
-  //       Authorization: `Bearer ${auth.token}`,
-  //     },
-  //   });
-
-  //   reader.onload = () => {
-  //     const imageUrl = reader.result;
-  //     setcontent((prevContent) => prevContent + `<img src="${data?.url}" alt="uploaded image" />`);
-  //   };
-
-  //   reader.readAsDataURL(file);
-  // };
-
-  // const handleFeaturedImage = async (e) => {
-  //   const file = e.target.files[0];
-  //   let formData = new FormData();
-
-  //   formData.append("image", file);
-  //   setImageLoading(true);
-
-  //   try {
-  //     const { data } = await axios.post(`${API}/upload-image`, formData, {
-  //       headers: {
-  //         Authorization: `Bearer ${auth.token}`,
-  //       },
-  //     });
-  //     setImage({
-  //       url: data.url,
-  //       public_id: data.public_id,
-  //     });
-
-  //     setImageLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //     setImageLoading(false);
-  //   }
-  // };
-
   const submitForm = async (e) => {
     e.preventDefault();
 
@@ -188,33 +140,6 @@ const EditBlog = () => {
       setLoading(false);
     }
   };
-
-  // const removeImage = async (public_id) => {
-  //   try {
-  //     setImageLoading(true);
-
-  //     const { data } = await axios.post(
-  //       `${API}/delete-blog-image/${id}`,
-  //       {
-  //         filepath: public_id,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${auth.token}`,
-  //         },
-  //       }
-  //     );
-  //     if (data.result) {
-  //       toast.success("Image is removed");
-  //       setImage({ url: "", public_id: "" });
-  //       setImageLoading(false);
-  //     }
-  //   } catch (error) {
-  //     setImageLoading(false);
-  //     console.log("error");
-  //     toast.error("Try again, failed");
-  //   }
-  // };
 
   return (
     <>

@@ -24,10 +24,7 @@ const initDays = {
 };
 
 const AddCourse = () => {
-  const Editor = useMemo(
-    () => dynamic(() => import("react-quill"), { ssr: false }),
-    []
-  );
+  const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
   const [auth] = useContext(AuthContext);
 
@@ -47,7 +44,8 @@ const AddCourse = () => {
   const [regFee, setRegFee] = useState(0);
   const [courseFee, setcourseFee] = useState("");
   const [days, setDays] = useState(initDays);
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState();
+
   const [loadingImage, setLoadingImage] = useState(false);
 
   const [teachers, setTeachers] = useState([]);
@@ -196,13 +194,56 @@ const AddCourse = () => {
       return;
     }
 
-    // console.log(payloadData);
-    // return
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("overview", overview);
+
+    formData.append("whyUs", whyUs);
+    formData.append("prerequisites", prerequisites); // Assuming `image` is the File object from an input type="file"
+    formData.append("benefits", benefits);
+    formData.append("marketValue", marketValue);
+    formData.append("courseFor", courseFor);
+    formData.append("duration", duration);
+    formData.append("classes", classes);
+    formData.append("timming", timming);
+    formData.append("startingFrom", startingFrom);
+    formData.append("regFee", regFee);
+
+    formData.append("courseFee", courseFee);
+    formData.append("image", image);
+    formData.append("instructor", instructor);
+
+    formData.append("monday", days.monday);
+    formData.append("tuesday", days.tuesday);
+    formData.append("wednesday", days.wednesday);
+    formData.append("thursday", days.thursday);
+    formData.append("friday", days.friday);
+    formData.append("saturday", days.saturday);
+
+    // let stringifyFaqs = JSON.stringify(faqs);
+    // formData.append("faqs", JSON.stringify(faqs));
+
+    lectures.forEach((obj, index) => {
+      formData.append(`lectures[${index}][title]`, obj.title);
+      formData.append(`lectures[${index}][details]`, obj.details);
+    });
+
+    faqs.forEach((obj, index) => {
+      formData.append(`faqs[${index}][answer]`, obj.answer);
+      formData.append(`faqs[${index}][question]`, obj.question);
+    });
+
+
+    categories.forEach((category) => {
+      formData.append("categories", category);
+    });
+
+    // console.log(JSON.stringify(formData));
 
     try {
       setloading(true);
 
-      const { data } = await axios.post(`${API}/create-course`, payloadData);
+      const { data } = await axios.post(`${API}/create-course`, formData);
 
       console.log(data.error);
       if (data.error) {
@@ -260,9 +301,9 @@ const AddCourse = () => {
           </div>
 
           <div className="form-group py-2">
-            <h5 for="exampleFormControlInput1"> Course Image</h5>
+            <h5 for="exampleFormControlInput1">Course Image</h5>
             <input
-              onChange={handleImage}
+              onChange={(e) => setImage(e.target.files[0])}
               type="file"
               accept="images/*"
               // hidden
@@ -271,36 +312,26 @@ const AddCourse = () => {
             />
           </div>
           {loadingImage && "loading..."}
-          {image && image?.url && (
-            <>
-              <span className="text-danger" onClick={removeImage}>
-                delete image
-              </span>
+          {image && (
+            <div className="form-group py-2">
+              <img width="auto" height={300} src={URL.createObjectURL(image)} onClick={() => setImage()} />
               <br />
-            </>
+              <small>Just click on image to remove.</small>
+            </div>
           )}
-          {image && image?.url && (
-            <img width="auto" height={300} src={image?.url} />
-          )}
+
+          {/* {image && image?.url && <img width="auto" height={300} src={image?.url} />} */}
           <hr />
 
           {/* overview */}
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Overview</h5>
-            <Editor
-              placeholder="Overview of the coruse"
-              value={overview}
-              onChange={(e) => setOverview(e)}
-            />
+            <Editor placeholder="Overview of the coruse" value={overview} onChange={(e) => setOverview(e)} />
           </div>
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Why us</h5>
-            <Editor
-              placeholder=""
-              value={whyUs}
-              onChange={(e) => setwhyUs(e)}
-            />
+            <Editor placeholder="" value={whyUs} onChange={(e) => setwhyUs(e)} />
           </div>
 
           <div className="form-group py-2">
@@ -317,14 +348,7 @@ const AddCourse = () => {
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Benefits</h5>
-            <Editor
-              type="text"
-              id="exampleFormControlInput1"
-              name="benefits"
-              placeholder="Benefits of the course"
-              value={benefits}
-              onChange={(e) => setBenefits(e)}
-            />
+            <Editor type="text" id="exampleFormControlInput1" name="benefits" placeholder="Benefits of the course" value={benefits} onChange={(e) => setBenefits(e)} />
           </div>
 
           <div className="form-group py-2">
@@ -569,12 +593,7 @@ const AddCourse = () => {
 
           {teachersLoading && "loading..."}
           <div className="form-group py-2">
-            <select
-              value={instructor}
-              onChange={(e) => setInstructor(e.target.value)}
-              className="form-control"
-              name="status"
-            >
+            <select value={instructor} onChange={(e) => setInstructor(e.target.value)} className="form-control" name="status">
               <option>* Select Instructor</option>
               {teachers?.map((x, index) => (
                 <option key={index} value={x._id}>
@@ -586,13 +605,7 @@ const AddCourse = () => {
 
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Categories</h5>
-            <Select
-              mode="multiple"
-              allowClear
-              style={{ width: "100%" }}
-              placeholder="Please select"
-              onChange={(v) => setCategories(v)}
-            >
+            <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)}>
               {loadCategories.map((item) => (
                 <Select.Option key={item.name}>{item.name}</Select.Option>
               ))}
@@ -605,39 +618,35 @@ const AddCourse = () => {
 
             {lectures.map((lecture, index) => (
               <React.Fragment key={index}>
-                <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
-                  <div className="col-12">
-                    <div className="form-group py-2">
-                      <label for="exampleFormControlInput1"> Heading</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleFormControlInput1"
-                        name="title"
-                        placeholder="Lecture Title"
-                        value={lecture.title}
-                        onChange={(e) => handleLectureChange(index, e)}
-                      />
-                    </div>
+                <div className="col-12">
+                  <div className="form-group py-2">
+                    <label for="exampleFormControlInput1"> Heading</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      name="title"
+                      placeholder="Lecture Title"
+                      value={lecture.title}
+                      onChange={(e) => handleLectureChange(index, e)}
+                    />
                   </div>
-                  <div className="col-12">
-                    <div className="form-group py-2">
-                      <label for="exampleFormControlSelect1">Description</label>
-                      <textarea
-                        type="text"
-                        className="form-control"
-                        id="exampleFormControlInput1"
-                        name="details"
-                        placeholder="Lecture Details"
-                        value={lecture.details}
-                        onChange={(e) => handleLectureChange(index, e)}
-                      />
-                    </div>
+                </div>
+                <div className="col-12">
+                  <div className="form-group py-2">
+                    <label for="exampleFormControlSelect1">Description</label>
+                    <textarea
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      name="details"
+                      placeholder="Lecture Details"
+                      value={lecture.details}
+                      onChange={(e) => handleLectureChange(index, e)}
+                    />
                   </div>
-                  <span
-                    className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
-                    onClick={() => handleRemoveLecture(index)}
-                  >
+
+                  <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveLecture(index)}>
                     Remove
                   </span>
                 </div>
@@ -646,10 +655,7 @@ const AddCourse = () => {
             ))}
 
             <div className="d-flex justify-content-end">
-              <button
-                onClick={handleAddLecture}
-                className="p-1 rounded d-flex justify-content-center align-items-center"
-              >
+              <button onClick={handleAddLecture} className="p-1 rounded d-flex justify-content-center align-items-center">
                 Add <BiPlus />
               </button>
             </div>
@@ -658,55 +664,48 @@ const AddCourse = () => {
 
           {/* FAQS */}
           <div className="row py-5">
-            <h5> FAQs</h5>
+            <h5>FAQs</h5>
 
             {faqs.map((lecture, index) => (
               <React.Fragment key={index}>
-                <div className="card " style={{ backgroundColor: "#f0f0f0" }}>
-                  <div className="col-12">
-                    <div className="form-group py-2">
-                      <label for="exampleFormControlInput1"> Question</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleFormControlInput1"
-                        name="question"
-                        placeholder="Question"
-                        value={faqs.question}
-                        onChange={(e) => handleFaqsChange(index, e)}
-                      />
-                    </div>
+                <div className="col-12">
+                  <div className="form-group py-2">
+                    <label for="exampleFormControlInput1"> Question</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      name="question"
+                      placeholder="Question"
+                      value={faqs.question}
+                      onChange={(e) => handleFaqsChange(index, e)}
+                    />
                   </div>
-                  <div className="col-12">
-                    <div className="form-group py-2">
-                      <label for="exampleFormControlSelect1">Answer</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleFormControlInput1"
-                        name="answer"
-                        placeholder="Answer"
-                        value={lecture.answer}
-                        onChange={(e) => handleFaqsChange(index, e)}
-                      />
-                    </div>
-                  </div>
-                  <span
-                    className="p-1 mx-3 rounded d-flex justify-content-start text-danger "
-                    onClick={() => handleRemoveFAQs(index)}
-                  >
-                    Remove
-                  </span>
                 </div>
+                <div className="col-12">
+                  <div className="form-group py-2">
+                    <label for="exampleFormControlSelect1">Answer</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      name="answer"
+                      placeholder="Answer"
+                      value={lecture.answer}
+                      onChange={(e) => handleFaqsChange(index, e)}
+                    />
+                  </div>
+                </div>
+                <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveFAQs(index)}>
+                  Remove
+                </span>
+
                 <hr />
               </React.Fragment>
             ))}
 
             <div className="d-flex justify-content-end">
-              <button
-                onClick={handleAddFaqs}
-                className="p-1 rounded d-flex justify-content-center align-items-center"
-              >
+              <button onClick={handleAddFaqs} className="p-1 rounded d-flex justify-content-center align-items-center">
                 Add <BiPlus />
               </button>
             </div>

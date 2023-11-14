@@ -154,7 +154,16 @@ const Experience = () => {
 
   return (
     <EditProfileLayout>
-      <ProfileForm title={"Experience"} formData={formData} which={"exp"} changesFormData={changesFormData} addFunc={addExperience} loading={loading} formErrors={formErrors} />
+      <ProfileForm
+        setFormData={setFormData}
+        title={"Experience"}
+        formData={formData}
+        which={"exp"}
+        changesFormData={changesFormData}
+        addFunc={addExperience}
+        loading={loading}
+        formErrors={formErrors}
+      />
 
       <ExpLists from="editing-page" expData={expList} deleteExperience={deleteExperience} setCurrent={setCurrent} setOpen={setOpen} />
 

@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import CourseCard from "./CourseCard";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const CourseList = ({ courses_data, searchQuery }) => {
   const filteredCourses = courses_data.filter((course) => {
@@ -14,19 +16,23 @@ const CourseList = ({ courses_data, searchQuery }) => {
     return totalCourseHours;
   };
 
-
   return (
     <>
       <div className="container">
         {/* {JSON.stringify(filteredCourses)} */}
         {/* <Fade bottom cascade> */}
+
         <div className="row mt-100">
           {filteredCourses?.map((x) => (
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
               <div className="blog__item-2 mb-50 fix">
                 <div className={`blog__thumb-2 w-img fix `}>
                   <Link href={`/program/${x._doc.slug}`}>
-                    <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
+                    {x._doc.image?.url?.includes("courseImages") ? (
+                      <img src={toImageUrl(x._doc.image?.url)} alt="" style={{ height: "250px" }} />
+                    ) : (
+                      <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
+                    )}
                   </Link>
                 </div>
 
@@ -42,6 +48,7 @@ const CourseList = ({ courses_data, searchQuery }) => {
                   <p className="mt-4">{x.plainOverview.substring(0, 130)}...</p>
                 </div>
               </div>
+              {/* <CourseCard x={x} /> */}
             </div>
 
             // <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">

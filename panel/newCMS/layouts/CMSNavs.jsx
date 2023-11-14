@@ -15,7 +15,6 @@ import { useRouter } from "next/router";
 
 const CMSNavs = () => {
   const router = useRouter();
-  console.log(router, "from cms navs");
 
   return (
     <Menu
@@ -52,7 +51,7 @@ const CMSNavs = () => {
       <Menu.Item onClick={() => router.push("/cms-test/courses/all-courses")} className="mt-3" icon={<MdLibraryBooks />}>
         Courses
       </Menu.Item>
-      <Menu.Item onClick={() => router.push("/cms-test/courses/add-courses")} className="mt-1" icon={<FaPlus />}>
+      <Menu.Item onClick={() => router.push("/cms-test/courses/add-course")} className="mt-1" icon={<FaPlus />}>
         Add Courses
       </Menu.Item>
       <Menu.Item onClick={() => router.push("/cms-test/workshops/all-workshops")} className="mt-3" icon={<MdOutlineLibraryBooks />}>

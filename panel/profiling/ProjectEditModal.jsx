@@ -109,7 +109,7 @@ const ProjectEditModal = ({ open, setOpen, current, EditProject, loading }) => {
         </div>
         <div className="col-md-6">
           <div className="d-flex align-items-center gap-2 form-group py-2">
-            <label> Current </label>
+            <label> Present </label>
             <input type="checkbox" name="current" checked={formData.current} onChange={changesFormData} />
           </div>
         </div>

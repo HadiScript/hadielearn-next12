@@ -4,6 +4,7 @@ import { IoMdTime } from "react-icons/io";
 import { Card, Rate } from "antd";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { BsCalendar } from "react-icons/bs";
+import Link from "next/link";
 
 const checkStringTitle = (title) => {
   if (title?.length > 25) {
@@ -16,6 +17,7 @@ const checkStringTitle = (title) => {
 const CourseCard = ({ x }) => {
   return (
     <>
+      {/* {JSON.stringify(x._doc)} */}
       <Card
         cover={<img alt={x._doc.title} src={x._doc.image?.url} height={240} />}
         actions={[
@@ -35,7 +37,7 @@ const CourseCard = ({ x }) => {
                 marginLeft: "10px",
               }}
             >
-              {x._doc.instructor.name}
+              {x._doc.instructor?.name}
             </span>
           </div>,
           <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>Free</span>,
@@ -61,7 +63,7 @@ const CourseCard = ({ x }) => {
           </div>
           <div className="d-flex align-items-center gap-1">
             <IoMdTime size={18} />
-            <small style={{ fontSize: "15px" }}>{DurationsTOHrs(x._doc)} hrs</small>
+            <small style={{ fontSize: "15px" }}>243 hrs</small>
           </div>
         </div>
       </Card>
