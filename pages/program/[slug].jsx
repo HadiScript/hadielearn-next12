@@ -38,9 +38,9 @@ const ProgramDetails = ({ course }) => {
               <div className="blog__details-wrapper mr-50">
                 <div className="blog__details-thumb w-img mb-45">
                   {findedCourse.image?.url?.includes("courseImages") ? (
-                    <img src={toImageUrl(findedCourse.image?.url)} alt="" style={{ height: "250px" }} />
+                    <img src={toImageUrl(findedCourse.image?.url)} alt="" style={{ borderRadius: "20px" }} />
                   ) : (
-                    <img src={findedCourse.image?.url} alt="" style={{ height: "250px" }} />
+                    <img src={findedCourse.image?.url} alt="" style={{ borderRadius: "20px" }} />
                   )}
 
                   {/* <img src={findedCourse?.image?.url} alt="" style={{ borderRadius: "20px" }} /> */}
