@@ -103,7 +103,7 @@ const EditCourse = () => {
       setRegFee(data?.regFee);
       setcourseFee(data?.courseFee);
       setPreImage(data?.image);
-      console.log(data, "from edit course");
+
       setInstructor(data?.instructor);
 
       setDays({
@@ -121,6 +121,7 @@ const EditCourse = () => {
       setCategories(arr);
       setLectures(data?.lectures);
       setFaqs(data?.faqs);
+      console.log(data, "from edit course");
       setSingleLoading(false);
     } catch (error) {
       setSingleLoading(false);
@@ -195,11 +196,32 @@ const EditCourse = () => {
   const submitHandler = async (e) => {
     // console.log({ course: payloadData });
     e.preventDefault();
+
+    console.log({
+      title,
+      overview,
+      // lectures ,
+      // faqs ,
+      whyUs,
+      prerequisites,
+      benefits,
+      marketValue,
+      courseFor,
+      duration,
+      classes,
+      timming,
+      startingFrom,
+      // regFee ,
+      // courseFee ,
+      image,
+      instructor,
+    });
+
     if (
       !title ||
       !overview ||
-      !lectures ||
-      !faqs ||
+      // !lectures ||
+      // !faqs ||
       !whyUs ||
       !prerequisites ||
       !benefits ||
@@ -209,9 +231,9 @@ const EditCourse = () => {
       !classes ||
       !timming ||
       !startingFrom ||
-      !regFee ||
-      !courseFee ||
-      !image ||
+      // !regFee ||
+      // !courseFee ||
+
       !instructor
     ) {
       toast.error("All Fields are required**", { position: "bottom-center" });
@@ -234,8 +256,16 @@ const EditCourse = () => {
     formData.append("regFee", regFee);
     formData.append("courseFee", courseFee);
     formData.append("instructor", instructor);
-    formData.append("lectures", lectures);
-    formData.append("faqs", faqs);
+
+    lectures.forEach((obj, index) => {
+      formData.append(`lectures[${index}][title]`, obj.title);
+      formData.append(`lectures[${index}][details]`, obj.details);
+    });
+
+    faqs.forEach((obj, index) => {
+      formData.append(`faqs[${index}][question]`, obj.question);
+      formData.append(`faqs[${index}][answer]`, obj.answer);
+    });
 
     if (preImage) {
       formData.append("image", preImage); // Assuming `image` is the File object from an input type="file"

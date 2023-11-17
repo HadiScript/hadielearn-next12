@@ -3,6 +3,7 @@ import React from "react";
 import { BsPen, BsTrash } from "react-icons/bs";
 import Titles from "./Titles";
 import { useRouter } from "next/router";
+import moment from "moment";
 
 const ProjectList = ({ from = "main-page", projectData, deleteProject, setCurrent, setOpen }) => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const ProjectList = ({ from = "main-page", projectData, deleteProject, setCurren
                   <b>{item.description}</b>
                   <br />
                   <>
-                    {item.from?.slice(0, 10)} - {item.to?.slice(0, 10) || "Present"}
+                    {moment(item?.from).format("MMMM YYYY")} - {item?.current ? "Present" : moment(item?.to).format("MMMM YYYY")}
                   </>
                   <br />
                   <a href={item.link} target="_">

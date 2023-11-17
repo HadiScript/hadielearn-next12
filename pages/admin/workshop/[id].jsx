@@ -370,7 +370,7 @@ const EditWorkshop = () => {
               onChange={(e) => setTags(e.target.value)}
             />
             <small className="form-text">
-              Please use comma separated values (eg.
+              Please use comma separated values (e.g:
               #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)
             </small>
           </div>

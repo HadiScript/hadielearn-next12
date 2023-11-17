@@ -3,6 +3,7 @@ import React from "react";
 import { BsPen, BsTrash } from "react-icons/bs";
 import Titles from "./Titles";
 import { useRouter } from "next/router";
+import moment from "moment";
 
 const ExpLists = ({ from = "main-page", expData, deleteExperience, setCurrent, setOpen }) => {
   const router = useRouter();
@@ -38,7 +39,7 @@ const ExpLists = ({ from = "main-page", expData, deleteExperience, setCurrent, s
                   </b>
                   <br />
                   <>
-                    {item.from?.slice(0, 10)} - {item.to?.slice(0, 10) || "Present"}
+                    {moment(item?.from).format("MMMM YYYY")} - {item?.current ? "Present" : moment(item?.to).format("MMMM YYYY")}
                   </>
                   <br />
                   <b>

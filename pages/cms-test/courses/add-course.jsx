@@ -171,6 +171,7 @@ const AddCourse = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     if (
       !title ||
       !overview ||
@@ -188,7 +189,8 @@ const AddCourse = () => {
       !courseFee ||
       !image ||
       !instructor ||
-      !categories
+      !categories ||
+      !faqs
     ) {
       toast.error("All Fields are required**", { position: "bottom-center" });
       return;
@@ -232,7 +234,6 @@ const AddCourse = () => {
       formData.append(`faqs[${index}][answer]`, obj.answer);
       formData.append(`faqs[${index}][question]`, obj.question);
     });
-
 
     categories.forEach((category) => {
       formData.append("categories", category);

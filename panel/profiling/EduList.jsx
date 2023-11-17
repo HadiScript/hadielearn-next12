@@ -4,27 +4,12 @@ import React from "react";
 import { FaEdit } from "react-icons/fa";
 import Titles from "./Titles";
 import { BsPen } from "react-icons/bs";
+import moment from "moment/moment";
 
-const EduList = ({
-  from = "main-page",
-  eduList,
-  deleteEducation,
-  setCurrent,
-  setOpen,
-}) => {
+const EduList = ({ from = "main-page", eduList, deleteEducation, setCurrent, setOpen }) => {
   const router = useRouter();
   return (
-    <Card
-      title={
-        <Titles
-          name={"Education"}
-          path={"/my-profile/education"}
-          from={from}
-          router={router}
-        />
-      }
-      className="mt-10"
-    >
+    <Card title={<Titles name={"Education"} path={"/my-profile/education"} from={from} router={router} />} className="mt-10">
       <List
         itemLayout="horizontal"
         dataSource={eduList}
@@ -33,10 +18,7 @@ const EduList = ({
             actions={[
               <>
                 {from === "editing-page" && (
-                  <span
-                    className="text-danger"
-                    onClick={() => deleteEducation(item._id)}
-                  >
+                  <span className="text-danger" onClick={() => deleteEducation(item._id)}>
                     delete
                   </span>
                 )}
@@ -61,8 +43,7 @@ const EduList = ({
                   <b>{item.school}</b>
                   <br />
                   <>
-                    {item?.from?.slice(0, 10)} - {" "}
-                    {item?.current ? "current" : item?.to?.slice(0, 10)}
+                    {moment(item?.from).format("MMMM YYYY")} - {item?.current ? "Present" : moment(item?.to).format("MMMM YYYY")}
                   </>
                   <br />
                   <>{item.description}</>

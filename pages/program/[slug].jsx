@@ -7,6 +7,7 @@ import Link from "next/link";
 import Footer from "../../components/partials/Footer";
 import axios from "axios";
 import { API } from "../../config/API";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const ProgramDetails = ({ course }) => {
   const router = useRouter();
@@ -36,7 +37,13 @@ const ProgramDetails = ({ course }) => {
             <div className="col-xl-8 col-lg-8">
               <div className="blog__details-wrapper mr-50">
                 <div className="blog__details-thumb w-img mb-45">
-                  <img src={findedCourse?.image?.url} alt="" style={{ borderRadius: "20px" }} />
+                  {findedCourse.image?.url?.includes("courseImages") ? (
+                    <img src={toImageUrl(findedCourse.image?.url)} alt="" style={{ height: "250px" }} />
+                  ) : (
+                    <img src={findedCourse.image?.url} alt="" style={{ height: "250px" }} />
+                  )}
+
+                  {/* <img src={findedCourse?.image?.url} alt="" style={{ borderRadius: "20px" }} /> */}
                 </div>
                 <div className="blog__text mb-40">
                   <h1>{findedCourse?.title}</h1>

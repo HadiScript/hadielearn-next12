@@ -245,7 +245,7 @@ const EditBlog = () => {
           <div className="form-group py-2">
             <h5 for="exampleFormControlInput1">Poplar Tags</h5>
             <input type="text" className="form-control" placeholder="Tags" name="tags" value={formData.tags} onChange={onChange} />
-            <small className="form-text">Please use comma separated values (eg. #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)</small>
+            <small className="form-text">Please use comma separated values (e.g: #TREND,#DESIGNING,#JAVSSCRIPT,#EARNING,#EDUCATION)</small>
           </div>
           <br />
           <Btn loading={loading} onClick={submitForm}>

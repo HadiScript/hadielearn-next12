@@ -1,5 +1,6 @@
-import { Button, Card } from "antd";
+import { Button, Card, Select } from "antd";
 import React, { useEffect } from "react";
+import { degrees } from "../../data/degrees";
 
 const ProfileForm = ({ formData, setFormData, changesFormData, addFunc, loading, which, formErrors, title }) => {
   useEffect(() => {
@@ -22,7 +23,13 @@ const ProfileForm = ({ formData, setFormData, changesFormData, addFunc, loading,
             <div className="col-md-6">
               <div className="form-group py-2">
                 <label> Degree </label>
-                <input type="email" className="form-control" placeholder="Degree" name="degree" value={formData.degree} onChange={changesFormData} />
+                <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setFormData({ ...formData, degree: v })}>
+                  {degrees.map((item) => (
+                    <Select.Option key={item.value}>{item.title}</Select.Option>
+                  ))}
+                </Select>
+
+                {/* <input type="email" className="form-control" placeholder="Degree" name="degree" value={formData.degree} onChange={changesFormData} /> */}
               </div>
             </div>
           </>
@@ -48,7 +55,7 @@ const ProfileForm = ({ formData, setFormData, changesFormData, addFunc, loading,
         {which === "cert" && (
           <div className="col-md-6">
             <div className="form-group py-2">
-              <label> Platform </label>
+              <label> Institute </label>
               <input type="email" className="form-control" placeholder="eg: hadielearning" name="platform" value={formData.platform} onChange={changesFormData} />
             </div>
           </div>
@@ -103,10 +110,10 @@ const ProfileForm = ({ formData, setFormData, changesFormData, addFunc, loading,
               <option value={""} defaultValue={""}>
                 Choose type of job
               </option>
-              <option value={"remote-part-time"}> Remote and part time </option>
-              <option value={"remote-full-time"}> Remote and fill time </option>
-              <option value={"onsite-part-time"}> Onsite Part time </option>
-              <option value={"onsite-full-time"}> Onsite Full Time </option>
+              <option value={"Remote - Part-Time"}> Remote - Part-Time </option>
+              <option value={"Remote - Full-Time"}> Remote - Full-Time </option>
+              <option value={"Onsite - Part-Time"}> Onsite - Part-Time </option>
+              <option value={"Onsite - Full-Time"}> Onsite - Full-Time </option>
             </select>
           </div>
         </div>

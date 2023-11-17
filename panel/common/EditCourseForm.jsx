@@ -63,6 +63,7 @@ const EditCourseForm = ({
 
   return (
     <Card>
+      {JSON.stringify(faqs, lectures)}
       {/* {JSON.stringify(singleData)} */}
       {singleLoading && <p>loading...</p>}
       <div className="form-group py-2">

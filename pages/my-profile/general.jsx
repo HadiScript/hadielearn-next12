@@ -192,7 +192,7 @@ const EditProfile = () => {
                 maxLength={100}
                 type="text"
                 className="form-control"
-                placeholder="Student or deveoper and etc..."
+                placeholder="“Student, Developer or etc"
                 name="status"
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
@@ -201,7 +201,7 @@ const EditProfile = () => {
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
-              <label> location </label>
+              <label> Location </label>
               <input
                 maxLength={50}
                 type="email"
