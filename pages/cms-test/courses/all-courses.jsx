@@ -80,6 +80,58 @@ const AllCourses = () => {
     }
   };
 
+  const enableCourse2 = async (id) => {
+    try {
+      setShowLoading(true);
+      const { data } = await axios.put(
+        `${API}/show-or-not-2/${id}`,
+        { showOrNot: true },
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      );
+
+      console.log(data);
+      if (data.ok) {
+        setShowLoading(false);
+        toast.success("Course has been disable");
+        fetchingAllCourses();
+      }
+    } catch (error) {
+      console.log(error);
+      setShowLoading(false);
+      toast.error("Try again");
+    }
+  };
+
+  const disableCourse2 = async (id) => {
+    try {
+      setShowLoading(true);
+      const { data } = await axios.put(
+        `${API}/show-or-not-2/${id}`,
+        { showOrNot: false },
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      );
+
+      console.log(data);
+      if (data.ok) {
+        setShowLoading(false);
+        toast.success("Course has been disable");
+        fetchingAllCourses();
+      }
+    } catch (error) {
+      console.log(error);
+      setShowLoading(false);
+      toast.error("Try again");
+    }
+  };
+
   const enableCourse = async (id) => {
     try {
       setShowLoading(true);
@@ -112,16 +164,14 @@ const AllCourses = () => {
     <CMSLayout>
       <Card>
         <div className="table-responsive">
-          <table
-            class="table table-striped  text-dark"
-            style={{ backgroundColor: "white", borderRadius: "10px" }}
-          >
+          <table class="table table-striped  text-dark" style={{ backgroundColor: "white", borderRadius: "10px" }}>
             <thead>
               <tr>
                 <th scope="col">{loading ? "loading..." : "#"}</th>
                 <th scope="col">Category</th>
                 <th scope="col">Title</th>
                 <th scope="col">Instructor</th>
+                <th scope="col">Disable in form</th>
                 <th scope="col"> {showLoading && "loading..."} </th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -137,21 +187,23 @@ const AllCourses = () => {
                     <th className="text-dark" scope="row ">
                       {++index}
                     </th>
-                    <td className="text-dark">
-                      {x?._doc?.categories[0]?.name}
-                    </td>
+                    <td className="text-dark">{x?._doc?.categories[0]?.name}</td>
                     <td className="text-dark">{x?._doc?.title}</td>
                     <td className="text-dark">{x?._doc?.instructor?.name}</td>
                     <td className="text-dark">
                       {x?._doc?.show ? (
-                        <Btn onClick={() => disableCourse(x?._doc?._id)}>
-                          Enabled
-                        </Btn>
+                        <Btn onClick={() => disableCourse(x?._doc?._id)}>Enabled</Btn>
                       ) : (
-                        <Btn
-                          danger={true}
-                          onClick={() => enableCourse(x?._doc?._id)}
-                        >
+                        <Btn danger={true} onClick={() => enableCourse(x?._doc?._id)}>
+                          Disabled
+                        </Btn>
+                      )}
+                    </td>
+                    <td className="text-dark">
+                      {x?._doc?.show2 ? (
+                        <Btn onClick={() => disableCourse2(x?._doc?._id)}>Enabled</Btn>
+                      ) : (
+                        <Btn danger={true} onClick={() => enableCourse2(x?._doc?._id)}>
                           Disabled
                         </Btn>
                       )}

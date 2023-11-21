@@ -5,6 +5,7 @@ import { Card, Rate } from "antd";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { BsCalendar } from "react-icons/bs";
 import Link from "next/link";
+import { toImageUrl } from "../../utils/ImageURL";
 
 const checkStringTitle = (title) => {
   if (title?.length > 25) {
@@ -15,11 +16,25 @@ const checkStringTitle = (title) => {
 };
 
 const CourseCard = ({ x }) => {
+  const DurationsTOHrs = (classes) => {
+    const hoursPerClass = 1.5;
+
+    const totalCourseHours = classes * hoursPerClass;
+
+    return totalCourseHours;
+  };
+
   return (
     <>
-      {/* {JSON.stringify(x._doc)} */}
+      {/* {JSON.stringify(DurationsTOHrs(x._doc.classes))} */}
       <Card
-        cover={<img alt={x._doc.title} src={x._doc.image?.url} height={240} />}
+        cover={
+          <>
+            {x._doc.image?.url?.includes("courseImages") ? <img src={toImageUrl(x._doc.image?.url)} alt="" height={240} /> : <img src={x._doc.image?.url} alt="" height={240} />}
+
+            {/* <img alt={x._doc.title} src={x._doc.image?.url} height={240} /> */}
+          </>
+        }
         actions={[
           <div
             style={{
@@ -63,7 +78,7 @@ const CourseCard = ({ x }) => {
           </div>
           <div className="d-flex align-items-center gap-1">
             <IoMdTime size={18} />
-            <small style={{ fontSize: "15px" }}>243 hrs</small>
+            <small style={{ fontSize: "15px" }}>{DurationsTOHrs(x._doc.classes)} hrs</small>
           </div>
         </div>
       </Card>

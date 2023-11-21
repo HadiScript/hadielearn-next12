@@ -257,6 +257,13 @@ const EditCourse = () => {
     formData.append("courseFee", courseFee);
     formData.append("instructor", instructor);
 
+    formData.append("monday", days.monday);
+    formData.append("tuesday", days.tuesday);
+    formData.append("wednesday", days.wednesday);
+    formData.append("thursday", days.thursday);
+    formData.append("friday", days.friday);
+    formData.append("saturday", days.saturday);
+
     lectures.forEach((obj, index) => {
       formData.append(`lectures[${index}][title]`, obj.title);
       formData.append(`lectures[${index}][details]`, obj.details);

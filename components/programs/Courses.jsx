@@ -4,6 +4,7 @@ import Fade from "react-reveal/Fade";
 import Link from "next/link";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { toImageUrl } from "../../utils/ImageURL";
+import CourseCard from "./CourseCard";
 
 const Courses = ({ courses_data }) => {
   function SampleNextArrow(props) {
@@ -55,6 +56,8 @@ const Courses = ({ courses_data }) => {
     return totalCourseHours;
   };
 
+  const filtered = courses_data?.filter((x) => x._doc.show2 === true);
+
   return (
     <div className="container  pt-100 pb-80">
       <div className="row">
@@ -75,30 +78,31 @@ const Courses = ({ courses_data }) => {
       </div>
       <Fade bottom cascade>
         <Slider className="project__slider" {...settings}>
-          {courses_data?.slice(0, 6)?.map((x, index) => (
-            <div className="blog__item-2 mb-50 fix">
-              <div className={`blog__thumb-2 w-img fix `}>
-                <Link href={`/program/${x._doc.slug}`}>
-                  {x._doc.image?.url?.includes("courseImages") ? (
-                    <img src={toImageUrl(x._doc.image?.url)} alt="" style={{ height: "250px" }} />
-                  ) : (
-                    <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
-                  )}
-                </Link>
-              </div>
+          {filtered?.slice(0, 6)?.map((x, index) => (
+            <React.Fragment key={index}>{x._doc.show2 && <CourseCard x={x} />}</React.Fragment>
+            // <div className="blog__item-2 mb-50 fix">
+            //   <div className={`blog__thumb-2 w-img fix `}>
+            //     <Link href={`/program/${x._doc.slug}`}>
+            //       {x._doc.image?.url?.includes("courseImages") ? (
+            //         <img src={toImageUrl(x._doc.image?.url)} alt="" style={{ height: "250px" }} />
+            //       ) : (
+            //         <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
+            //       )}
+            //     </Link>
+            //   </div>
 
-              <div className="blog__content-2">
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                  }}
-                >
-                  <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
-                </span>
-                <p className="mt-4">{x.plainOverview.substring(0, 130)}...</p>
-              </div>
-            </div>
+            //   <div className="blog__content-2">
+            //     <span
+            //       style={{
+            //         fontWeight: "bold",
+            //         fontSize: "20px",
+            //       }}
+            //     >
+            //       <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
+            //     </span>
+            //     <p className="mt-4">{x.plainOverview.substring(0, 130)}...</p>
+            //   </div>
+            // </div>
           ))}
         </Slider>
       </Fade>
