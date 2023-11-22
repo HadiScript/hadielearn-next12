@@ -32,6 +32,7 @@ const CreateBatchForm = () => {
   const [days, setDays] = useState(initDays);
   const [loading, setLoading] = useState(false);
   const { courses } = useCourses({ want: "shorts" });
+  // console.log(courses, "here are the courses");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -242,7 +243,7 @@ const CreateBatchForm = () => {
           <h5>Coruse</h5>
           <select value={formData.courseDetails} onChange={handleChange} className="form-control" name="courseDetails">
             <option>* Select Instructor</option>
-            {courses.courses?.map((x, index) => (
+            {courses?.map((x, index) => (
               <option key={index} value={x._id}>
                 {x.title}
               </option>

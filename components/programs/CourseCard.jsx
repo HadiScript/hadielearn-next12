@@ -24,16 +24,27 @@ const CourseCard = ({ x }) => {
     return totalCourseHours;
   };
 
+  const giveSomeRates = (course) => {
+    return course.includes("React")
+      ? 5
+      : course.includes("MERN")
+      ? 4.5
+      : course.includes("SEO")
+      ? 4.8
+      : course.includes("Shopify")
+      ? 4.6
+      : course.includes("Content")
+      ? 4.7
+      : course.includes("Designing")
+      ? 5
+      : 4.5;
+  };
+
   return (
     <>
-      {/* {JSON.stringify(DurationsTOHrs(x._doc.classes))} */}
       <Card
         cover={
-          <>
-            {x._doc.image?.url?.includes("courseImages") ? <img src={toImageUrl(x._doc.image?.url)} alt="" height={240} /> : <img src={x._doc.image?.url} alt="" height={240} />}
-
-            {/* <img alt={x._doc.title} src={x._doc.image?.url} height={240} /> */}
-          </>
+          <>{x._doc.image?.url?.includes("courseImages") ? <img src={toImageUrl(x._doc.image?.url)} alt="" height={240} /> : <img src={x._doc.image?.url} alt="" height={240} />}</>
         }
         actions={[
           <div
@@ -59,8 +70,8 @@ const CourseCard = ({ x }) => {
         ]}
       >
         <div className="d-flex align-items-center gap-2 mb-3">
-          <Rate value={4.5} style={{ color: "#0f3f5d", fontSize: "10px" }} />
-          <small style={{ fontWeight: "bold" }}>4.5</small>
+          <Rate value={giveSomeRates(x._doc?.title)} style={{ color: "#0f3f5d", fontSize: "10px" }} />
+          <small style={{ fontWeight: "bold" }}>{giveSomeRates(x._doc?.title)}</small>
         </div>
         <Link href={`/program/${x._doc.slug}`}>
           <h3 style={{ fontSize: "22px" }} role="button">
