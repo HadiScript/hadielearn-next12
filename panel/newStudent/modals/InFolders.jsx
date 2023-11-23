@@ -9,6 +9,7 @@ import { BiTrash } from "react-icons/bi";
 const InFolders = ({ open, setOpen, current, auth, setCurrent, CallAgain }) => {
   const [file_name, setFile_name] = useState("");
   const [file, setFile] = useState("");
+  
   // const [public_id, setPublic_id] = useState("");
 
   const [uploading, setUploading] = useState(false);
