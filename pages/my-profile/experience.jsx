@@ -13,6 +13,7 @@ import ExpEditModal from "../../panel/profiling/ExpEditModal";
 import ExpLists from "../../panel/profiling/ExpLists";
 import { validateDates } from "../../utils/DatesValidations";
 import ProfileForm from "../../panel/profiling/ProfileForm";
+import { toastPositions } from "../../config/toastPosition";
 
 const Experience = () => {
   const [auth] = useContext(AuthContext);
@@ -59,7 +60,7 @@ const Experience = () => {
     }
 
     if (!formData.title || !formData.company || !formData.typeOfJob) {
-      toast.error("Title, company and type of job is requried");
+      toast.error("Title, company and type of job is requried", toastPositions);
       return;
     }
     setLoading(true);
@@ -68,10 +69,10 @@ const Experience = () => {
       const { data } = await axios.put(`${API}/add-exp`, formData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Added", { position: "bottom-center" });
+        toast.success("Added", toastPositions);
         myExperience();
       } else if (data.error) {
-        toast.error(data.error, { position: "bottom-center" });
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
@@ -90,7 +91,7 @@ const Experience = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -101,12 +102,12 @@ const Experience = () => {
     try {
       const { data } = await axios.put(`${API}/delete-exp`, { _id: x });
       if (data.ok) {
-        toast.success("Removed");
+        toast.success("Removed", toastPositions);
         setExpList(expList.filter((i) => i._id !== x));
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -124,15 +125,15 @@ const Experience = () => {
       const { data } = await axios.put(`${API}/edit-exp`, newData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Updated");
+        toast.success("Updated", toastPositions);
         setOpen(false);
         myExperience();
       } else if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }

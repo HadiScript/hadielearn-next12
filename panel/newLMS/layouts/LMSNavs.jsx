@@ -1,21 +1,11 @@
 import { Menu } from "antd";
 import { BackwardFilled, HomeOutlined } from "@ant-design/icons";
 import { FaBackspace, FaChalkboardTeacher, FaPlus } from "react-icons/fa";
-import {
-  MdCategory,
-  MdImageSearch,
-  MdLibraryBooks,
-  MdOutlineCreateNewFolder,
-  MdOutlineDashboardCustomize,
-  MdOutlineLibraryBooks,
-} from "react-icons/md";
+import { MdCategory, MdImageSearch, MdLibraryBooks, MdOutlineCreateNewFolder, MdOutlineDashboardCustomize, MdOutlineLibraryBooks } from "react-icons/md";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/auth";
-import {
-  getActivesLink,
-  navsStyle,
-} from "../../newInstructor/layouts/BatchNavs";
+import { getActivesLink, navsStyle } from "../../newInstructor/layouts/BatchNavs";
 
 const LMSNavs = () => {
   const router = useRouter();
@@ -36,20 +26,10 @@ const LMSNavs = () => {
       <div className="mt-4 mb-4 text-center">
         <h4 className="text-light">Hadi E-Learning</h4>
       </div>
-      {/* {JSON.stringify(router)} */}
-      <Menu.Item
-        className=""
-        icon={<HomeOutlined />}
-        onClick={() => router.push("/")}
-      >
+      <Menu.Item className="" icon={<HomeOutlined />} onClick={() => router.push("/")}>
         Home
       </Menu.Item>
-      <Menu.Item
-        className="mt-1"
-        icon={<MdOutlineDashboardCustomize />}
-        onClick={() => router.push("/lms-test")}
-        style={getActivesLink("lms-test") ? navsStyle : {}}
-      >
+      <Menu.Item className="mt-1" icon={<MdOutlineDashboardCustomize />} onClick={() => router.push("/lms-test")} style={getActivesLink("lms-test") ? navsStyle : {}}>
         Dashboard
       </Menu.Item>
       <Menu.Item
@@ -78,29 +58,14 @@ const LMSNavs = () => {
       >
         Courses
       </Menu.Item>
-      <Menu.Item
-        style={getActivesLink("new") ? navsStyle : {}}
-        onClick={() => router.push("/lms-test/courses/new")}
-        className="mt-1"
-        icon={<MdOutlineCreateNewFolder />}
-      >
+      <Menu.Item style={getActivesLink("new") ? navsStyle : {}} onClick={() => router.push("/lms-test/courses/new")} className="mt-1" icon={<MdOutlineCreateNewFolder />}>
         Add Course
       </Menu.Item>
 
-      <Menu.Item
-        style={getActivesLink("active-batches") ? navsStyle : {}}
-        onClick={() => router.push("/lms-test/batch/active-batches")}
-        className="mt-3"
-        icon={<MdLibraryBooks />}
-      >
+      <Menu.Item style={getActivesLink("active-batches") ? navsStyle : {}} onClick={() => router.push("/lms-test/batch/active-batches")} className="mt-3" icon={<MdLibraryBooks />}>
         Active Batches
       </Menu.Item>
-      <Menu.Item
-        style={getActivesLink("completed-batches") ? navsStyle : {}}
-        onClick={() => router.push("/lms-test/batch/completed-batches")}
-        className="mt-1"
-        icon={<FaPlus />}
-      >
+      <Menu.Item style={getActivesLink("completed-batches") ? navsStyle : {}} onClick={() => router.push("/lms-test/batch/completed-batches")} className="mt-1" icon={<FaPlus />}>
         Completed Batches
       </Menu.Item>
       <Menu.Item
@@ -111,12 +76,7 @@ const LMSNavs = () => {
       >
         Create Batches
       </Menu.Item>
-      <Menu.Item
-        style={getActivesLink("all-students") ? navsStyle : {}}
-        onClick={() => router.push("/lms-test/student/all-students")}
-        className="mt-3"
-        icon={<FaPlus />}
-      >
+      <Menu.Item style={getActivesLink("all-students") ? navsStyle : {}} onClick={() => router.push("/lms-test/student/all-students")} className="mt-3" icon={<FaPlus />}>
         Students
       </Menu.Item>
       <Menu.Item
@@ -127,20 +87,11 @@ const LMSNavs = () => {
       >
         Enrolled Students
       </Menu.Item>
-      <Menu.Item
-        style={getActivesLink("library") ? navsStyle : {}}
-        onClick={() => router.push("/cms-test/library")}
-        className="mt-1"
-        icon={<MdImageSearch />}
-      >
-        Droped Students
+      <Menu.Item style={getActivesLink("library") ? navsStyle : {}} onClick={() => router.push("/cms-test/library")} className="mt-3" icon={<MdImageSearch />}>
+        Gallery
       </Menu.Item>
       {auth?.user && auth?.user?.role === "admin" && (
-        <Menu.Item
-          onClick={() => router.push("/admin-test")}
-          className="mt-3"
-          icon={<BackwardFilled />}
-        >
+        <Menu.Item onClick={() => router.push("/admin-test")} className="mt-3" icon={<BackwardFilled />}>
           Back
         </Menu.Item>
       )}

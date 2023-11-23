@@ -9,6 +9,7 @@ import CertLists from "../../panel/profiling/CertList";
 import EditProfileLayout from "../../panel/profiling/EditProfileLayout";
 import { validateDates } from "../../utils/DatesValidations";
 import ProfileForm from "../../panel/profiling/ProfileForm";
+import { toastPositions } from "../../config/toastPosition";
 
 const Certificate = () => {
   const [auth] = useContext(AuthContext);
@@ -49,7 +50,7 @@ const Certificate = () => {
 
   const addCerticate = async () => {
     if (!formData.title || !formData.platform) {
-      toast.error("Title and platform is requried");
+      toast.error("Title and platform is requried", toastPositions);
       return;
     }
     if (formErrors.from) {
@@ -61,14 +62,14 @@ const Certificate = () => {
       const { data } = await axios.put(`${API}/add-certificate`, formData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Added");
+        toast.success("Added", toastPositions);
         myCertificate();
       } else if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -83,7 +84,7 @@ const Certificate = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -94,12 +95,12 @@ const Certificate = () => {
     try {
       const { data } = await axios.put(`${API}/delete-certificate`, { _id: x });
       if (data.ok) {
-        toast.success("Removed");
+        toast.success("Removed", toastPositions);
         setCertList(certList.filter((i) => i._id !== x));
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -118,15 +119,15 @@ const Certificate = () => {
       const { data } = await axios.put(`http://localhost:5000/api/edit-certificate`, newData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Updated");
+        toast.success("Updated", toastPositions);
         setOpen(false);
         myCertificate();
       } else if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }

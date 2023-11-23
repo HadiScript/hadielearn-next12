@@ -1,19 +1,18 @@
-// AllCourses
+// CoursesList
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { BiEdit } from "react-icons/bi";
 import { TbTrash } from "react-icons/tb";
-import { AuthContext } from "../../../context/auth";
-import { API } from "../../../config/API";
-import CMSLayout from "../../../panel/newCMS/layouts";
+import { AuthContext } from "../../context/auth";
+import { API } from "../../config/API";
 import { Card } from "antd";
-import Btn from "../../../components/ui/Btn";
+import Btn from "../../components/ui/Btn";
 import { toast } from "react-hot-toast";
-import CoursesList from "../../../panel/lms-cms/CoursesList";
 
-const AllCourses = () => {
+const CoursesList = () => {
   const router = useRouter();
+  const path = router.pathname;
   const [auth] = useContext(AuthContext);
   const [allCourses, setAllCourses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -162,73 +161,70 @@ const AllCourses = () => {
   // console.log(allCourses, "here ")
 
   return (
-    <CMSLayout>
-      <CoursesList />
-      {/* <Card>
-        <div className="table-responsive">
-          <table class="table table-striped  text-dark" style={{ backgroundColor: "white", borderRadius: "10px" }}>
-            <thead>
-              <tr>
-                <th scope="col">{loading ? "loading..." : "#"}</th>
-                <th scope="col">Category</th>
-                <th scope="col">Title</th>
-                <th scope="col">Instructor</th>
-                <th scope="col">Disable in form</th>
-                <th scope="col"> {showLoading && "loading..."} </th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {allCourses.length === 0 ? (
-                <h5 className="text-dark p-4">No Course</h5>
-              ) : (
-                allCourses &&
-                allCourses?.map((x, index) => (
-                  <tr>
-                    <th className="text-dark" scope="row ">
-                      {++index}
-                    </th>
-                    <td className="text-dark">{x?._doc?.categories[0]?.name}</td>
-                    <td className="text-dark">{x?._doc?.title}</td>
-                    <td className="text-dark">{x?._doc?.instructor?.name}</td>
-                    <td className="text-dark">
-                      {x?._doc?.show ? (
-                        <Btn onClick={() => disableCourse(x?._doc?._id)}>Enabled</Btn>
-                      ) : (
-                        <Btn danger={true} onClick={() => enableCourse(x?._doc?._id)}>
-                          Disabled
-                        </Btn>
-                      )}
-                    </td>
-                    <td className="text-dark">
-                      {x?._doc?.show2 ? (
-                        <Btn onClick={() => disableCourse2(x?._doc?._id)}>Enabled</Btn>
-                      ) : (
-                        <Btn danger={true} onClick={() => enableCourse2(x?._doc?._id)}>
-                          Disabled
-                        </Btn>
-                      )}
-                    </td>
-                    <td className="text-dark">
-                      <BiEdit
-                        onClick={() => {
-                          router.push(`/cms-test/courses/${x?._doc?._id}`);
-                        }}
-                      />
-                    </td>
-                    <td className="text-dark">
-                      <TbTrash onClick={() => deleteCourse(x?._doc?._id)} />
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-      </Card> */}
-    </CMSLayout>
+    <Card>
+      <div className="table-responsive">
+        <table class="table table-striped  text-dark" style={{ backgroundColor: "white", borderRadius: "10px" }}>
+          <thead>
+            <tr>
+              <th scope="col">{loading ? "loading..." : "#"}</th>
+              <th scope="col">Category</th>
+              <th scope="col">Title</th>
+              <th scope="col">Instructor</th>
+              <th scope="col">Disable in form</th>
+              <th scope="col"> {showLoading && "loading..."} </th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {allCourses.length === 0 ? (
+              <h5 className="text-dark p-4">No Course</h5>
+            ) : (
+              allCourses &&
+              allCourses?.map((x, index) => (
+                <tr>
+                  <th className="text-dark" scope="row ">
+                    {++index}
+                  </th>
+                  <td className="text-dark">{x?._doc?.categories[0]?.name}</td>
+                  <td className="text-dark">{x?._doc?.title}</td>
+                  <td className="text-dark">{x?._doc?.instructor?.name}</td>
+                  <td className="text-dark">
+                    {x?._doc?.show ? (
+                      <Btn onClick={() => disableCourse(x?._doc?._id)}>Enabled</Btn>
+                    ) : (
+                      <Btn danger={true} onClick={() => enableCourse(x?._doc?._id)}>
+                        Disabled
+                      </Btn>
+                    )}
+                  </td>
+                  <td className="text-dark">
+                    {x?._doc?.show2 ? (
+                      <Btn onClick={() => disableCourse2(x?._doc?._id)}>Enabled</Btn>
+                    ) : (
+                      <Btn danger={true} onClick={() => enableCourse2(x?._doc?._id)}>
+                        Disabled
+                      </Btn>
+                    )}
+                  </td>
+                  <td className="text-dark">
+                    <BiEdit
+                      onClick={() => {
+                        router.push(`${path.includes("lms") ? `/lms-test/courses/${x?._doc?._id}` : `/cms-test/courses/${x?._doc?._id}`}`);
+                      }}
+                    />
+                  </td>
+                  <td className="text-dark">
+                    <TbTrash onClick={() => deleteCourse(x?._doc?._id)} />
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+    </Card>
   );
 };
 
-export default AllCourses;
+export default CoursesList;

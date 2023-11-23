@@ -9,6 +9,7 @@ import { toImageUrl } from "../../utils/ImageURL";
 import useMyProfile from "../../panel/profiling/hooks/useMyProfile";
 import { FaEdit } from "react-icons/fa";
 import EnrollmentInfoForm from "../../panel/profiling/EnrollmentInfoForm";
+import { toastPositions } from "../../config/toastPosition";
 
 const socailsLinks = {
   youtube: "",
@@ -55,7 +56,7 @@ const EditProfile = () => {
         setPreImage(data?._profile?.user?.image?.url);
       }
     } catch (error) {
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
       console.log(error);
     } finally {
       setProfileLoading(false);
@@ -74,7 +75,7 @@ const EditProfile = () => {
     setLoading(true);
 
     if (!name) {
-      toast.error("Name is important");
+      toast.error("Name is important", toastPositions);
     }
 
     const _formData = new FormData();
@@ -103,7 +104,7 @@ const EditProfile = () => {
       refetch();
 
       if (data?.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       } else {
         setAuth({ ...auth, user: { ...auth?.user, name: data.name } });
         let fromLocalStorage = JSON.parse(localStorage.getItem("auth"));
@@ -111,12 +112,12 @@ const EditProfile = () => {
         localStorage.setItem("auth", JSON.stringify(fromLocalStorage));
 
         setLoading(false);
-        toast.success("User updated successfully");
+        toast.success("User updated successfully", toastPositions);
         gettingCurrentProfile();
       }
     } catch (err) {
       console.log(err);
-      toast.error("User update failed. Try again.");
+      toast.error("User update failed. Try again.", toastPositions);
       setLoading(false);
     }
   };

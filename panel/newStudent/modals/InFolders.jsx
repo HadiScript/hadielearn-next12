@@ -65,6 +65,8 @@ const InFolders = ({ open, setOpen, current, auth, setCurrent, CallAgain }) => {
         setFile_name("");
         setFile("");
         setPublic_id("");
+      } else if (data.error) {
+        toast.error(data.error, { position: "bottom-center" });
       }
     } catch (error) {
       setUploading(false);

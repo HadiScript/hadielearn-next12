@@ -11,6 +11,7 @@ import EducationEditModal from "../../panel/profiling/EducationEditModal";
 import EduList from "../../panel/profiling/EduList";
 import { validateDates } from "../../utils/DatesValidations";
 import ProfileForm from "../../panel/profiling/ProfileForm";
+import { toastPositions } from "../../config/toastPosition";
 
 const Education = () => {
   const [auth] = useContext(AuthContext);
@@ -55,7 +56,7 @@ const Education = () => {
       return;
     }
     if (!formData.school || !formData.degree) {
-      toast.error("School and degree is requried");
+      toast.error("School and degree is requried", toastPositions);
       return;
     }
 
@@ -65,15 +66,15 @@ const Education = () => {
       const { data } = await axios.put(`${API}/add-education`, formData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Added");
+        toast.success("Added", toastPositions);
         myEducation();
         // setEduList([...eduList, data.education]);
       } else if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -88,7 +89,7 @@ const Education = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -99,12 +100,12 @@ const Education = () => {
     try {
       const { data } = await axios.put(`${API}/delete-education`, { _id: x });
       if (data.ok) {
-        toast.success("Removed");
+        toast.success("Removed", toastPositions);
         setEduList(eduList.filter((i) => i._id !== x));
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -122,15 +123,15 @@ const Education = () => {
       const { data } = await axios.put(`${API}/edit-education`, newData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Updated");
+        toast.success("Updated", toastPositions);
         setOpen(false);
         myEducation();
       } else if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }

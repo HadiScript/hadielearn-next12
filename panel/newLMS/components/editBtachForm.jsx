@@ -5,30 +5,13 @@ import useCourses from "../hooks/useCourses";
 import { Button, Card } from "antd";
 import { toast } from "react-hot-toast";
 
-const EditBatchForm = ({
-  submitLoading,
-  handleSubmit,
-  handleChange,
-  setDays,
-  days,
-  formData,
-  courses,
-  loading,
-}) => {
+const EditBatchForm = ({ submitLoading, handleSubmit, handleChange, setDays, days, formData, courses, loading }) => {
   return (
     <Card>
       <form onSubmit={handleSubmit}>
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1"> Batch Title</h5>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="title"
-            placeholder="Batch Title "
-            value={formData.title}
-            onChange={handleChange}
-          />
+          <input type="text" className="form-control" id="exampleFormControlInput1" name="title" placeholder="Batch Title " value={formData.title} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
@@ -46,15 +29,7 @@ const EditBatchForm = ({
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Enollment Limits</h5>
-          <input
-            type="number"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="limit"
-            placeholder="Batch Limit "
-            value={formData.limit}
-            onChange={handleChange}
-          />
+          <input type="number" className="form-control" id="exampleFormControlInput1" name="limit" placeholder="Batch Limit " value={formData.limit} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
@@ -72,39 +47,17 @@ const EditBatchForm = ({
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Timing</h5>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="timming"
-            placeholder="Batch Timing "
-            value={formData.timming}
-            onChange={handleChange}
-          />
+          <input type="text" className="form-control" id="exampleFormControlInput1" name="timming" placeholder="Batch Timing " value={formData.timming} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">Starting Date</h5>
-          <input
-            type="date"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="startDate"
-            value={formData.startDate}
-            onChange={handleChange}
-          />
+          <input type="date" className="form-control" id="exampleFormControlInput1" name="startDate" value={formData.startDate} onChange={handleChange} />
         </div>
 
         <div className="form-group py-2">
           <h5 for="exampleFormControlInput1">End Date</h5>
-          <input
-            type="date"
-            className="form-control"
-            id="exampleFormControlInput1"
-            name="endDate"
-            value={formData.endDate}
-            onChange={handleChange}
-          />
+          <input type="date" className="form-control" id="exampleFormControlInput1" name="endDate" value={formData.endDate} onChange={handleChange} />
         </div>
 
         <div className="row pt-10">
@@ -229,14 +182,9 @@ const EditBatchForm = ({
 
         <div className="form-group py-2">
           <h5>Coruse</h5>
-          <select
-            value={formData.courseDetails}
-            onChange={handleChange}
-            className="form-control"
-            name="courseDetails"
-          >
+          <select value={formData.courseDetails} onChange={handleChange} className="form-control" name="courseDetails">
             <option>* Select Instructor</option>
-            {courses.courses?.map((x, index) => (
+            {courses?.map((x, index) => (
               <option key={index} value={x._id}>
                 {x.title}
               </option>
@@ -246,12 +194,7 @@ const EditBatchForm = ({
 
         {/* Rest of the form fields */}
 
-        <Button
-          loading={submitLoading}
-          className="my-3"
-          style={{ backgroundColor: "#0f3f5d", color: "white" }}
-          onClick={handleSubmit}
-        >
+        <Button loading={submitLoading} className="my-3" style={{ backgroundColor: "#0f3f5d", color: "white" }} onClick={handleSubmit}>
           Edit Batch
         </Button>
       </form>

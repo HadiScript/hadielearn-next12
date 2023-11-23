@@ -1,71 +1,224 @@
-import React, { useMemo } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 import { BiPlus } from "react-icons/bi";
 
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import { useMemo } from "react";
 import { Card, Select } from "antd";
 import Btn from "../../components/ui/Btn";
-import { toImageUrl } from "../../utils/ImageURL";
+import { API } from "../../config/API";
+import { AuthContext } from "../../context/auth";
 
-const EditCourseForm = ({
-  title,
-  lectures,
-  faqs,
-  overview,
-  whyUs,
-  setwhyUs,
-  prerequisites,
-  benefits,
-  marketValue,
-  courseFor,
-  duration,
-  classes,
-  timming,
-  startingFrom,
-  regFee,
-  courseFee,
-  days,
-  image,
-  setTitle,
-  setOverview,
-  setPrerequisites,
-  setBenefits,
-  setMarketValue,
-  setCourseFor,
-  setDuration,
-  setClasses,
-  setTimming,
-  setStartingFrom,
-  setRegFee,
-  setcourseFee,
-  setDays,
-  handleAddLecture,
-  handleLectureChange,
-  setImage,
-  submitHandler,
-  loading,
-  loadingImage,
-  singleLoading,
-  handleAddFaqs,
-  handleFaqsChange,
-  loadCategories,
-  categories,
-  setCategories,
-  instructor,
-  setInstructor,
-  teachers,
-  handleRemoveLecture,
-  handleRemoveFAQs,
-  setPreImage,
-  preImage,
-}) => {
+// import '../../'
+
+const initDays = {
+  monday: false,
+  tuesday: false,
+  wednesday: false,
+  thursday: false,
+  friday: false,
+  saturday: false,
+};
+
+const AddNewCourse = () => {
   const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
+
+  const [auth] = useContext(AuthContext);
+
+  const [title, setTitle] = useState("");
+  const [lectures, setLectures] = useState([]);
+  const [faqs, setFaqs] = useState([]);
+  const [overview, setOverview] = useState("");
+  const [whyUs, setwhyUs] = useState("");
+  const [prerequisites, setPrerequisites] = useState("");
+  const [benefits, setBenefits] = useState("");
+  const [marketValue, setMarketValue] = useState("");
+  const [courseFor, setCourseFor] = useState("");
+  const [duration, setDuration] = useState("");
+  const [classes, setClasses] = useState(0);
+  const [timming, setTimming] = useState("");
+  const [startingFrom, setStartingFrom] = useState("");
+  const [regFee, setRegFee] = useState(0);
+  const [courseFee, setcourseFee] = useState("");
+  const [days, setDays] = useState(initDays);
+  const [image, setImage] = useState();
+
+  const [loadingImage, setLoadingImage] = useState(false);
+
+  const [teachers, setTeachers] = useState([]);
+  const [teachersLoading, setTeachersLoading] = useState(false);
+  const [instructor, setInstructor] = useState("");
+
+  const [loadCategories, setLoadCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const [loading, setloading] = useState(false);
+
+  useEffect(() => {
+    const fetchCats = async () => {
+      const { data } = await axios.get(`${API}/categories`);
+      setLoadCategories(data);
+    };
+    fetchCats();
+  }, []);
+
+  const handleAddLecture = (e) => {
+    e.preventDefault();
+    setLectures([...lectures, { title: "", details: "" }]);
+  };
+
+  const handleAddFaqs = (e) => {
+    e.preventDefault();
+    setFaqs([...faqs, { question: "", answer: "" }]);
+  };
+
+  const handleLectureChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedLectures = [...lectures];
+    updatedLectures[index][name] = value;
+    setLectures(updatedLectures);
+  };
+
+  const handleFaqsChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedFaqs = [...faqs];
+    updatedFaqs[index][name] = value;
+    setFaqs(updatedFaqs);
+  };
+
+  const handleRemoveLecture = (index) => {
+    const updatedLectures = [...lectures];
+    updatedLectures.splice(index, 1);
+    setLectures(updatedLectures);
+  };
+
+  const handleRemoveFAQs = (index) => {
+    const updatedFAQs = [...faqs];
+    updatedFAQs.splice(index, 1);
+    setFaqs(updatedFAQs);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    if (
+      !title ||
+      !overview ||
+      !lectures ||
+      !whyUs ||
+      !prerequisites ||
+      !benefits ||
+      !marketValue ||
+      !courseFor ||
+      !duration ||
+      !classes ||
+      !timming ||
+      !startingFrom ||
+      !regFee ||
+      !courseFee ||
+      !image ||
+      !instructor ||
+      !categories ||
+      !faqs
+    ) {
+      toast.error("All Fields are required**", { position: "bottom-center" });
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("overview", overview);
+
+    formData.append("whyUs", whyUs);
+    formData.append("prerequisites", prerequisites); // Assuming `image` is the File object from an input type="file"
+    formData.append("benefits", benefits);
+    formData.append("marketValue", marketValue);
+    formData.append("courseFor", courseFor);
+    formData.append("duration", duration);
+    formData.append("classes", classes);
+    formData.append("timming", timming);
+    formData.append("startingFrom", startingFrom);
+    formData.append("regFee", regFee);
+
+    formData.append("courseFee", courseFee);
+    formData.append("image", image);
+    formData.append("instructor", instructor);
+
+    formData.append("monday", days.monday);
+    formData.append("tuesday", days.tuesday);
+    formData.append("wednesday", days.wednesday);
+    formData.append("thursday", days.thursday);
+    formData.append("friday", days.friday);
+    formData.append("saturday", days.saturday);
+
+    // let stringifyFaqs = JSON.stringify(faqs);
+    // formData.append("faqs", JSON.stringify(faqs));
+
+    lectures.forEach((obj, index) => {
+      formData.append(`lectures[${index}][title]`, obj.title);
+      formData.append(`lectures[${index}][details]`, obj.details);
+    });
+
+    faqs.forEach((obj, index) => {
+      formData.append(`faqs[${index}][answer]`, obj.answer);
+      formData.append(`faqs[${index}][question]`, obj.question);
+    });
+
+    categories.forEach((category) => {
+      formData.append("categories", category);
+    });
+
+    // console.log(JSON.stringify(formData));
+
+    try {
+      setloading(true);
+
+      const { data } = await axios.post(`${API}/create-course`, formData);
+
+      console.log(data.error);
+      if (data.error) {
+        toast.error(data.error, { position: "bottom-center" });
+        setloading(false);
+      } else {
+        toast.success("Course created successfully", {
+          position: "bottom-center",
+        });
+        setloading(false);
+      }
+    } catch (error) {
+      setloading(false);
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchingTeachers = async () => {
+      try {
+        setTeachersLoading(true);
+        const { data } = await axios.get(`${API}/get-all-instructors`, {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        });
+        setTeachers(data);
+
+        setTeachersLoading(false);
+      } catch (error) {
+        setTeachersLoading(false);
+        console.log(error);
+        toast.error("Try Again");
+      }
+    };
+
+    if (auth && auth.token) fetchingTeachers();
+  }, [auth && auth.token]);
 
   return (
     <Card>
-      {singleLoading && <p>loading...</p>}
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1"> Course Title</h5>
+        <h5 for="exampleFormControlInput1">Course Title</h5>
         <input
           type="text"
           className="form-control"
@@ -73,13 +226,12 @@ const EditCourseForm = ({
           name="title"
           placeholder="Course Title - ... Mastery Course "
           value={title}
-          // readOnly
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1"> Course Image</h5>
+        <h5 for="exampleFormControlInput1">Course Image</h5>
         <input
           onChange={(e) => setImage(e.target.files[0])}
           type="file"
@@ -89,54 +241,33 @@ const EditCourseForm = ({
           id="exampleFormControlInput1"
         />
       </div>
-
-      <small className="form-text">Please upload image within 1mb, formet jpg,jpeg,webp</small>
-      {preImage && (
-        <div className="form-group py-2">
-          {preImage?.url.includes("courseImages") ? (
-            preImage?.url && <img width="auto" height={300} src={toImageUrl(preImage?.url)} onClick={() => setPreImage()} />
-          ) : (
-            <img width="auto" height={300} src={preImage?.url} onClick={() => setPreImage()} />
-          )}
-
-          <br />
-          <small>Just click on image to remove.</small>
-        </div>
-      )}
+      {loadingImage && "loading..."}
       {image && (
         <div className="form-group py-2">
-          <img width="auto" height={300} src={window?.URL.createObjectURL(image)} onClick={() => setImage()} />
+          <img width="auto" height={300} src={URL.createObjectURL(image)} onClick={() => setImage()} />
           <br />
           <small>Just click on image to remove.</small>
         </div>
       )}
 
-      {preImage?.url && <>{JSON.stringify(toImageUrl(preImage?.url))}</>}
-
+      {/* {image && image?.url && <img width="auto" height={300} src={image?.url} />} */}
       <hr />
 
       {/* overview */}
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1">Overview</h5>
-        <Editor
-          // className="form-control"
-          name="overview"
-          placeholder="Overview of the coruse"
-          value={overview}
-          onChange={(e) => setOverview(e)}
-        />
+        <h5 for="exampleFormControlInput1">Overview</h5>
+        <Editor placeholder="Overview of the coruse" value={overview} onChange={(e) => setOverview(e)} />
       </div>
 
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1">Why us</h5>
-        <Editor name="whyUs" placeholder="Why us" value={whyUs} onChange={(e) => setwhyUs(e)} />
+        <h5 for="exampleFormControlInput1">Why us</h5>
+        <Editor placeholder="" value={whyUs} onChange={(e) => setwhyUs(e)} />
       </div>
 
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1">Prerequisites</h5>
+        <h5 for="exampleFormControlInput1">Eligibility</h5>
         <Editor
           type="text"
-          // className="form-control"
           id="exampleFormControlInput1"
           name="prerequisites"
           placeholder="Prerequisites of the course"
@@ -146,21 +277,26 @@ const EditCourseForm = ({
       </div>
 
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1">Benefits</h5>
-
-        <Editor name="benefits" placeholder="Benefits of the course" value={benefits} onChange={(e) => setBenefits(e)} />
+        <h5 for="exampleFormControlInput1">Benefits</h5>
+        <Editor type="text" id="exampleFormControlInput1" name="benefits" placeholder="Benefits of the course" value={benefits} onChange={(e) => setBenefits(e)} />
       </div>
 
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1">Market Value</h5>
+        <h5 for="exampleFormControlInput1">Scope</h5>
 
-        <Editor name="marketValue" placeholder="Market Value of the course" value={marketValue} onChange={(e) => setMarketValue(e)} />
+        <Editor
+          type="text"
+          // className="form-control"
+          id="exampleFormControlInput1"
+          name="marketValue"
+          value={marketValue}
+          onChange={(e) => setMarketValue(e)}
+        />
       </div>
 
       <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1">Who this course is for:</h5>
+        <h5 for="exampleFormControlInput1">Who this course is for:</h5>
         <textarea
-          // controls={controls}
           type="text"
           className="form-control"
           id="exampleFormControlInput1"
@@ -174,7 +310,7 @@ const EditCourseForm = ({
       <div className="row py-3">
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 htmlFor="exampleFormControlInput1"> Durations</h5>
+            <h5 for="exampleFormControlInput1"> Durations</h5>
             <input
               type="text"
               className="form-control"
@@ -188,7 +324,7 @@ const EditCourseForm = ({
         </div>
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 htmlFor="exampleFormControlInput1"> Classes</h5>
+            <h5 for="exampleFormControlInput1"> Classes</h5>
             <input
               type="number"
               className="form-control"
@@ -205,7 +341,7 @@ const EditCourseForm = ({
       <div className="row py-3">
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 htmlFor="exampleFormControlInput1"> Timing</h5>
+            <h5 for="exampleFormControlInput1"> Timing</h5>
             <input
               type="text"
               className="form-control"
@@ -219,7 +355,7 @@ const EditCourseForm = ({
         </div>
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 htmlFor="exampleFormControlInput1"> Starting From</h5>
+            <h5 for="exampleFormControlInput1"> Starting From</h5>
             <input
               type="text"
               className="form-control"
@@ -240,7 +376,7 @@ const EditCourseForm = ({
         <div className="col-lg-6 col-md-6">
           <div className="form-check">
             <input
-              className="form-check-input"
+              class="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="monday"
@@ -252,13 +388,13 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
               Monday
             </label>
           </div>
           <div className="form-check">
             <input
-              className="form-check-input"
+              class="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="tuesday"
@@ -270,14 +406,14 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
               Tuesday
             </label>
           </div>
 
           <div className="form-check">
             <input
-              className="form-check-input"
+              class="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="wednesday"
@@ -289,7 +425,7 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
               Wednesday
             </label>
           </div>
@@ -298,7 +434,7 @@ const EditCourseForm = ({
         <div className="col-lg-6 col-md-6">
           <div className="form-check">
             <input
-              className="form-check-input"
+              class="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="thursday"
@@ -310,13 +446,13 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
               Thursday
             </label>
           </div>
           <div className="form-check">
             <input
-              className="form-check-input"
+              class="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="friday"
@@ -328,14 +464,14 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
               Friday
             </label>
           </div>
 
           <div className="form-check">
             <input
-              className="form-check-input"
+              class="form-check-input"
               type="checkbox"
               id="flexCheckDefault"
               value="saturday"
@@ -347,7 +483,7 @@ const EditCourseForm = ({
                 }))
               }
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
               Saturday
             </label>
           </div>
@@ -357,7 +493,7 @@ const EditCourseForm = ({
       <div className="row py-3">
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 htmlFor="exampleFormControlInput1"> Course Fee</h5>
+            <h5 for="exampleFormControlInput1"> Course Fee</h5>
             <input
               type="number"
               className="form-control"
@@ -371,7 +507,7 @@ const EditCourseForm = ({
         </div>
         <div className="col-md-6">
           <div className="form-group py-2">
-            <h5 htmlFor="exampleFormControlInput1"> Registeration Fee</h5>
+            <h5 for="exampleFormControlInput1"> Registeration Fee</h5>
             <input
               type="number"
               className="form-control"
@@ -385,16 +521,7 @@ const EditCourseForm = ({
         </div>
       </div>
 
-      <div className="form-group py-2">
-        <h5 htmlFor="exampleFormControlInput1">Categories</h5>
-        {/* {JSON.stringify(loadCategories)} */}
-        <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)} value={[...categories]}>
-          {loadCategories.map((item) => (
-            <Select.Option key={item?.name}>{item?.name}</Select.Option>
-          ))}
-        </Select>
-      </div>
-
+      {teachersLoading && "loading..."}
       <div className="form-group py-2">
         <select value={instructor} onChange={(e) => setInstructor(e.target.value)} className="form-control" name="status">
           <option>* Select Instructor</option>
@@ -406,13 +533,24 @@ const EditCourseForm = ({
         </select>
       </div>
 
+      <div className="form-group py-2">
+        <h5 for="exampleFormControlInput1">Categories</h5>
+        <Select mode="multiple" allowClear style={{ width: "100%" }} placeholder="Please select" onChange={(v) => setCategories(v)}>
+          {loadCategories.map((item) => (
+            <Select.Option key={item.name}>{item.name}</Select.Option>
+          ))}
+        </Select>
+      </div>
+
+      {/* lectures */}
       <div className="row py-5">
-        <h5>Outlines</h5>
+        <h5> Outlines</h5>
+
         {lectures.map((lecture, index) => (
           <React.Fragment key={index}>
             <div className="col-12">
               <div className="form-group py-2">
-                <label htmlFor="exampleFormControlInput1"> Heading</label>
+                <label for="exampleFormControlInput1"> Heading</label>
                 <input
                   type="text"
                   className="form-control"
@@ -424,10 +562,9 @@ const EditCourseForm = ({
                 />
               </div>
             </div>
-
             <div className="col-12">
               <div className="form-group py-2">
-                <label htmlFor="exampleFormControlSelect1">Description</label>
+                <label for="exampleFormControlSelect1">Description</label>
                 <textarea
                   type="text"
                   className="form-control"
@@ -438,10 +575,11 @@ const EditCourseForm = ({
                   onChange={(e) => handleLectureChange(index, e)}
                 />
               </div>
+
+              <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveLecture(index)}>
+                Remove
+              </span>
             </div>
-            <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveLecture(index)}>
-              Remove
-            </span>
             <hr />
           </React.Fragment>
         ))}
@@ -454,44 +592,44 @@ const EditCourseForm = ({
       </div>
       {/* ends */}
 
-      {/* faqs */}
-
+      {/* FAQS */}
       <div className="row py-5">
-        <h5>Faqs</h5>
-        {faqs.map((x, index) => (
+        <h5>FAQs</h5>
+
+        {faqs.map((lecture, index) => (
           <React.Fragment key={index}>
             <div className="col-12">
               <div className="form-group py-2">
-                <label htmlFor="exampleFormControlInput1">Heading</label>
+                <label for="exampleFormControlInput1"> Question</label>
                 <input
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
                   name="question"
                   placeholder="Question"
-                  value={x.question}
+                  value={faqs.question}
                   onChange={(e) => handleFaqsChange(index, e)}
                 />
               </div>
             </div>
             <div className="col-12">
               <div className="form-group py-2">
-                <label htmlFor="exampleFormControlSelect1">Description</label>
-                <textarea
+                <label for="exampleFormControlSelect1">Answer</label>
+                <input
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
                   name="answer"
                   placeholder="Answer"
-                  value={x.answer}
+                  value={lecture.answer}
                   onChange={(e) => handleFaqsChange(index, e)}
                 />
               </div>
-
-              <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveFAQs(index)}>
-                Remove
-              </span>
             </div>
+            <span className="p-1 mx-3 rounded d-flex justify-content-start text-danger " onClick={() => handleRemoveFAQs(index)}>
+              Remove
+            </span>
+
             <hr />
           </React.Fragment>
         ))}
@@ -504,10 +642,11 @@ const EditCourseForm = ({
       </div>
       {/* ends */}
 
-      <Btn loading={loading} onClick={submitHandler}>
+      <Btn loading={loading} className="z-btn" onClick={submitHandler}>
         Submit
       </Btn>
     </Card>
   );
 };
-export default EditCourseForm;
+
+export default AddNewCourse;

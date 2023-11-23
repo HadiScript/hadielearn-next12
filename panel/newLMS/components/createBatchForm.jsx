@@ -242,7 +242,7 @@ const CreateBatchForm = () => {
         <div className="form-group py-2">
           <h5>Coruse</h5>
           <select value={formData.courseDetails} onChange={handleChange} className="form-control" name="courseDetails">
-            <option>* Select Instructor</option>
+            <option>* Select Course</option>
             {courses?.map((x, index) => (
               <option key={index} value={x._id}>
                 {x.title}

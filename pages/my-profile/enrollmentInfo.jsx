@@ -49,7 +49,7 @@ const enrollmentInfoComponennt = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     }
   };
 

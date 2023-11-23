@@ -5,6 +5,9 @@ import { AuthContext } from "../../context/auth";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { API } from "../../config/API";
+import { toastPositions } from "../../config/toastPosition";
+import Btn from "../../components/ui/Btn";
+import { BsTrash } from "react-icons/bs";
 
 const Skills = () => {
   const [auth] = useContext(AuthContext);
@@ -21,7 +24,7 @@ const Skills = () => {
         setSkillsList(data.skills);
       }
     } catch (error) {
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
       console.log(error);
     } finally {
       setLoading(false);
@@ -41,7 +44,7 @@ const Skills = () => {
       if (data.error) {
         toast.error(data.error);
       } else if (data.ok) {
-        toast.success("Added");
+        toast.success("Added", toastPositions);
         gettingSkills();
         setSkill("");
       }
@@ -59,9 +62,9 @@ const Skills = () => {
         skillToDelete: x,
       });
       if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       } else if (data.ok) {
-        toast.success("Removed");
+        toast.success("Removed", toastPositions);
         setSkillsList(skillsList.filter((i) => i !== x));
       }
     } catch (error) {
@@ -78,6 +81,9 @@ const Skills = () => {
           <div className="col-md-12">
             <div className="form-group py-2">
               <input type="text" className="form-control" placeholder="e.g ReactJs" name="skill" value={skill} onChange={(e) => setSkill(e.target.value)} />
+              <Btn className="mt-4" onClick={submitHandler}>
+                Submit
+              </Btn>
             </div>
           </div>
         </form>
@@ -86,14 +92,7 @@ const Skills = () => {
 
         <div className="d-flex justify-content-center align-items-center gap-2 flex-wrap">
           {skillsList?.map((x, index) => (
-            <Button
-              key={index}
-              icon={
-                <span className="bg-danger px-1 rounded text-white" onClick={() => deleteSkill(x)}>
-                  X
-                </span>
-              }
-            >
+            <Button key={index} icon={<BsTrash color="red" onClick={() => deleteSkill(x)} />}>
               {x}
             </Button>
           ))}

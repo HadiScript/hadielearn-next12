@@ -9,6 +9,7 @@ import { AuthContext } from "../../context/auth";
 import ProjectEditModal from "../../panel/profiling/ProjectEditModal";
 import { validateDates } from "../../utils/DatesValidations";
 import ProfileForm from "../../panel/profiling/ProfileForm";
+import { toastPositions } from "../../config/toastPosition";
 
 const Portfolio = () => {
   const [auth] = useContext(AuthContext);
@@ -50,7 +51,7 @@ const Portfolio = () => {
 
   const addProject = async () => {
     if (!formData.title) {
-      toast.error("Title is requried");
+      toast.error("Title is requried", toastPositions);
       return;
     }
     if (formErrors.from) {
@@ -62,14 +63,14 @@ const Portfolio = () => {
       const { data } = await axios.put(`${API}/add-project`, formData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Added");
+        toast.success("Added", toastPositions);
         myPortfolio();
       } else if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -84,7 +85,7 @@ const Portfolio = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -95,12 +96,12 @@ const Portfolio = () => {
     try {
       const { data } = await axios.put(`${API}/delete-project`, { _id: x });
       if (data.ok) {
-        toast.success("Removed");
+        toast.success("Removed", toastPositions);
         setProjectData(projectData.filter((i) => i._id !== x));
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -118,15 +119,15 @@ const Portfolio = () => {
       const { data } = await axios.put(`${API}/edit-portfolio`, newData);
       // console.log(data);
       if (data.ok) {
-        toast.success("Updated");
+        toast.success("Updated", toastPositions);
         setOpen(false);
         myPortfolio();
       } else if (data.error) {
-        toast.error(data.error);
+        toast.error(data.error, toastPositions);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }

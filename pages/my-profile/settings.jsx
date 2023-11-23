@@ -5,6 +5,7 @@ import axios from "axios";
 import { API } from "../../config/API";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/auth";
+import { toastPositions } from "../../config/toastPosition";
 
 const Settings = () => {
   const [auth] = useContext(AuthContext);
@@ -23,7 +24,7 @@ const Settings = () => {
         setLoading(false);
       }
     } catch (error) {
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -40,10 +41,10 @@ const Settings = () => {
       setLoading(true);
       const { data } = await axios.put(`${API}/update-privacy`, { public: enable });
       if (data.ok) {
-        toast.success("Updated");
+        toast.success("Updated", toastPositions);
       }
     } catch (error) {
-      toast.error("Failed, try again");
+      toast.error("Failed, try again", toastPositions);
     } finally {
       setLoading(false);
     }
@@ -51,17 +52,20 @@ const Settings = () => {
 
   const PasswordSubmit = async () => {
     if (password !== password2) {
-      toast.error("Password doesnt match");
+      toast.error("Password doesnt match", toastPositions);
       return;
     } else if (password === password2) {
       try {
         setLoading2(true);
-        const data = await axios.put(`${API}/update-user-by-user`, { password, id: auth?.user?._id });
-        console.log(data);
-        setLoading2(false);
-        toast.success("Updated");
+        const { data } = await axios.put(`${API}/update-user-by-user`, { password, id: auth?.user?._id });
+        if (data.error) {
+          toast.error(data.error, toastPositions);
+        } else {
+          setLoading2(false);
+          toast.success("Updated", toastPositions);
+        }
       } catch (error) {
-        toast.error("Failed, try again");
+        toast.error("Failed, try again", toastPositions);
       } finally {
         setLoading2(false);
       }
@@ -95,13 +99,13 @@ const Settings = () => {
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Password </label>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" />
+              <input min={6} value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" />
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group py-2">
               <label> Confirm Password </label>
-              <input value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" className="form-control" />
+              <input min={6} value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" className="form-control" />
             </div>
           </div>
         </div>

@@ -42,6 +42,7 @@ const BatchTimeTable = () => {
           <h3 style={{ color: "#0f3f5d" }}> {timeTable.title}</h3>
         </Col>
       </Row>
+      {JSON.stringify(timeTable)}
       <TimeCalendar classSchedule={timeTable} />
     </NewLayout>
   );

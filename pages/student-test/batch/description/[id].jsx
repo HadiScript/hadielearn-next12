@@ -85,11 +85,7 @@ const DescriptionBatch = () => {
 
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card
-            role="button"
-            onClick={() => router.push(`/student-test/batch/lessons/${id}`)}
-            bordered={false}
-          >
+          <Card role="button" onClick={() => router.push(`/student-test/batch/lessons/${id}`)} bordered={false}>
             <Statistic
               // title="Lessons"
               value={`Lessons ${lessons}`}
@@ -101,11 +97,7 @@ const DescriptionBatch = () => {
           </Card>
         </Col>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card
-            role="button"
-            onClick={() => router.push(`/student-test/batch/folders/${id}`)}
-            bordered={false}
-          >
+          <Card role="button" onClick={() => router.push(`/student-test/batch/folders/${id}`)} bordered={false}>
             <Statistic
               value={`folders ${folders}`}
               valueStyle={{
@@ -116,11 +108,7 @@ const DescriptionBatch = () => {
           </Card>
         </Col>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card
-            role="button"
-            onClick={() => router.push(`/student-test/batch/assets/${id}`)}
-            bordered={false}
-          >
+          <Card role="button" onClick={() => router.push(`/student-test/batch/assets/${id}`)} bordered={false}>
             <Statistic
               value={`Assets ${assets}`}
               valueStyle={{
@@ -131,11 +119,7 @@ const DescriptionBatch = () => {
           </Card>
         </Col>
         <Col xs={24} sm={24} md={6} lg={6}>
-          <Card
-            role="button"
-            onClick={() => router.push(`/student-test/batch/comments/${id}`)}
-            bordered={false}
-          >
+          <Card role="button" onClick={() => router.push(`/student-test/batch/comments/${id}`)} bordered={false}>
             <Statistic
               value={`Comments ${comments}`}
               valueStyle={{
@@ -150,16 +134,13 @@ const DescriptionBatch = () => {
       <Row gutter={[16, 16]} className="my-4">
         <Col xs={24} sm={24} md={8} lg={8}>
           <Card bordered={false} title="Total Content">
-            <BatchByCourse
-              _data={data}
-              COLORS={["#0f3f5d", "#00C49F", "#FFBB28", "#FF8042"]}
-            />
+            <BatchByCourse _data={data} COLORS={["#0f3f5d", "#00C49F", "#FFBB28", "#FF8042"]} />
           </Card>
         </Col>
         {notice && (
           <Col xs={24} sm={24} md={16} lg={16}>
             <Card bordered={false}>
-              <div className="alert alert-success" role="alert">
+              <div className={`alert alert-${notice?.variant}`} role="alert">
                 <h4 className="alert-heading">{notice.heading}</h4>
                 <p>{notice.text}</p>
                 <hr />

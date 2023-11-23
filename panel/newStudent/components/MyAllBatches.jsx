@@ -12,6 +12,7 @@ import CTA from "../../../components/partials/CTA";
 import Footer from "../../../components/partials/Footer";
 import { FiExternalLink } from "react-icons/fi";
 import { useRouter } from "next/router";
+import { toImageUrl } from "../../../utils/ImageURL";
 const { Meta } = Card;
 
 const MyAllBatches = () => {
@@ -69,7 +70,15 @@ const MyAllBatches = () => {
                   onClick={() => router.push(`/student-test/batch/description/${x._id}`)}
                   hoverable
                   style={{ width: 240 }}
-                  cover={<img alt="example" src={x.courseDetails?.image?.url} />}
+                  cover={
+                    <>
+                      {x.courseDetails?.image?.url?.includes("courseImages") ? (
+                        <img alt="coueseImage" src={toImageUrl(x.courseDetails?.image?.url)} />
+                      ) : (
+                        <img alt="coueseImage" src={x.courseDetails?.image?.url} />
+                      )}
+                    </>
+                  }
                 >
                   <Meta
                     title={x.courseDetails?.title}

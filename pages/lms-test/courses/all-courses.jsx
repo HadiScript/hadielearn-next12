@@ -8,6 +8,7 @@ import { AuthContext } from "../../../context/auth";
 import { API } from "../../../config/API";
 import { Card } from "antd";
 import LMSLayout from "../../../panel/newLMS/layouts";
+import CoursesList from "../../../panel/lms-cms/CoursesList";
 
 const AllCourses = () => {
   const router = useRouter();
@@ -53,7 +54,8 @@ const AllCourses = () => {
 
   return (
     <LMSLayout>
-      <Card>
+      <CoursesList />
+      {/* <Card>
         <div className="table-responsive">
           <table
             class="table table-striped  text-dark"
@@ -98,7 +100,7 @@ const AllCourses = () => {
             </tbody>
           </table>
         </div>
-      </Card>
+      </Card> */}
     </LMSLayout>
   );
 };
