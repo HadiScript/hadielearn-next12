@@ -118,7 +118,7 @@ const ActiveBatchModels = ({
   };
 
   const renderPaymentStatus = (student) => {
-    const payment = student.payments.find((p) => p.batch._id === current._id);
+    const payment = student.payments.find((p) => p.batch?._id === current._id);
 
     if (payment && payment.completed) {
       return (

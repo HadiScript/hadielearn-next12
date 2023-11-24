@@ -84,7 +84,7 @@ const ActiveBatches = () => {
                     </td>
                     <td className="text-dark">
                       <Tag role="button" onClick={() => markCompleted(x._id)}>
-                        Mark as complete {x._id}
+                        Mark as complete
                       </Tag>
                     </td>
                   </tr>
