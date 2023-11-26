@@ -95,7 +95,7 @@ const BatchStudentsBatch = () => {
 
       if (data.ok) {
         toast.success("deleted");
-        fetchingAllComments(id);
+        fetchingOnlyBatchComments(id);
       }
     } catch (error) {
       console.log(error);
@@ -111,13 +111,7 @@ const BatchStudentsBatch = () => {
             <Card>
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="commentForm">
-                  <Form.Control
-                    as="textarea"
-                    rows={2}
-                    placeholder="Enter your comment..."
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                  />
+                  <Form.Control as="textarea" rows={2} placeholder="Enter your comment..." value={comment} onChange={(e) => setComment(e.target.value)} />
                 </Form.Group>
                 <Btn loading={loading} className="mt-2" onClick={handleSubmit}>
                   Send
@@ -148,24 +142,14 @@ const BatchStudentsBatch = () => {
                       text="Reply"
                       key="list-vertical-message"
                     />,
-                    <>
-                      {auth?.user?._id === item.commentBy._id && (
-                        <BiTrash
-                          role="button"
-                          onClick={() => deleteComment(item._id)}
-                        />
-                      )}
-                    </>,
+                    <>{auth?.user?._id === item.commentBy._id && <BiTrash role="button" onClick={() => deleteComment(item._id)} />}</>,
                   ]}
                 >
                   <List.Item.Meta
                     avatar={<Avatar src={item.commentBy?.image?.url} />}
                     title={
                       <>
-                        <strong>{item.commentBy?.name}</strong> -
-                        <small style={{ fontWeight: "normal" }}>
-                          {moment(item.createdAt).fromNow()}
-                        </small>
+                        <strong>{item.commentBy?.name}</strong> -<small style={{ fontWeight: "normal" }}>{moment(item.createdAt).fromNow()}</small>
                       </>
                     }
                     description={item.text}
@@ -176,12 +160,7 @@ const BatchStudentsBatch = () => {
           </Col>
         </Row>
       </NewLayout>
-      <ReplyModel
-        current={currentComment}
-        setCurrent={setCurrentComment}
-        open={replyModal}
-        setOpen={setReplyModal}
-      />
+      <ReplyModel current={currentComment} setCurrent={setCurrentComment} open={replyModal} setOpen={setReplyModal} />
     </>
   );
 };

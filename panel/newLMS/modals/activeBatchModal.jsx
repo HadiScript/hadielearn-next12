@@ -8,6 +8,7 @@ import AddStuModal from "./addStudentsModal";
 import { toast } from "react-hot-toast";
 import PaymentModels from "./students/paymentsModal";
 import { useState } from "react";
+import Link from "next/link";
 
 const ActiveBatchModels = ({
   setOpen,
@@ -26,25 +27,19 @@ const ActiveBatchModels = ({
 
   const [addPaymentsModel, setAddPaymentsModel] = useState(false);
   const [updatePaymentsModel, setUpdatePaymentsModel] = useState(false);
-  const [CurrentStudentForPayments, setCurrentStudentForPayments] = useState(
-    {}
-  );
+  const [CurrentStudentForPayments, setCurrentStudentForPayments] = useState({});
   const [certifateLoading, setCertifateLoading] = useState(false);
 
   const UnAssigned = async (sID, bID) => {
     try {
       let ok = confirm("Are you sure?");
       if (ok) {
-        const { data } = await axios.put(
-          `${API}/lms/remove/${sID}/${bID}/student`
-        );
+        const { data } = await axios.put(`${API}/lms/remove/${sID}/${bID}/student`);
         if (data.ok) {
           toast.success("Student UnAssigned");
           setCurrent({
             ...current,
-            enrolledStudents: current.enrolledStudents.filter(
-              (x) => x._id !== sID
-            ),
+            enrolledStudents: current.enrolledStudents.filter((x) => x._id !== sID),
           });
         } else if (data.error) {
           toast.error("Error");
@@ -86,21 +81,17 @@ const ActiveBatchModels = ({
     try {
       let ok = confirm("Are you sure?");
       if (ok) {
-        const { data } = await axios.put(
-          `${API}/lms/certifications/${sID}/${bID}`
-        );
+        const { data } = await axios.put(`${API}/lms/certifications/${sID}/${bID}`);
         if (data.ok) {
-          const updatedEnrolledStudents = current.enrolledStudents.map(
-            (student) => {
-              if (student._id === sID) {
-                return {
-                  ...student,
-                  certifications: [...student.certifications, { batch: bID }],
-                };
-              }
-              return student;
+          const updatedEnrolledStudents = current.enrolledStudents.map((student) => {
+            if (student._id === sID) {
+              return {
+                ...student,
+                certifications: [...student.certifications, { batch: bID }],
+              };
             }
-          );
+            return student;
+          });
           setCurrent({
             ...current,
             enrolledStudents: updatedEnrolledStudents,
@@ -124,19 +115,11 @@ const ActiveBatchModels = ({
       return (
         <>
           {student?.certifications?.find((x) => x.batch === current?._id) ? (
-            <Tag
-              role="button"
-              color="#0f3f5d"
-              onClick={() => giveHimCertifications(student?._id, current?._id)}
-            >
+            <Tag role="button" color="#0f3f5d" onClick={() => giveHimCertifications(student?._id, current?._id)}>
               Certified
             </Tag>
           ) : (
-            <Tag
-              role="button"
-              color="#0f3f5d"
-              onClick={() => giveHimCertifications(student?._id, current?._id)}
-            >
+            <Tag role="button" color="#0f3f5d" onClick={() => giveHimCertifications(student?._id, current?._id)}>
               Give him certificate
             </Tag>
           )}
@@ -173,18 +156,9 @@ const ActiveBatchModels = ({
 
   return (
     <>
-      <Modal
-        title={`${current.title}`}
-        centered
-        open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-        width={1300}
-      >
+      <Modal title={`${current.title}`} centered open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} width={1300}>
         <Descriptions
-          title={`${current.courseDetails?.title} + ${
-            certifateLoading && "loading..."
-          }`}
+          title={`${current.courseDetails?.title} + ${certifateLoading && "loading..."}`}
           bordered
           column={{
             xxl: 4,
@@ -203,36 +177,20 @@ const ActiveBatchModels = ({
             {current.friday && <Tag>Friday</Tag>}
             {current.saturday && <Tag>Saturday</Tag>}
           </Descriptions.Item>
-          <Descriptions.Item label="Dates">
-            {current.startDate?.substring(0, 10)} to{" "}
-            {current.endDate?.substring(0, 10)}{" "}
+          <Descriptions.Item label="Start - End">
+            {current.startDate?.substring(0, 10)} to {current.endDate?.substring(0, 10)}{" "}
           </Descriptions.Item>
-          <Descriptions.Item label="timing">
-            {current.timming}
-          </Descriptions.Item>
-          <Descriptions.Item label="Durations">
-            {current.duration}
-          </Descriptions.Item>
-          <Descriptions.Item label="Enrollment Limits">
-            {current.limit}
-          </Descriptions.Item>
-          <Descriptions.Item label="Completed">
-            {current.completed ? "Yes" : "No"}
-          </Descriptions.Item>
+          <Descriptions.Item label="timing">{current.timming}</Descriptions.Item>
+          <Descriptions.Item label="Durations">{current.duration}</Descriptions.Item>
+          <Descriptions.Item label="Enrollment Limits">{current.limit}</Descriptions.Item>
+          <Descriptions.Item label="Completed">{current.completed ? "Yes" : "No"}</Descriptions.Item>
           {current.completed === false && (
             <Descriptions.Item label="Settings">
               <Space wrap>
-                <Button
-                  type="primary"
-                  onClick={() => setOpenStudentModal(true)}
-                >
+                <Button type="primary" onClick={() => setOpenStudentModal(true)}>
                   Add Students
                 </Button>
-                <Button
-                  type="dashed"
-                  role="button"
-                  onClick={() => setOpenInstructorModels(true)}
-                >
+                <Button type="dashed" role="button" onClick={() => setOpenInstructorModels(true)}>
                   Assign Instructor to this batch
                 </Button>
               </Space>
@@ -250,30 +208,16 @@ const ActiveBatchModels = ({
               actions={[
                 renderPaymentStatus(item),
 
+                // <> {JSON.stringify(item)} </>,
+
                 // just give detail is payment added or not?
-                <Tag
-                  role="button"
-                  color={
-                    item.payments?.find((x) => x.batch._id === current._id)
-                      ?.completed
-                      ? "green"
-                      : "blue"
-                  }
-                >
+                <Tag role="button" color={item.payments?.find((x) => x.batch._id === current._id)?.completed ? "green" : "blue"}>
                   payments - {item.payments?.length}
-                  {item.payments?.find((x) => x.batch._id === current._id)
-                    ? "Added"
-                    : " Not Added"}
+                  {item.payments?.find((x) => x.batch._id === current._id) ? "Added" : " Not Added"}
                 </Tag>,
 
-                <Tag
-                  role="button"
-                  color={!current.completed ? "red" : "gray"}
-                  onClick={() =>
-                    !current.completed ? UnAssigned(item._id, current._id) : ""
-                  }
-                >
-                  Un Assign - {current._id}
+                <Tag role="button" color={!current.completed ? "red" : "gray"} onClick={() => (!current.completed ? UnAssigned(item._id, current._id) : "")}>
+                  Un Assign
                 </Tag>,
               ]}
             >
@@ -290,11 +234,7 @@ const ActiveBatchModels = ({
           renderItem={(item) => (
             <List.Item
               actions={[
-                <Tag
-                  role="button"
-                  color="red"
-                  onClick={() => UnAssignedTeachers(item._id, current._id)}
-                >
+                <Tag role="button" color="red" onClick={() => UnAssignedTeachers(item._id, current._id)}>
                   Un Assign
                 </Tag>,
               ]}
@@ -305,22 +245,10 @@ const ActiveBatchModels = ({
         />
       </Modal>
 
-      {!current.completed && (
-        <AddStuModal
-          current={current}
-          setCurrent={setCurrent}
-          openStudentModal={openStudentModal}
-          setOpenStudentModal={setOpenStudentModal}
-        />
-      )}
+      {!current.completed && <AddStuModal current={current} setCurrent={setCurrent} openStudentModal={openStudentModal} setOpenStudentModal={setOpenStudentModal} />}
 
       {!current.completed && (
-        <AddInstructorModal
-          setCurrent={setCurrent}
-          current={current}
-          openInstructorModels={openInstructorModels}
-          setOpenInstructorModels={setOpenInstructorModels}
-        />
+        <AddInstructorModal setCurrent={setCurrent} current={current} openInstructorModels={openInstructorModels} setOpenInstructorModels={setOpenInstructorModels} />
       )}
 
       <PaymentModels
@@ -333,70 +261,9 @@ const ActiveBatchModels = ({
         setCurrentStudent={setCurrentStudentForPayments}
         addPaymentsModel={addPaymentsModel}
         setAddPaymentsModel={setAddPaymentsModel}
-
-        // paymentModels={payment_Model}
-        // setPaymentModel={setPayment_Model}
-        // batch={current}
-        // setBatch={setCurrent}
-        // current={CurrentStudentForPayments}
-        // setCurrent={setCurrentStudentForPayments}
       />
     </>
   );
 };
 
 export default ActiveBatchModels;
-
-// add and update payments
-// <span>
-//   {!item.payments?.find((x) => x.batch._id === current._id) ? (
-//     <Tag
-//       color="blue"
-//       role="button"
-//       onClick={() => {
-//         setPayment_Model(true);
-//         setCurrentStudentForPayments(item);
-//       }}
-//     >
-//       Add Payments
-//     </Tag>
-//   ) : (
-//     !item.payments?.find((x) => x.batch._id === current._id)
-//       .completed && (
-//       <Tag
-//         color="blue"
-//         role="button"
-//         onClick={() => {
-//           setPayment_Model(true);
-//           setCurrentStudentForPayments(item);
-//         }}
-//       >
-//         Update Payments
-//       </Tag>
-//     )
-//   )}
-// </span>,
-
-// // give him certificate
-// <span>
-//   {item.payments?.find((x) => x.batch._id === current._id)
-//     ?.completed && (
-//     <div>
-//       {item.certifications?.find(
-//         (x) => x.batch._id === current._id
-//       ) ? (
-//         <Tag color="blue"> Certified </Tag>
-//       ) : (
-//         <Tag
-//           color="green"
-//           role="button"
-//           onClick={() =>
-//             giveHimCertifications(item._id, current._id)
-//           }
-//         >
-//           Give him certificate
-//         </Tag>
-//       )}
-//     </div>
-//   )}
-// </span>,

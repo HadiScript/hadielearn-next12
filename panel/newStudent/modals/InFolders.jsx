@@ -5,11 +5,12 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { API } from "../../../config/API";
 import { BiTrash } from "react-icons/bi";
+import { toImageUrl } from "../../../utils/ImageURL";
 
 const InFolders = ({ open, setOpen, current, auth, setCurrent, CallAgain }) => {
   const [file_name, setFile_name] = useState("");
   const [file, setFile] = useState("");
-  
+
   // const [public_id, setPublic_id] = useState("");
 
   const [uploading, setUploading] = useState(false);
@@ -17,24 +18,34 @@ const InFolders = ({ open, setOpen, current, auth, setCurrent, CallAgain }) => {
   const handleChange = (e) => {
     const { files } = e.target;
 
-    let fileSize;
-    fileSize = files[0].size / 1024 / 1024;
-    if (fileSize > 5) {
-      toast.error("The file size greater than 5 MB. Make sure less than 5 MB.", {
-        style: {
-          border: "1px solid #ff0033",
-          padding: "16px",
-          color: "#ff0033",
-        },
-        iconTheme: {
-          primary: "#ff0033",
-          secondary: "#FFFAEE",
-        },
-      });
-      e.target.value = null;
-      return;
+    const allowedExtensions = ["pdf", "js", "docx", "jsx", "json", "jpg", "jpeg", "png", "pptx", "xlsx", "txt"];
+    let file = e.target.files[0];
+    if (file) {
+      let fileExtension = file.name.split(".").pop().toLowerCase();
+      if (!allowedExtensions.includes(fileExtension)) {
+        toast.error("Unsupported file type!");
+        e.target.value = null;
+      } else {
+        let fileSize;
+        fileSize = files[0].size / 1024 / 1024;
+        if (fileSize > 1) {
+          toast.error("The file size greater than 1 MB. Make sure less than 1 MB.", {
+            style: {
+              border: "1px solid #ff0033",
+              padding: "16px",
+              color: "#ff0033",
+            },
+            iconTheme: {
+              primary: "#ff0033",
+              secondary: "#FFFAEE",
+            },
+          });
+          e.target.value = null;
+          return;
+        }
+        setFile(files[0]);
+      }
     }
-    setFile(files[0]);
   };
 
   const addAssignments = async (file, file_name, x) => {
@@ -134,7 +145,7 @@ const InFolders = ({ open, setOpen, current, auth, setCurrent, CallAgain }) => {
         renderItem={(item) => (
           <List.Item actions={[<>{auth?.user?._id === item.stu_id && <BiTrash role="button" onClick={() => removeAssignments(current._id, item._id)} />}</>]}>
             <List.Item.Meta
-              title={<a onClick={() => window.open(item.file)}>{item.file_name}</a>}
+              title={<a onClick={() => window.open(toImageUrl(item.file))}>{item.file_name}</a>}
               description={
                 <>
                   {current?._id} - {item?._id}

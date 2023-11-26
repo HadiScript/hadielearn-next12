@@ -6,6 +6,7 @@ import { AiOutlineRollback } from "react-icons/ai";
 import { AuthContext } from "../../context/auth";
 import { API } from "../../config/API";
 import Btn from "../../components/ui/Btn";
+import Link from "next/link";
 
 const Login = () => {
   // context
@@ -51,19 +52,6 @@ const Login = () => {
         toast.success("Successfully logged in");
         setLoading(false);
         router.push("/");
-        // if (data.user?.role === "admin") {
-        //   router.push("/");
-        // } else if (data.user?.role === "author") {
-        //   router.push("/");
-        // } else if (data.user?.role === "cord") {
-        //   router.push("/");
-        // } else if (data.user?.role === "instructor") {
-        //   router.push("/");
-        // } else if (data.user?.role === "student") {
-        //   router.push("/");
-        // } else {
-        //   router.push("/");
-        // }
       }
     } catch (err) {
       toast.error("SignIn failed. Try again.");
@@ -80,7 +68,6 @@ const Login = () => {
 
   return (
     <>
-      {/* start */}
       <div id="enrollScreen" className="container-fluid ">
         <div className="row">
           <div className="col-lg-4 col-md-4 bg-danger" id="forImage" />
@@ -90,9 +77,11 @@ const Login = () => {
                 <div className="col-md-8  col-sm-12 " id="startForm">
                   <div>
                     <div className="col-md-8  col-sm-12 mb-4  ">
-                      <span className="d-flex align-items-center gap-2" onClick={() => router.push("/")}>
-                        <AiOutlineRollback /> <span>Home</span>
-                      </span>
+                      <Link href={"/"}>
+                        <span className="d-flex align-items-center gap-2" role="button">
+                          <AiOutlineRollback /> <span>Home</span>
+                        </span>
+                      </Link>
                     </div>
                     <h2> Login </h2>
                     <br />

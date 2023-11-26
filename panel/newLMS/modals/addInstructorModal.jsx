@@ -11,12 +11,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 const { Search } = Input;
 
-const AddInstructorModal = ({
-  setCurrent,
-  current,
-  openInstructorModels,
-  setOpenInstructorModels,
-}) => {
+const AddInstructorModal = ({ setCurrent, current, openInstructorModels, setOpenInstructorModels }) => {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,8 +34,7 @@ const AddInstructorModal = ({
           search: searchQuery,
         },
       });
-      const { users: loadedUsers, totalPages: loadedTotalPages } =
-        response.data;
+      const { users: loadedUsers, totalPages: loadedTotalPages } = response.data;
 
       // setUsers([...users, loadedUsers]);
       setUsers(loadedUsers);
@@ -108,14 +102,7 @@ const AddInstructorModal = ({
         <br />
         <br />
         <Space wrap>
-          <Search
-            addonBefore="Students"
-            placeholder="input search text"
-            allowClear
-            value={searchQuery}
-            onChange={handleSearch}
-            style={{ width: 304 }}
-          />
+          <Search addonBefore="Students" placeholder="input search text" allowClear value={searchQuery} onChange={handleSearch} style={{ width: 304 }} />
           <Select
             // defaultValue={"Select Page"}
             style={{
@@ -147,10 +134,10 @@ const AddInstructorModal = ({
           className="mt-4"
           itemLayout="horizontal"
           dataSource={users}
-          loading={loading}
+          loading={loading || addingStudentsLoading}
           renderItem={(item, index) => (
             <>
-              {addingStudentsLoading && <>loading...</>}
+              {/* {addingStudentsLoading && <>loading...</>} */}
               {!current.teachers.some((x) => x._id === item._id) && (
                 <List.Item
                   actions={[
@@ -167,17 +154,11 @@ const AddInstructorModal = ({
                   ]}
                 >
                   <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                      />
-                    }
+                    avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
                     title={<a href="https://ant.design">{item.name}</a>}
                     description={
                       <>
-                        <Tag color="blue">
-                          Assigned Batches : {item?.assignedBatches?.length}
-                        </Tag>
+                        <Tag color="blue">Assigned Batches : {item?.assignedBatches?.length}</Tag>
                       </>
                     }
                   />

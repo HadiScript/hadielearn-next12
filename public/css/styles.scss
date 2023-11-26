@@ -113,3 +113,13 @@
 .disable-pointer {
   cursor: no-drop !important;
 }
+
+// #0f3f5d
+
+#nprogress .bar {
+  background: #0f3f5d; /* Change to your preferred color */
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #13689c, 0 0 5px #0f3f5d; /* Change the shadow color if needed */
+}

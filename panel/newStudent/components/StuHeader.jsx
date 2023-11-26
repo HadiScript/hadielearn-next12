@@ -109,7 +109,7 @@ const StuHeader = ({ page = "notFromContact" }) => {
                 <div className="col-xl-9 col-lg-9 col-md-6 col-sm-6 col-6">
                   <div className="header__bottom-right d-flex justify-content-end align-items-center">
                     <div className="header__btn d-none d-md-block ml-50 ">
-                      <Dropdown menu={{ items }} className="custom-dropdown">
+                      <Dropdown menu={{ items }} className="custom-dropdown" overlayStyle={{ zIndex: 9999 }}>
                         {auth?.user?.image?.url?.includes("profileImage") ? (
                           <Avatar src={toImageUrl(auth?.user?.image?.url)}>{auth?.user?.name[0]}</Avatar>
                         ) : (
@@ -118,7 +118,7 @@ const StuHeader = ({ page = "notFromContact" }) => {
                       </Dropdown>
                     </div>
                     <div className="sidebar__menu  d-block d-md-none">
-                      <Dropdown menu={{ items }} className="mx-3">
+                      <Dropdown menu={{ items }} className="mx-3" overlayStyle={{ zIndex: 9999 }}>
                         {auth?.user?.image?.url?.includes("profileImage") ? (
                           <Avatar src={toImageUrl(auth?.user?.image?.url)}>{auth?.user?.name[0]}</Avatar>
                         ) : (

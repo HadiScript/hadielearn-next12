@@ -11,6 +11,7 @@ import { IconText } from "../lessons/[id]";
 
 import { BiTrash } from "react-icons/bi";
 import { EditOutlined } from "@ant-design/icons";
+import { toImageUrl } from "../../../../utils/ImageURL";
 
 const SingleBatchFolders = () => {
   const [auth] = useContext(AuthContext);
@@ -77,25 +78,35 @@ const SingleBatchFolders = () => {
   // handlers and files uploading
   const handleChange = (e) => {
     const { files } = e.target;
+    const file = e.target.files[0];
+    const allowedExtensions = ["pdf", "js", "docx", "jsx", "json", "jpg", "jpeg", "png", "pptx", "xlsx", "txt"];
 
-    let fileSize;
-    fileSize = files[0].size / 1024 / 1024;
-    if (fileSize > 5) {
-      toast.error("The file size greater than 5 MB. Make sure less than 5 MB.", {
-        style: {
-          border: "1px solid #ff0033",
-          padding: "16px",
-          color: "#ff0033",
-        },
-        iconTheme: {
-          primary: "#ff0033",
-          secondary: "#FFFAEE",
-        },
-      });
-      e.target.value = null;
-      return;
+    if (file) {
+      let fileExtension = file.name.split(".").pop().toLowerCase();
+      if (!allowedExtensions.includes(fileExtension)) {
+        toast.error("Unsupported file type!");
+        e.target.value = null;
+      } else if (allowedExtensions.includes(fileExtension)) {
+        let fileSize;
+        fileSize = files[0].size / 1024 / 1024;
+        if (fileSize > 1) {
+          toast.error("The file size greater than 5 MB. Make sure less than 5 MB.", {
+            style: {
+              border: "1px solid #ff0033",
+              padding: "16px",
+              color: "#ff0033",
+            },
+            iconTheme: {
+              primary: "#ff0033",
+              secondary: "#FFFAEE",
+            },
+          });
+          e.target.value = null;
+          return;
+        }
+        setUploadingFile(files[0]);
+      }
     }
-    setUploadingFile(files[0]);
   };
 
   const handleSubmit = async (e) => {
@@ -197,8 +208,16 @@ const SingleBatchFolders = () => {
 
                 <div className="form-group">
                   <label className="form-label fw-semibold">Select Asset/File</label>
-                  <input type="file" className="form-control file-control" name="file" onChange={handleChange} required={true} />
-                  <div className="form-text">Upload file size less than or equal 5MB!</div>
+                  <input
+                    accept=".pdf,.js,.docx,.jsx,.json,.jpg,.jpeg,.png,.pptx,.xlsx,.txt"
+                    type="file"
+                    className="form-control file-control"
+                    name="file"
+                    onChange={handleChange}
+                    required={true}
+                  />
+                  <div className="form-text">Upload file size less than or equal 1MB!</div>
+                  <div className="form-text">Formats: .pdf,.js,.docx,.jsx,.json,.jpg,.jpeg,.png,.pptx,.xlsx,.txt</div>
                 </div>
 
                 <Btn loading={loading} className="my-3" onClick={handleSubmit}>
@@ -231,7 +250,7 @@ const SingleBatchFolders = () => {
                         <IconText icon={<BiTrash role="button" onClick={() => deleteAssets(item._id)} />} />,
                       ]}
                     >
-                      <List.Item.Meta title={<a onClick={() => window.open(item.file)}>{item.title}</a>} description={item.description} />
+                      <List.Item.Meta title={<a onClick={() => window.open(toImageUrl(item.file))}>{item.title}</a>} description={item.description} />
                     </List.Item>
                   )}
                 />

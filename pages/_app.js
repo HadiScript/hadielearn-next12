@@ -11,9 +11,20 @@ import Head from "next/head";
 import { AuthProvider } from "../context/auth";
 import { BlogProvider } from "../context/blogContext";
 import { GallaryProvider } from "../context/gallaryContext";
+import Router from "next/router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
+
+// Configure NProgress options (optional)
+NProgress.configure({ showSpinner: false });
+
+// Bind NProgress to Router events
+// Router.events.on("routeChangeStart", () => NProgress.start());
+// Router.events.on("routeChangeComplete", () => NProgress.done());
+// Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -35,10 +46,7 @@ function MyApp({ Component, pageProps }) {
 
                 {/* new tags */}
 
-                <meta
-                  property="og:title"
-                  content="Hadi E-learning - Your Digital Hadi"
-                />
+                <meta property="og:title" content="Hadi E-learning - Your Digital Hadi" />
                 <meta property="og:site_name" content="Hadi E-learning" />
                 <meta property="og:url" content="https://hadielearning.com/" />
                 <meta
@@ -46,33 +54,18 @@ function MyApp({ Component, pageProps }) {
                   content="Unlock the door to a bright and prosperous future in the digital world with Hadi-learning, an online learning platform that can help you excel in your career path."
                 />
                 <meta property="og:type" content="website" />
-                <meta
-                  property="og:image"
-                  content="https://hadielearning.com/assets/images/cards.webp"
-                />
+                <meta property="og:image" content="https://hadielearning.com/assets/images/cards.webp" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@Hadi E-learning" />
-                <meta
-                  name="twitter:title"
-                  content="Hadi E-learning - Your Digital Hadi"
-                />
+                <meta name="twitter:title" content="Hadi E-learning - Your Digital Hadi" />
                 <meta
                   name="twitter:description"
                   content="Unlock the door to a bright and prosperous future in the digital world with Hadi-learning, an online learning platform that can help you excel in your career path."
                 />
-                <meta
-                  name="twitter:image"
-                  content="https://hadielearning.com/assets/images/cards.webp"
-                />
-                <meta
-                  name="p:domain_verify"
-                  content="f8bb42a20c8dff398a924ace20af7c9f"
-                />
+                <meta name="twitter:image" content="https://hadielearning.com/assets/images/cards.webp" />
+                <meta name="p:domain_verify" content="f8bb42a20c8dff398a924ace20af7c9f" />
                 {/* <!-- Google tag (gtag.js) --> */}
-                <script
-                  async
-                  src="https://www.googletagmanager.com/gtag/js?id=G-XMP1680JR1"
-                ></script>
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMP1680JR1"></script>
 
                 <script
                   dangerouslySetInnerHTML={{
@@ -118,11 +111,7 @@ function MyApp({ Component, pageProps }) {
                 ></script>
 
                 {/* ads */}
-                <script
-                  async
-                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098252304490801"
-                  crossOrigin="anonymous"
-                />
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098252304490801" crossOrigin="anonymous" />
 
                 {/* chatting start */}
 

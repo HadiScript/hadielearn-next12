@@ -12,12 +12,7 @@ import { toast } from "react-hot-toast";
 import { API } from "../../../config/API";
 const { Search } = Input;
 
-const AddStuModal = ({
-  current,
-  openStudentModal,
-  setOpenStudentModal,
-  setCurrent,
-}) => {
+const AddStuModal = ({ current, openStudentModal, setOpenStudentModal, setCurrent }) => {
   //   const { users } = useUserRole({ role: "student" });
 
   const [loading, setLoading] = useState(false);
@@ -41,8 +36,7 @@ const AddStuModal = ({
           search: searchQuery,
         },
       });
-      const { users: loadedUsers, totalPages: loadedTotalPages } =
-        response.data;
+      const { users: loadedUsers, totalPages: loadedTotalPages } = response.data;
 
       setUsers(loadedUsers);
       setTotalPages(loadedTotalPages);
@@ -77,14 +71,13 @@ const AddStuModal = ({
           enrolledStudents: [...prevState.enrolledStudents, stu],
         }));
 
-        console.log(stu, 'add stu from setCurrent')
+        console.log(stu, "add stu from setCurrent");
       }
     } catch (error) {
       setAddingStudentsLoading(false);
       console.log(error, { position: "bottom-center" });
     }
   };
-
 
   const handleChange = (value) => {
     setCurrentPage(value);
@@ -105,14 +98,7 @@ const AddStuModal = ({
         <br />
         <br />
         <Space wrap>
-          <Search
-            addonBefore="Students"
-            placeholder="input search text"
-            allowClear
-            value={searchQuery}
-            onChange={handleSearch}
-            style={{ width: 304 }}
-          />
+          <Search addonBefore="Students" placeholder="input search text" allowClear value={searchQuery} onChange={handleSearch} style={{ width: 304 }} />
           <Select
             // defaultValue={"Select Page"}
             style={{
@@ -144,35 +130,24 @@ const AddStuModal = ({
           className="mt-4"
           itemLayout="horizontal"
           dataSource={users}
-          loading={loading}
+          loading={loading || addingStudentsLoading}
           renderItem={(item, index) => (
             <>
-              {addingStudentsLoading && <>loading...</>}
-
               {!current.enrolledStudents.some((x) => x._id === item._id) && (
                 <List.Item
                   actions={[
-                    <a
-                      key="list-loadmore-edit"
-                      onClick={() => AddStudent(current._id, item._id, item)}
-                    >
+                    <a key="list-loadmore-edit" onClick={() => AddStudent(current._id, item._id, item)}>
                       Add {item.enrolledBatches.includes}
                     </a>,
                     // <a key="list-loadmore-more">more</a>,
                   ]}
                 >
                   <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                      />
-                    }
+                    avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
                     title={<a href="https://ant.design">{item.name}</a>}
                     description={
                       <>
-                        <Tag color="blue">
-                          Assigned Batches : {item.enrolledBatches.length}
-                        </Tag>
+                        <Tag color="blue">Assigned Batches : {item.enrolledBatches.length}</Tag>
                       </>
                     }
                   />

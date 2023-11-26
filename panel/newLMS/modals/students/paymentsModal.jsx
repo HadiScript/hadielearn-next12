@@ -175,43 +175,35 @@ const PaymentModels = ({
         completed,
       };
 
-      const { data } = await axios.put(
-        `${API}/lms/add/${currentStudent._id}/${batch._id}/payments`,
-        payload
-      );
+      const { data } = await axios.put(`${API}/lms/add/${currentStudent._id}/${batch._id}/payments`, payload);
 
       if (data.ok) {
         if (from === "all-students") {
           setCurrent((prevCurrent) => ({
             ...prevCurrent,
-            payments: [
-              ...prevCurrent.payments,
-              { amount, comment, completed, batch: batchId },
-            ],
+            payments: [...prevCurrent.payments, { amount, comment, completed, batch: batchId }],
           }));
         } else if (from === "batches") {
-          const updatedEnrolledStudents = batch.enrolledStudents.map(
-            (student) => {
-              if (student._id === currentStudent._id) {
-                return {
-                  ...student,
-                  payments: [
-                    ...student.payments,
-                    {
-                      completed,
-                      amount,
-                      comment,
-                      addBy: auth?.user?._id,
-                      batch: {
-                        _id: batch._id,
-                      },
+          const updatedEnrolledStudents = batch.enrolledStudents.map((student) => {
+            if (student._id === currentStudent._id) {
+              return {
+                ...student,
+                payments: [
+                  ...student.payments,
+                  {
+                    completed,
+                    amount,
+                    comment,
+                    addBy: auth?.user?._id,
+                    batch: {
+                      _id: batch._id,
                     },
-                  ],
-                };
-              }
-              return student;
+                  },
+                ],
+              };
             }
-          );
+            return student;
+          });
 
           setBatch((prevBatch) => ({
             ...prevBatch,
@@ -239,14 +231,11 @@ const PaymentModels = ({
         return toast.error("Fields are required**");
       } else {
         setPaymentLoading(true);
-        const { data } = await axios.put(
-          `${API}/lms/update/${currentStudent._id}/${currentPaymentId}/${batch?._id}/payments`,
-          {
-            amount,
-            comment,
-            completed,
-          }
-        );
+        const { data } = await axios.put(`${API}/lms/update/${currentStudent._id}/${currentPaymentId}/${batch?._id}/payments`, {
+          amount,
+          comment,
+          completed,
+        });
         if (data.ok) {
           setPaymentLoading(false);
           toast.success("Added");
@@ -257,10 +246,7 @@ const PaymentModels = ({
           if (from === "all-students") {
             setCurrent((prevCurrent) => ({
               ...prevCurrent,
-              payments: [
-                ...prevCurrent.payments,
-                { completed, amount, comment },
-              ],
+              payments: [...prevCurrent.payments, { completed, amount, comment }],
             }));
           } else if (from === "batches") {
             console.log("running...");
@@ -271,27 +257,25 @@ const PaymentModels = ({
               batch: { _id: batchId },
             };
 
-            const updatedEnrolledStudents = batch.enrolledStudents.map(
-              (student) => {
-                if (student._id === currentStudent._id) {
-                  const updatedPayments = student.payments.map((payment) => {
-                    if (payment.batch._id === batch._id) {
-                      return {
-                        ...payment,
-                        ...updatedData,
-                      };
-                    }
-                    return payment;
-                  });
+            const updatedEnrolledStudents = batch.enrolledStudents.map((student) => {
+              if (student._id === currentStudent._id) {
+                const updatedPayments = student.payments.map((payment) => {
+                  if (payment.batch._id === batch._id) {
+                    return {
+                      ...payment,
+                      ...updatedData,
+                    };
+                  }
+                  return payment;
+                });
 
-                  return {
-                    ...student,
-                    payments: updatedPayments,
-                  };
-                }
-                return student;
+                return {
+                  ...student,
+                  payments: updatedPayments,
+                };
               }
-            );
+              return student;
+            });
 
             setBatch((prevBatch) => ({
               ...prevBatch,
@@ -307,9 +291,7 @@ const PaymentModels = ({
   };
 
   useEffect(() => {
-    let studentPayment =
-      currentStudent &&
-      currentStudent.payments?.find((x) => x.batch._id === batch._id);
+    let studentPayment = currentStudent && currentStudent.payments?.find((x) => x.batch._id === batch._id);
     if (studentPayment) {
       setBatchId(batch._id);
       setAmount(studentPayment.amount);
@@ -321,111 +303,28 @@ const PaymentModels = ({
 
   return (
     <>
-      {/* <Modal
-        title={`${current.name}`}
-        centered
-        open={paymentModels}
-        onOk={() => setPaymentModel(false)}
-        onCancel={() => setPaymentModel(false)}
-        width={900}
-      >
-        {JSON.stringify(from)}
-        <br />
-        {!current.payments?.find((x) => x.batch._id === batch._id) && (
-          <Tag color="green" role="button" onClick={() => setOpen(true)}>
-            Add Payment
-          </Tag>
-        )}
-
-        <Divider orientation="left">Payments</Divider>
-        <List
-          size="small"
-          bordered
-          dataSource={current?.payments?.filter(
-            (x) => x.batch._id === batch._id
-          )}
-          renderItem={(item) => (
-            <List.Item
-              actions={[
-                <Tag
-                  color="blue"
-                  role="button"
-                  onClick={() => {
-                    setCurrentPaymentId(item);
-                    setOpen2(true);
-                    setAmount(item.amount);
-                    setComment(item.comment);
-                    setCompleted(item.completed);
-                  }}
-                >
-                  Update
-                </Tag>,
-              ]}
-            >
-              <List.Item.Meta
-                title={item.batch?.title}
-                description={
-                  <Space wrap>
-                    <Tag> {item.amount} </Tag>
-                    <Tag> completed: {item.completed ? "yes" : "no"} </Tag>
-                    <Tag> comment: {item.comment} </Tag>
-                  </Space>
-                }
-              />
-            </List.Item>
-          )}
-        />
-      </Modal> */}
-
       {/* add payments */}
-      <Modal
-        title={`Add Payments`}
-        centered
-        open={addPaymentsModel}
-        onOk={addPayments}
-        onCancel={() => setAddPaymentsModel(false)}
-        width={500}
-      >
-        {JSON.stringify({ comment, amount, completed, batchId })}
+      <Modal title={`Add Payments`} centered open={addPaymentsModel} onOk={addPayments} onCancel={() => setAddPaymentsModel(false)} width={500}>
         {paymentLoading && <p>loading...</p>}
         <form onSubmit={addPayments}>
           <div className="my-2">
             <label>Amount</label>
-            <input
-              type="number"
-              className="form-control"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
+            <input type="number" className="form-control" value={amount} onChange={(e) => setAmount(e.target.value)} />
           </div>
           <div className="my-2">
             <label>Comment</label>
-            <input
-              type="text"
-              className="form-control"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
+            <input type="text" className="form-control" value={comment} onChange={(e) => setComment(e.target.value)} />
           </div>
 
           <div className="d-flex justify-content-start align-items-center gap-3 my-2">
             <label>Is Complete?</label>
-            <input
-              type="checkbox"
-              checked={completed}
-              onChange={(e) => setCompleted(!completed)}
-            />
+            <input type="checkbox" checked={completed} onChange={(e) => setCompleted(!completed)} />
           </div>
 
           {currentStudent?.completedBatches?.length > 0 && (
             <div className="form-group py-2">
               <label> Select From Completed Batches </label>
-              <select
-                value={batchId}
-                onChange={(e) => setBatchId(e.target.value)}
-                className="form-control"
-                name="batchId"
-              >
+              <select value={batchId} onChange={(e) => setBatchId(e.target.value)} className="form-control" name="batchId">
                 <option>* Select From Completed Batches</option>
                 {from === "all-students"
                   ? batch?.completedBatches?.map((x, index) => (
@@ -445,48 +344,21 @@ const PaymentModels = ({
       </Modal>
 
       {/* update payments */}
-      <Modal
-        title={`Update Payment`}
-        centered
-        open={updatePaymentsModel}
-        onOk={updatePayment}
-        onCancel={() => setUpdatePaymentsModel(false)}
-        width={500}
-      >
-        {JSON.stringify({
-          comment,
-          amount,
-          completed,
-          batchId,
-        })}
+      <Modal title={`Update Payment`} centered open={updatePaymentsModel} onOk={updatePayment} onCancel={() => setUpdatePaymentsModel(false)} width={500}>
         {paymentLoading && <p>loading...</p>}
         <form onSubmit={updatePayment}>
           <div className="my-2">
             <label>Amount</label>
-            <input
-              type="number"
-              className="form-control"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
+            <input type="number" className="form-control" value={amount} onChange={(e) => setAmount(e.target.value)} />
           </div>
           <div className="my-2">
             <label>Comment</label>
-            <input
-              type="text"
-              className="form-control"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
+            <input type="text" className="form-control" value={comment} onChange={(e) => setComment(e.target.value)} />
           </div>
 
           <div className="d-flex justify-content-start align-items-center gap-3 my-2">
             <label>Is Complete?</label>
-            <input
-              type="checkbox"
-              checked={completed}
-              onChange={(e) => setCompleted(!completed)}
-            />
+            <input type="checkbox" checked={completed} onChange={(e) => setCompleted(!completed)} />
           </div>
         </form>
       </Modal>

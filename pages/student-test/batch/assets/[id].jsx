@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import StatsBatch from "../../../../panel/newStudent/components/StatsBatch";
 import { Card, List } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
+import { toImageUrl } from "../../../../utils/ImageURL";
 
 const BatchAssets = () => {
   const [auth] = useContext(AuthContext);
@@ -55,7 +56,7 @@ const BatchAssets = () => {
                 }}
                 actions={[
                   <>
-                    <DownloadOutlined onClick={() => window.open(item.file)} />
+                    <DownloadOutlined onClick={() => window.open(toImageUrl(item.file))} />
                   </>,
                 ]}
                 key={index}

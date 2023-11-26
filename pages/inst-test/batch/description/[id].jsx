@@ -15,7 +15,6 @@ const SingleBatchDashboard = () => {
   const router = useRouter();
   const { id } = router.query;
 
-
   const [auth] = useContext(AuthContext);
 
   const [batch, setBatch] = useState({});
@@ -76,68 +75,37 @@ const SingleBatchDashboard = () => {
             {batch.friday && <Tag>Friday</Tag>}
             {batch.saturday && <Tag>Saturday</Tag>}
           </Descriptions.Item>
-          <Descriptions.Item label="Dates">
-            {batch.startDate?.substring(0, 10)} to{" "}
-            {batch.endDate?.substring(0, 10)}{" "}
+          <Descriptions.Item label="Start to End">
+            {batch.startDate?.substring(0, 10)} to {batch.endDate?.substring(0, 10)}{" "}
           </Descriptions.Item>
           <Descriptions.Item label="timing">{batch.timming}</Descriptions.Item>
-          <Descriptions.Item label="Durations">
-            {batch.duration}
-          </Descriptions.Item>
-          <Descriptions.Item label="Enrollment Limits">
-            {batch.limit}
-          </Descriptions.Item>
-          <Descriptions.Item label="Completed">
-            {batch.completed ? "Yes" : "No"}
-          </Descriptions.Item>
-          <Descriptions.Item label="Assigned Teachers">
-            {batch.teachers?.length}
-          </Descriptions.Item>
-          <Descriptions.Item label="Assigned Teachers">
-            {batch.enrolledStudents?.length}
-          </Descriptions.Item>
+          <Descriptions.Item label="Durations">{batch.duration}</Descriptions.Item>
+          <Descriptions.Item label="Enrollment Limits">{batch.limit}</Descriptions.Item>
+          <Descriptions.Item label="Completed">{batch.completed ? "Yes" : "No"}</Descriptions.Item>
+          <Descriptions.Item label="Assigned Teachers">{batch.teachers?.length}</Descriptions.Item>
+          <Descriptions.Item label="Enrolled Students">{batch.enrolledStudents?.length}</Descriptions.Item>
         </Descriptions>
       </Card>
       <br />
       <Row gutter={16}>
         <Col sm={24} xs={24} md={6} lg={6}>
           <Card bordered={false}>
-            <Statistic
-              title="Folders"
-              value={folders}
-              valueStyle={{ color: "#0f3f5d" }}
-              prefix={<LuFolders />}
-            />
+            <Statistic title="Folders" value={folders} valueStyle={{ color: "#0f3f5d" }} prefix={<LuFolders />} />
           </Card>
         </Col>
         <Col sm={24} xs={24} md={6} lg={6}>
           <Card bordered={false}>
-            <Statistic
-              title="Comments"
-              value={comments}
-              valueStyle={{ color: "#0f3f5d" }}
-              prefix={<FaRegComments />}
-            />
+            <Statistic title="Comments" value={comments} valueStyle={{ color: "#0f3f5d" }} prefix={<FaRegComments />} />
           </Card>
         </Col>
         <Col sm={24} xs={24} md={6} lg={6}>
           <Card bordered={false}>
-            <Statistic
-              title="Assets"
-              value={assets}
-              valueStyle={{ color: "#0f3f5d" }}
-              prefix={<LuFileSpreadsheet />}
-            />
+            <Statistic title="Assets" value={assets} valueStyle={{ color: "#0f3f5d" }} prefix={<LuFileSpreadsheet />} />
           </Card>
         </Col>
         <Col sm={24} xs={24} md={6} lg={6}>
           <Card bordered={false}>
-            <Statistic
-              title="Lessons"
-              value={lessons}
-              valueStyle={{ color: "#0f3f5d" }}
-              prefix={<MdOutlinePlayLesson />}
-            />
+            <Statistic title="Lessons" value={lessons} valueStyle={{ color: "#0f3f5d" }} prefix={<MdOutlinePlayLesson />} />
           </Card>
         </Col>
       </Row>

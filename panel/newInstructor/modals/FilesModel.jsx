@@ -1,20 +1,9 @@
 import { Divider, List, Modal } from "antd";
 import React from "react";
 import { BiTrash } from "react-icons/bi";
+import { toImageUrl } from "../../../utils/ImageURL";
 
-const FilesModel = ({
-  file,
-  setFile,
-  setFile_name,
-  file_name,
-  openFileModel,
-  setOpenFileModel,
-  handleChange,
-  addAssignments,
-  current,
-  setCurrent,
-  removeAssignments,
-}) => {
+const FilesModel = ({ file, setFile, setFile_name, file_name, openFileModel, setOpenFileModel, handleChange, addAssignments, current, setCurrent, removeAssignments }) => {
   return (
     <Modal
       title={current.name}
@@ -28,33 +17,16 @@ const FilesModel = ({
       onCancel={() => setOpenFileModel(false)}
     >
       {/* {updatesLoading && <p>Loading...</p>} */}
-      <form
-        className="row align-items-center"
-        onSubmit={() => addAssignments(file, file_name, current._id)}
-      >
+      <form className="row align-items-center" onSubmit={() => addAssignments(file, file_name, current._id)}>
         <div className="col-md-6 form-group">
           <label>File Name</label>
-          <input
-            type="text"
-            className="form-control"
-            value={file_name}
-            required={true}
-            onChange={(e) => setFile_name(e.target.value)}
-          />
+          <input type="text" className="form-control" value={file_name} required={true} onChange={(e) => setFile_name(e.target.value)} />
         </div>
         <br />
         <div className="col-md-6 form-group">
           <label className="form-label fw-semibold">Select File</label>
-          <input
-            type="file"
-            className="form-control file-control"
-            name="file"
-            onChange={handleChange}
-            required={true}
-          />
-          <div className="form-text">
-            Upload file size less than or equal 5MB!
-          </div>
+          <input type="file" className="form-control file-control" name="file" onChange={handleChange} required={true} />
+          <div className="form-text">Upload file size less than or equal 5MB!</div>
         </div>
         <br />
       </form>
@@ -64,19 +36,8 @@ const FilesModel = ({
         dataSource={current.data}
         itemLayout="horizontal"
         renderItem={(item) => (
-          <List.Item
-            actions={[
-              <BiTrash
-                role="button"
-                onClick={() => removeAssignments(current._id, item._id)}
-              />,
-            ]}
-          >
-            <List.Item.Meta
-              title={
-                <a onClick={() => window.open(item.file)}>{item.file_name}</a>
-              }
-            />
+          <List.Item actions={[<BiTrash role="button" onClick={() => removeAssignments(current._id, item._id)} />]}>
+            <List.Item.Meta title={<a onClick={() => window.open(toImageUrl(item.file))}>{item.file_name}</a>} />
           </List.Item>
         )}
       />

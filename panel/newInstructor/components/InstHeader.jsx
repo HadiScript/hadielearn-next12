@@ -38,7 +38,7 @@ const InstHeader = ({ page = "notFromContact" }) => {
     },
     {
       label: "Batch",
-      key: "0",
+      key: "1",
       icon: <FaGraduationCap size={17} />,
       onClick: () => {
         // setOpenProfile(true);
@@ -97,8 +97,8 @@ const InstHeader = ({ page = "notFromContact" }) => {
                 </div>
                 <div className="col-xl-9 col-lg-9 col-md-6 col-sm-6 col-6">
                   <div className="header__bottom-right d-flex justify-content-end align-items-center">
-                    <div className="header__btn d-none d-sm-block d-xl-block ml-50">
-                      <Dropdown menu={{ items }} className="mx-3">
+                    <div className="header__btn d-none d-md-block ml-50 ">
+                      <Dropdown menu={{ items }} className="mx-3" overlayStyle={{ zIndex: 9999 }}>
                         {auth?.user?.image?.url?.includes("profileImage") ? (
                           <Avatar src={toImageUrl(auth?.user?.image?.url)}>{auth?.user?.name[0]}</Avatar>
                         ) : (
@@ -106,7 +106,7 @@ const InstHeader = ({ page = "notFromContact" }) => {
                         )}
                       </Dropdown>
                     </div>
-                    <div className="sidebar__menu d-lg-none">
+                    <div className="sidebar__menu  d-block d-md-none">
                       <Dropdown menu={{ items }} className="mx-3">
                         {auth?.user?.image?.url?.includes("profileImage") ? (
                           <Avatar src={toImageUrl(auth?.user?.image?.url)}>{auth?.user?.name[0]}</Avatar>

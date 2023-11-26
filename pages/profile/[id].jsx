@@ -81,7 +81,7 @@ const PublicProfileDetails = ({ profile, error }) => {
                   </span>
                 )}
               </div>
-              {profile.skills.length > 0 && (
+              {profile?.skills?.length > 0 && (
                 <>
                   <hr />
                   <div className="d-flex flex-wrap justify-content-center">
@@ -94,7 +94,7 @@ const PublicProfileDetails = ({ profile, error }) => {
                 </>
               )}
 
-              {profile.social && (
+              {profile?.social && (
                 <>
                   <hr />
                   <span className="d-flex flex-wrap justify-content-center align-items-center gap-3">

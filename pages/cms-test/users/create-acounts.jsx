@@ -43,14 +43,15 @@ const createAccount = () => {
   const RegisterationSubmits = async (e) => {
     e.preventDefault();
 
-    if (!email || !password || !role || !name) {
-      toast.error("Please fill all fields", { position: "bottom-center" });
+    if (!email || !password || !role || !name || !status) {
+      toast.error("All fields are required", { position: "bottom-center" });
       return;
     }
     try {
       setLoading(true);
       const { data } = await axios.post(`${API}/register`, values);
       if (data.error) {
+        setLoading(false);
         return toast.error(data.error);
       } else {
         setLoading(false);
@@ -87,14 +88,7 @@ const createAccount = () => {
             <div className="col-md-6">
               <div className="form-group py-2">
                 <h5 for="exampleFormControlInput1">Name</h5>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <input type="text" className="form-control" id="exampleFormControlInput1" name="name" value={name} onChange={(e) => setName(e.target.value)} />
               </div>
             </div>
           </div>
@@ -105,14 +99,7 @@ const createAccount = () => {
                 <h5 for="exampleFormControlInput1">
                   Password<span className="text-danger">*</span>
                 </h5>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <input type="password" className="form-control" id="exampleFormControlInput1" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
               </div>
             </div>
 
@@ -158,7 +145,7 @@ const createAccount = () => {
           <br />
           <br />
           <Btn loading={loading} onClick={RegisterationSubmits}>
-            "Register
+            Register
           </Btn>
         </Card>
       </CMSLayout>
