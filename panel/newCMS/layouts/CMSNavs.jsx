@@ -70,9 +70,9 @@ const CMSNavs = () => {
         All Blogs
       </Menu.Item>
 
-      <Menu.Item onClick={() => router.push("/cms-test/library")} className="mt-3" icon={<MdImageSearch />}>
+      {/* <Menu.Item onClick={() => router.push("/cms-test/library")} className="mt-3" icon={<MdImageSearch />}>
         Media
-      </Menu.Item>
+      </Menu.Item> */}
       <Menu.Item onClick={() => router.push("/admin-test")} className="mt-3" icon={<BackwardFilled />}>
         Back
       </Menu.Item>

@@ -29,45 +29,6 @@ const Hero = () => {
                   <div className="hero__thumb-wrapper ml-70 scene p-relative w ">
                     <Zoom cascade>
                       <img id="mascot" className="layer" data-depth="0.2" src="/assets/images/check/checks.svg" alt="" />
-
-                      {/* <div className="hero__thumb two d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.3"
-                          src="/assets/images/bell.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "200px" }}
-                        />
-                      </div>
-
-                      <div className="hero__thumb two d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.3"
-                          src="/assets/images/bell.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "-200px" }}
-                        />
-                      </div>
-
-                      <div className="hero__thumb four d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.5"
-                          src="/assets/images/circle.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "150px" }}
-                        />
-                      </div>
-                      <div className="hero__thumb four d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.5"
-                          src="/assets/images/circle.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "-290px" }}
-                        />
-                      </div> */}
                     </Zoom>
                   </div>
                 </div>
@@ -116,45 +77,6 @@ const Hero = () => {
                   <div className="hero__thumb-wrapper ml-70 scene p-relative w ">
                     <Zoom cascade>
                       <img id="mascot" className="layer" data-depth="0.2" src="/assets/images/check/skills.png" alt="" />
-
-                      {/* <div className="hero__thumb two d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.3"
-                          src="/assets/images/bell.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "200px" }}
-                        />
-                      </div>
-
-                      <div className="hero__thumb two d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.3"
-                          src="/assets/images/bell.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "-200px" }}
-                        />
-                      </div>
-
-                      <div className="hero__thumb four d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.5"
-                          src="/assets/images/circle.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "150px" }}
-                        />
-                      </div>
-                      <div className="hero__thumb four d-none d-md-block d-lg-none d-xl-block">
-                        <img
-                          className="layer"
-                          data-depth="0.5"
-                          src="/assets/images/circle.png"
-                          alt=""
-                          style={{ height: "100px", marginLeft: "-290px" }}
-                        />
-                      </div> */}
                     </Zoom>
                   </div>
                 </div>

@@ -87,9 +87,9 @@ const LMSNavs = () => {
       >
         Enrolled Students
       </Menu.Item>
-      <Menu.Item style={getActivesLink("library") ? navsStyle : {}} onClick={() => router.push("/cms-test/library")} className="mt-3" icon={<MdImageSearch />}>
+      {/* <Menu.Item style={getActivesLink("library") ? navsStyle : {}} onClick={() => router.push("/cms-test/library")} className="mt-3" icon={<MdImageSearch />}>
         Gallery
-      </Menu.Item>
+      </Menu.Item> */}
       {auth?.user && auth?.user?.role === "admin" && (
         <Menu.Item onClick={() => router.push("/admin-test")} className="mt-3" icon={<BackwardFilled />}>
           Back

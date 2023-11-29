@@ -197,26 +197,6 @@ const EditCourse = () => {
     // console.log({ course: payloadData });
     e.preventDefault();
 
-    console.log({
-      title,
-      overview,
-      // lectures ,
-      // faqs ,
-      whyUs,
-      prerequisites,
-      benefits,
-      marketValue,
-      courseFor,
-      duration,
-      classes,
-      timming,
-      startingFrom,
-      // regFee ,
-      // courseFee ,
-      image,
-      instructor,
-    });
-
     if (
       !title ||
       !overview ||
@@ -283,6 +263,9 @@ const EditCourse = () => {
     categories.forEach((category) => {
       formData.append("categories", category);
     });
+
+    // console.log(JSON.stringify(formData));
+    console.log(formData);
 
     try {
       setloading(true);

@@ -109,7 +109,6 @@ const Programs = ({ courses }) => {
 
 export async function getServerSideProps() {
   const { data } = await axios.get(`${API}/courses`);
-  // const { data } = await axios.get(`http://localhost:5000/api/courses`);
 
   return {
     props: {

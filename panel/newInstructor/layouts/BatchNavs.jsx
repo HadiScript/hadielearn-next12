@@ -32,11 +32,7 @@ const BatchNavs = ({ BatchId }) => {
       <div className="mt-4 mb-4 text-center">
         <h4 className="text-light">Hadi E-Learning</h4>
       </div>
-      <Menu.Item
-        onClick={() => router.push("/inst-test")}
-        className=""
-        icon={<HomeOutlined />}
-      >
+      <Menu.Item onClick={() => router.push("/inst-test")} className="" icon={<HomeOutlined />}>
         Home
       </Menu.Item>
       <Menu.Item
@@ -55,37 +51,17 @@ const BatchNavs = ({ BatchId }) => {
       >
         Lessons
       </Menu.Item>
-      <Menu.Item
-        className="mt-1"
-        onClick={() => router.push(`/inst-test/batch/assets/${BatchId}`)}
-        icon={<LuFileSpreadsheet />}
-        style={getActivesLink("assets") ? navsStyle : {}}
-      >
+      <Menu.Item className="mt-1" onClick={() => router.push(`/inst-test/batch/assets/${BatchId}`)} icon={<LuFileSpreadsheet />} style={getActivesLink("assets") ? navsStyle : {}}>
         Assets
       </Menu.Item>
-      <Menu.Item
-        className="mt-1"
-        onClick={() => router.push(`/inst-test/batch/folders/${BatchId}`)}
-        icon={<LuFolders />}
-        style={getActivesLink("folders") ? navsStyle : {}}
-      >
+      <Menu.Item className="mt-1" onClick={() => router.push(`/inst-test/batch/folders/${BatchId}`)} icon={<LuFolders />} style={getActivesLink("folders") ? navsStyle : {}}>
         Folders
       </Menu.Item>
 
-      <Menu.Item
-        onClick={() => router.push(`/inst-test/batch/notice/${BatchId}`)}
-        className="mt-1"
-        style={getActivesLink("notice") ? navsStyle : {}}
-        icon={<LuAlertTriangle />}
-      >
+      <Menu.Item onClick={() => router.push(`/inst-test/batch/notice/${BatchId}`)} className="mt-1" style={getActivesLink("notice") ? navsStyle : {}} icon={<LuAlertTriangle />}>
         Announcment
       </Menu.Item>
-      <Menu.Item
-        className="mt-1"
-        onClick={() => router.push(`/inst-test/batch/comments/${BatchId}`)}
-        icon={<FaRegComments />}
-        style={getActivesLink("comments") ? navsStyle : {}}
-      >
+      <Menu.Item className="mt-1" onClick={() => router.push(`/inst-test/batch/comments/${BatchId}`)} icon={<FaRegComments />} style={getActivesLink("comments") ? navsStyle : {}}>
         Comments
       </Menu.Item>
     </Menu>
