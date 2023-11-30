@@ -237,12 +237,12 @@ const EditCourse = () => {
     formData.append("courseFee", courseFee);
     formData.append("instructor", instructor);
 
-    formData.append("monday", days.monday);
-    formData.append("tuesday", days.tuesday);
-    formData.append("wednesday", days.wednesday);
-    formData.append("thursday", days.thursday);
-    formData.append("friday", days.friday);
-    formData.append("saturday", days.saturday);
+    formData.append("monday", days.monday ? true : false);
+    formData.append("tuesday", days.tuesday ? true : false);
+    formData.append("wednesday", days.wednesday ? true : false);
+    formData.append("thursday", days.thursday ? true : false);
+    formData.append("friday", days.friday ? true : false);
+    formData.append("saturday", days.saturday ? true : false);
 
     lectures.forEach((obj, index) => {
       formData.append(`lectures[${index}][title]`, obj.title);
@@ -265,7 +265,7 @@ const EditCourse = () => {
     });
 
     // console.log(JSON.stringify(formData));
-    console.log(formData);
+    // console.log(formData);
 
     try {
       setloading(true);

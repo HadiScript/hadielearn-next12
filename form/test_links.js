@@ -84,4 +84,10 @@ export const test_links = [
     slug: "learn-content-creation-using-mobile-phone",
     test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=mzg2mdkznwr01y",
   },
+  {
+    _id: "65688ece357746b256858362",
+    title: "Data Analytics with Tableau and Power BI",
+    slug: "data-analytics-with-tableau-and-power-bi",
+    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=data-analytics-with-tableau-and-power-bi-quiz",
+  },
 ];
