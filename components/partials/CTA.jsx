@@ -12,7 +12,6 @@ const CTA = () => {
               <Fade bottom cascade>
                 <div
                   className="cta__content text-center  "
-                  // style={{ color: "black" }}
                 >
                   <h2 style={{ fontSize: "60px" }}>Your Gateway to a Brighter Future</h2>
                   <div className="cta__btn">

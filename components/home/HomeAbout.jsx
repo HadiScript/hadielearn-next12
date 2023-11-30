@@ -10,10 +10,7 @@ const HomeAbout = () => {
       className="pb-140 p-relative"
       id="sectionArea"
       style={{
-        // background: `url(assets/img/bg/wave-bg-2.png)`,
         background: "#8080801c",
-        // backgroundPosition: "bottom",
-        // backgroundSize: "cover",
       }}
     >
       <div className="container">

@@ -62,10 +62,6 @@ const Background = () => {
                     </li>
                   </ul>
                 </div>
-
-                {/* <a href="#about" className="z-btn">
-                  Learn More
-                </a> */}
               </div>
             </div>
             <div className="col-xl-7 col-lg-6 col-md-6">
