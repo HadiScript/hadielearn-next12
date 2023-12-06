@@ -60,8 +60,8 @@ const EditCourseForm = ({
   preImage,
   seoTitle,
   metaDescription,
-  setSeoTitle,
-  setMetaDescription,
+  handleSeoTitle,
+  handleMeta,
 }) => {
   const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
@@ -71,15 +71,7 @@ const EditCourseForm = ({
 
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">SEO Title</h5>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
-          name="title"
-          placeholder="SEO Title"
-          value={seoTitle}
-          onChange={(e) => setSeoTitle(e.target.value)}
-        />
+        <input type="text" className="form-control" id="exampleFormControlInput1" name="seoTitle" placeholder="SEO Title" value={seoTitle} onChange={handleSeoTitle} />
       </div>
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Meta Description</h5>
@@ -87,10 +79,10 @@ const EditCourseForm = ({
           type="text"
           className="form-control"
           id="exampleFormControlInput1"
-          name="title"
+          name="metaDescription"
           placeholder="Meta Description"
           value={metaDescription}
-          onChange={(e) => setMetaDescription(e.target.value)}
+          onChange={handleMeta}
         />
       </div>
       <hr />

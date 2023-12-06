@@ -5,8 +5,6 @@ import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../context/auth";
 import { API } from "../../../config/API";
 import EditCourseForm from "../../../panel/common/EditCourseForm";
-import CMSLayout from "../../../panel/newCMS/layouts";
-import Btn from "../../../components/ui/Btn";
 import LMSLayout from "../../../panel/newLMS/layouts";
 
 const initDays = {
@@ -49,6 +47,16 @@ const EditCourse = () => {
   const [teachers, setTeachers] = useState([]);
   const [teachersLoading, setTeachersLoading] = useState(false);
   const [preImage, setPreImage] = useState();
+
+  const [seoTitle, setseoTitle] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
+
+  const handleSeoTitle = (e) => {
+    setseoTitle(e.target.value);
+  };
+  const handleMeta = (e) => {
+    setMetaDescription(e.target.value);
+  };
 
   useEffect(() => {
     const fetchingTeachers = async () => {
@@ -122,7 +130,10 @@ const EditCourse = () => {
       setCategories(arr);
       setLectures(data?.lectures);
       setFaqs(data?.faqs);
-      console.log(data, "from edit course");
+
+      setMetaDescription(data?.metaDescription);
+      setseoTitle(data?.seoTitle);
+
       setSingleLoading(false);
     } catch (error) {
       setSingleLoading(false);
@@ -172,51 +183,9 @@ const EditCourse = () => {
     setFaqs(updatedFaqs);
   };
 
-  const payloadData = {
-    title,
-    overview,
-    lectures,
-    faqs,
-    whyUs,
-    prerequisites,
-    benefits,
-    marketValue,
-    courseFor,
-    duration,
-    classes,
-    ...days,
-    timming,
-    startingFrom,
-    regFee,
-    courseFee,
-    image,
-    categories,
-    instructor,
-  };
-
   const submitHandler = async (e) => {
     // console.log({ course: payloadData });
     e.preventDefault();
-
-    console.log({
-      title,
-      overview,
-      // lectures ,
-      // faqs ,
-      whyUs,
-      prerequisites,
-      benefits,
-      marketValue,
-      courseFor,
-      duration,
-      classes,
-      timming,
-      startingFrom,
-      // regFee ,
-      // courseFee ,
-      image,
-      instructor,
-    });
 
     if (
       !title ||
@@ -235,7 +204,9 @@ const EditCourse = () => {
       // !regFee ||
       // !courseFee ||
 
-      !instructor
+      !instructor ||
+      !seoTitle ||
+      !metaDescription
     ) {
       toast.error("All Fields are required**", { position: "bottom-center" });
       return;
@@ -257,13 +228,15 @@ const EditCourse = () => {
     formData.append("regFee", regFee);
     formData.append("courseFee", courseFee);
     formData.append("instructor", instructor);
+    formData.append("metaDescription", metaDescription);
+    formData.append("seoTitle", seoTitle);
 
-    formData.append("monday", days.monday);
-    formData.append("tuesday", days.tuesday);
-    formData.append("wednesday", days.wednesday);
-    formData.append("thursday", days.thursday);
-    formData.append("friday", days.friday);
-    formData.append("saturday", days.saturday);
+    formData.append("monday", days.monday ? true : false);
+    formData.append("tuesday", days.tuesday ? true : false);
+    formData.append("wednesday", days.wednesday ? true : false);
+    formData.append("thursday", days.thursday ? true : false);
+    formData.append("friday", days.friday ? true : false);
+    formData.append("saturday", days.saturday ? true : false);
 
     lectures.forEach((obj, index) => {
       formData.append(`lectures[${index}][title]`, obj.title);
@@ -284,6 +257,9 @@ const EditCourse = () => {
     categories.forEach((category) => {
       formData.append("categories", category);
     });
+
+    // console.log(JSON.stringify(formData));
+    // console.log(formData);
 
     try {
       setloading(true);
@@ -310,6 +286,10 @@ const EditCourse = () => {
     <>
       <LMSLayout>
         <EditCourseForm
+          seoTitle={seoTitle}
+          metaDescription={metaDescription}
+          handleSeoTitle={handleSeoTitle}
+          handleMeta={handleMeta}
           title={title}
           lectures={lectures}
           faqs={faqs}

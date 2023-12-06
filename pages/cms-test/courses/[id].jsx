@@ -49,8 +49,15 @@ const EditCourse = () => {
   const [teachersLoading, setTeachersLoading] = useState(false);
   const [preImage, setPreImage] = useState();
 
+  const [seoTitle, setseoTitle] = useState("");
   const [metaDescription, setMetaDescription] = useState("");
-  const [seoTitle, setSeoTitle] = useState("");
+
+  const handleSeoTitle = (e) => {
+    setseoTitle(e.target.value);
+  };
+  const handleMeta = (e) => {
+    setMetaDescription(e.target.value);
+  };
 
   useEffect(() => {
     const fetchingTeachers = async () => {
@@ -106,8 +113,6 @@ const EditCourse = () => {
       setRegFee(data?.regFee);
       setcourseFee(data?.courseFee);
       setPreImage(data?.image);
-      setMetaDescription(data?.metaDescription);
-      setSeoTitle(data?.seoTitle);
 
       setInstructor(data?.instructor);
 
@@ -126,7 +131,10 @@ const EditCourse = () => {
       setCategories(arr);
       setLectures(data?.lectures);
       setFaqs(data?.faqs);
-      console.log(data, "from edit course");
+
+      setMetaDescription(data?.metaDescription);
+      setseoTitle(data?.seoTitle);
+
       setSingleLoading(false);
     } catch (error) {
       setSingleLoading(false);
@@ -174,28 +182,6 @@ const EditCourse = () => {
     const updatedFaqs = [...faqs];
     updatedFaqs[index][name] = value;
     setFaqs(updatedFaqs);
-  };
-
-  const payloadData = {
-    title,
-    overview,
-    lectures,
-    faqs,
-    whyUs,
-    prerequisites,
-    benefits,
-    marketValue,
-    courseFor,
-    duration,
-    classes,
-    ...days,
-    timming,
-    startingFrom,
-    regFee,
-    courseFee,
-    image,
-    categories,
-    instructor,
   };
 
   const submitHandler = async (e) => {
@@ -303,8 +289,8 @@ const EditCourse = () => {
         <EditCourseForm
           seoTitle={seoTitle}
           metaDescription={metaDescription}
-          setSeoTitle={setSeoTitle}
-          setMetaDescription={setMetaDescription}
+          handleSeoTitle={handleSeoTitle}
+          handleMeta={handleMeta}
           title={title}
           lectures={lectures}
           faqs={faqs}
