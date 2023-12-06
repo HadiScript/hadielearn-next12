@@ -93,8 +93,8 @@ export const test_links = [
 
   {
     _id: "656f4136357746b2568694b1",
-    title: "Cyber Security: CompTIA Security +",
-    slug: "cyber-security:-comptia-security-+",
+    title: "Cyber Security: CompTIA Security Plus",
+    slug: "cyber-security:-comptia-security-plus",
     test: "https://docs.google.com/forms/d/e/1FAIpQLSfpBqOTldYa4dpEUN4GtRf5-Xp7-stEoSw5hRScWiS-VickcQ/viewform?usp=sf_link",
   },
 

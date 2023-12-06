@@ -6,6 +6,7 @@ import { HiOutlineDocumentText } from "react-icons/hi";
 import { BsCalendar } from "react-icons/bs";
 import Link from "next/link";
 import { toImageUrl } from "../../utils/ImageURL";
+import { useRouter } from "next/router";
 
 const checkStringTitle = (title) => {
   if (title?.length > 25) {
@@ -16,6 +17,7 @@ const checkStringTitle = (title) => {
 };
 
 const CourseCard = ({ x }) => {
+  const router = useRouter();
   const DurationsTOHrs = (classes) => {
     const hoursPerClass = 1.5;
 
@@ -43,6 +45,8 @@ const CourseCard = ({ x }) => {
   return (
     <>
       <Card
+        role="button"
+        onClick={() => router.push(`/program/${x._doc.slug}`)}
         cover={
           <>{x._doc.image?.url?.includes("courseImages") ? <img src={toImageUrl(x._doc.image?.url)} alt="" height={240} /> : <img src={x._doc.image?.url} alt="" height={240} />}</>
         }
