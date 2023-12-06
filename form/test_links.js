@@ -90,4 +90,13 @@ export const test_links = [
     slug: "data-analytics-with-tableau-and-power-bi",
     test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=data-analytics-with-tableau-and-power-bi-quiz",
   },
+
+  {
+    _id: "656f4136357746b2568694b1",
+    title: "Cyber Security: CompTIA Security +",
+    slug: "cyber-security:-comptia-security-+",
+    test: "https://docs.google.com/forms/d/e/1FAIpQLSfpBqOTldYa4dpEUN4GtRf5-Xp7-stEoSw5hRScWiS-VickcQ/viewform?usp=sf_link",
+  },
+
+  // https://docs.google.com/forms/d/e/1FAIpQLSfpBqOTldYa4dpEUN4GtRf5-Xp7-stEoSw5hRScWiS-VickcQ/viewform?usp=sf_link
 ];
