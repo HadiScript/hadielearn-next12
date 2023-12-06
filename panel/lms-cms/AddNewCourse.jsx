@@ -51,6 +51,10 @@ const AddNewCourse = () => {
   const [teachersLoading, setTeachersLoading] = useState(false);
   const [instructor, setInstructor] = useState("");
 
+  // seo
+  const [metaDescription, setMetaDescription] = useState("");
+  const [seoTitle, setSeoTitle] = useState("");
+
   const [loadCategories, setLoadCategories] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -152,6 +156,8 @@ const AddNewCourse = () => {
     formData.append("thursday", days.thursday);
     formData.append("friday", days.friday);
     formData.append("saturday", days.saturday);
+    formData.append("metaDescription", metaDescription);
+    formData.append("seoTitle", seoTitle);
 
     // let stringifyFaqs = JSON.stringify(faqs);
     // formData.append("faqs", JSON.stringify(faqs));
@@ -217,6 +223,31 @@ const AddNewCourse = () => {
 
   return (
     <Card>
+      <div className="form-group py-2">
+        <h5 for="exampleFormControlInput1">SEO Title</h5>
+        <input
+          type="text"
+          className="form-control"
+          id="exampleFormControlInput1"
+          name="title"
+          placeholder="SEO Title"
+          value={seoTitle}
+          onChange={(e) => setSeoTitle(e.target.value)}
+        />
+      </div>
+      <div className="form-group py-2">
+        <h5 for="exampleFormControlInput1">Meta Description</h5>
+        <textarea
+          type="text"
+          className="form-control"
+          id="exampleFormControlInput1"
+          name="title"
+          placeholder="Meta Description"
+          value={metaDescription}
+          onChange={(e) => setMetaDescription(e.target.value)}
+        />
+      </div>
+      <hr />
       <div className="form-group py-2">
         <h5 for="exampleFormControlInput1">Course Title</h5>
         <input

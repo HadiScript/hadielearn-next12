@@ -49,6 +49,9 @@ const EditCourse = () => {
   const [teachersLoading, setTeachersLoading] = useState(false);
   const [preImage, setPreImage] = useState();
 
+  const [metaDescription, setMetaDescription] = useState("");
+  const [seoTitle, setSeoTitle] = useState("");
+
   useEffect(() => {
     const fetchingTeachers = async () => {
       try {
@@ -103,6 +106,8 @@ const EditCourse = () => {
       setRegFee(data?.regFee);
       setcourseFee(data?.courseFee);
       setPreImage(data?.image);
+      setMetaDescription(data?.metaDescription);
+      setSeoTitle(data?.seoTitle);
 
       setInstructor(data?.instructor);
 
@@ -214,7 +219,9 @@ const EditCourse = () => {
       // !regFee ||
       // !courseFee ||
 
-      !instructor
+      !instructor ||
+      !seoTitle ||
+      !metaDescription
     ) {
       toast.error("All Fields are required**", { position: "bottom-center" });
       return;
@@ -236,6 +243,8 @@ const EditCourse = () => {
     formData.append("regFee", regFee);
     formData.append("courseFee", courseFee);
     formData.append("instructor", instructor);
+    formData.append("metaDescription", metaDescription);
+    formData.append("seoTitle", seoTitle);
 
     formData.append("monday", days.monday ? true : false);
     formData.append("tuesday", days.tuesday ? true : false);
@@ -292,6 +301,10 @@ const EditCourse = () => {
     <>
       <CMSLayout>
         <EditCourseForm
+          seoTitle={seoTitle}
+          metaDescription={metaDescription}
+          setSeoTitle={setSeoTitle}
+          setMetaDescription={setMetaDescription}
           title={title}
           lectures={lectures}
           faqs={faqs}

@@ -20,10 +20,8 @@ const ProgramDetails = ({ course }) => {
   return (
     <>
       <Tops
-        headTitle={findedCourse?.title}
-        headDesc={
-          "Go through these simple steps and enroll now in the most suitable course to make your mark in this digital world with the best online learning platform, hadi e-learning."
-        }
+        headTitle={findedCourse?.seoTitle}
+        headDesc={findedCourse?.metaDescription}
         conLink={`https://hadielearning.com/program/${slug}`}
         breadTitle={findedCourse?.title}
         breadSubTtile={findedCourse?.bread ? findedCourse?.bread : findedCourse?.title}

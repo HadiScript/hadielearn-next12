@@ -58,12 +58,42 @@ const EditCourseForm = ({
   handleRemoveFAQs,
   setPreImage,
   preImage,
+  seoTitle,
+  metaDescription,
+  setSeoTitle,
+  setMetaDescription,
 }) => {
   const Editor = useMemo(() => dynamic(() => import("react-quill"), { ssr: false }), []);
 
   return (
     <Card>
       {singleLoading && <p>loading...</p>}
+
+      <div className="form-group py-2">
+        <h5 for="exampleFormControlInput1">SEO Title</h5>
+        <input
+          type="text"
+          className="form-control"
+          id="exampleFormControlInput1"
+          name="title"
+          placeholder="SEO Title"
+          value={seoTitle}
+          onChange={(e) => setSeoTitle(e.target.value)}
+        />
+      </div>
+      <div className="form-group py-2">
+        <h5 for="exampleFormControlInput1">Meta Description</h5>
+        <textarea
+          type="text"
+          className="form-control"
+          id="exampleFormControlInput1"
+          name="title"
+          placeholder="Meta Description"
+          value={metaDescription}
+          onChange={(e) => setMetaDescription(e.target.value)}
+        />
+      </div>
+      <hr />
       <div className="form-group py-2">
         <h5 htmlFor="exampleFormControlInput1"> Course Title</h5>
         <input
