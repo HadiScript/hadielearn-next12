@@ -105,6 +105,8 @@ const EnrollmentsCharts = () => {
 
   const COLORS = ["#0f3f5d", "#FF8042", "#0088FE", "#FFBB28", "#00C49F", "#FF5555"];
 
+  // console.log(transformedDataForGroupedDataForCourses, "here is the course data ");
+
   return (
     <LMSLayout>
       <Row>
