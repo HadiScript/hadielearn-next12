@@ -11,9 +11,11 @@ import Head from "next/head";
 import { AuthProvider } from "../context/auth";
 import { BlogProvider } from "../context/blogContext";
 import { GallaryProvider } from "../context/gallaryContext";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import Script from "next/script";
+import { useEffect } from "react";
 
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
@@ -27,6 +29,21 @@ NProgress.configure({ showSpinner: false });
 // Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    import("react-facebook-pixel")
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init("302442199452630");
+        ReactPixel.pageView();
+
+        router.events.on("routeChangeComplete", () => {
+          ReactPixel.pageView();
+        });
+      });
+  }, [router.events]);
+
   return (
     <>
       <AllContext>
@@ -116,6 +133,10 @@ function MyApp({ Component, pageProps }) {
                 {/* chatting start */}
 
                 {/* chatting end */}
+
+                {/* pixel start */}
+
+                {/* pixel end */}
               </Head>
 
               <Toaster />
