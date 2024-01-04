@@ -198,7 +198,7 @@ const Applications = () => {
             <option value={2000}>2000 - limit</option>
             <option value={5000}>5000 - limit</option>
             <option value={10000}>10000 - limit</option>
-            <option value={15000}>15000 - limit</option>
+            <option value={totalDataCount}>{totalDataCount} - limit</option>
           </select>
           <Btn onClick={Reset}> Reset </Btn>
           <Btn onClick={exportToCSV}> Export CSV </Btn>
