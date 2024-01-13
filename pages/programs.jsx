@@ -18,15 +18,6 @@ const Programs = ({ courses }) => {
     setSearchQuery(event.target.value);
   };
 
-  const filteredCourses = course_data.filter((course) => {
-    return course._doc.title.toLowerCase().includes(searchQuery.toLowerCase());
-  });
-
-  // const extractTextFromHtml = (html) => {
-  //   const doc = new DOMParser().parseFromString(html, "text/html");
-  //   return doc.body.textContent || "";
-  // };
-
   return (
     <>
       <SEOHead
@@ -100,6 +91,7 @@ const Programs = ({ courses }) => {
         </Fade>
       </div>
 
+      {/* {JSON.stringify(course_data)} */}
       <CourseList courses_data={course_data} searchQuery={searchQuery} />
 
       <Footer />
@@ -108,7 +100,7 @@ const Programs = ({ courses }) => {
 };
 
 export async function getServerSideProps() {
-  const { data } = await axios.get(`${API}/courses`);
+  const { data } = await axios.get(`${API}/courses2`);
 
   return {
     props: {

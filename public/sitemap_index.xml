@@ -1,283 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
- xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
- http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
- <loc>https://hadielearning.com/</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>1.00</priority>
+  <loc>https://hadielearning.com/</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/about-us</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/about-us</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/programs</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/programs</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshops</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/workshops</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/how-it-works</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/how-it-works</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blogs</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/blogs</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/amazon-va-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/contact-us</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/video-editing-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/faqs</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/seo-(search-engine-optimization)-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/privacy-and-policy</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/shopify-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/disclaimer</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/react-js-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/dmca-policy</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/mern-stack-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/terms-and-conditions</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/contact-us</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/auth/login</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/faqs</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/workshop-detail/uplift-your-career-through-digital-marketing</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/privacy-and-policy</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/workshop-detail/a-glimpse-into-the-future-of-digital-marketing</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/disclaimer</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/workshop-detail/cyber-security-and-its-subdomain</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/dmca-policy</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/workshop-detail/how-to-break-into-cyber-security</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/terms-and-conditions</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/workshop-detail/introduction-to-ux-design</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/auth/login</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.80</priority>
+  <loc>https://hadielearning.com/workshop-detail/mastering-the-art-of-search-engine-optimization</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/graphic-designing-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/the-ultimate-workshop-for-developers</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/3ds-max-and-autocad-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/an-introductory-workshop-on-digital-marketing</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/the-freelancing-masterclass</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/unleash-the-potential-of-wordpress-and-shopify</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/wordpress-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/introductory-freelancing-workshop</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/digital-media-marketing-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/cloud-collaboration-career:-a-devops-introduction</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/program/mean-stack-mastery-course</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/unlocking-the-power-of-php-and-laravel</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/a-glimpse-into-the-future-of-digital-marketing</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/bring-your-ideas-to-life-with-3ds-max</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/cyber-security-and-its-subdomain</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/workshop-detail/write-your-way-to-a-fulfilling-and-lucrative-career</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/how-to-break-into-cyber-security</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/autocad</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/introduction-to-ux-design</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/develpoment</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/mastering-the-art-of-search-engine-optimization</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/freelancing</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/the-ultimate-workshop-for-developers</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/designing</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/an-introductory-workshop-on-digital-marketing</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/marketing</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/unleash-the-potential-of-wordpress-and-shopify</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/digital-media</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/introductory-freelancing-workshop</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/hashing</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/cloud-collaboration-career:-a-devops-introduction</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/cyber-security</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/unlocking-the-power-of-php-and-laravel</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/category/self-employed</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/bring-your-ideas-to-life-with-3ds-max</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/introduction-to-autocad-what-it-is-and-how-it-works</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/workshop-detail/write-your-way-to-a-fulfilling-and-lucrative-career</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/best-online-it-training-institutes-in-pakistan</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/top-10-digital-marketing-trends-for-2024</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/introduction-to-mean-stack-what-it-is-and-how-it-works</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/the-benefits-of-online-it-training</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/top-10-digital-marketing-trends-for-2024</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/introduction-to-seo:-what-is-seo-and-how-it-works</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/top-free-online-it-courses-in-pakistan-2024</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/what-are-the-link-building-strategies</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/blog/the-benefits-of-online-it-training</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/introduction-to-autocad-what-it-is-and-how-it-works</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/enroll/workshop</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/introduction-to-mean-stack-what-it-is-and-how-it-works</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/program/3ds-max-and-autocad-mastery-course</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/introduction-to-3ds-max-what-it-is-and-how-it-works</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/program/seo-(search-engine-optimization)-mastery-course</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/e-learning-tips-for-parents-how-to-help-your-child-succeed-in-online-school</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/program/react-js-mastery-course</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/category/autocad</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/program/digital-media-marketing-mastery-course</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/category/develpoment</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/program/seo-with-ai-mastery-course</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
- <loc>https://hadielearning.com/blog/category/freelancing</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
+  <loc>https://hadielearning.com/program/mean-stack-mastery-course</loc>
+  <lastmod>2024-01-12T07:09:19+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
-<url>
- <loc>https://hadielearning.com/blog/category/designing</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
-</url>
-<url>
- <loc>https://hadielearning.com/blog/category/marketing</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
-</url>
-<url>
- <loc>https://hadielearning.com/blog/category/digital-media</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
-</url>
-<url>
- <loc>https://hadielearning.com/blog/category/hashing</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
-</url>
-<url>
- <loc>https://hadielearning.com/blog/category/cyber-security</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.64</priority>
-</url>
-<url>
- <loc>https://hadielearning.com/enroll/workshop</loc>
- <lastmod>2023-10-19T08:36:19+00:00</lastmod>
- <priority>0.51</priority>
-</url>
+
+
 </urlset>

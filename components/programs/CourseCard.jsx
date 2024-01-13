@@ -46,10 +46,8 @@ const CourseCard = ({ x }) => {
     <>
       <Card
         role="button"
-        onClick={() => router.push(`/program/${x._doc.slug}`)}
-        cover={
-          <>{x._doc.image?.url?.includes("courseImages") ? <img src={toImageUrl(x._doc.image?.url)} alt="" height={240} /> : <img src={x._doc.image?.url} alt="" height={240} />}</>
-        }
+        onClick={() => router.push(`/program/${x.slug}`)}
+        cover={<>{x.image?.url?.includes("courseImages") ? <img src={toImageUrl(x.image?.url)} alt="" height={240} /> : <img src={x.image?.url} alt="" height={240} />}</>}
         actions={[
           <div
             style={{
@@ -59,7 +57,7 @@ const CourseCard = ({ x }) => {
               marginLeft: "20px",
             }}
           >
-            {x._doc.instructor && !x._doc.instructor?.image ? <FaUser size={25} color="gray" /> : <img src={x._doc.instructor?.image.url} alt="" height={30} />}
+            {x.instructor && !x.instructor?.image ? <FaUser size={25} color="gray" /> : <img src={x.instructor?.image.url} alt="" height={30} />}
             <span
               style={{
                 color: "#0f3f5d",
@@ -67,33 +65,33 @@ const CourseCard = ({ x }) => {
                 marginLeft: "10px",
               }}
             >
-              {x._doc.instructor?.name}
+              {x.instructor?.name}
             </span>
           </div>,
           <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>Free</span>,
         ]}
       >
         <div className="d-flex align-items-center gap-2 mb-3">
-          <Rate value={giveSomeRates(x._doc?.title)} style={{ color: "#0f3f5d", fontSize: "10px" }} />
-          <small style={{ fontWeight: "bold" }}>{giveSomeRates(x._doc?.title)}</small>
+          <Rate value={giveSomeRates(x.title)} style={{ color: "#0f3f5d", fontSize: "10px" }} />
+          <small style={{ fontWeight: "bold" }}>{giveSomeRates(x.title)}</small>
         </div>
-        <Link href={`/program/${x._doc.slug}`}>
+        <Link href={`/program/${x.slug}`}>
           <h3 style={{ fontSize: "22px" }} role="button">
-            {checkStringTitle(x._doc.title)}
+            {checkStringTitle(x.title)}
           </h3>
         </Link>
         <div className={`mt-3  d-flex align-items-center justify-content-between `}>
           <div className="d-flex align-items-center gap-1">
             <BsCalendar size={15} />
-            <small style={{ fontSize: "15px" }}>{x._doc.duration}</small>
+            <small style={{ fontSize: "15px" }}>{x.duration}</small>
           </div>
           <div className="d-flex align-items-center gap-1">
             <HiOutlineDocumentText size={18} />
-            <small style={{ fontSize: "15px" }}>{x._doc.classes} classes</small>
+            <small style={{ fontSize: "15px" }}>{x.classes} classes</small>
           </div>
           <div className="d-flex align-items-center gap-1">
             <IoMdTime size={18} />
-            <small style={{ fontSize: "15px" }}>{DurationsTOHrs(x._doc.classes)} hrs</small>
+            <small style={{ fontSize: "15px" }}>{DurationsTOHrs(x.classes)} hrs</small>
           </div>
         </div>
       </Card>

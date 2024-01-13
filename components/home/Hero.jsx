@@ -37,7 +37,7 @@ const Hero = () => {
                   <Fade bottom cascade>
                     <div className="about__content">
                       <h1 style={{ fontSize: "60px", maxWidth: "450px" }}>
-                        Hadi E-learning providing you
+                        Hadi E-learning Providing You
                         <span style={{ color: "#0f3f5d" }}>
                           <Typewriter
                             options={{

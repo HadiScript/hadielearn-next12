@@ -46,17 +46,7 @@ const Courses = ({ courses_data }) => {
     ],
   };
 
-  // const avaliCourses = courses_data?.filter((x) => x._doc.available === true);
-
-  const DurationsTOHrs = (course) => {
-    const hoursPerClass = 1.5;
-
-    const totalCourseHours = course.classes * hoursPerClass;
-
-    return totalCourseHours;
-  };
-
-  const filtered = courses_data?.filter((x) => x._doc.show2 === true);
+  const filtered = courses_data?.filter((x) => x.show2 === true);
 
   return (
     <div className="container  pt-100 pb-80">
@@ -79,30 +69,7 @@ const Courses = ({ courses_data }) => {
       <Fade bottom cascade>
         <Slider className="project__slider" {...settings}>
           {filtered?.slice(0, 6)?.map((x, index) => (
-            <React.Fragment key={index}>{x._doc.show2 && <CourseCard x={x} />}</React.Fragment>
-            // <div className="blog__item-2 mb-50 fix">
-            //   <div className={`blog__thumb-2 w-img fix `}>
-            //     <Link href={`/program/${x._doc.slug}`}>
-            //       {x._doc.image?.url?.includes("courseImages") ? (
-            //         <img src={toImageUrl(x._doc.image?.url)} alt="" style={{ height: "250px" }} />
-            //       ) : (
-            //         <img src={x._doc.image?.url} alt="" style={{ height: "250px" }} />
-            //       )}
-            //     </Link>
-            //   </div>
-
-            //   <div className="blog__content-2">
-            //     <span
-            //       style={{
-            //         fontWeight: "bold",
-            //         fontSize: "20px",
-            //       }}
-            //     >
-            //       <Link href={`/program/${x._doc.slug}`}>{x._doc.title}</Link>
-            //     </span>
-            //     <p className="mt-4">{x.plainOverview.substring(0, 130)}...</p>
-            //   </div>
-            // </div>
+            <React.Fragment key={index}>{x.show2 && <CourseCard x={x} />}</React.Fragment>
           ))}
         </Slider>
       </Fade>

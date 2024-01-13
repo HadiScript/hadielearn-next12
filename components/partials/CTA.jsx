@@ -16,7 +16,7 @@ const CTA = () => {
                   <h2 style={{ fontSize: "60px" }}>Your Gateway to a Brighter Future</h2>
                   <div className="cta__btn">
                     <Link href="/enroll/program">
-                      <span className="z-btn mb-30">Enroll Now </span>
+                      <span className="z-btn mb-30 ">Enroll Now </span>
                     </Link>
                   </div>
                 </div>
