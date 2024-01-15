@@ -39,7 +39,7 @@ const MobHero = () => {
                       <h2>
                         Hadi <br /> E-learning
                       </h2>
-                      <p className="text-light">Hadi E-Learning: Quality IT training in Pakistan. Subsidized courses for accessibility.</p>
+                      <p className="text-light">Hadi E-Learning provides free online IT courses in Pakistan.</p>
                       <a href="#sectionArea" className="z-btn">
                         Explore <BsCaretDown size={25} />
                       </a>
@@ -66,7 +66,7 @@ const MobHero = () => {
                       <h2>
                         Hadi <br /> E-learning
                       </h2>
-                      <p className="text-light">Hadi E-Learning: Quality IT training in Pakistan. Subsidized courses for accessibility.</p>
+                      <p className="text-light">Hadi E-Learning provides free online IT courses in Pakistan.</p>
                       <Link href="/programs">
                         <button className="z-btn">Programs</button>
                       </Link>

@@ -25,7 +25,7 @@ const Background = () => {
                         <i>
                           <FaCheck />
                         </i>
-                        Free IT training to the youth.
+                        Free Online IT Training to youth.
                       </span>
                     </li>
                     <li>

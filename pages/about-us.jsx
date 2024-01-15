@@ -15,9 +15,7 @@ const aboutUs = () => {
   return (
     <>
       <SEOHead
-        title={
-          "Build skills with Hadi e-learning: The best virtual learning platform"
-        }
+        title={"Build skills with Hadi e-learning: The best virtual learning platform"}
         desc={
           "Hadi e-learning is one of the best online learning platforms offering you various IT courses at a subsidized cost so you can get equal opportunities to build a successful career."
         }
@@ -29,30 +27,19 @@ const aboutUs = () => {
         subtitle="About Us"
         image={"/assets/images/bread.jpg"}
       /> */}
-      <img
-        src="/assets/image/bg-gird1.jpg"
-        alt="background"
-        className="position-absolute "
-        style={{ color: "transparent", zIndex: "-1", top: 0, width: "100%" }}
-      />
+      <img src="/assets/image/bg-gird1.jpg" alt="background" className="position-absolute " style={{ color: "transparent", zIndex: "-1", top: 0, width: "100%" }} />
       <TopHeader />
 
       <div className="position-relative">
         <div className="container d-flex flex-column justify-content-center align-items-center mt-150">
           <Fade bottom cascade>
             <div className="page__title-content">
-              <h1
-                className="pragrams-h1 text-center"
-                style={{ fontSize: "40px", color: "#0f3f5d" }}
-              >
+              <h1 className="pragrams-h1 text-center" style={{ fontSize: "40px", color: "#0f3f5d" }}>
                 Learn more about Hadi E-learning
               </h1>
             </div>
             <p className="text-center mb-4 mt-3" style={{ maxWidth: "800px" }}>
-              <em>
-                Hadi E-learning, transforming your career through free IT
-                training.
-              </em>
+              <em>Hadi E-learning, transforming your career through Free online IT training.</em>
             </p>
           </Fade>
         </div>

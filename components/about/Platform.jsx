@@ -24,7 +24,7 @@ const Platform = () => {
                 <p>
                   Introducing Hadi E-Learning, empowering Pakistani youth with technical knowledge. Our mascot, Hadi, symbolizes leadership, mentorship, and friendship, guiding
                   youth towards success. With subsidized access, we provide opportunities for all. Let Hadi be your career consultant and leader, unlocking doors to a prosperous
-                  future. Join us on this journey to positively impact the lives of Pakistani youth with one of the best online learning platforms. Together, we can empower our
+                  future. Join us on this journey to positively impact the lives of Pakistani youth with one of the best online IT courses in Pakistan. Together, we can empower our
                   youth and bridge the gap to global opportunities.
                 </p>
                 {/* <a href="#mission" className="z-btn">

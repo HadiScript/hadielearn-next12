@@ -2,7 +2,7 @@ export const faqs_data = [
   {
     question: "What is Hadi E-Learning and what does it offer?",
     answer:
-      "Hadi E-learning is a non-profit initiative that aims to empower the youth of Pakistan by enhancing their digital skills. We have specially structured programs designed by industry experts that will not just improve your IT skill sets but will also give you the right direction to implement them. Through Hadi E-learning we want to provide equal learning opportunities accessible to everyone so they take their first step towards financial independence brimming with confidence.",
+      "Hadi E-learning is a free online IT Training institute that aims to empower the youth of Pakistan by enhancing their digital skills. We have specially structured programs designed by industry experts that will not just improve your IT skill sets but will also give you the right direction to implement them. Through Hadi E-learning we want to provide equal learning opportunities accessible to everyone so they take their first step towards financial independence brimming with confidence.",
   },
 
   {
@@ -55,10 +55,7 @@ export const faqs_data = [
     question: "What is the duration of validity for this free offer?",
     answer: "It's a limited time offer.",
   },
-  {
-    question: "What is the duration of validity for this free offer?",
-    answer: "It's a limited time offer.",
-  },
+
   {
     question: "What is the prerequisite for enrolling in the course, and do I need to pass a test to gain admission?",
     answer: "Yes, enrollment in course requires passing, once you pass the test, will you be added to the relevant group.",

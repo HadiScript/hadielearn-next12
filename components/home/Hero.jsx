@@ -48,7 +48,7 @@ const Hero = () => {
                           />
                         </span>
                       </h1>
-                      <p className="text-justify">Transform your future with free IT training.</p>
+                      <p className="text-justify">Transform your future with Free online IT training.</p>
                       <Link href="/about-us">
                         <span className="z-btn-outline">About us </span>
                       </Link>
@@ -85,7 +85,7 @@ const Hero = () => {
                   <Fade bottom cascade>
                     <div className="about__content">
                       <h1 style={{ fontSize: "60px", maxWidth: "450px" }}>
-                        Hadi E-learning providing
+                        Hadi E-learning Providing
                         <span style={{ color: "#0f3f5d" }}>
                           <Typewriter
                             options={{
@@ -133,7 +133,7 @@ const Hero = () => {
                   <Fade bottom cascade>
                     <div className="about__content">
                       <h1 style={{ fontSize: "60px", maxWidth: "450px" }}>
-                        Hadi E-learning providing
+                        Hadi E-learning Providing
                         <span style={{ color: "#0f3f5d" }}>
                           <Typewriter
                             options={{

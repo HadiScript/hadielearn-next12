@@ -19,11 +19,8 @@ const Vission = ({ image }) => {
             <div className="expart__content">
               <h3>The vision we perceived</h3>
               <q>
-                Hadi E-learning is an online IT training program that aims to
-                uplift Pakistani youth through structured free IT training.
-                Hadi’s motto is to enhance IT skills in youth so that they can
-                become financially independent and contribute towards better
-                economic conditions in the country.
+                Hadi E-learning is an online IT training program that aims to uplift Pakistani youth through structured free online IT courses. Hadi’s motto is to enhance IT skills
+                in youth so that they can become financially independent and contribute towards better economic conditions in the country.
               </q>
             </div>
           </div>
