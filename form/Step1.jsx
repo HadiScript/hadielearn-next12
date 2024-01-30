@@ -144,7 +144,7 @@ const Step1 = ({
           required
           type="date"
           className="form-control"
-          placeholder="Date of bith"
+          placeholder="Date of birth"
           name="dateOfBirth"
           value={dateOfBirth}
           onChange={(e) => setdateOfBirth(e)}
