@@ -30,16 +30,16 @@ const CourseCard = ({ x }) => {
     return course.includes("React")
       ? 5
       : course.includes("MERN")
-      ? 4.5
-      : course.includes("SEO")
-      ? 4.8
-      : course.includes("Shopify")
-      ? 4.6
-      : course.includes("Content")
-      ? 4.7
-      : course.includes("Designing")
-      ? 5
-      : 4.5;
+        ? 4.5
+        : course.includes("SEO")
+          ? 4.8
+          : course.includes("Shopify")
+            ? 4.6
+            : course.includes("Content")
+              ? 4.7
+              : course.includes("Designing")
+                ? 5
+                : 4.5;
   };
 
   return (
@@ -68,7 +68,7 @@ const CourseCard = ({ x }) => {
               {x.instructor?.name}
             </span>
           </div>,
-          <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>Free</span>,
+          <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>{x.regFee == 0 && "Free"} {x.regFee != 0 && x.regFee + " " + "PKR"}</span>,
         ]}
       >
         <div className="d-flex align-items-center gap-2 mb-3">

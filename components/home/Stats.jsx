@@ -1,4 +1,3 @@
-import React from "react";
 import dynamic from "next/dynamic";
 
 const primary = " #0f3f5d";

@@ -1,25 +1,47 @@
-import React from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
-import { toImageUrl } from "../../utils/ImageURL";
+import { Select } from "antd";
 
 const CourseList = ({ courses_data, searchQuery }) => {
-  const filteredCourses = courses_data.filter((course) => {
-    return course?.title?.toLowerCase().includes(searchQuery.toLowerCase());
-  });
+  const [sortBy, setSortBy] = useState('all')
+  const [filteredCourses, setfilteredCourses] = useState(courses_data)
 
-  const DurationsTOHrs = (course) => {
-    const hoursPerClass = 1.5;
+  useEffect(() => {
+    setfilteredCourses(courses_data.filter((course) => {
+      return course?.title?.toLowerCase().includes(searchQuery.toLowerCase());
+    }))
+  }, [searchQuery])
 
-    const totalCourseHours = course.classes * hoursPerClass;
 
-    return totalCourseHours;
-  };
+
+  useEffect(() => {
+    if (sortBy === 'free') {
+      setfilteredCourses(courses_data.filter(x => x.regFee == 0))
+    } else if (sortBy === 'paid') {
+      setfilteredCourses(courses_data.filter(x => x.regFee > 0))
+    } else {
+      setfilteredCourses(courses_data)
+    }
+  }, [sortBy])
+
 
   return (
     <>
+      {/* {JSON.stringify(filteredCourses)} */}
       <div className="container">
         <div className="row mt-100">
+          <div className="d-flex justify-content-end mb-3">
+            <Select
+              defaultValue="all"
+              style={{ width: 120 }}
+              onChange={v => setSortBy(v)}
+              options={[
+                { value: 'all', label: 'All' },
+                { value: 'free', label: 'Free' },
+                { value: 'paid', label: 'Paid' },
+              ]}
+            />
+          </div>
           {filteredCourses?.map((x) => (
             <React.Fragment key={x.slug}>
               {x.show2 && (
