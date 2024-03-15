@@ -6,7 +6,6 @@ import { TbPointFilled } from "react-icons/tb";
 import { toImageUrl } from "../../utils/ImageURL";
 
 const CourseSideBar = ({ course }) => {
-  // console.log(course, "here is the course");
 
   return (
     <>
@@ -74,7 +73,7 @@ const CourseSideBar = ({ course }) => {
                 {course.monday && (
                   <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
-                      {" "}
+
                       <AiOutlineCheck /> Monday
                     </span>
                     <span>{course.timming}</span>
@@ -83,8 +82,7 @@ const CourseSideBar = ({ course }) => {
                 {course.tuesday && (
                   <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
-                      {" "}
-                      <AiOutlineCheck /> Tuesday{" "}
+                      <AiOutlineCheck /> Tuesday
                     </span>
                     <span>{course.timming}</span>
                   </li>
@@ -93,8 +91,7 @@ const CourseSideBar = ({ course }) => {
                 {course.wednesday && (
                   <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
-                      {" "}
-                      <AiOutlineCheck /> Wednesday{" "}
+                      <AiOutlineCheck /> Wednesday
                     </span>
                     <span>{course.timming}</span>
                   </li>
@@ -103,8 +100,7 @@ const CourseSideBar = ({ course }) => {
                 {course.thursday && (
                   <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
-                      {" "}
-                      <AiOutlineCheck /> Thursday{" "}
+                      <AiOutlineCheck /> Thursday
                     </span>
                     <span>{course.timming}</span>
                   </li>
@@ -113,8 +109,7 @@ const CourseSideBar = ({ course }) => {
                 {course.friday && (
                   <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
-                      {" "}
-                      <AiOutlineCheck /> Friday{" "}
+                      <AiOutlineCheck /> Friday
                     </span>
                     <span>{course.timming}</span>
                   </li>
@@ -122,8 +117,8 @@ const CourseSideBar = ({ course }) => {
                 {course.saturday && (
                   <li className={`list-group-item d-flex justify-content-between align-items-center `}>
                     <span>
-                      {" "}
-                      <AiOutlineCheck /> Saturday{" "}
+
+                      <AiOutlineCheck /> Saturday
                     </span>
                     <span>{course.timming}</span>
                   </li>
@@ -146,18 +141,18 @@ const CourseSideBar = ({ course }) => {
               </div>
             </div>
           )}
-          <div className="sidebar__widget mb-30 ">
+          {/* <div className="sidebar__widget mb-30 ">
             <div className="sidebar__widget-title mb-30">
               <h4>Registeration Fee</h4>
             </div>
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>{course.regFee === 0 ? "Free" : course.regFee}</li>
+                  <li>{course.regFee === 0 ? "Free" : course.regFee + "PKR"}</li>
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="sidebar__widget mb-30 ">
             <div className="sidebar__widget-title mb-30">
@@ -166,18 +161,15 @@ const CourseSideBar = ({ course }) => {
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>{course.courseFee === 0 ? "Free" : course.courseFee}</li>
+                  <li>{course.courseFee === 0 ? "Free" : course.courseFee + "PKR"}</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* {course?.show && (
-              )} */}
           <Link href={"/enroll/program"}>
             <button className="z-btn z-btn-3 w-50">Enroll now</button>
           </Link>
-          {/* {course?.show === false && <button className="z-btn-disable w-50">Enroll now</button>} */}
         </div>
       </div>
     </>
