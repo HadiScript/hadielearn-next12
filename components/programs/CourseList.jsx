@@ -37,7 +37,7 @@ const CourseList = ({ courses_data, searchQuery }) => {
               options={[
                 { value: 'all', label: 'All' },
                 { value: 'free', label: 'Free' },
-                { value: 'paid', label: 'advance' },
+                { value: 'paid', label: 'Advance' },
               ]}
             />
           </div>
