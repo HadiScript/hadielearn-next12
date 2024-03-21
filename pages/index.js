@@ -15,14 +15,13 @@ import Testimonials2 from "../components/partials/Testimonials2";
 
 const Home = ({ courses }) => {
   const [course_data, setCourse_data] = useState(courses);
-
-  console.log({ course_data });
-
   return (
     <>
       <SEOHead
         title={"Hadi E-learning - An excellent online learning platform"}
-        desc={"Unlock the door to a bright and prosperous future in the digital world with Hadi-learning, an online learning platform that can help you excel in your career path."}
+        desc={
+          "Unlock the door to a bright and prosperous future in the digital world with Hadi-learning, an online learning platform that can help you excel in your career path."
+        }
         conLink={"https://hadielearning.com/"}
       />
 

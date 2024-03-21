@@ -27,7 +27,6 @@ const CourseList = ({ courses_data, searchQuery }) => {
 
   return (
     <>
-      {/* {JSON.stringify(filteredCourses)} */}
       <div className="container">
         <div className="row mt-100">
           <div className="d-flex justify-content-end mb-3">
@@ -38,7 +37,7 @@ const CourseList = ({ courses_data, searchQuery }) => {
               options={[
                 { value: 'all', label: 'All' },
                 { value: 'free', label: 'Free' },
-                { value: 'paid', label: 'Paid' },
+                { value: 'paid', label: 'advance' },
               ]}
             />
           </div>
