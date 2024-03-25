@@ -51,7 +51,7 @@ const Thanks = () => {
           <br />
           <span style={{ fontSize: "25px", fontWeight: "bold" }}>
             {/* finddedTest._id !== '65f3ff2a91ba9bb56e00d605'  */}
-            {finddedTest._id !== '65f3ff2a91ba9bb56e00d605' ? <>
+            {finddedTest?._id !== '65f3ff2a91ba9bb56e00d605' ? <>
               {finddedTest?.title} Quiz Link:
               <a style={{ color: "#6da1ed" }} className="mx-4" href={finddedTest?.test} target="_blank">
                 Go for quiz <BiLinkExternal />
