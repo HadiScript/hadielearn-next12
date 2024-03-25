@@ -68,4 +68,20 @@ export const faqs_data = [
     question: "Is class placement determined by a waiting list or on a first-come-first-serve basis after passing the test?",
     answer: "Class arrangements are made on a first-come-first-serve basis for students who have passed the test.",
   },
+
+  //
+
+  {
+    question: "What advanced courses are available on your platform?",
+    answer:
+      "Advanced courses in various subjects such as, `Data Analysis with Power BI`, `Data Analysis with Tableau`, `Data Analysis with Looker Studio`,  `Python with AI Mastery Course`, `Unity 3D Game Development Course`, `MERN Stack / Full Stack Mastery Course`,  ` Video Editing Mastery Course`  ",
+  },
+  {
+    question: "Are the advanced courses on your platform free or available at subsidized costs?",
+    answer: "Our advanced courses are available at subsidized costs.",
+  },
+  {
+    question: "Are these advanced courses suitable for beginners, or do I need to learn the fundamentals first?",
+    answer: " It depends on the course. For some courses, you may require some basic knowledge and for some, you may not.",
+  },
 ];

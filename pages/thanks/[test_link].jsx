@@ -16,9 +16,6 @@ const Thanks = () => {
 
   const finddedTest = test_links.find((x) => x.slug === test_link);
 
-  // setTimeout(() => {
-  //   router.push("/");
-  // }, 400000);
 
   useEffect(() => {
     toast.success("Your application has been submitted!", { duration: 4000 });
@@ -53,10 +50,13 @@ const Thanks = () => {
           <br />
           <br />
           <span style={{ fontSize: "25px", fontWeight: "bold" }}>
-            {finddedTest?.title} Quiz Link:
-            <a style={{ color: "#6da1ed" }} className="mx-4" href={finddedTest?.test} target="_blank">
-              Go for quiz <BiLinkExternal />
-            </a>
+            {/* finddedTest._id !== '65f3ff2a91ba9bb56e00d605'  */}
+            {finddedTest._id !== '65f3ff2a91ba9bb56e00d605' ? <>
+              {finddedTest?.title} Quiz Link:
+              <a style={{ color: "#6da1ed" }} className="mx-4" href={finddedTest?.test} target="_blank">
+                Go for quiz <BiLinkExternal />
+              </a>
+            </> : finddedTest?.title}
           </span>
           <br />
           <br />
