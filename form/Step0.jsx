@@ -6,6 +6,8 @@ import { AiOutlineRollback } from "react-icons/ai";
 
 import PhoneInput from "react-phone-input-2";
 import { tempData } from "../data/tempData";
+import { Checkbox } from "antd";
+
 
 const Step0 = ({
   email,
@@ -31,6 +33,8 @@ const Step0 = ({
   setWhatsAppPhoneNumber,
   fetchCoursesData,
   fetchWorkshopsData,
+  policyAccepted,
+  setPolicyAccepted
 }) => {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -68,7 +72,6 @@ const Step0 = ({
     }
   };
 
-  // console.log(singleData, "from step 0");
 
   return (
     <div>
@@ -88,20 +91,15 @@ const Step0 = ({
         </label>
         <input required type="email" className="form-control" placeholder="example@gmail.com" name="email" value={email} onChange={handleEmail} />
       </div>
+
+
       {ok && singleData && (
         <div className="row">
           <div className="col-md-12 col-sm-12 col-xs-12 py-3">
             <label>
               WhatsApp<span className="text-danger">*</span>
             </label>
-            {/* <input
-              required
-              type="text"
-              className="form-control"
-              name="phoneNumber"
-              value={singleData?.whatsAppphoneNumber}
-              onChange={(value) => setWhatsAppPhoneNumber(value)}
-            /> */}
+
             <PhoneInput
               country={"pk"} // Set a default country
               inputClass="form-control"
@@ -143,20 +141,7 @@ const Step0 = ({
                     {x.title}
                   </option>
                 ))}
-                {/* 
-                <option value="freelancing">Freelancing</option>
-                <option value="shopify-and-wordpress">
-                  Shopify and WordPress
-                </option>
-                <option value="digital-marketing">Digital Merketing</option>
-                <option value="3ds-max-and-autocad">3Ds Max and AutoCAD</option>
-                <option value="mean-stack">MEAN Stack</option>
-                <option value="mern-stack">MERN Stack</option>
 
-                <option value="amazon-va">Amazon VA</option>
-                <option value="video-editing">Video Editing</option>
-                <option value="seo">Search Engine Optimization (SEO)</option>
-                <option value="graphics-designing">Graphic Designing </option> */}
               </select>
             </div>
           )}
@@ -183,14 +168,31 @@ const Step0 = ({
               </select>
             </div>
           )}
+
+          <div className="col-md-12 col-sm-12 col-xs-12 py-3">
+            <Checkbox onChange={(e) => setPolicyAccepted(e.target.checked)}>
+              I accept Hadi E-learning's{" "}
+              <a className="text-primary" target="_" href="https://hadielearning.com/terms-and-conditions/">Terms and Conditions</a> {" "}
+              and{" "}
+              <a className="text-primary" target="_" href="https://hadielearning.com/privacy-and-policy/">Privacy Policy</a>
+
+            </Checkbox>
+          </div>
         </div>
+
+
       )}
+
+
+
+
+
       <br />
 
       {!ok && show ? <button className="z-btn-disable">Next</button> : !email && !ok && <button className="z-btn-disable">Next</button>}
 
       {singleData && ok && (
-        <div className="col-md-12">{!(course || workshop) || !whatsAppphoneNumber || show !== false ? <button className="z-btn-disable">Submit</button> : <>{submit()}</>}</div>
+        <div className="col-md-12">{!(course || workshop) || !whatsAppphoneNumber || !policyAccepted || show !== false ? <button className="z-btn-disable">Submit</button> : <>{submit()}</>}</div>
       )}
 
       {!singleDataLoading && !singleData && !ok && (
@@ -198,7 +200,6 @@ const Step0 = ({
           {!email || show !== false ? (
             <></>
           ) : (
-            // <button className="z-btn-disable">Next</button> ""
             <>{nextButton()}</>
           )}
         </div>

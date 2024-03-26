@@ -165,7 +165,7 @@ const howItWorks = () => {
         </div>
 
         <CTA />
-        <Price />
+        {/* <Price /> */}
 
         {/* faqs */}
         <FAQs list={3} component={false} />

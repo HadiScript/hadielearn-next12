@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { AiOutlineRollback } from "react-icons/ai";
 import { tempData } from "../data/tempData";
+import { Checkbox } from "antd";
 
 const Step4 = ({
   currentStep,
@@ -21,6 +22,8 @@ const Step4 = ({
   fetchCoursesData,
   fetchWorkshopsData,
   MultiStepProgressBar,
+  policyAccepted,
+  setPolicyAccepted
 }) => {
   const navigate = useRouter();
 
@@ -147,9 +150,20 @@ const Step4 = ({
         <label>What do you want to achieve?</label>
         <textarea type="text" className="form-control" name="wantToAchieve" value={wantToAchieve} onChange={handleChange} />
       </div>
+
+      <div className="col-md-12 col-sm-12 col-xs-12 py-3">
+        <Checkbox onChange={(e) => setPolicyAccepted(e.target.checked)}>
+          I accept Hadi E-learning's{" "}
+          <a className="text-primary" target="_" href="https://hadielearning.com/terms-and-conditions/">Terms and Conditions</a> {" "}
+          and{" "}
+          <a className="text-primary" target="_" href="https://hadielearning.com/privacy-and-policy/">Privacy Policy</a>
+
+        </Checkbox>
+      </div>
+
       <div className="d-flex justify-content-between">
         <>{previousButton()}</>
-        {!education || !enrollTo || !(course || workshop) ? <button className="z-btn-disable mx-2">submit</button> : <>{submit()}</>}
+        {!education || !policyAccepted || !enrollTo || !(course || workshop) ? <button className="z-btn-disable mx-2">submit</button> : <>{submit()}</>}
       </div>
     </>
   );

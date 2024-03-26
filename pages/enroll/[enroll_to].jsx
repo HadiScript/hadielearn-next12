@@ -48,6 +48,7 @@ const EnrollmentsForm = () => {
   const [parentPhoneNumber, setParentPhoneNumber] = useState("");
   const [whatsAppphoneNumber, setWhatsAppPhoneNumber] = useState("");
   const [idCard, setIdCard] = useState("");
+  const [policyAccepted, setPolicyAccepted] = useState(false);
 
   const [fetchCoursesData, setFetchCoursesData] = useState([]);
   const [fetchWorkshopsData, setFetchWorkshopsData] = useState([]);
@@ -79,6 +80,7 @@ const EnrollmentsForm = () => {
         course,
         enrollTo,
         workshop,
+        policyAccepted,
         meetingId: selectedEnrolled && selectedEnrolled.meetingId,
         passcodeId: selectedEnrolled && selectedEnrolled.pascodeId,
         link: selectedEnrolled && selectedEnrolled.zoomLink,
@@ -99,6 +101,7 @@ const EnrollmentsForm = () => {
         education,
         enrollTo,
         workshop,
+        policyAccepted,
         meetingId: selectedEnrolled && selectedEnrolled.meetingId,
         passcodeId: selectedEnrolled && selectedEnrolled.pascodeId,
         link: selectedEnrolled && selectedEnrolled.zoomLink,
@@ -116,12 +119,16 @@ const EnrollmentsForm = () => {
       setLoading(true);
       const payload = { ...dataPayload, testLink: testOFCourse?.test };
 
+
+      // console.log(payload);
+      // return;
+
       const { data } = await axios.post(
         "https://api.hadielearning.com/api/enroll-stu",
         // "http://localhost:5000/api/enroll-stu",
         payload
       );
-      // console.log(payload, "here is 22");
+
       if (data.error) {
         return toast.error(data.error);
       }
@@ -132,7 +139,7 @@ const EnrollmentsForm = () => {
         toast.success("Submit");
         router.push(`/`);
       } else {
-        router.push(`/thanks/${testOFCourse.slug}`);
+        router.push(`/thanks/${testOFCourse ? testOFCourse?.slug : payload?.course}`);
       }
     } catch (err) {
       toast.error("Failed, try again", { position: "bottom-right" });
@@ -270,6 +277,8 @@ const EnrollmentsForm = () => {
                     setWhatsAppPhoneNumber={setWhatsAppPhoneNumber}
                     fetchCoursesData={fetchCoursesData}
                     fetchWorkshopsData={fetchWorkshopsData}
+                    policyAccepted={policyAccepted}
+                    setPolicyAccepted={setPolicyAccepted}
                   />
 
                   {/* <CardText /> */}
@@ -335,6 +344,8 @@ const EnrollmentsForm = () => {
                     // setEnrollTo={setEnrollTo}
                     fetchCoursesData={fetchCoursesData}
                     fetchWorkshopsData={fetchWorkshopsData}
+                    policyAccepted={policyAccepted}
+                    setPolicyAccepted={setPolicyAccepted}
                   />
                 </div>
               </div>
