@@ -68,7 +68,7 @@ const CourseCard = ({ x }) => {
               {x.instructor?.name}
             </span>
           </div>,
-          <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>{x.regFee == 0 && "Free"} {x.regFee != 0 && x.regFee + " " + "PKR"}</span>,
+          <span style={{ fontWeight: "bold", color: "#0f3f5d" }}>{x.regFee == 0 && "Free"} {x.regFee != 0 && "PKR" + " " + x.regFee?.toLocaleString()}</span>,
         ]}
       >
         <div className="d-flex align-items-center gap-2 mb-3">

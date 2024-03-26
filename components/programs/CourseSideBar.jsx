@@ -161,7 +161,7 @@ const CourseSideBar = ({ course }) => {
             <div className="sidebar__widget-content">
               <div className="cat-link">
                 <ul>
-                  <li>{course.courseFee === 0 ? "Free" : course.courseFee + "PKR"}</li>
+                  <li>{course.courseFee === 0 ? "Free" : "PKR" + " " + course.courseFee?.toLocaleString()}</li>
                 </ul>
               </div>
             </div>
