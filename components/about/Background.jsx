@@ -10,7 +10,7 @@ const Background = () => {
             <div className="col-xl-5 col-lg-6 col-md-6">
               <div className="achievement__content">
                 <div className="section__title section__title-3 mb-20">
-                  {/* <span>Background</span> */}
+
                   <h2>Background</h2>
                 </div>
                 <p style={{ fontSize: "18px" }}>
@@ -25,7 +25,7 @@ const Background = () => {
                         <i>
                           <FaCheck />
                         </i>
-                        Free Online IT Training to youth.
+                        Free and Subsidized Online IT Training to youth.
                       </span>
                     </li>
                     <li>

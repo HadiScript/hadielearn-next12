@@ -1,7 +1,5 @@
 import React from "react";
 import SEOHead from "../components/functions/SEOHead";
-import Breadcrumbs from "../components/partials/Breadcrumbs";
-import PagesNavbar from "../components/partials/PageNavbar";
 import Background from "../components/about/Background";
 import Platform from "../components/about/Platform";
 import Testimonials from "../components/partials/Testimonials";
@@ -39,7 +37,7 @@ const aboutUs = () => {
               </h1>
             </div>
             <p className="text-center mb-4 mt-3" style={{ maxWidth: "800px" }}>
-              <em>Hadi E-learning, transforming your career through Free online IT training.</em>
+              <em>Hadi E-learning, transforming your career through Free and Subsidized online IT training.</em>
             </p>
           </Fade>
         </div>
