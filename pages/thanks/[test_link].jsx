@@ -59,8 +59,6 @@ const Thanks = () => {
                 </a>
               </> : SlugToTitle(test_link)
             }
-
-
           </span>
           <br />
           <br />
