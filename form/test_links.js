@@ -106,11 +106,4 @@ export const test_links = [
     slug: "python-with-ai-mastery-course",
     test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=python-with-ai-mastery-course-evaluation-quiz",
   },
-
-  // {
-  //   _id: "65f3ff2a91ba9bb56e00d605",
-  //   title: "Data Analysis with Microsoft Power BI",
-  //   slug: "data-analysis-with-microsoft-power-bi",
-  //   test: "data-analysis-with-microsoft-power-bi",
-  // },
 ];

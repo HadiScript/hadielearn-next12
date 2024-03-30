@@ -124,7 +124,7 @@ const EnrollmentsForm = () => {
       // return;
 
       const { data } = await axios.post(
-        "https://api.hadielearning.com/api/enroll-stu",
+        `${API}/enroll-stu`,
         // "http://localhost:5000/api/enroll-stu",
         payload
       );
