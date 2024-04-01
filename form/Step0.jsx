@@ -121,7 +121,7 @@ const Step0 = ({
               </option>
             </select>
           </div>
-
+          {/* {JSON.stringify(_enroll_to)} */}
           {_enroll_to === "program" && (
             <div className="col-md-6 col-sm-12 col-xs-12 py-3">
               <label>

@@ -29,7 +29,8 @@ const INITIAL_USER = {
 
 const EnrollmentsForm = () => {
   const router = useRouter();
-  const { enroll_to } = router.query;
+  const enroll_to = router.query.enroll_to?.split("_")[0];
+
 
   //   states
   const [currentStep, setCurrentStep] = useState(0);
@@ -37,7 +38,7 @@ const EnrollmentsForm = () => {
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [education, setEducation] = useState("");
-  const [course, setCourse] = useState("");
+  const [course, setCourse] = useState(router.query.enroll_to?.split("_")[1]);
   const [workshop, setWorkshop] = useState("");
   const [selectedEnrolled, setSelectedEnrolled] = useState({});
   const [enrollTo, setEnrollTo] = useState("");
@@ -59,7 +60,7 @@ const EnrollmentsForm = () => {
   const [singleDataLoading, setSingleDataLoading] = useState(false);
 
   useEffect(() => {
-    setEnrollTo(enroll_to);
+    setEnrollTo(enroll_to?.split("_")[0]);
   }, [enroll_to]);
 
   const handleChange = (e) => {

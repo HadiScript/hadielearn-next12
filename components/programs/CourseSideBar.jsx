@@ -4,8 +4,11 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { TbPointFilled } from "react-icons/tb";
 import { toImageUrl } from "../../utils/ImageURL";
+import { useRouter } from "next/router";
 
 const CourseSideBar = ({ course }) => {
+
+  const { slug } = useRouter().query;
 
   return (
     <>
@@ -13,6 +16,7 @@ const CourseSideBar = ({ course }) => {
         <div className="blog__sidebar">
           <div className="blog__author mb-50">
             <h3>Instructor</h3>
+
             <br />
 
             <div className="d-flex align-items-start gap-3">
@@ -141,18 +145,7 @@ const CourseSideBar = ({ course }) => {
               </div>
             </div>
           )}
-          {/* <div className="sidebar__widget mb-30 ">
-            <div className="sidebar__widget-title mb-30">
-              <h4>Registeration Fee</h4>
-            </div>
-            <div className="sidebar__widget-content">
-              <div className="cat-link">
-                <ul>
-                  <li>{course.regFee === 0 ? "Free" : course.regFee + "PKR"}</li>
-                </ul>
-              </div>
-            </div>
-          </div> */}
+
 
           <div className="sidebar__widget mb-30 ">
             <div className="sidebar__widget-title mb-30">
@@ -167,7 +160,7 @@ const CourseSideBar = ({ course }) => {
             </div>
           </div>
 
-          <Link href={"/enroll/program"}>
+          <Link href={`/enroll/program_${slug}`}>
             <button className="z-btn z-btn-3 w-50">Enroll now</button>
           </Link>
         </div>
