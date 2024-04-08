@@ -37,7 +37,7 @@ const AdvHowItWorks = () => {
             <h2>Select the program that aligns best with your preferences and goals </h2>
           </div>
           <div className="left-box-image2">
-            <img src="/assets/images/flow/adv/step3.png" />
+            <img src="/assets/images/flow/adv/step-3.png" />
           </div>
         </div>
       </Fade>

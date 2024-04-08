@@ -149,11 +149,11 @@ const ProgramDetails = ({ course }) => {
                     </p>
                   )}
 
-                  <br />
-                  <br />
-                  <Link href={`/enroll/program_${slug}`}>
-                    <button className="z-btn z-btn-3 w-50">Enroll now</button>
-                  </Link>
+                  <div className="d-none d-md-block">
+                    <Link href={`/enroll/program_${slug}`}>
+                      <button className="z-btn z-btn-3 w-50">Enroll now</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
