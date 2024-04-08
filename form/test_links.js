@@ -106,4 +106,11 @@ export const test_links = [
     slug: "python-with-ai-mastery-course",
     test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=python-with-ai-mastery-course-evaluation-quiz",
   },
+
+  {
+    id: "660d206d133a0a46066f23f6",
+    title: "Fundamentals of Data Analysis",
+    slug: "fundamentals-of-data-analysis",
+    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=fundamentals-of-data-analysis-evaluation-quiz",
+  },
 ];

@@ -128,7 +128,11 @@ function MyApp({ Component, pageProps }) {
                 ></script>
 
                 {/* ads */}
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098252304490801" crossOrigin="anonymous" />
+                <script
+                  async
+                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098252304490801"
+                  crossOrigin="anonymous"
+                />
 
                 {/* chatting start */}
 
