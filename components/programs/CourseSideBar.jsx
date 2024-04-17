@@ -160,9 +160,20 @@ const CourseSideBar = ({ course }) => {
             </div>
           </div>
 
-          <Link className="" href={`/enroll/program_${slug}`}>
-            <button id={course.courseFee === 0 ? "FreeBtn" : slug} className="z-btn z-btn-3 w-50">Enroll now</button>
-          </Link>
+          {/* id={course.courseFee === 0 ? "FreeBtn" : slug} */}
+          {
+            course.courseFee > 0 ?
+
+              <Link id={slug} href={`/enroll/program_${slug}`} className="z-btn z-btn-3 w-50">
+                Enroll now
+              </Link>
+              :
+              <Link className="" href={`/enroll/program_${slug}`}>
+                <button className="z-btn z-btn-3 w-50">Enroll now</button>
+              </Link>
+          }
+
+
         </div>
       </div>
     </>
