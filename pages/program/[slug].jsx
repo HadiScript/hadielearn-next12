@@ -151,7 +151,7 @@ const ProgramDetails = ({ course }) => {
 
                   <div className="d-none d-md-block">
                     <Link href={`/enroll/program_${slug}`}>
-                      <button className="z-btn z-btn-3 w-50">Enroll now</button>
+                      <button id={findedCourse.courseFee === 0 ? "FreeBtn" : slug} className="z-btn z-btn-3 w-50">Enroll now</button>
                     </Link>
                   </div>
                 </div>
