@@ -10,6 +10,14 @@ const CourseSideBar = ({ course }) => {
 
   const { slug } = useRouter().query;
 
+
+  function trackEnrollEvent(slug, courseType) {
+    window.fbq('track', 'Enroll', {
+      courseSlug: slug,
+      courseType: courseType
+    });
+  }
+
   return (
     <>
       <div className="col-xl-4 col-lg-4 ">
@@ -163,12 +171,11 @@ const CourseSideBar = ({ course }) => {
           {/* id={course.courseFee === 0 ? "FreeBtn" : slug} */}
           {
             course.courseFee > 0 ?
-
-              <Link id={slug} href={`/enroll/program_${slug}`} className="z-btn z-btn-3 w-50">
-                Enroll now
+              <Link id={slug} href={`/enroll/program_${slug}`} onClick={() => trackEnrollEvent(slug, 'advanced')}>
+                <button className="z-btn z-btn-3 w-50">Enroll now</button>
               </Link>
               :
-              <Link className="" href={`/enroll/program_${slug}`}>
+              <Link className="" href={`/enroll/program_${slug}`} onClick={() => trackEnrollEvent(slug, 'free')}>
                 <button className="z-btn z-btn-3 w-50">Enroll now</button>
               </Link>
           }
