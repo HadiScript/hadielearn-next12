@@ -100,12 +100,12 @@ export const test_links = [
 
   // https://docs.google.com/forms/d/e/1FAIpQLSfpBqOTldYa4dpEUN4GtRf5-Xp7-stEoSw5hRScWiS-VickcQ/viewform?usp=sf_link
 
-  {
-    _id: "65b7b24a138f2e522a985f7d",
-    title: "Python with AI Mastery Course",
-    slug: "python-with-ai-mastery-course",
-    test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=python-with-ai-mastery-course-evaluation-quiz",
-  },
+  // {
+  //   _id: "65b7b24a138f2e522a985f7d",
+  //   title: "Python with AI Mastery Course",
+  //   slug: "python-with-ai-mastery-course",
+  //   test: "https://www.proprofs.com/quiz-school/ugc/story.php?title=python-with-ai-mastery-course-evaluation-quiz",
+  // },
 
   {
     id: "660d206d133a0a46066f23f6",
