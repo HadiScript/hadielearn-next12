@@ -103,12 +103,12 @@ const EnrollmentsForm = () => {
         enrollTo,
         workshop,
         policyAccepted,
-        meetingId: selectedEnrolled && selectedEnrolled.meetingId,
-        passcodeId: selectedEnrolled && selectedEnrolled.pascodeId,
-        link: selectedEnrolled && selectedEnrolled.zoomLink,
-        authorName: selectedEnrolled && selectedEnrolled?.instructor?.name,
-        heading: selectedEnrolled && selectedEnrolled.title,
-        meetingTiming: selectedEnrolled && selectedEnrolled.meetingTiming,
+          meetingId: selectedEnrolled && selectedEnrolled.meetingId,
+          passcodeId: selectedEnrolled && selectedEnrolled.pascodeId,
+          link: selectedEnrolled && selectedEnrolled.zoomLink,
+          authorName: selectedEnrolled && selectedEnrolled?.instructor?.name,
+          heading: selectedEnrolled && selectedEnrolled.title,
+          meetingTiming: selectedEnrolled && selectedEnrolled.meetingTiming,
       };
 
   const handleSubmit = async (e) => {
